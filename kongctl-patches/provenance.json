@@ -1,11 +1,11 @@
 {
   "repository": "Kong/kongctl",
-  "commit": "8d2066df0579feeef11f4312c9b8689fbfd75da4",
+  "commit": "1fd3800f12babc5d3245f3d0d85600f3e0e21850",
   "path": "tools/sdk-patches",
   "sha256": {
-    "apply.py": "4698716593fc8e70cedfeea90dff847a8af9ad766bb09375b113b1f6d9fb1656",
-    "manifest.json": "bd33d7b4d32fc6e2312b431812efb42a2cef88bb2031b594be076cc5cf48d4f4",
-    "README.md": "681f07296b962d7cd36f782fbc7c2991fca7182247fc4e4758db900392e53dcd",
+    "apply.py": "b3ae2b9f28a4e7043e6c693389a093173fdd83885990156d7a09deba7c70e67f",
+    "manifest.json": "75f12973a6cd8df4c28bc0c1504aa2a10658beb23469fea705ec5c83eae27de2",
+    "README.md": "b8231f3228af144a61440b1fe83d2237237bfa567a8d6be3ff3a0d7c13cf0224",
     "overlays/ai-gateway-pgvector-connection-defaults.yaml": "e95b749c182ea219916960587eb5a697209191356121a3efbb13d67396de5dc1",
     "overlays/ai-gateway-update-runtime-defaults.yaml": "90cd581cf7a301c6270b4cfd63dca367610af20e7a31fa0db926ade10c3f4ce6",
     "overlays/backend-cluster-tls-defaults.yaml": "3c5f065ec53cb0ab53345ac0407af11944433ae6730328adf1bead7a4d5c03ae",
@@ -33,7 +33,8 @@
     "tests/identity_credential_expiration_test.go.txt": "6c1f9beab33c2af9776e44a536827cdcc213ae3a9f81e67b999bbb6cf7823b40",
     "tests/identity_key_metadata_test.go.txt": "2c252882174578841b09ad476a12a0a826ecabdb4fc3d2f3244f09ec174e2b61",
     "tests/ai_gateway_update_defaults_test.go.txt": "952c6107d0aab72245a1ee13584f85a01aaa36678130b8bb75fdc30e41cc1d3b",
-    "tests/ai_gateway_oidc_config_presence_test.go.txt": "1daecfa01c05eb848ed68076bdb0b4d936f38aabb6be8d68b6b7a157916b1654",
-    "tests/ai_gateway_oidc_config_typed_test.go.txt": "b1b129b1c7cf2f287025447d70290e0a0e1cd3b711a0cd6c0b6fc4993d20680a"
+    "tests/ai_gateway_oidc_config_presence_test.go.txt": "84382ee72298a1eabe2b32be6abf9f11c41800faa4f7e7d9545c8fc05690c280",
+    "tests/ai_gateway_oidc_config_typed_test.go.txt": "6408cb04264abc7f9d66f18af30bb05ab1bb59778deff1c03502cdb3f94c7eac",
+    "tests/ai_gateway_oidc_config_baseline.json": "51be04d8aaedb1ef770f825dfa46e31c90a392d490db1b203ca2772a165cadcb"
   }
 }

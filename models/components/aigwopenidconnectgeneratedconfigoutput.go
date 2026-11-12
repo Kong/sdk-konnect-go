@@ -170,32 +170,31 @@ func (e *ClientCredentialsParamType) IsExact() bool {
 }
 
 type ClientJwk struct {
-	Alg                  optionalnullable.OptionalNullable[string]   `json:"alg,omitempty"`
-	Crv                  optionalnullable.OptionalNullable[string]   `json:"crv,omitempty"`
-	D                    optionalnullable.OptionalNullable[string]   `json:"d,omitempty"`
-	Dp                   optionalnullable.OptionalNullable[string]   `json:"dp,omitempty"`
-	Dq                   optionalnullable.OptionalNullable[string]   `json:"dq,omitempty"`
-	E                    optionalnullable.OptionalNullable[string]   `json:"e,omitempty"`
-	Issuer               optionalnullable.OptionalNullable[string]   `json:"issuer,omitempty"`
-	K                    optionalnullable.OptionalNullable[string]   `json:"k,omitempty"`
-	KeyOps               optionalnullable.OptionalNullable[[]string] `json:"key_ops,omitempty"`
-	Kid                  optionalnullable.OptionalNullable[string]   `json:"kid,omitempty"`
-	Kty                  optionalnullable.OptionalNullable[string]   `json:"kty,omitempty"`
-	N                    optionalnullable.OptionalNullable[string]   `json:"n,omitempty"`
-	Oth                  optionalnullable.OptionalNullable[string]   `json:"oth,omitempty"`
-	P                    optionalnullable.OptionalNullable[string]   `json:"p,omitempty"`
-	Q                    optionalnullable.OptionalNullable[string]   `json:"q,omitempty"`
-	Qi                   optionalnullable.OptionalNullable[string]   `json:"qi,omitempty"`
-	R                    optionalnullable.OptionalNullable[string]   `json:"r,omitempty"`
-	T                    optionalnullable.OptionalNullable[string]   `json:"t,omitempty"`
-	Use                  optionalnullable.OptionalNullable[string]   `json:"use,omitempty"`
-	X                    optionalnullable.OptionalNullable[string]   `json:"x,omitempty"`
-	X5c                  optionalnullable.OptionalNullable[[]string] `json:"x5c,omitempty"`
-	X5t                  optionalnullable.OptionalNullable[string]   `json:"x5t,omitempty"`
-	X5tNumberS256        optionalnullable.OptionalNullable[string]   `json:"x5t#S256,omitempty"`
-	X5u                  optionalnullable.OptionalNullable[string]   `json:"x5u,omitempty"`
-	Y                    optionalnullable.OptionalNullable[string]   `json:"y,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	Alg           *string  `json:"alg,omitempty"`
+	Crv           *string  `json:"crv,omitempty"`
+	D             *string  `json:"d,omitempty"`
+	Dp            *string  `json:"dp,omitempty"`
+	Dq            *string  `json:"dq,omitempty"`
+	E             *string  `json:"e,omitempty"`
+	Issuer        *string  `json:"issuer,omitempty"`
+	K             *string  `json:"k,omitempty"`
+	KeyOps        []string `json:"key_ops,omitempty"`
+	Kid           *string  `json:"kid,omitempty"`
+	Kty           *string  `json:"kty,omitempty"`
+	N             *string  `json:"n,omitempty"`
+	Oth           *string  `json:"oth,omitempty"`
+	P             *string  `json:"p,omitempty"`
+	Q             *string  `json:"q,omitempty"`
+	Qi            *string  `json:"qi,omitempty"`
+	R             *string  `json:"r,omitempty"`
+	T             *string  `json:"t,omitempty"`
+	Use           *string  `json:"use,omitempty"`
+	X             *string  `json:"x,omitempty"`
+	X5c           []string `json:"x5c,omitempty"`
+	X5t           *string  `json:"x5t,omitempty"`
+	X5tNumberS256 *string  `json:"x5t#S256,omitempty"`
+	X5u           *string  `json:"x5u,omitempty"`
+	Y             *string  `json:"y,omitempty"`
 }
 
 func (c ClientJwk) MarshalJSON() ([]byte, error) {
@@ -213,206 +212,175 @@ func (c *ClientJwk) GetAlg() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Alg.Get()
-	return value
+	return c.Alg
 }
 
 func (c *ClientJwk) GetCrv() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Crv.Get()
-	return value
+	return c.Crv
 }
 
 func (c *ClientJwk) GetD() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.D.Get()
-	return value
+	return c.D
 }
 
 func (c *ClientJwk) GetDp() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Dp.Get()
-	return value
+	return c.Dp
 }
 
 func (c *ClientJwk) GetDq() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Dq.Get()
-	return value
+	return c.Dq
 }
 
 func (c *ClientJwk) GetE() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.E.Get()
-	return value
+	return c.E
 }
 
 func (c *ClientJwk) GetIssuer() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Issuer.Get()
-	return value
+	return c.Issuer
 }
 
 func (c *ClientJwk) GetK() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.K.Get()
-	return value
+	return c.K
 }
 
 func (c *ClientJwk) GetKeyOps() []string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.KeyOps.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.KeyOps
 }
 
 func (c *ClientJwk) GetKid() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Kid.Get()
-	return value
+	return c.Kid
 }
 
 func (c *ClientJwk) GetKty() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Kty.Get()
-	return value
+	return c.Kty
 }
 
 func (c *ClientJwk) GetN() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.N.Get()
-	return value
+	return c.N
 }
 
 func (c *ClientJwk) GetOth() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Oth.Get()
-	return value
+	return c.Oth
 }
 
 func (c *ClientJwk) GetP() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.P.Get()
-	return value
+	return c.P
 }
 
 func (c *ClientJwk) GetQ() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Q.Get()
-	return value
+	return c.Q
 }
 
 func (c *ClientJwk) GetQi() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Qi.Get()
-	return value
+	return c.Qi
 }
 
 func (c *ClientJwk) GetR() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.R.Get()
-	return value
+	return c.R
 }
 
 func (c *ClientJwk) GetT() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.T.Get()
-	return value
+	return c.T
 }
 
 func (c *ClientJwk) GetUse() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Use.Get()
-	return value
+	return c.Use
 }
 
 func (c *ClientJwk) GetX() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.X.Get()
-	return value
+	return c.X
 }
 
 func (c *ClientJwk) GetX5c() []string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.X5c.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.X5c
 }
 
 func (c *ClientJwk) GetX5t() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.X5t.Get()
-	return value
+	return c.X5t
 }
 
 func (c *ClientJwk) GetX5tNumberS256() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.X5tNumberS256.Get()
-	return value
+	return c.X5tNumberS256
 }
 
 func (c *ClientJwk) GetX5u() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.X5u.Get()
-	return value
+	return c.X5u
 }
 
 func (c *ClientJwk) GetY() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Y.Get()
-	return value
+	return c.Y
 }
 
 // AIGWOpenIDConnectGeneratedConfigClusterCacheRedisAuthProvider - Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
@@ -442,30 +410,29 @@ func (e *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisAuthProvider) IsExact(
 // AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication - Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
 type AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication struct {
 	// Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
-	AuthProvider optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigClusterCacheRedisAuthProvider] `json:"auth_provider,omitempty"`
+	AuthProvider *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisAuthProvider `json:"auth_provider,omitempty"`
 	// AWS Access Key ID to be used for authentication when `auth_provider` is set to `aws`.
-	AwsAccessKeyID optionalnullable.OptionalNullable[string] `json:"aws_access_key_id,omitempty"`
+	AwsAccessKeyID *string `json:"aws_access_key_id,omitempty"`
 	// The ARN of the IAM role to assume for generating ElastiCache IAM authentication tokens.
-	AwsAssumeRoleArn optionalnullable.OptionalNullable[string] `json:"aws_assume_role_arn,omitempty"`
+	AwsAssumeRoleArn *string `json:"aws_assume_role_arn,omitempty"`
 	// The name of the AWS Elasticache cluster when `auth_provider` is set to `aws`.
-	AwsCacheName optionalnullable.OptionalNullable[string] `json:"aws_cache_name,omitempty"`
+	AwsCacheName *string `json:"aws_cache_name,omitempty"`
 	// This flag specifies whether the cluster is serverless when auth_provider is set to `aws`.
-	AwsIsServerless optionalnullable.OptionalNullable[bool] `json:"aws_is_serverless,omitempty"`
+	AwsIsServerless *bool `default:"true" json:"aws_is_serverless"`
 	// The region of the AWS ElastiCache cluster when `auth_provider` is set to `aws`.
-	AwsRegion optionalnullable.OptionalNullable[string] `json:"aws_region,omitempty"`
+	AwsRegion *string `json:"aws_region,omitempty"`
 	// The session name for the temporary credentials when assuming the IAM role.
-	AwsRoleSessionName optionalnullable.OptionalNullable[string] `json:"aws_role_session_name,omitempty"`
+	AwsRoleSessionName *string `json:"aws_role_session_name,omitempty"`
 	// AWS Secret Access Key to be used for authentication when `auth_provider` is set to `aws`.
-	AwsSecretAccessKey optionalnullable.OptionalNullable[string] `json:"aws_secret_access_key,omitempty"`
+	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
 	// Azure Client ID to be used for authentication when `auth_provider` is set to `azure`.
-	AzureClientID optionalnullable.OptionalNullable[string] `json:"azure_client_id,omitempty"`
+	AzureClientID *string `json:"azure_client_id,omitempty"`
 	// Azure Client Secret to be used for authentication when `auth_provider` is set to `azure`.
-	AzureClientSecret optionalnullable.OptionalNullable[string] `json:"azure_client_secret,omitempty"`
+	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
 	// Azure Tenant ID to be used for authentication when `auth_provider` is set to `azure`.
-	AzureTenantID optionalnullable.OptionalNullable[string] `json:"azure_tenant_id,omitempty"`
+	AzureTenantID *string `json:"azure_tenant_id,omitempty"`
 	// GCP Service Account JSON to be used for authentication when `auth_provider` is set to `gcp`.
-	GcpServiceAccountJSON optionalnullable.OptionalNullable[string] `json:"gcp_service_account_json,omitempty"`
-	AdditionalProperties  map[string]any                            `additionalProperties:"true" json:"-"`
+	GcpServiceAccountJSON *string `json:"gcp_service_account_json,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) MarshalJSON() ([]byte, error) {
@@ -483,104 +450,91 @@ func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) G
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthProvider.Get()
-	return value
+	return a.AuthProvider
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsAccessKeyID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsAccessKeyID.Get()
-	return value
+	return a.AwsAccessKeyID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsAssumeRoleArn() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsAssumeRoleArn.Get()
-	return value
+	return a.AwsAssumeRoleArn
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsCacheName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsCacheName.Get()
-	return value
+	return a.AwsCacheName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsIsServerless() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsIsServerless.Get()
-	return value
+	return a.AwsIsServerless
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsRegion() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsRegion.Get()
-	return value
+	return a.AwsRegion
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsRoleSessionName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsRoleSessionName.Get()
-	return value
+	return a.AwsRoleSessionName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAwsSecretAccessKey() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsSecretAccessKey.Get()
-	return value
+	return a.AwsSecretAccessKey
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAzureClientID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AzureClientID.Get()
-	return value
+	return a.AzureClientID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAzureClientSecret() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AzureClientSecret.Get()
-	return value
+	return a.AzureClientSecret
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetAzureTenantID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AzureTenantID.Get()
-	return value
+	return a.AzureTenantID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication) GetGcpServiceAccountJSON() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.GcpServiceAccountJSON.Get()
-	return value
+	return a.GcpServiceAccountJSON
 }
 
 type AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes struct {
 	// A string representing a host name, such as example.com.
-	IP optionalnullable.OptionalNullable[string] `json:"ip,omitempty"`
+	IP *string `default:"127.0.0.1" json:"ip"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port                 optionalnullable.OptionalNullable[int64] `json:"port,omitempty"`
-	AdditionalProperties map[string]any                           `additionalProperties:"true" json:"-"`
+	Port *int64 `default:"6379" json:"port"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes) MarshalJSON() ([]byte, error) {
@@ -598,24 +552,21 @@ func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes) GetIP() 
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IP.Get()
-	return value
+	return a.IP
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes) GetPort() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Port.Get()
-	return value
+	return a.Port
 }
 
 type AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes struct {
 	// A string representing a host name, such as example.com.
-	Host optionalnullable.OptionalNullable[string] `json:"host,omitempty"`
+	Host *string `default:"127.0.0.1" json:"host"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port                 optionalnullable.OptionalNullable[int64] `json:"port,omitempty"`
-	AdditionalProperties map[string]any                           `additionalProperties:"true" json:"-"`
+	Port *int64 `default:"6379" json:"port"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes) MarshalJSON() ([]byte, error) {
@@ -633,16 +584,14 @@ func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes) GetHost
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Host.Get()
-	return value
+	return a.Host
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes) GetPort() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Port.Get()
-	return value
+	return a.Port
 }
 
 // AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelRole - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
@@ -671,50 +620,49 @@ func (e *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelRole) IsExact(
 
 type ClusterCacheRedis struct {
 	// Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
-	CloudAuthentication optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication] `json:"cloud_authentication,omitempty"`
+	CloudAuthentication *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisCloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Maximum retry attempts for redirection.
-	ClusterMaxRedirections optionalnullable.OptionalNullable[int64] `json:"cluster_max_redirections,omitempty"`
+	ClusterMaxRedirections *int64 `default:"5" json:"cluster_max_redirections"`
 	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
-	ClusterNodes optionalnullable.OptionalNullable[[]AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes] `json:"cluster_nodes,omitempty"`
+	ClusterNodes []AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes `json:"cluster_nodes,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ConnectTimeout optionalnullable.OptionalNullable[int64] `json:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
-	ConnectionIsProxied optionalnullable.OptionalNullable[bool] `json:"connection_is_proxied,omitempty"`
+	ConnectionIsProxied *bool `default:"false" json:"connection_is_proxied"`
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database optionalnullable.OptionalNullable[int64] `json:"database,omitempty"`
+	Database *int64 `default:"0" json:"database"`
 	// A string representing a host name, such as example.com.
-	Host optionalnullable.OptionalNullable[string] `json:"host,omitempty"`
+	Host *string `default:"127.0.0.1" json:"host"`
 	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `keepalive_pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `keepalive_pool_size`.
-	KeepaliveBacklog optionalnullable.OptionalNullable[int64] `json:"keepalive_backlog,omitempty"`
+	KeepaliveBacklog *int64 `json:"keepalive_backlog,omitempty"`
 	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `keepalive_pool_size` nor `keepalive_backlog` is specified, no pool is created. If `keepalive_pool_size` isn't specified but `keepalive_backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
-	KeepalivePoolSize optionalnullable.OptionalNullable[int64] `json:"keepalive_pool_size,omitempty"`
+	KeepalivePoolSize *int64 `default:"256" json:"keepalive_pool_size"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
-	Password optionalnullable.OptionalNullable[string] `json:"password,omitempty"`
+	Password *string `json:"password,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port optionalnullable.OptionalNullable[int64] `json:"port,omitempty"`
+	Port *int64 `default:"6379" json:"port"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ReadTimeout optionalnullable.OptionalNullable[int64] `json:"read_timeout,omitempty"`
+	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	SendTimeout optionalnullable.OptionalNullable[int64] `json:"send_timeout,omitempty"`
+	SendTimeout *int64 `default:"2000" json:"send_timeout"`
 	// Sentinel master to use for Redis connections. Defining this value implies using Redis Sentinel.
-	SentinelMaster optionalnullable.OptionalNullable[string] `json:"sentinel_master,omitempty"`
+	SentinelMaster *string `json:"sentinel_master,omitempty"`
 	// Sentinel node addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Sentinel. The minimum length of the array is 1 element.
-	SentinelNodes optionalnullable.OptionalNullable[[]AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes] `json:"sentinel_nodes,omitempty"`
+	SentinelNodes []AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes `json:"sentinel_nodes,omitempty"`
 	// Sentinel password to authenticate with a Redis Sentinel instance. If undefined, no AUTH commands are sent to Redis Sentinels.
-	SentinelPassword optionalnullable.OptionalNullable[string] `json:"sentinel_password,omitempty"`
+	SentinelPassword *string `json:"sentinel_password,omitempty"`
 	// Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
-	SentinelRole optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelRole] `json:"sentinel_role,omitempty"`
+	SentinelRole *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelRole `json:"sentinel_role,omitempty"`
 	// Sentinel username to authenticate with a Redis Sentinel instance. If undefined, ACL authentication won't be performed. This requires Redis v6.2.0+.
-	SentinelUsername optionalnullable.OptionalNullable[string] `json:"sentinel_username,omitempty"`
+	SentinelUsername *string `json:"sentinel_username,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
-	ServerName optionalnullable.OptionalNullable[string] `json:"server_name,omitempty"`
+	ServerName *string `json:"server_name,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl optionalnullable.OptionalNullable[bool] `json:"ssl,omitempty"`
+	Ssl *bool `default:"false" json:"ssl"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify optionalnullable.OptionalNullable[bool] `json:"ssl_verify,omitempty"`
+	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
-	Username             optionalnullable.OptionalNullable[string] `json:"username,omitempty"`
-	AdditionalProperties map[string]any                            `additionalProperties:"true" json:"-"`
+	Username *string `json:"username,omitempty"`
 }
 
 func (c ClusterCacheRedis) MarshalJSON() ([]byte, error) {
@@ -732,182 +680,154 @@ func (c *ClusterCacheRedis) GetCloudAuthentication() *AIGWOpenIDConnectGenerated
 	if c == nil {
 		return nil
 	}
-	value, _ := c.CloudAuthentication.Get()
-	return value
+	return c.CloudAuthentication
 }
 
 func (c *ClusterCacheRedis) GetClusterMaxRedirections() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.ClusterMaxRedirections.Get()
-	return value
+	return c.ClusterMaxRedirections
 }
 
 func (c *ClusterCacheRedis) GetClusterNodes() []AIGWOpenIDConnectGeneratedConfigClusterCacheRedisClusterNodes {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.ClusterNodes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.ClusterNodes
 }
 
 func (c *ClusterCacheRedis) GetConnectTimeout() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.ConnectTimeout.Get()
-	return value
+	return c.ConnectTimeout
 }
 
 func (c *ClusterCacheRedis) GetConnectionIsProxied() *bool {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.ConnectionIsProxied.Get()
-	return value
+	return c.ConnectionIsProxied
 }
 
 func (c *ClusterCacheRedis) GetDatabase() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Database.Get()
-	return value
+	return c.Database
 }
 
 func (c *ClusterCacheRedis) GetHost() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Host.Get()
-	return value
+	return c.Host
 }
 
 func (c *ClusterCacheRedis) GetKeepaliveBacklog() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.KeepaliveBacklog.Get()
-	return value
+	return c.KeepaliveBacklog
 }
 
 func (c *ClusterCacheRedis) GetKeepalivePoolSize() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.KeepalivePoolSize.Get()
-	return value
+	return c.KeepalivePoolSize
 }
 
 func (c *ClusterCacheRedis) GetPassword() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Password.Get()
-	return value
+	return c.Password
 }
 
 func (c *ClusterCacheRedis) GetPort() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Port.Get()
-	return value
+	return c.Port
 }
 
 func (c *ClusterCacheRedis) GetReadTimeout() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.ReadTimeout.Get()
-	return value
+	return c.ReadTimeout
 }
 
 func (c *ClusterCacheRedis) GetSendTimeout() *int64 {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SendTimeout.Get()
-	return value
+	return c.SendTimeout
 }
 
 func (c *ClusterCacheRedis) GetSentinelMaster() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SentinelMaster.Get()
-	return value
+	return c.SentinelMaster
 }
 
 func (c *ClusterCacheRedis) GetSentinelNodes() []AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelNodes {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SentinelNodes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.SentinelNodes
 }
 
 func (c *ClusterCacheRedis) GetSentinelPassword() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SentinelPassword.Get()
-	return value
+	return c.SentinelPassword
 }
 
 func (c *ClusterCacheRedis) GetSentinelRole() *AIGWOpenIDConnectGeneratedConfigClusterCacheRedisSentinelRole {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SentinelRole.Get()
-	return value
+	return c.SentinelRole
 }
 
 func (c *ClusterCacheRedis) GetSentinelUsername() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SentinelUsername.Get()
-	return value
+	return c.SentinelUsername
 }
 
 func (c *ClusterCacheRedis) GetServerName() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.ServerName.Get()
-	return value
+	return c.ServerName
 }
 
 func (c *ClusterCacheRedis) GetSsl() *bool {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Ssl.Get()
-	return value
+	return c.Ssl
 }
 
 func (c *ClusterCacheRedis) GetSslVerify() *bool {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.SslVerify.Get()
-	return value
+	return c.SslVerify
 }
 
 func (c *ClusterCacheRedis) GetUsername() *string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.Username.Get()
-	return value
+	return c.Username
 }
 
 // ClusterCacheStrategy - The strategy to use for the cluster cache. If set, the plugin will share cache with nodes configured with the same strategy backend. Currentlly only introspection cache is shared.
@@ -989,8 +909,7 @@ type DownstreamHeaders struct {
 	// The name of the header.
 	Header string `json:"header"`
 	// The path of the header value.
-	Path                 []string       `json:"path"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	Path []string `json:"path"`
 }
 
 func (d DownstreamHeaders) MarshalJSON() ([]byte, error) {
@@ -1272,10 +1191,9 @@ func (e *PasswordParamType) IsExact() bool {
 // **Requires a minimum runtime version of `2.3`**.
 type Jit struct {
 	// Send the full set of verified token claims with the Kong Identity principal lookup.
-	AllClaims optionalnullable.OptionalNullable[bool] `json:"all_claims,omitempty"`
+	AllClaims *bool `default:"false" json:"all_claims"`
 	// Send only the named token claims with the Kong Identity principal lookup. The claims are picked from the same source the principal claim is read from. Set all_claims to send every verified claim instead.
-	Claims               optionalnullable.OptionalNullable[[]string] `json:"claims,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	Claims []string `json:"claims,omitempty"`
 }
 
 func (j Jit) MarshalJSON() ([]byte, error) {
@@ -1293,42 +1211,36 @@ func (j *Jit) GetAllClaims() *bool {
 	if j == nil {
 		return nil
 	}
-	value, _ := j.AllClaims.Get()
-	return value
+	return j.AllClaims
 }
 
 func (j *Jit) GetClaims() []string {
 	if j == nil {
 		return nil
 	}
-	value, _ := j.Claims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return j.Claims
 }
 
 // AIGWOpenIDConnectGeneratedConfigPrincipals - Configuration for Kong Identity principal hydration after token verification.
 type AIGWOpenIDConnectGeneratedConfigPrincipals struct {
 	// The Kong Identity directory instance to look up against.
-	Directory optionalnullable.OptionalNullable[string] `json:"directory,omitempty"`
+	Directory *string `default:"default" json:"directory"`
 	// When true, query Kong Identity to map a Principal after token verification.
-	Enabled optionalnullable.OptionalNullable[bool] `json:"enabled,omitempty"`
+	Enabled *bool `default:"false" json:"enabled"`
 	// When true (default), return 401 if fail to match a Principal in Kong Identity after token verification. When false, the request continues without authenticated_principal set.
-	ErrorOnMiss optionalnullable.OptionalNullable[bool] `json:"error_on_miss,omitempty"`
+	ErrorOnMiss *bool `default:"true" json:"error_on_miss"`
 	// Token claims to share with the Kong Identity principal lookup. Kong Identity, not this plugin, decides whether the claims are used: a trusted IdP with JIT provisioning enabled in Konnect maps them onto a principal provisioned just in time. By default the lookup only carries the principal claim (e.g. 'sub') and no additional claims are shared.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	Jit optionalnullable.OptionalNullable[Jit] `json:"jit,omitempty"`
+	Jit *Jit `json:"jit,omitempty"`
 	// If a Consumer is attached to the matched Principal in Kong Identity, load it and set it in the request context, overriding consumer_by.
-	MatchConsumer optionalnullable.OptionalNullable[bool] `json:"match_consumer,omitempty"`
+	MatchConsumer *bool `default:"true" json:"match_consumer"`
 	// If Consumer Groups are attached to the matched Principal in Kong Identity, load them, overriding consumer_groups_claim.
-	MatchConsumerGroups optionalnullable.OptionalNullable[bool] `json:"match_consumer_groups,omitempty"`
+	MatchConsumerGroups *bool `default:"true" json:"match_consumer_groups"`
 	// Custom identity name for a type=custom Kong Identity lookup. When absent and principal_claim is set, an OIDC lookup is performed using principal_claim as the claim name instead of 'sub'.
-	PrincipalBy optionalnullable.OptionalNullable[string] `json:"principal_by,omitempty"`
+	PrincipalBy *string `json:"principal_by,omitempty"`
 	// Token claim to use for the Kong Identity lookup. If multiple values are set, it means the claim is inside a nested object of the token payload. When principal_by is also set, performs a custom identity lookup (type=custom). When set alone, performs an OIDC lookup using this claim name instead of the default 'sub'.
-	PrincipalClaim       optionalnullable.OptionalNullable[[]string] `json:"principal_claim,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	PrincipalClaim []string `json:"principal_claim,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigPrincipals) MarshalJSON() ([]byte, error) {
@@ -1346,67 +1258,56 @@ func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetDirectory() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Directory.Get()
-	return value
+	return a.Directory
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetEnabled() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Enabled.Get()
-	return value
+	return a.Enabled
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetErrorOnMiss() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ErrorOnMiss.Get()
-	return value
+	return a.ErrorOnMiss
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetJit() *Jit {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Jit.Get()
-	return value
+	return a.Jit
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetMatchConsumer() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MatchConsumer.Get()
-	return value
+	return a.MatchConsumer
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetMatchConsumerGroups() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MatchConsumerGroups.Get()
-	return value
+	return a.MatchConsumerGroups
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetPrincipalBy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PrincipalBy.Get()
-	return value
+	return a.PrincipalBy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigPrincipals) GetPrincipalClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PrincipalClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.PrincipalClaim
 }
 
 // ProofOfPossessionDpop - Enable Demonstrating Proof-of-Possession (DPoP). If set to strict, all request are verified despite the presence of the DPoP key claim (cnf.jkt). If set to optional, only tokens bound with DPoP's key are verified with the proof.
@@ -1464,12 +1365,11 @@ type ProtectedResourceMetadata struct {
 	// List of authorization server issuer URIs to advertise in the RFC 9728 metadata document.
 	AuthorizationServers []string `json:"authorization_servers"`
 	// Override the well-known metadata endpoint path. Defaults to the path component of resource with /.well-known/oauth-protected-resource appended.
-	MetadataEndpoint optionalnullable.OptionalNullable[string] `json:"metadata_endpoint,omitempty"`
+	MetadataEndpoint *string `json:"metadata_endpoint,omitempty"`
 	// The URI of the protected resource. Used as the resource field in the RFC 9728 metadata document and to derive the well-known endpoint path.
 	Resource string `json:"resource"`
 	// Scopes supported by this protected resource. Included in the RFC 9728 metadata document and in the scope attribute of WWW-Authenticate challenge headers on 401 responses.
-	ScopesSupported      optionalnullable.OptionalNullable[[]string] `json:"scopes_supported,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	ScopesSupported []string `json:"scopes_supported,omitempty"`
 }
 
 func (p ProtectedResourceMetadata) MarshalJSON() ([]byte, error) {
@@ -1494,8 +1394,7 @@ func (p *ProtectedResourceMetadata) GetMetadataEndpoint() *string {
 	if p == nil {
 		return nil
 	}
-	value, _ := p.MetadataEndpoint.Get()
-	return value
+	return p.MetadataEndpoint
 }
 
 func (p *ProtectedResourceMetadata) GetResource() string {
@@ -1509,11 +1408,7 @@ func (p *ProtectedResourceMetadata) GetScopesSupported() []string {
 	if p == nil {
 		return nil
 	}
-	value, _ := p.ScopesSupported.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return p.ScopesSupported
 }
 
 // PushedAuthorizationRequestEndpointAuthMethod - The pushed authorization request endpoint authentication method: `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
@@ -1571,30 +1466,29 @@ func (e *AIGWOpenIDConnectGeneratedConfigAuthProvider) IsExact() bool {
 // AIGWOpenIDConnectGeneratedConfigCloudAuthentication - Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
 type AIGWOpenIDConnectGeneratedConfigCloudAuthentication struct {
 	// Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
-	AuthProvider optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigAuthProvider] `json:"auth_provider,omitempty"`
+	AuthProvider *AIGWOpenIDConnectGeneratedConfigAuthProvider `json:"auth_provider,omitempty"`
 	// AWS Access Key ID to be used for authentication when `auth_provider` is set to `aws`.
-	AwsAccessKeyID optionalnullable.OptionalNullable[string] `json:"aws_access_key_id,omitempty"`
+	AwsAccessKeyID *string `json:"aws_access_key_id,omitempty"`
 	// The ARN of the IAM role to assume for generating ElastiCache IAM authentication tokens.
-	AwsAssumeRoleArn optionalnullable.OptionalNullable[string] `json:"aws_assume_role_arn,omitempty"`
+	AwsAssumeRoleArn *string `json:"aws_assume_role_arn,omitempty"`
 	// The name of the AWS Elasticache cluster when `auth_provider` is set to `aws`.
-	AwsCacheName optionalnullable.OptionalNullable[string] `json:"aws_cache_name,omitempty"`
+	AwsCacheName *string `json:"aws_cache_name,omitempty"`
 	// This flag specifies whether the cluster is serverless when auth_provider is set to `aws`.
-	AwsIsServerless optionalnullable.OptionalNullable[bool] `json:"aws_is_serverless,omitempty"`
+	AwsIsServerless *bool `default:"true" json:"aws_is_serverless"`
 	// The region of the AWS ElastiCache cluster when `auth_provider` is set to `aws`.
-	AwsRegion optionalnullable.OptionalNullable[string] `json:"aws_region,omitempty"`
+	AwsRegion *string `json:"aws_region,omitempty"`
 	// The session name for the temporary credentials when assuming the IAM role.
-	AwsRoleSessionName optionalnullable.OptionalNullable[string] `json:"aws_role_session_name,omitempty"`
+	AwsRoleSessionName *string `json:"aws_role_session_name,omitempty"`
 	// AWS Secret Access Key to be used for authentication when `auth_provider` is set to `aws`.
-	AwsSecretAccessKey optionalnullable.OptionalNullable[string] `json:"aws_secret_access_key,omitempty"`
+	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
 	// Azure Client ID to be used for authentication when `auth_provider` is set to `azure`.
-	AzureClientID optionalnullable.OptionalNullable[string] `json:"azure_client_id,omitempty"`
+	AzureClientID *string `json:"azure_client_id,omitempty"`
 	// Azure Client Secret to be used for authentication when `auth_provider` is set to `azure`.
-	AzureClientSecret optionalnullable.OptionalNullable[string] `json:"azure_client_secret,omitempty"`
+	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
 	// Azure Tenant ID to be used for authentication when `auth_provider` is set to `azure`.
-	AzureTenantID optionalnullable.OptionalNullable[string] `json:"azure_tenant_id,omitempty"`
+	AzureTenantID *string `json:"azure_tenant_id,omitempty"`
 	// GCP Service Account JSON to be used for authentication when `auth_provider` is set to `gcp`.
-	GcpServiceAccountJSON optionalnullable.OptionalNullable[string] `json:"gcp_service_account_json,omitempty"`
-	AdditionalProperties  map[string]any                            `additionalProperties:"true" json:"-"`
+	GcpServiceAccountJSON *string `json:"gcp_service_account_json,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigCloudAuthentication) MarshalJSON() ([]byte, error) {
@@ -1612,104 +1506,91 @@ func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAuthProvider() 
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthProvider.Get()
-	return value
+	return a.AuthProvider
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsAccessKeyID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsAccessKeyID.Get()
-	return value
+	return a.AwsAccessKeyID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsAssumeRoleArn() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsAssumeRoleArn.Get()
-	return value
+	return a.AwsAssumeRoleArn
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsCacheName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsCacheName.Get()
-	return value
+	return a.AwsCacheName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsIsServerless() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsIsServerless.Get()
-	return value
+	return a.AwsIsServerless
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsRegion() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsRegion.Get()
-	return value
+	return a.AwsRegion
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsRoleSessionName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsRoleSessionName.Get()
-	return value
+	return a.AwsRoleSessionName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAwsSecretAccessKey() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AwsSecretAccessKey.Get()
-	return value
+	return a.AwsSecretAccessKey
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAzureClientID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AzureClientID.Get()
-	return value
+	return a.AzureClientID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAzureClientSecret() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AzureClientSecret.Get()
-	return value
+	return a.AzureClientSecret
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetAzureTenantID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AzureTenantID.Get()
-	return value
+	return a.AzureTenantID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCloudAuthentication) GetGcpServiceAccountJSON() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.GcpServiceAccountJSON.Get()
-	return value
+	return a.GcpServiceAccountJSON
 }
 
 type AIGWOpenIDConnectGeneratedConfigClusterNodes struct {
 	// A string representing a host name, such as example.com.
-	IP optionalnullable.OptionalNullable[string] `json:"ip,omitempty"`
+	IP *string `default:"127.0.0.1" json:"ip"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port                 optionalnullable.OptionalNullable[int64] `json:"port,omitempty"`
-	AdditionalProperties map[string]any                           `additionalProperties:"true" json:"-"`
+	Port *int64 `default:"6379" json:"port"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigClusterNodes) MarshalJSON() ([]byte, error) {
@@ -1727,24 +1608,21 @@ func (a *AIGWOpenIDConnectGeneratedConfigClusterNodes) GetIP() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IP.Get()
-	return value
+	return a.IP
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigClusterNodes) GetPort() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Port.Get()
-	return value
+	return a.Port
 }
 
 type AIGWOpenIDConnectGeneratedConfigSentinelNodes struct {
 	// A string representing a host name, such as example.com.
-	Host optionalnullable.OptionalNullable[string] `json:"host,omitempty"`
+	Host *string `default:"127.0.0.1" json:"host"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port                 optionalnullable.OptionalNullable[int64] `json:"port,omitempty"`
-	AdditionalProperties map[string]any                           `additionalProperties:"true" json:"-"`
+	Port *int64 `default:"6379" json:"port"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigSentinelNodes) MarshalJSON() ([]byte, error) {
@@ -1762,16 +1640,14 @@ func (a *AIGWOpenIDConnectGeneratedConfigSentinelNodes) GetHost() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Host.Get()
-	return value
+	return a.Host
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigSentinelNodes) GetPort() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Port.Get()
-	return value
+	return a.Port
 }
 
 // AIGWOpenIDConnectGeneratedConfigSentinelRole - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
@@ -1800,54 +1676,53 @@ func (e *AIGWOpenIDConnectGeneratedConfigSentinelRole) IsExact() bool {
 
 type Redis struct {
 	// Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
-	CloudAuthentication optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigCloudAuthentication] `json:"cloud_authentication,omitempty"`
+	CloudAuthentication *AIGWOpenIDConnectGeneratedConfigCloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Maximum retry attempts for redirection.
-	ClusterMaxRedirections optionalnullable.OptionalNullable[int64] `json:"cluster_max_redirections,omitempty"`
+	ClusterMaxRedirections *int64 `default:"5" json:"cluster_max_redirections"`
 	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
-	ClusterNodes optionalnullable.OptionalNullable[[]AIGWOpenIDConnectGeneratedConfigClusterNodes] `json:"cluster_nodes,omitempty"`
+	ClusterNodes []AIGWOpenIDConnectGeneratedConfigClusterNodes `json:"cluster_nodes,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ConnectTimeout optionalnullable.OptionalNullable[int64] `json:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
-	ConnectionIsProxied optionalnullable.OptionalNullable[bool] `json:"connection_is_proxied,omitempty"`
+	ConnectionIsProxied *bool `default:"false" json:"connection_is_proxied"`
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database optionalnullable.OptionalNullable[int64] `json:"database,omitempty"`
+	Database *int64 `default:"0" json:"database"`
 	// A string representing a host name, such as example.com.
-	Host optionalnullable.OptionalNullable[string] `json:"host,omitempty"`
+	Host *string `default:"127.0.0.1" json:"host"`
 	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `keepalive_pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `keepalive_pool_size`.
-	KeepaliveBacklog optionalnullable.OptionalNullable[int64] `json:"keepalive_backlog,omitempty"`
+	KeepaliveBacklog *int64 `json:"keepalive_backlog,omitempty"`
 	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `keepalive_pool_size` nor `keepalive_backlog` is specified, no pool is created. If `keepalive_pool_size` isn't specified but `keepalive_backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
-	KeepalivePoolSize optionalnullable.OptionalNullable[int64] `json:"keepalive_pool_size,omitempty"`
+	KeepalivePoolSize *int64 `default:"256" json:"keepalive_pool_size"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
-	Password optionalnullable.OptionalNullable[string] `json:"password,omitempty"`
+	Password *string `json:"password,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port optionalnullable.OptionalNullable[int64] `json:"port,omitempty"`
+	Port *int64 `default:"6379" json:"port"`
 	// The Redis session key prefix.
-	Prefix optionalnullable.OptionalNullable[string] `json:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ReadTimeout optionalnullable.OptionalNullable[int64] `json:"read_timeout,omitempty"`
+	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	SendTimeout optionalnullable.OptionalNullable[int64] `json:"send_timeout,omitempty"`
+	SendTimeout *int64 `default:"2000" json:"send_timeout"`
 	// Sentinel master to use for Redis connections. Defining this value implies using Redis Sentinel.
-	SentinelMaster optionalnullable.OptionalNullable[string] `json:"sentinel_master,omitempty"`
+	SentinelMaster *string `json:"sentinel_master,omitempty"`
 	// Sentinel node addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Sentinel. The minimum length of the array is 1 element.
-	SentinelNodes optionalnullable.OptionalNullable[[]AIGWOpenIDConnectGeneratedConfigSentinelNodes] `json:"sentinel_nodes,omitempty"`
+	SentinelNodes []AIGWOpenIDConnectGeneratedConfigSentinelNodes `json:"sentinel_nodes,omitempty"`
 	// Sentinel password to authenticate with a Redis Sentinel instance. If undefined, no AUTH commands are sent to Redis Sentinels.
-	SentinelPassword optionalnullable.OptionalNullable[string] `json:"sentinel_password,omitempty"`
+	SentinelPassword *string `json:"sentinel_password,omitempty"`
 	// Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
-	SentinelRole optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigSentinelRole] `json:"sentinel_role,omitempty"`
+	SentinelRole *AIGWOpenIDConnectGeneratedConfigSentinelRole `json:"sentinel_role,omitempty"`
 	// Sentinel username to authenticate with a Redis Sentinel instance. If undefined, ACL authentication won't be performed. This requires Redis v6.2.0+.
-	SentinelUsername optionalnullable.OptionalNullable[string] `json:"sentinel_username,omitempty"`
+	SentinelUsername *string `json:"sentinel_username,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
-	ServerName optionalnullable.OptionalNullable[string] `json:"server_name,omitempty"`
+	ServerName *string `json:"server_name,omitempty"`
 	// The Redis unix socket path.
-	Socket optionalnullable.OptionalNullable[string] `json:"socket,omitempty"`
+	Socket *string `json:"socket,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl optionalnullable.OptionalNullable[bool] `json:"ssl,omitempty"`
+	Ssl *bool `default:"false" json:"ssl"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify optionalnullable.OptionalNullable[bool] `json:"ssl_verify,omitempty"`
+	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
-	Username             optionalnullable.OptionalNullable[string] `json:"username,omitempty"`
-	AdditionalProperties map[string]any                            `additionalProperties:"true" json:"-"`
+	Username *string `json:"username,omitempty"`
 }
 
 func (r Redis) MarshalJSON() ([]byte, error) {
@@ -1865,198 +1740,168 @@ func (r *Redis) GetCloudAuthentication() *AIGWOpenIDConnectGeneratedConfigCloudA
 	if r == nil {
 		return nil
 	}
-	value, _ := r.CloudAuthentication.Get()
-	return value
+	return r.CloudAuthentication
 }
 
 func (r *Redis) GetClusterMaxRedirections() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ClusterMaxRedirections.Get()
-	return value
+	return r.ClusterMaxRedirections
 }
 
 func (r *Redis) GetClusterNodes() []AIGWOpenIDConnectGeneratedConfigClusterNodes {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ClusterNodes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.ClusterNodes
 }
 
 func (r *Redis) GetConnectTimeout() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ConnectTimeout.Get()
-	return value
+	return r.ConnectTimeout
 }
 
 func (r *Redis) GetConnectionIsProxied() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ConnectionIsProxied.Get()
-	return value
+	return r.ConnectionIsProxied
 }
 
 func (r *Redis) GetDatabase() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Database.Get()
-	return value
+	return r.Database
 }
 
 func (r *Redis) GetHost() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Host.Get()
-	return value
+	return r.Host
 }
 
 func (r *Redis) GetKeepaliveBacklog() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.KeepaliveBacklog.Get()
-	return value
+	return r.KeepaliveBacklog
 }
 
 func (r *Redis) GetKeepalivePoolSize() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.KeepalivePoolSize.Get()
-	return value
+	return r.KeepalivePoolSize
 }
 
 func (r *Redis) GetPassword() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Password.Get()
-	return value
+	return r.Password
 }
 
 func (r *Redis) GetPort() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Port.Get()
-	return value
+	return r.Port
 }
 
 func (r *Redis) GetPrefix() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Prefix.Get()
-	return value
+	return r.Prefix
 }
 
 func (r *Redis) GetReadTimeout() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ReadTimeout.Get()
-	return value
+	return r.ReadTimeout
 }
 
 func (r *Redis) GetSendTimeout() *int64 {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SendTimeout.Get()
-	return value
+	return r.SendTimeout
 }
 
 func (r *Redis) GetSentinelMaster() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SentinelMaster.Get()
-	return value
+	return r.SentinelMaster
 }
 
 func (r *Redis) GetSentinelNodes() []AIGWOpenIDConnectGeneratedConfigSentinelNodes {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SentinelNodes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.SentinelNodes
 }
 
 func (r *Redis) GetSentinelPassword() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SentinelPassword.Get()
-	return value
+	return r.SentinelPassword
 }
 
 func (r *Redis) GetSentinelRole() *AIGWOpenIDConnectGeneratedConfigSentinelRole {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SentinelRole.Get()
-	return value
+	return r.SentinelRole
 }
 
 func (r *Redis) GetSentinelUsername() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SentinelUsername.Get()
-	return value
+	return r.SentinelUsername
 }
 
 func (r *Redis) GetServerName() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ServerName.Get()
-	return value
+	return r.ServerName
 }
 
 func (r *Redis) GetSocket() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Socket.Get()
-	return value
+	return r.Socket
 }
 
 func (r *Redis) GetSsl() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Ssl.Get()
-	return value
+	return r.Ssl
 }
 
 func (r *Redis) GetSslVerify() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.SslVerify.Get()
-	return value
+	return r.SslVerify
 }
 
 func (r *Redis) GetUsername() *string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Username.Get()
-	return value
+	return r.Username
 }
 
 type RefreshTokenParamType string
@@ -2296,10 +2141,9 @@ func (e *AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod) IsExact() bool
 // AIGWOpenIDConnectGeneratedConfigCache - Cache support for token exchange
 type AIGWOpenIDConnectGeneratedConfigCache struct {
 	// Whether to enable caching.
-	Enabled optionalnullable.OptionalNullable[bool] `json:"enabled,omitempty"`
+	Enabled *bool `default:"true" json:"enabled"`
 	// Cache ttl in seconds used when caching exchanged tokens, use it to override `conf.cache_ttl`. Token expiry will be used if shorter than this value.
-	TTL                  optionalnullable.OptionalNullable[int64] `json:"ttl,omitempty"`
-	AdditionalProperties map[string]any                           `additionalProperties:"true" json:"-"`
+	TTL *int64 `json:"ttl,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigCache) MarshalJSON() ([]byte, error) {
@@ -2317,16 +2161,14 @@ func (a *AIGWOpenIDConnectGeneratedConfigCache) GetEnabled() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Enabled.Get()
-	return value
+	return a.Enabled
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigCache) GetTTL() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TTL.Get()
-	return value
+	return a.TTL
 }
 
 // AIGWOpenIDConnectGeneratedConfigGrantType - The token exchange grant. `token_exchange` (default) uses the OAuth 2.0 Token Exchange grant (RFC 8693). `jwt_bearer` uses the JWT Bearer authorization-grant flow (RFC 7523); see `token_exchange.provider` for provider-specific defaults in this mode.
@@ -2433,14 +2275,13 @@ func (e *AIGWOpenIDConnectGeneratedConfigSource) IsExact() bool {
 // **Requires a minimum runtime version of `2.3`**.
 type ActorToken struct {
 	// Header name containing the actor token. Required when `source` is `header`.
-	HeaderName optionalnullable.OptionalNullable[string] `json:"header_name,omitempty"`
+	HeaderName *string `json:"header_name,omitempty"`
 	// Where to obtain the actor token. `header` reads it from a request header. `config` uses a fixed value. `none` disables actor token support.
-	Source optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigSource] `json:"source,omitempty"`
+	Source *AIGWOpenIDConnectGeneratedConfigSource `default:"none" json:"source"`
 	// Static actor token value. Required when `source` is `config`.
-	StaticToken optionalnullable.OptionalNullable[string] `json:"static_token,omitempty"`
+	StaticToken *string `json:"static_token,omitempty"`
 	// The RFC 8693 token type identifier of the actor token (the `actor_token_type` request parameter).
-	Type                 optionalnullable.OptionalNullable[string] `json:"type,omitempty"`
-	AdditionalProperties map[string]any                            `additionalProperties:"true" json:"-"`
+	Type *string `default:"urn:ietf:params:oauth:token-type:access_token" json:"type"`
 }
 
 func (a ActorToken) MarshalJSON() ([]byte, error) {
@@ -2458,32 +2299,28 @@ func (a *ActorToken) GetHeaderName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HeaderName.Get()
-	return value
+	return a.HeaderName
 }
 
 func (a *ActorToken) GetSource() *AIGWOpenIDConnectGeneratedConfigSource {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Source.Get()
-	return value
+	return a.Source
 }
 
 func (a *ActorToken) GetStaticToken() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.StaticToken.Get()
-	return value
+	return a.StaticToken
 }
 
 func (a *ActorToken) GetType() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Type.Get()
-	return value
+	return a.Type
 }
 
 // Request - Parameters used in the token exchange request.
@@ -2491,40 +2328,39 @@ type Request struct {
 	// How to obtain the actor token to include in the token exchange request. Represents the identity of the party acting on behalf of the subject.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	ActorToken optionalnullable.OptionalNullable[ActorToken] `json:"actor_token,omitempty"`
+	ActorToken *ActorToken `json:"actor_token,omitempty"`
 	// Audiences used in the token exchange request. Values defined here override those defined in `config.audience`.
-	Audience optionalnullable.OptionalNullable[[]string] `json:"audience,omitempty"`
+	Audience []string `json:"audience,omitempty"`
 	// Use empty audiences. Use this field to remove audiences defined in `config.audience`.
-	EmptyAudience optionalnullable.OptionalNullable[bool] `json:"empty_audience,omitempty"`
+	EmptyAudience *bool `default:"false" json:"empty_audience"`
 	// Use no extra headers on the token exchange request. Use this field to remove extra headers defined in `config.token_headers_names`.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	EmptyHeaders optionalnullable.OptionalNullable[bool] `json:"empty_headers,omitempty"`
+	EmptyHeaders *bool `default:"false" json:"empty_headers"`
 	// Use no extra POST arguments on the token exchange request. Use this field to remove extra POST arguments defined in `config.token_post_args_names`.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	EmptyPostArgs optionalnullable.OptionalNullable[bool] `json:"empty_post_args,omitempty"`
+	EmptyPostArgs *bool `default:"false" json:"empty_post_args"`
 	// Use empty scopes. Use this field to remove scopes defined in `config.scopes`.
-	EmptyScopes optionalnullable.OptionalNullable[bool] `json:"empty_scopes,omitempty"`
+	EmptyScopes *bool `default:"false" json:"empty_scopes"`
 	// Extra header names sent only on the token exchange request. Overrides `config.token_headers_names` for this request.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	HeadersNames optionalnullable.OptionalNullable[[]string] `json:"headers_names,omitempty"`
+	HeadersNames []string `json:"headers_names,omitempty"`
 	// Values paired by index with `headers_names`.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	HeadersValues optionalnullable.OptionalNullable[[]string] `json:"headers_values,omitempty"`
+	HeadersValues []string `json:"headers_values,omitempty"`
 	// Extra POST argument names sent only on the token exchange request. Overrides `config.token_post_args_names` for this request. Use this, not the top-level field, for parameters that must not be attached to the plugin's other token endpoint calls, for example `requested_token_use` for Entra ID's On-Behalf-Of flow.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	PostArgsNames optionalnullable.OptionalNullable[[]string] `json:"post_args_names,omitempty"`
+	PostArgsNames []string `json:"post_args_names,omitempty"`
 	// Values paired by index with `post_args_names`.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	PostArgsValues optionalnullable.OptionalNullable[[]string] `json:"post_args_values,omitempty"`
+	PostArgsValues []string `json:"post_args_values,omitempty"`
 	// Scopes used in the token exchange request. Values defined here override those defined in `config.scopes`.
-	Scopes               optionalnullable.OptionalNullable[[]string] `json:"scopes,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	Scopes []string `json:"scopes,omitempty"`
 }
 
 func (r Request) MarshalJSON() ([]byte, error) {
@@ -2542,119 +2378,89 @@ func (r *Request) GetActorToken() *ActorToken {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.ActorToken.Get()
-	return value
+	return r.ActorToken
 }
 
 func (r *Request) GetAudience() []string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Audience.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.Audience
 }
 
 func (r *Request) GetEmptyAudience() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.EmptyAudience.Get()
-	return value
+	return r.EmptyAudience
 }
 
 func (r *Request) GetEmptyHeaders() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.EmptyHeaders.Get()
-	return value
+	return r.EmptyHeaders
 }
 
 func (r *Request) GetEmptyPostArgs() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.EmptyPostArgs.Get()
-	return value
+	return r.EmptyPostArgs
 }
 
 func (r *Request) GetEmptyScopes() *bool {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.EmptyScopes.Get()
-	return value
+	return r.EmptyScopes
 }
 
 func (r *Request) GetHeadersNames() []string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.HeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.HeadersNames
 }
 
 func (r *Request) GetHeadersValues() []string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.HeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.HeadersValues
 }
 
 func (r *Request) GetPostArgsNames() []string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.PostArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.PostArgsNames
 }
 
 func (r *Request) GetPostArgsValues() []string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.PostArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.PostArgsValues
 }
 
 func (r *Request) GetScopes() []string {
 	if r == nil {
 		return nil
 	}
-	value, _ := r.Scopes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return r.Scopes
 }
 
 // Conditions - A token will only be exchanged when it matches all these criteria. To exchange tokens issued by a different issuer, `conditions` must not be defined -- every token from that issuer is exchanged unconditionally, since a foreign-issued token that isn't exchanged can never pass normal verification against the target issuer anyway. In contrast, to exchange tokens issued by the target issuer itself, `conditions` must be defined.
 type Conditions struct {
 	// Audience values that must all be present in the token, matched against `audience_claim`.
-	HasAudience optionalnullable.OptionalNullable[[]string] `json:"has_audience,omitempty"`
+	HasAudience []string `json:"has_audience,omitempty"`
 	// Scope values that must all be present in the token, matched against `scopes_claim`.
-	HasScopes optionalnullable.OptionalNullable[[]string] `json:"has_scopes,omitempty"`
+	HasScopes []string `json:"has_scopes,omitempty"`
 	// Audience values that must all be absent from the token, matched against `audience_claim`.
-	MissingAudience optionalnullable.OptionalNullable[[]string] `json:"missing_audience,omitempty"`
+	MissingAudience []string `json:"missing_audience,omitempty"`
 	// Scope values that must all be absent from the token, matched against `scopes_claim`.
-	MissingScopes        optionalnullable.OptionalNullable[[]string] `json:"missing_scopes,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	MissingScopes []string `json:"missing_scopes,omitempty"`
 }
 
 func (c Conditions) MarshalJSON() ([]byte, error) {
@@ -2672,64 +2478,47 @@ func (c *Conditions) GetHasAudience() []string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.HasAudience.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.HasAudience
 }
 
 func (c *Conditions) GetHasScopes() []string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.HasScopes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.HasScopes
 }
 
 func (c *Conditions) GetMissingAudience() []string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.MissingAudience.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.MissingAudience
 }
 
 func (c *Conditions) GetMissingScopes() []string {
 	if c == nil {
 		return nil
 	}
-	value, _ := c.MissingScopes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return c.MissingScopes
 }
 
 type SubjectTokenIssuers struct {
 	// A token will only be exchanged when it matches all these criteria. To exchange tokens issued by a different issuer, `conditions` must not be defined -- every token from that issuer is exchanged unconditionally, since a foreign-issued token that isn't exchanged can never pass normal verification against the target issuer anyway. In contrast, to exchange tokens issued by the target issuer itself, `conditions` must be defined.
-	Conditions optionalnullable.OptionalNullable[Conditions] `json:"conditions,omitempty"`
+	Conditions *Conditions `json:"conditions,omitempty"`
 	// When true, a token issued by `issuer` that fails to match `conditions` is denied instead of being passed through unexchanged. Evaluated independently for this item only, with no effect on other `subject_token_issuers` items. Only allowed when this issuer is the target issuer, since `conditions` is required there and foreign-issuer items always match.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	DenyOnMismatch optionalnullable.OptionalNullable[bool] `json:"deny_on_mismatch,omitempty"`
+	DenyOnMismatch *bool `default:"false" json:"deny_on_mismatch"`
 	// Tokens of whose iss claim matches this value will be exchanged.
 	Issuer string `json:"issuer"`
 	// An explicit JWKS endpoint for this issuer. This field should be left empty when this issuer is the same as the target issuer. It is only used when `verify_signature` is `true`. When set, Kong fetches the signing keys from this URI directly instead of using OIDC Discovery.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	JwksURI optionalnullable.OptionalNullable[string] `json:"jwks_uri,omitempty"`
+	JwksURI *string `json:"jwks_uri,omitempty"`
 	// When true, Kong cryptographically verifies the signature of the incoming subject token before exchanging it. This field should be left empty or set to `false` when this issuer is the same as the target issuer. Defaults to `false` for backward compatibility.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	VerifySignature      optionalnullable.OptionalNullable[bool] `json:"verify_signature,omitempty"`
-	AdditionalProperties map[string]any                          `additionalProperties:"true" json:"-"`
+	VerifySignature *bool `default:"false" json:"verify_signature"`
 }
 
 func (s SubjectTokenIssuers) MarshalJSON() ([]byte, error) {
@@ -2747,16 +2536,14 @@ func (s *SubjectTokenIssuers) GetConditions() *Conditions {
 	if s == nil {
 		return nil
 	}
-	value, _ := s.Conditions.Get()
-	return value
+	return s.Conditions
 }
 
 func (s *SubjectTokenIssuers) GetDenyOnMismatch() *bool {
 	if s == nil {
 		return nil
 	}
-	value, _ := s.DenyOnMismatch.Get()
-	return value
+	return s.DenyOnMismatch
 }
 
 func (s *SubjectTokenIssuers) GetIssuer() string {
@@ -2770,39 +2557,36 @@ func (s *SubjectTokenIssuers) GetJwksURI() *string {
 	if s == nil {
 		return nil
 	}
-	value, _ := s.JwksURI.Get()
-	return value
+	return s.JwksURI
 }
 
 func (s *SubjectTokenIssuers) GetVerifySignature() *bool {
 	if s == nil {
 		return nil
 	}
-	value, _ := s.VerifySignature.Get()
-	return value
+	return s.VerifySignature
 }
 
 // TokenExchange - Details on how to accept tokens from other identity providers.
 type TokenExchange struct {
 	// Cache support for token exchange
-	Cache optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigCache] `json:"cache,omitempty"`
+	Cache *AIGWOpenIDConnectGeneratedConfigCache `json:"cache,omitempty"`
 	// The token exchange grant. `token_exchange` (default) uses the OAuth 2.0 Token Exchange grant (RFC 8693). `jwt_bearer` uses the JWT Bearer authorization-grant flow (RFC 7523); see `token_exchange.provider` for provider-specific defaults in this mode.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	GrantType optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigGrantType] `json:"grant_type,omitempty"`
+	GrantType *AIGWOpenIDConnectGeneratedConfigGrantType `default:"token_exchange" json:"grant_type"`
 	// Which token's claims to use for consumer, consumer group, and principal mapping. Only takes effect when token exchange is configured. `exchanged_tokens` (default) uses the token(s) returned by the exchange or tokens derived from it, as today. `subject_token` uses the original, pre-exchange bearer token's claims instead.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	MapIdentitiesFrom optionalnullable.OptionalNullable[MapIdentitiesFrom] `json:"map_identities_from,omitempty"`
+	MapIdentitiesFrom *MapIdentitiesFrom `default:"exchanged_tokens" json:"map_identities_from"`
 	// Identity provider used with `grant_type = jwt_bearer`; not allowed with `grant_type = token_exchange`. `standard` (default) adds no provider-specific parameter. `microsoft` adds the required `requested_token_use=on_behalf_of`, which is fixed and cannot be overridden via `post_args_names/values`.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	Provider optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigProvider] `json:"provider,omitempty"`
+	Provider *AIGWOpenIDConnectGeneratedConfigProvider `default:"standard" json:"provider"`
 	// Parameters used in the token exchange request.
-	Request optionalnullable.OptionalNullable[Request] `json:"request,omitempty"`
+	Request *Request `json:"request,omitempty"`
 	// Trusted token issuers from which the upstream may accept tokens to be exchanged. If a JWT bearer matches all the conditions of a subject token issuer item, the token will be exchanged.
-	SubjectTokenIssuers  []SubjectTokenIssuers `json:"subject_token_issuers"`
-	AdditionalProperties map[string]any        `additionalProperties:"true" json:"-"`
+	SubjectTokenIssuers []SubjectTokenIssuers `json:"subject_token_issuers"`
 }
 
 func (t TokenExchange) MarshalJSON() ([]byte, error) {
@@ -2820,40 +2604,35 @@ func (t *TokenExchange) GetCache() *AIGWOpenIDConnectGeneratedConfigCache {
 	if t == nil {
 		return nil
 	}
-	value, _ := t.Cache.Get()
-	return value
+	return t.Cache
 }
 
 func (t *TokenExchange) GetGrantType() *AIGWOpenIDConnectGeneratedConfigGrantType {
 	if t == nil {
 		return nil
 	}
-	value, _ := t.GrantType.Get()
-	return value
+	return t.GrantType
 }
 
 func (t *TokenExchange) GetMapIdentitiesFrom() *MapIdentitiesFrom {
 	if t == nil {
 		return nil
 	}
-	value, _ := t.MapIdentitiesFrom.Get()
-	return value
+	return t.MapIdentitiesFrom
 }
 
 func (t *TokenExchange) GetProvider() *AIGWOpenIDConnectGeneratedConfigProvider {
 	if t == nil {
 		return nil
 	}
-	value, _ := t.Provider.Get()
-	return value
+	return t.Provider
 }
 
 func (t *TokenExchange) GetRequest() *Request {
 	if t == nil {
 		return nil
 	}
-	value, _ := t.Request.Get()
-	return value
+	return t.Request
 }
 
 func (t *TokenExchange) GetSubjectTokenIssuers() []SubjectTokenIssuers {
@@ -2891,8 +2670,7 @@ type UpstreamHeaders struct {
 	// The name of the header.
 	Header string `json:"header"`
 	// The path of the header value.
-	Path                 []string       `json:"path"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	Path []string `json:"path"`
 }
 
 func (u UpstreamHeaders) MarshalJSON() ([]byte, error) {
@@ -2945,474 +2723,473 @@ func (e *UserinfoAccept) IsExact() bool {
 
 type AIGWOpenIDConnectGeneratedConfigOutput struct {
 	// An optional string (consumer UUID or username) value that functions as an “anonymous” consumer if authentication fails. If empty (default null), requests that fail authentication will return a `4xx` HTTP status code. This value must refer to the consumer `id` or `username` attribute, and **not** its `custom_id`.
-	Anonymous optionalnullable.OptionalNullable[string] `json:"anonymous,omitempty"`
+	Anonymous *string `json:"anonymous,omitempty"`
 	// The audience passed to the authorization endpoint.
-	Audience optionalnullable.OptionalNullable[[]string] `json:"audience,omitempty"`
+	Audience []string `json:"audience,omitempty"`
 	// The claim that contains the audience. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	AudienceClaim optionalnullable.OptionalNullable[[]string] `json:"audience_claim,omitempty"`
+	AudienceClaim []string `json:"audience_claim,omitempty"`
 	// The audiences (`audience_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	AudienceRequired optionalnullable.OptionalNullable[[]string] `json:"audience_required,omitempty"`
+	AudienceRequired []string `json:"audience_required,omitempty"`
 	// Types of credentials/grants to enable.
-	AuthMethods optionalnullable.OptionalNullable[[]AuthMethods] `json:"auth_methods,omitempty"`
+	AuthMethods []AuthMethods `json:"auth_methods,omitempty"`
 	// The claim that contains authenticated groups. This setting can be used together with ACL plugin, but it also enables IdP managed groups with other applications and integrations. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	AuthenticatedGroupsClaim optionalnullable.OptionalNullable[[]string] `json:"authenticated_groups_claim,omitempty"`
+	AuthenticatedGroupsClaim []string `json:"authenticated_groups_claim,omitempty"`
 	// The authorization cookie Domain flag.
-	AuthorizationCookieDomain optionalnullable.OptionalNullable[string] `json:"authorization_cookie_domain,omitempty"`
+	AuthorizationCookieDomain *string `json:"authorization_cookie_domain,omitempty"`
 	// Forbids JavaScript from accessing the cookie, for example, through the `Document.cookie` property.
-	AuthorizationCookieHTTPOnly optionalnullable.OptionalNullable[bool] `json:"authorization_cookie_http_only,omitempty"`
+	AuthorizationCookieHTTPOnly *bool `default:"true" json:"authorization_cookie_http_only"`
 	// The authorization cookie name.
-	AuthorizationCookieName optionalnullable.OptionalNullable[string] `json:"authorization_cookie_name,omitempty"`
+	AuthorizationCookieName *string `default:"authorization" json:"authorization_cookie_name"`
 	// The authorization cookie Path flag.
-	AuthorizationCookiePath optionalnullable.OptionalNullable[string] `json:"authorization_cookie_path,omitempty"`
+	AuthorizationCookiePath *string `default:"/" json:"authorization_cookie_path"`
 	// Controls whether a cookie is sent with cross-origin requests, providing some protection against cross-site request forgery attacks.
-	AuthorizationCookieSameSite optionalnullable.OptionalNullable[AuthorizationCookieSameSite] `json:"authorization_cookie_same_site,omitempty"`
+	AuthorizationCookieSameSite *AuthorizationCookieSameSite `default:"Default" json:"authorization_cookie_same_site"`
 	// Cookie is only sent to the server when a request is made with the https: scheme (except on localhost), and therefore is more resistant to man-in-the-middle attacks.
-	AuthorizationCookieSecure optionalnullable.OptionalNullable[bool] `json:"authorization_cookie_secure,omitempty"`
+	AuthorizationCookieSecure *bool `json:"authorization_cookie_secure,omitempty"`
 	// The authorization endpoint. If set it overrides the value in `authorization_endpoint` returned by the discovery endpoint.
-	AuthorizationEndpoint optionalnullable.OptionalNullable[string] `json:"authorization_endpoint,omitempty"`
+	AuthorizationEndpoint *string `json:"authorization_endpoint,omitempty"`
 	// Extra query arguments passed from the client to the authorization endpoint.
-	AuthorizationQueryArgsClient optionalnullable.OptionalNullable[[]string] `json:"authorization_query_args_client,omitempty"`
+	AuthorizationQueryArgsClient []string `json:"authorization_query_args_client,omitempty"`
 	// Extra query argument names passed to the authorization endpoint.
-	AuthorizationQueryArgsNames optionalnullable.OptionalNullable[[]string] `json:"authorization_query_args_names,omitempty"`
+	AuthorizationQueryArgsNames []string `json:"authorization_query_args_names,omitempty"`
 	// Extra query argument values passed to the authorization endpoint.
-	AuthorizationQueryArgsValues optionalnullable.OptionalNullable[[]string] `json:"authorization_query_args_values,omitempty"`
+	AuthorizationQueryArgsValues []string `json:"authorization_query_args_values,omitempty"`
 	// Specifies how long the session used for the authorization code flow can be used in seconds until it needs to be renewed. 0 disables the checks and rolling.
-	AuthorizationRollingTimeout optionalnullable.OptionalNullable[float64] `json:"authorization_rolling_timeout,omitempty"`
+	AuthorizationRollingTimeout *float64 `default:"600" json:"authorization_rolling_timeout"`
 	// The name of the cookie in which the bearer token is passed.
-	BearerTokenCookieName optionalnullable.OptionalNullable[string] `json:"bearer_token_cookie_name,omitempty"`
+	BearerTokenCookieName *string `json:"bearer_token_cookie_name,omitempty"`
 	// The name of the HTTP header from which the bearer token is retrieved. The default value is `authorization:bearer`, which reads the token from the `Authorization: Bearer <token>` header. Accepts plain header names such as `x-my-token` as well as Kong's special `authorization:bearer` notation. The `access-token` and `x-access-token` headers are also checked as a fallback for backward compatibility regardless of this setting.
 	//
 	// **Requires a minimum runtime version of `2.1`**.
-	BearerTokenHeaderName optionalnullable.OptionalNullable[string] `json:"bearer_token_header_name,omitempty"`
+	BearerTokenHeaderName *string `default:"authorization:bearer" json:"bearer_token_header_name"`
 	// Where to look for the bearer token: - `header`: search the `Authorization`, `access-token`, and `x-access-token` HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body - `cookie`: search the HTTP request cookies specified with `config.bearer_token_cookie_name`.
-	BearerTokenParamType optionalnullable.OptionalNullable[[]BearerTokenParamType] `json:"bearer_token_param_type,omitempty"`
+	BearerTokenParamType []BearerTokenParamType `json:"bearer_token_param_type,omitempty"`
 	// If `consumer_by` is set to `username`, specify whether `username` can match consumers case-insensitively.
-	ByUsernameIgnoreCase optionalnullable.OptionalNullable[bool] `json:"by_username_ignore_case,omitempty"`
+	ByUsernameIgnoreCase *bool `default:"false" json:"by_username_ignore_case"`
 	// Cache the introspection endpoint requests.
-	CacheIntrospection optionalnullable.OptionalNullable[bool] `json:"cache_introspection,omitempty"`
+	CacheIntrospection *bool `default:"true" json:"cache_introspection"`
 	// Cache the legacy token exchange endpoint requests.
-	CacheTokenExchange optionalnullable.OptionalNullable[bool] `json:"cache_token_exchange,omitempty"`
+	CacheTokenExchange *bool `default:"true" json:"cache_token_exchange"`
 	// Cache the token endpoint requests.
-	CacheTokens optionalnullable.OptionalNullable[bool] `json:"cache_tokens,omitempty"`
+	CacheTokens *bool `default:"true" json:"cache_tokens"`
 	// Salt used for generating the cache key that is used for caching the token endpoint requests.
 	CacheTokensSalt string `json:"cache_tokens_salt"`
 	// The default cache ttl in seconds that is used in case the cached object does not specify the expiry.
-	CacheTTL optionalnullable.OptionalNullable[float64] `json:"cache_ttl,omitempty"`
+	CacheTTL *float64 `default:"3600" json:"cache_ttl"`
 	// The maximum cache ttl in seconds (enforced).
-	CacheTTLMax optionalnullable.OptionalNullable[float64] `json:"cache_ttl_max,omitempty"`
+	CacheTTLMax *float64 `json:"cache_ttl_max,omitempty"`
 	// The minimum cache ttl in seconds (enforced).
-	CacheTTLMin optionalnullable.OptionalNullable[float64] `json:"cache_ttl_min,omitempty"`
+	CacheTTLMin *float64 `json:"cache_ttl_min,omitempty"`
 	// The negative cache ttl in seconds.
-	CacheTTLNeg optionalnullable.OptionalNullable[float64] `json:"cache_ttl_neg,omitempty"`
+	CacheTTLNeg *float64 `json:"cache_ttl_neg,omitempty"`
 	// The resurrection ttl in seconds.
-	CacheTTLResurrect optionalnullable.OptionalNullable[float64] `json:"cache_ttl_resurrect,omitempty"`
+	CacheTTLResurrect *float64 `json:"cache_ttl_resurrect,omitempty"`
 	// Cache the user info requests.
-	CacheUserInfo optionalnullable.OptionalNullable[bool] `json:"cache_user_info,omitempty"`
+	CacheUserInfo *bool `default:"true" json:"cache_user_info"`
 	// If given, these claims are forbidden in the token payload.
-	ClaimsForbidden optionalnullable.OptionalNullable[[]string] `json:"claims_forbidden,omitempty"`
+	ClaimsForbidden []string `json:"claims_forbidden,omitempty"`
 	// The algorithm to use for client_secret_jwt (only HS***) or private_key_jwt authentication.
-	ClientAlg optionalnullable.OptionalNullable[[]ClientAlg] `json:"client_alg,omitempty"`
+	ClientAlg []ClientAlg `json:"client_alg,omitempty"`
 	// The client to use for this request (the selection is made with a request parameter with the same name).
-	ClientArg optionalnullable.OptionalNullable[string] `json:"client_arg,omitempty"`
+	ClientArg *string `default:"client_id" json:"client_arg"`
 	// The default OpenID Connect client authentication method is 'client_secret_basic' (using 'Authorization: Basic' header), 'client_secret_post' (credentials in body), 'client_secret_jwt' (signed client assertion in body), 'private_key_jwt' (private key-signed assertion), 'tls_client_auth' (client certificate), 'self_signed_tls_client_auth' (self-signed client certificate), and 'none' (no authentication).
-	ClientAuth optionalnullable.OptionalNullable[[]ClientAuth] `json:"client_auth,omitempty"`
+	ClientAuth []ClientAuth `json:"client_auth,omitempty"`
 	// Where to look for the client credentials: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search from the HTTP request body.
-	ClientCredentialsParamType optionalnullable.OptionalNullable[[]ClientCredentialsParamType] `json:"client_credentials_param_type,omitempty"`
+	ClientCredentialsParamType []ClientCredentialsParamType `json:"client_credentials_param_type,omitempty"`
 	// The client id(s) that the plugin uses when it calls authenticated endpoints on the identity provider.
-	ClientID optionalnullable.OptionalNullable[[]string] `json:"client_id,omitempty"`
+	ClientID []string `json:"client_id,omitempty"`
 	// The JWK used for the private_key_jwt authentication.
-	ClientJwk         optionalnullable.OptionalNullable[[]ClientJwk]       `json:"client_jwk,omitempty"`
-	ClusterCacheRedis optionalnullable.OptionalNullable[ClusterCacheRedis] `json:"cluster_cache_redis,omitempty"`
+	ClientJwk         []ClientJwk        `json:"client_jwk,omitempty"`
+	ClusterCacheRedis *ClusterCacheRedis `json:"cluster_cache_redis,omitempty"`
 	// The strategy to use for the cluster cache. If set, the plugin will share cache with nodes configured with the same strategy backend. Currentlly only introspection cache is shared.
-	ClusterCacheStrategy optionalnullable.OptionalNullable[ClusterCacheStrategy] `json:"cluster_cache_strategy,omitempty"`
+	ClusterCacheStrategy *ClusterCacheStrategy `default:"off" json:"cluster_cache_strategy"`
 	// Consumer fields used for mapping: - `id`: try to find the matching Consumer by `id` - `username`: try to find the matching Consumer by `username` - `custom_id`: try to find the matching Consumer by `custom_id`.
-	ConsumerBy optionalnullable.OptionalNullable[[]ConsumerBy] `json:"consumer_by,omitempty"`
+	ConsumerBy []ConsumerBy `json:"consumer_by,omitempty"`
 	// The claims used for consumer mapping. Each entry represents a claim path inside the token payload. The paths are evaluated in order, and the first matching claim is used.
-	ConsumerClaims optionalnullable.OptionalNullable[[][]string] `json:"consumer_claims,omitempty"`
+	ConsumerClaims [][]string `json:"consumer_claims,omitempty"`
 	// The claim used for consumer groups mapping. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	ConsumerGroupsClaim optionalnullable.OptionalNullable[[]string] `json:"consumer_groups_claim,omitempty"`
+	ConsumerGroupsClaim []string `json:"consumer_groups_claim,omitempty"`
 	// Do not terminate the request if consumer groups mapping fails.
-	ConsumerGroupsOptional optionalnullable.OptionalNullable[bool] `json:"consumer_groups_optional,omitempty"`
+	ConsumerGroupsOptional *bool `default:"false" json:"consumer_groups_optional"`
 	// Do not terminate the request if consumer mapping fails.
-	ConsumerOptional optionalnullable.OptionalNullable[bool] `json:"consumer_optional,omitempty"`
+	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
 	// The claims used to derive a virtual credential, for example to be consumed by the rate-limiting plugin, when consumer mapping is not used. Each entry represents a claim path inside the token payload. The paths are evaluated in order, and the first matching claim is used.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	CredentialClaims optionalnullable.OptionalNullable[[][]string] `json:"credential_claims,omitempty"`
+	CredentialClaims [][]string `json:"credential_claims,omitempty"`
 	// Disable issuing the session cookie with the specified grants.
-	DisableSession optionalnullable.OptionalNullable[[]DisableSession] `json:"disable_session,omitempty"`
+	DisableSession []DisableSession `json:"disable_session,omitempty"`
 	// Extra header names passed to the discovery endpoint.
-	DiscoveryHeadersNames optionalnullable.OptionalNullable[[]string] `json:"discovery_headers_names,omitempty"`
+	DiscoveryHeadersNames []string `json:"discovery_headers_names,omitempty"`
 	// Extra header values passed to the discovery endpoint.
-	DiscoveryHeadersValues optionalnullable.OptionalNullable[[]string] `json:"discovery_headers_values,omitempty"`
+	DiscoveryHeadersValues []string `json:"discovery_headers_values,omitempty"`
 	// Display errors on failure responses.
-	DisplayErrors optionalnullable.OptionalNullable[bool] `json:"display_errors,omitempty"`
+	DisplayErrors *bool `default:"false" json:"display_errors"`
 	// The allowed values for the `hd` claim.
-	Domains optionalnullable.OptionalNullable[[]string] `json:"domains,omitempty"`
+	Domains []string `json:"domains,omitempty"`
 	// The downstream access token header.
-	DownstreamAccessTokenHeader optionalnullable.OptionalNullable[string] `json:"downstream_access_token_header,omitempty"`
+	DownstreamAccessTokenHeader *string `json:"downstream_access_token_header,omitempty"`
 	// The downstream access token JWK header.
-	DownstreamAccessTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"downstream_access_token_jwk_header,omitempty"`
+	DownstreamAccessTokenJwkHeader *string `json:"downstream_access_token_jwk_header,omitempty"`
 	// The downstream claim to header mappings.
-	DownstreamHeaders optionalnullable.OptionalNullable[[]DownstreamHeaders] `json:"downstream_headers,omitempty"`
+	DownstreamHeaders []DownstreamHeaders `json:"downstream_headers,omitempty"`
 	// The downstream header claims. Only top level claims are supported.
-	DownstreamHeadersClaims optionalnullable.OptionalNullable[[]string] `json:"downstream_headers_claims,omitempty"`
+	DownstreamHeadersClaims []string `json:"downstream_headers_claims,omitempty"`
 	// The downstream header names for the claim values.
-	DownstreamHeadersNames optionalnullable.OptionalNullable[[]string] `json:"downstream_headers_names,omitempty"`
+	DownstreamHeadersNames []string `json:"downstream_headers_names,omitempty"`
 	// The downstream id token header.
-	DownstreamIDTokenHeader optionalnullable.OptionalNullable[string] `json:"downstream_id_token_header,omitempty"`
+	DownstreamIDTokenHeader *string `json:"downstream_id_token_header,omitempty"`
 	// The downstream id token JWK header.
-	DownstreamIDTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"downstream_id_token_jwk_header,omitempty"`
+	DownstreamIDTokenJwkHeader *string `json:"downstream_id_token_jwk_header,omitempty"`
 	// The downstream introspection header.
-	DownstreamIntrospectionHeader optionalnullable.OptionalNullable[string] `json:"downstream_introspection_header,omitempty"`
+	DownstreamIntrospectionHeader *string `json:"downstream_introspection_header,omitempty"`
 	// The downstream introspection JWT header.
-	DownstreamIntrospectionJwtHeader optionalnullable.OptionalNullable[string] `json:"downstream_introspection_jwt_header,omitempty"`
+	DownstreamIntrospectionJwtHeader *string `json:"downstream_introspection_jwt_header,omitempty"`
 	// The downstream refresh token header.
-	DownstreamRefreshTokenHeader optionalnullable.OptionalNullable[string] `json:"downstream_refresh_token_header,omitempty"`
+	DownstreamRefreshTokenHeader *string `json:"downstream_refresh_token_header,omitempty"`
 	// The downstream session id header.
-	DownstreamSessionIDHeader optionalnullable.OptionalNullable[string] `json:"downstream_session_id_header,omitempty"`
+	DownstreamSessionIDHeader *string `json:"downstream_session_id_header,omitempty"`
 	// The downstream user info header.
-	DownstreamUserInfoHeader optionalnullable.OptionalNullable[string] `json:"downstream_user_info_header,omitempty"`
+	DownstreamUserInfoHeader *string `json:"downstream_user_info_header,omitempty"`
 	// The downstream user info JWT header (in case the user info returns a JWT response).
-	DownstreamUserInfoJwtHeader optionalnullable.OptionalNullable[string] `json:"downstream_user_info_jwt_header,omitempty"`
+	DownstreamUserInfoJwtHeader *string `json:"downstream_user_info_jwt_header,omitempty"`
 	// Specifies the lifetime in seconds of the DPoP proof. It determines how long the same proof can be used after creation. The creation time is determined by the nonce creation time if a nonce is used, and the iat claim otherwise.
-	DpopProofLifetime optionalnullable.OptionalNullable[float64] `json:"dpop_proof_lifetime,omitempty"`
+	DpopProofLifetime *float64 `default:"300" json:"dpop_proof_lifetime"`
 	// Specifies whether to challenge the client with a nonce value for DPoP proof. When enabled it will also be used to calculate the DPoP proof lifetime.
-	DpopUseNonce optionalnullable.OptionalNullable[bool] `json:"dpop_use_nonce,omitempty"`
+	DpopUseNonce *bool `default:"false" json:"dpop_use_nonce"`
 	// Enable shared secret, for example, HS256, signatures (when disabled they will not be accepted).
-	EnableHsSignatures optionalnullable.OptionalNullable[bool] `json:"enable_hs_signatures,omitempty"`
+	EnableHsSignatures *bool `default:"false" json:"enable_hs_signatures"`
 	// The end session endpoint. If set it overrides the value in `end_session_endpoint` returned by the discovery endpoint.
-	EndSessionEndpoint optionalnullable.OptionalNullable[string] `json:"end_session_endpoint,omitempty"`
+	EndSessionEndpoint *string `json:"end_session_endpoint,omitempty"`
 	// Specifies whether to expose the error code header, as defined in RFC 6750. If an authorization request fails, this header is sent in the response. Set to `false` to disable.
-	ExposeErrorCode optionalnullable.OptionalNullable[bool] `json:"expose_error_code,omitempty"`
+	ExposeErrorCode *bool `default:"true" json:"expose_error_code"`
 	// JWKS URIs whose public keys are trusted (in addition to the keys found with the discovery).
-	ExtraJwksUris optionalnullable.OptionalNullable[[]string] `json:"extra_jwks_uris,omitempty"`
+	ExtraJwksUris []string `json:"extra_jwks_uris,omitempty"`
 	// Destroy any active session for the forbidden requests.
-	ForbiddenDestroySession optionalnullable.OptionalNullable[bool] `json:"forbidden_destroy_session,omitempty"`
+	ForbiddenDestroySession *bool `default:"true" json:"forbidden_destroy_session"`
 	// The error message for the forbidden requests (when not using the redirection).
-	ForbiddenErrorMessage optionalnullable.OptionalNullable[string] `json:"forbidden_error_message,omitempty"`
+	ForbiddenErrorMessage *string `default:"Forbidden" json:"forbidden_error_message"`
 	// Where to redirect the client on forbidden requests.
-	ForbiddenRedirectURI optionalnullable.OptionalNullable[[]string] `json:"forbidden_redirect_uri,omitempty"`
+	ForbiddenRedirectURI []string `json:"forbidden_redirect_uri,omitempty"`
 	// The claim that contains the groups. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	GroupsClaim optionalnullable.OptionalNullable[[]string] `json:"groups_claim,omitempty"`
+	GroupsClaim []string `json:"groups_claim,omitempty"`
 	// The groups (`groups_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	GroupsRequired optionalnullable.OptionalNullable[[]string] `json:"groups_required,omitempty"`
+	GroupsRequired []string `json:"groups_required,omitempty"`
 	// Remove the credentials used for authentication from the request. If multiple credentials are sent with the same request, the plugin will remove those that were used for successful authentication.
-	HideCredentials optionalnullable.OptionalNullable[bool] `json:"hide_credentials,omitempty"`
+	HideCredentials *bool `default:"true" json:"hide_credentials"`
 	// The HTTP proxy.
-	HTTPProxy optionalnullable.OptionalNullable[string] `json:"http_proxy,omitempty"`
+	HTTPProxy *string `json:"http_proxy,omitempty"`
 	// The HTTP version used for the requests by this plugin: - `1.1`: HTTP 1.1 (the default) - `1.0`: HTTP 1.0.
-	HTTPVersion optionalnullable.OptionalNullable[float64] `json:"http_version,omitempty"`
+	HTTPVersion *float64 `default:"1.1" json:"http_version"`
 	// The HTTPS proxy.
-	HTTPSProxy optionalnullable.OptionalNullable[string] `json:"https_proxy,omitempty"`
+	HTTPSProxy *string `json:"https_proxy,omitempty"`
 	// The name of the parameter used to pass the id token.
-	IDTokenParamName optionalnullable.OptionalNullable[string] `json:"id_token_param_name,omitempty"`
+	IDTokenParamName *string `json:"id_token_param_name,omitempty"`
 	// Where to look for the id token: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body.
-	IDTokenParamType optionalnullable.OptionalNullable[[]IDTokenParamType] `json:"id_token_param_type,omitempty"`
+	IDTokenParamType []IDTokenParamType `json:"id_token_param_type,omitempty"`
 	// Skip the token signature verification on certain grants. This is insecure and logs a warning; use it only for providers that publish no verification key. Grants: - `password`: OAuth password grant - `client_credentials`: OAuth client credentials grant - `authorization_code`: authorization code flow - `refresh_token`: OAuth refresh token grant - `session`: session cookie authentication - `introspection`: OAuth introspection - `userinfo`: OpenID Connect user info endpoint authentication.
-	IgnoreSignature optionalnullable.OptionalNullable[[]IgnoreSignature] `json:"ignore_signature,omitempty"`
+	IgnoreSignature []IgnoreSignature `json:"ignore_signature,omitempty"`
 	// Specifies whether to introspect the JWT access tokens (can be used to check for revocations).
-	IntrospectJwtTokens optionalnullable.OptionalNullable[bool] `json:"introspect_jwt_tokens,omitempty"`
+	IntrospectJwtTokens *bool `default:"false" json:"introspect_jwt_tokens"`
 	// The value of `Accept` header for introspection requests: - `application/json`: introspection response as JSON - `application/token-introspection+jwt`: introspection response as JWT (from the current IETF draft document) - `application/jwt`: introspection response as JWT (from the obsolete IETF draft document).
-	IntrospectionAccept optionalnullable.OptionalNullable[IntrospectionAccept] `json:"introspection_accept,omitempty"`
+	IntrospectionAccept *IntrospectionAccept `default:"application/json" json:"introspection_accept"`
 	// Check that the introspection response has an `active` claim with a value of `true`.
-	IntrospectionCheckActive optionalnullable.OptionalNullable[bool] `json:"introspection_check_active,omitempty"`
+	IntrospectionCheckActive *bool `default:"true" json:"introspection_check_active"`
 	// The introspection endpoint. If set it overrides the value in `introspection_endpoint` returned by the discovery endpoint.
-	IntrospectionEndpoint optionalnullable.OptionalNullable[string] `json:"introspection_endpoint,omitempty"`
+	IntrospectionEndpoint *string `json:"introspection_endpoint,omitempty"`
 	// The introspection endpoint authentication method: : `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	IntrospectionEndpointAuthMethod optionalnullable.OptionalNullable[IntrospectionEndpointAuthMethod] `json:"introspection_endpoint_auth_method,omitempty"`
+	IntrospectionEndpointAuthMethod *IntrospectionEndpointAuthMethod `json:"introspection_endpoint_auth_method,omitempty"`
 	// Extra headers passed from the client to the introspection endpoint.
-	IntrospectionHeadersClient optionalnullable.OptionalNullable[[]string] `json:"introspection_headers_client,omitempty"`
+	IntrospectionHeadersClient []string `json:"introspection_headers_client,omitempty"`
 	// Extra header names passed to the introspection endpoint.
-	IntrospectionHeadersNames optionalnullable.OptionalNullable[[]string] `json:"introspection_headers_names,omitempty"`
+	IntrospectionHeadersNames []string `json:"introspection_headers_names,omitempty"`
 	// Extra header values passed to the introspection endpoint.
-	IntrospectionHeadersValues optionalnullable.OptionalNullable[[]string] `json:"introspection_headers_values,omitempty"`
+	IntrospectionHeadersValues []string `json:"introspection_headers_values,omitempty"`
 	// Introspection hint parameter value passed to the introspection endpoint.
-	IntrospectionHint optionalnullable.OptionalNullable[string] `json:"introspection_hint,omitempty"`
+	IntrospectionHint *string `default:"access_token" json:"introspection_hint"`
 	// Extra post arguments passed from the client to the introspection endpoint.
-	IntrospectionPostArgsClient optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_client,omitempty"`
+	IntrospectionPostArgsClient []string `json:"introspection_post_args_client,omitempty"`
 	// Extra post arguments passed from the client headers to the introspection endpoint.
-	IntrospectionPostArgsClientHeaders optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_client_headers,omitempty"`
+	IntrospectionPostArgsClientHeaders []string `json:"introspection_post_args_client_headers,omitempty"`
 	// Extra post argument names passed to the introspection endpoint.
-	IntrospectionPostArgsNames optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_names,omitempty"`
+	IntrospectionPostArgsNames []string `json:"introspection_post_args_names,omitempty"`
 	// Extra post argument values passed to the introspection endpoint.
-	IntrospectionPostArgsValues optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_values,omitempty"`
+	IntrospectionPostArgsValues []string `json:"introspection_post_args_values,omitempty"`
 	// Designate token's parameter name for introspection.
-	IntrospectionTokenParamName optionalnullable.OptionalNullable[string] `json:"introspection_token_param_name,omitempty"`
+	IntrospectionTokenParamName *string `default:"token" json:"introspection_token_param_name"`
 	// The discovery endpoint (or the issuer identifier). When there is no discovery endpoint, please also configure `config.using_pseudo_issuer=true`.
 	Issuer string `json:"issuer"`
 	// The issuers allowed to be present in the tokens (`iss` claim).
-	IssuersAllowed optionalnullable.OptionalNullable[[]string] `json:"issuers_allowed,omitempty"`
+	IssuersAllowed []string `json:"issuers_allowed,omitempty"`
 	// Overrides the `jwks_uri` returned by discovery. Use when the IdP exposes a non-standard JWKS endpoint.
-	JwksEndpoint optionalnullable.OptionalNullable[string] `json:"jwks_endpoint,omitempty"`
+	JwksEndpoint *string `json:"jwks_endpoint,omitempty"`
 	// The claim to match against the JWT session cookie.
-	JwtSessionClaim optionalnullable.OptionalNullable[string] `json:"jwt_session_claim,omitempty"`
+	JwtSessionClaim *string `default:"sid" json:"jwt_session_claim"`
 	// The name of the JWT session cookie.
-	JwtSessionCookie optionalnullable.OptionalNullable[string] `json:"jwt_session_cookie,omitempty"`
+	JwtSessionCookie *string `json:"jwt_session_cookie,omitempty"`
 	// Use keepalive with the HTTP client.
-	Keepalive optionalnullable.OptionalNullable[bool] `json:"keepalive,omitempty"`
+	Keepalive *bool `default:"true" json:"keepalive"`
 	// Defines leeway time (in seconds) for `auth_time`, `exp`, `iat`, and `nbf` claims
-	Leeway optionalnullable.OptionalNullable[float64] `json:"leeway,omitempty"`
+	Leeway *float64 `default:"0" json:"leeway"`
 	// What to do after successful login: - `upstream`: proxy request to upstream service - `response`: terminate request with a response - `redirect`: redirect to a different location.
-	LoginAction optionalnullable.OptionalNullable[LoginAction] `json:"login_action,omitempty"`
+	LoginAction *LoginAction `default:"upstream" json:"login_action"`
 	// Enable login functionality with specified grants.
-	LoginMethods optionalnullable.OptionalNullable[[]LoginMethods] `json:"login_methods,omitempty"`
+	LoginMethods []LoginMethods `json:"login_methods,omitempty"`
 	// Where to place `login_tokens` when using `redirect` `login_action`: - `query`: place tokens in query string - `fragment`: place tokens in url fragment (not readable by servers).
-	LoginRedirectMode optionalnullable.OptionalNullable[LoginRedirectMode] `json:"login_redirect_mode,omitempty"`
+	LoginRedirectMode *LoginRedirectMode `default:"fragment" json:"login_redirect_mode"`
 	// Where to redirect the client when `login_action` is set to `redirect`.
-	LoginRedirectURI optionalnullable.OptionalNullable[[]string] `json:"login_redirect_uri,omitempty"`
+	LoginRedirectURI []string `json:"login_redirect_uri,omitempty"`
 	// What tokens to include in `response` body or `redirect` query string or fragment: - `id_token`: include id token - `access_token`: include access token - `refresh_token`: include refresh token - `tokens`: include the full token endpoint response - `introspection`: include introspection response.
-	LoginTokens optionalnullable.OptionalNullable[[]LoginTokens] `json:"login_tokens,omitempty"`
+	LoginTokens []LoginTokens `json:"login_tokens,omitempty"`
 	// The request methods that can activate the logout: - `POST`: HTTP POST method - `GET`: HTTP GET method - `DELETE`: HTTP DELETE method.
-	LogoutMethods optionalnullable.OptionalNullable[[]LogoutMethods] `json:"logout_methods,omitempty"`
+	LogoutMethods []LogoutMethods `json:"logout_methods,omitempty"`
 	// The request body argument that activates the logout.
-	LogoutPostArg optionalnullable.OptionalNullable[string] `json:"logout_post_arg,omitempty"`
+	LogoutPostArg *string `json:"logout_post_arg,omitempty"`
 	// The request query argument that activates the logout.
-	LogoutQueryArg optionalnullable.OptionalNullable[string] `json:"logout_query_arg,omitempty"`
+	LogoutQueryArg *string `json:"logout_query_arg,omitempty"`
 	// Where to redirect the client after the logout.
-	LogoutRedirectURI optionalnullable.OptionalNullable[[]string] `json:"logout_redirect_uri,omitempty"`
+	LogoutRedirectURI []string `json:"logout_redirect_uri,omitempty"`
 	// Revoke tokens as part of the logout.
 	//
 	// For more granular token revocation, you can also adjust the `logout_revoke_access_token` and `logout_revoke_refresh_token` parameters.
-	LogoutRevoke optionalnullable.OptionalNullable[bool] `json:"logout_revoke,omitempty"`
+	LogoutRevoke *bool `default:"false" json:"logout_revoke"`
 	// Revoke the access token as part of the logout. Requires `logout_revoke` to be set to `true`.
-	LogoutRevokeAccessToken optionalnullable.OptionalNullable[bool] `json:"logout_revoke_access_token,omitempty"`
+	LogoutRevokeAccessToken *bool `default:"true" json:"logout_revoke_access_token"`
 	// Revoke the refresh token as part of the logout. Requires `logout_revoke` to be set to `true`.
-	LogoutRevokeRefreshToken optionalnullable.OptionalNullable[bool] `json:"logout_revoke_refresh_token,omitempty"`
+	LogoutRevokeRefreshToken *bool `default:"true" json:"logout_revoke_refresh_token"`
 	// The request URI suffix that activates the logout.
-	LogoutURISuffix optionalnullable.OptionalNullable[string] `json:"logout_uri_suffix,omitempty"`
+	LogoutURISuffix *string `json:"logout_uri_suffix,omitempty"`
 	// The maximum age (in seconds) compared to the `auth_time` claim.
-	MaxAge optionalnullable.OptionalNullable[float64] `json:"max_age,omitempty"`
+	MaxAge *float64 `json:"max_age,omitempty"`
 	// Alias for the introspection endpoint to be used for mTLS client authentication. If set it overrides the value in `mtls_endpoint_aliases` returned by the discovery endpoint.
-	MtlsIntrospectionEndpoint optionalnullable.OptionalNullable[string] `json:"mtls_introspection_endpoint,omitempty"`
+	MtlsIntrospectionEndpoint *string `json:"mtls_introspection_endpoint,omitempty"`
 	// Alias for the introspection endpoint to be used for mTLS client authentication. If set it overrides the value in `mtls_endpoint_aliases` returned by the discovery endpoint.
-	MtlsRevocationEndpoint optionalnullable.OptionalNullable[string] `json:"mtls_revocation_endpoint,omitempty"`
+	MtlsRevocationEndpoint *string `json:"mtls_revocation_endpoint,omitempty"`
 	// Alias for the token endpoint to be used for mTLS client authentication. If set it overrides the value in `mtls_endpoint_aliases` returned by the discovery endpoint.
-	MtlsTokenEndpoint optionalnullable.OptionalNullable[string] `json:"mtls_token_endpoint,omitempty"`
+	MtlsTokenEndpoint *string `json:"mtls_token_endpoint,omitempty"`
 	// Do not use proxy with these hosts.
-	NoProxy optionalnullable.OptionalNullable[string] `json:"no_proxy,omitempty"`
+	NoProxy *string `json:"no_proxy,omitempty"`
 	// Where to look for the username and password: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body.
-	PasswordParamType optionalnullable.OptionalNullable[[]PasswordParamType] `json:"password_param_type,omitempty"`
+	PasswordParamType []PasswordParamType `json:"password_param_type,omitempty"`
 	// With this parameter, you can preserve request query arguments even when doing authorization code flow.
-	PreserveQueryArgs optionalnullable.OptionalNullable[bool] `json:"preserve_query_args,omitempty"`
+	PreserveQueryArgs *bool `default:"false" json:"preserve_query_args"`
 	// Configuration for Kong Identity principal hydration after token verification.
-	Principals optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigPrincipals] `json:"principals,omitempty"`
+	Principals *AIGWOpenIDConnectGeneratedConfigPrincipals `json:"principals,omitempty"`
 	// If set to true, only the auth_methods that are compatible with Proof of Possession (PoP) can be configured when PoP is enabled. If set to false, all auth_methods will be configurable and PoP checks will be silently skipped for those auth_methods that are not compatible with PoP.
-	ProofOfPossessionAuthMethodsValidation optionalnullable.OptionalNullable[bool] `json:"proof_of_possession_auth_methods_validation,omitempty"`
+	ProofOfPossessionAuthMethodsValidation *bool `default:"true" json:"proof_of_possession_auth_methods_validation"`
 	// Enable Demonstrating Proof-of-Possession (DPoP). If set to strict, all request are verified despite the presence of the DPoP key claim (cnf.jkt). If set to optional, only tokens bound with DPoP's key are verified with the proof.
-	ProofOfPossessionDpop optionalnullable.OptionalNullable[ProofOfPossessionDpop] `json:"proof_of_possession_dpop,omitempty"`
+	ProofOfPossessionDpop *ProofOfPossessionDpop `default:"off" json:"proof_of_possession_dpop"`
 	// Enable mtls proof of possession. If set to strict, all tokens (from supported auth_methods: bearer, introspection, and session granted with bearer or introspection) are verified, if set to optional, only tokens that contain the certificate hash claim are verified. If the verification fails, the request will be rejected with 401.
-	ProofOfPossessionMtls optionalnullable.OptionalNullable[ProofOfPossessionMtls] `json:"proof_of_possession_mtls,omitempty"`
+	ProofOfPossessionMtls *ProofOfPossessionMtls `default:"off" json:"proof_of_possession_mtls"`
 	// When configured, the plugin advertises this API as an OAuth 2.0 protected resource per RFC 9728. It serves a discovery document at the well-known URI and includes resource_metadata in WWW-Authenticate challenge headers.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	ProtectedResourceMetadata optionalnullable.OptionalNullable[ProtectedResourceMetadata] `json:"protected_resource_metadata,omitempty"`
+	ProtectedResourceMetadata *ProtectedResourceMetadata `json:"protected_resource_metadata,omitempty"`
 	// The pushed authorization endpoint. If set it overrides the value in `pushed_authorization_request_endpoint` returned by the discovery endpoint.
-	PushedAuthorizationRequestEndpoint optionalnullable.OptionalNullable[string] `json:"pushed_authorization_request_endpoint,omitempty"`
+	PushedAuthorizationRequestEndpoint *string `json:"pushed_authorization_request_endpoint,omitempty"`
 	// The pushed authorization request endpoint authentication method: `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	PushedAuthorizationRequestEndpointAuthMethod optionalnullable.OptionalNullable[PushedAuthorizationRequestEndpointAuthMethod] `json:"pushed_authorization_request_endpoint_auth_method,omitempty"`
+	PushedAuthorizationRequestEndpointAuthMethod *PushedAuthorizationRequestEndpointAuthMethod `json:"pushed_authorization_request_endpoint_auth_method,omitempty"`
 	// The redirect URI passed to the authorization and token endpoints.
-	RedirectURI optionalnullable.OptionalNullable[[]string] `json:"redirect_uri,omitempty"`
-	Redis       optionalnullable.OptionalNullable[Redis]    `json:"redis,omitempty"`
+	RedirectURI []string `json:"redirect_uri,omitempty"`
+	Redis       *Redis   `json:"redis,omitempty"`
 	// Specifies how long (in seconds) the plugin waits between discovery attempts. Discovery is still triggered on an as-needed basis.
-	RediscoveryLifetime optionalnullable.OptionalNullable[float64] `json:"rediscovery_lifetime,omitempty"`
+	RediscoveryLifetime *float64 `default:"30" json:"rediscovery_lifetime"`
 	// The name of the parameter used to pass the refresh token.
-	RefreshTokenParamName optionalnullable.OptionalNullable[string] `json:"refresh_token_param_name,omitempty"`
+	RefreshTokenParamName *string `json:"refresh_token_param_name,omitempty"`
 	// Where to look for the refresh token: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body.
-	RefreshTokenParamType optionalnullable.OptionalNullable[[]RefreshTokenParamType] `json:"refresh_token_param_type,omitempty"`
+	RefreshTokenParamType []RefreshTokenParamType `json:"refresh_token_param_type,omitempty"`
 	// Specifies whether the plugin should try to refresh (soon to be) expired access tokens if the plugin has a `refresh_token` available.
-	RefreshTokens optionalnullable.OptionalNullable[bool] `json:"refresh_tokens,omitempty"`
+	RefreshTokens *bool `default:"true" json:"refresh_tokens"`
 	// Forcibly enable or disable the proof key for code exchange. When not set the value is determined through the discovery using the value of `code_challenge_methods_supported`, and enabled automatically (in case the `code_challenge_methods_supported` is missing, the PKCE will not be enabled).
-	RequireProofKeyForCodeExchange optionalnullable.OptionalNullable[bool] `json:"require_proof_key_for_code_exchange,omitempty"`
+	RequireProofKeyForCodeExchange *bool `json:"require_proof_key_for_code_exchange,omitempty"`
 	// Forcibly enable or disable the pushed authorization requests. When not set the value is determined through the discovery using the value of `require_pushed_authorization_requests` (which defaults to `false`).
-	RequirePushedAuthorizationRequests optionalnullable.OptionalNullable[bool] `json:"require_pushed_authorization_requests,omitempty"`
+	RequirePushedAuthorizationRequests *bool `json:"require_pushed_authorization_requests,omitempty"`
 	// Forcibly enable or disable the usage of signed request object on authorization or pushed authorization endpoint. When not set the value is determined through the discovery using the value of `require_signed_request_object`, and enabled automatically (in case the `require_signed_request_object` is missing, the feature will not be enabled).
-	RequireSignedRequestObject optionalnullable.OptionalNullable[bool] `json:"require_signed_request_object,omitempty"`
+	RequireSignedRequestObject *bool `json:"require_signed_request_object,omitempty"`
 	// Distributed claims are represented by the `_claim_names` and `_claim_sources` members of the JSON object containing the claims. If this parameter is set to `true`, the plugin explicitly resolves these distributed claims.
-	ResolveDistributedClaims optionalnullable.OptionalNullable[bool] `json:"resolve_distributed_claims,omitempty"`
+	ResolveDistributedClaims *bool `default:"false" json:"resolve_distributed_claims"`
 	// Response mode passed to the authorization endpoint: - `query`: for parameters in query string - `form_post`: for parameters in request body - `fragment`: for parameters in uri fragment (rarely useful as the plugin itself cannot read it) - `query.jwt`, `form_post.jwt`, `fragment.jwt`: similar to `query`, `form_post` and `fragment` but the parameters are encoded in a JWT - `jwt`: shortcut that indicates the default encoding for the requested response type.
-	ResponseMode optionalnullable.OptionalNullable[ResponseMode] `json:"response_mode,omitempty"`
+	ResponseMode *ResponseMode `default:"query" json:"response_mode"`
 	// The response type passed to the authorization endpoint.
-	ResponseType optionalnullable.OptionalNullable[[]string] `json:"response_type,omitempty"`
+	ResponseType []string `json:"response_type,omitempty"`
 	// Specifies whether to always verify tokens stored in the session.
-	Reverify optionalnullable.OptionalNullable[bool] `json:"reverify,omitempty"`
+	Reverify *bool `default:"false" json:"reverify"`
 	// The revocation endpoint. If set it overrides the value in `revocation_endpoint` returned by the discovery endpoint.
-	RevocationEndpoint optionalnullable.OptionalNullable[string] `json:"revocation_endpoint,omitempty"`
+	RevocationEndpoint *string `json:"revocation_endpoint,omitempty"`
 	// The revocation endpoint authentication method: : `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	RevocationEndpointAuthMethod optionalnullable.OptionalNullable[RevocationEndpointAuthMethod] `json:"revocation_endpoint_auth_method,omitempty"`
+	RevocationEndpointAuthMethod *RevocationEndpointAuthMethod `json:"revocation_endpoint_auth_method,omitempty"`
 	// Designate token's parameter name for revocation.
-	RevocationTokenParamName optionalnullable.OptionalNullable[string] `json:"revocation_token_param_name,omitempty"`
+	RevocationTokenParamName *string `default:"token" json:"revocation_token_param_name"`
 	// The claim that contains the roles. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	RolesClaim optionalnullable.OptionalNullable[[]string] `json:"roles_claim,omitempty"`
+	RolesClaim []string `json:"roles_claim,omitempty"`
 	// The roles (`roles_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	RolesRequired optionalnullable.OptionalNullable[[]string] `json:"roles_required,omitempty"`
+	RolesRequired []string `json:"roles_required,omitempty"`
 	// Specifies whether to run this plugin on pre-flight (`OPTIONS`) requests.
-	RunOnPreflight optionalnullable.OptionalNullable[bool] `json:"run_on_preflight,omitempty"`
+	RunOnPreflight *bool `default:"true" json:"run_on_preflight"`
 	// The scopes passed to the authorization and token endpoints.
-	Scopes optionalnullable.OptionalNullable[[]string] `json:"scopes,omitempty"`
+	Scopes []string `json:"scopes,omitempty"`
 	// The claim that contains the scopes. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	ScopesClaim optionalnullable.OptionalNullable[[]string] `json:"scopes_claim,omitempty"`
+	ScopesClaim []string `json:"scopes_claim,omitempty"`
 	// The scopes (`scopes_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	ScopesRequired optionalnullable.OptionalNullable[[]string] `json:"scopes_required,omitempty"`
+	ScopesRequired []string `json:"scopes_required,omitempty"`
 	// Specify whether to use the user info endpoint to get additional claims for consumer mapping, credential mapping, authenticated groups, and upstream and downstream headers.
-	SearchUserInfo optionalnullable.OptionalNullable[bool] `json:"search_user_info,omitempty"`
+	SearchUserInfo *bool `default:"false" json:"search_user_info"`
 	// Limits how long the session can be renewed in seconds, until re-authentication is required. 0 disables the checks.
-	SessionAbsoluteTimeout optionalnullable.OptionalNullable[float64] `json:"session_absolute_timeout,omitempty"`
+	SessionAbsoluteTimeout *float64 `default:"86400" json:"session_absolute_timeout"`
 	// The session audience, which is the intended target application. For example `"my-application"`.
-	SessionAudience optionalnullable.OptionalNullable[string] `json:"session_audience,omitempty"`
+	SessionAudience *string `default:"default" json:"session_audience"`
 	// Bind the session to data acquired from the HTTP request or connection.
-	SessionBind optionalnullable.OptionalNullable[[]SessionBind] `json:"session_bind,omitempty"`
+	SessionBind []SessionBind `json:"session_bind,omitempty"`
 	// The session cookie Domain flag.
-	SessionCookieDomain optionalnullable.OptionalNullable[string] `json:"session_cookie_domain,omitempty"`
+	SessionCookieDomain *string `json:"session_cookie_domain,omitempty"`
 	// Forbids JavaScript from accessing the cookie, for example, through the `Document.cookie` property.
-	SessionCookieHTTPOnly optionalnullable.OptionalNullable[bool] `json:"session_cookie_http_only,omitempty"`
+	SessionCookieHTTPOnly *bool `default:"true" json:"session_cookie_http_only"`
 	// The session cookie name.
-	SessionCookieName optionalnullable.OptionalNullable[string] `json:"session_cookie_name,omitempty"`
+	SessionCookieName *string `default:"session" json:"session_cookie_name"`
 	// The session cookie Path flag.
-	SessionCookiePath optionalnullable.OptionalNullable[string] `json:"session_cookie_path,omitempty"`
+	SessionCookiePath *string `default:"/" json:"session_cookie_path"`
 	// Controls whether a cookie is sent with cross-origin requests, providing some protection against cross-site request forgery attacks.
-	SessionCookieSameSite optionalnullable.OptionalNullable[SessionCookieSameSite] `json:"session_cookie_same_site,omitempty"`
+	SessionCookieSameSite *SessionCookieSameSite `default:"Lax" json:"session_cookie_same_site"`
 	// Cookie is only sent to the server when a request is made with the https: scheme (except on localhost), and therefore is more resistant to man-in-the-middle attacks.
-	SessionCookieSecure optionalnullable.OptionalNullable[bool] `json:"session_cookie_secure,omitempty"`
+	SessionCookieSecure *bool `json:"session_cookie_secure,omitempty"`
 	// When set to `true`, audiences are forced to share the same subject.
-	SessionEnforceSameSubject optionalnullable.OptionalNullable[bool] `json:"session_enforce_same_subject,omitempty"`
+	SessionEnforceSameSubject *bool `default:"false" json:"session_enforce_same_subject"`
 	// When set to `true`, the storage key (session ID) is hashed for extra security. Hashing the storage key means it is impossible to decrypt data from the storage without a cookie.
-	SessionHashStorageKey optionalnullable.OptionalNullable[bool] `json:"session_hash_storage_key,omitempty"`
+	SessionHashStorageKey *bool `default:"false" json:"session_hash_storage_key"`
 	// When set to `true`, the value of subject is hashed before being stored. Only applies when `session_store_metadata` is enabled.
-	SessionHashSubject optionalnullable.OptionalNullable[bool] `json:"session_hash_subject,omitempty"`
+	SessionHashSubject *bool `default:"false" json:"session_hash_subject"`
 	// Specifies how long the session can be inactive until it is considered invalid in seconds. 0 disables the checks and touching.
-	SessionIdlingTimeout optionalnullable.OptionalNullable[float64] `json:"session_idling_timeout,omitempty"`
+	SessionIdlingTimeout *float64 `default:"900" json:"session_idling_timeout"`
 	// The memcached host.
-	SessionMemcachedHost optionalnullable.OptionalNullable[string] `json:"session_memcached_host,omitempty"`
+	SessionMemcachedHost *string `default:"127.0.0.1" json:"session_memcached_host"`
 	// The memcached port.
-	SessionMemcachedPort optionalnullable.OptionalNullable[int64] `json:"session_memcached_port,omitempty"`
+	SessionMemcachedPort *int64 `default:"11211" json:"session_memcached_port"`
 	// The memcached session key prefix.
-	SessionMemcachedPrefix optionalnullable.OptionalNullable[string] `json:"session_memcached_prefix,omitempty"`
+	SessionMemcachedPrefix *string `json:"session_memcached_prefix,omitempty"`
 	// The memcached unix socket path.
-	SessionMemcachedSocket optionalnullable.OptionalNullable[string] `json:"session_memcached_socket,omitempty"`
+	SessionMemcachedSocket *string `json:"session_memcached_socket,omitempty"`
 	// If set to true, uses SSL to connect to memcached
-	SessionMemcachedSsl optionalnullable.OptionalNullable[bool] `json:"session_memcached_ssl,omitempty"`
+	SessionMemcachedSsl *bool `json:"session_memcached_ssl,omitempty"`
 	// If set to true, verifies the validity of the memcached server SSL certificate
-	SessionMemcachedSslVerify optionalnullable.OptionalNullable[bool] `json:"session_memcached_ssl_verify,omitempty"`
+	SessionMemcachedSslVerify *bool `default:"true" json:"session_memcached_ssl_verify"`
 	// Enables or disables persistent sessions.
-	SessionRemember optionalnullable.OptionalNullable[bool] `json:"session_remember,omitempty"`
+	SessionRemember *bool `default:"false" json:"session_remember"`
 	// Limits how long the persistent session can be renewed in seconds, until re-authentication is required. 0 disables the checks.
-	SessionRememberAbsoluteTimeout optionalnullable.OptionalNullable[float64] `json:"session_remember_absolute_timeout,omitempty"`
+	SessionRememberAbsoluteTimeout *float64 `default:"2592000" json:"session_remember_absolute_timeout"`
 	// Persistent session cookie name. Use with the `remember` configuration parameter.
-	SessionRememberCookieName optionalnullable.OptionalNullable[string] `json:"session_remember_cookie_name,omitempty"`
+	SessionRememberCookieName *string `default:"remember" json:"session_remember_cookie_name"`
 	// Specifies how long the persistent session is considered valid in seconds. 0 disables the checks and rolling.
-	SessionRememberRollingTimeout optionalnullable.OptionalNullable[float64] `json:"session_remember_rolling_timeout,omitempty"`
+	SessionRememberRollingTimeout *float64 `default:"604800" json:"session_remember_rolling_timeout"`
 	// Set of headers to send to upstream, use id, audience, subject, timeout, idling-timeout, rolling-timeout, absolute-timeout. E.g. `[ "id", "timeout" ]` will set Session-Id and Session-Timeout request headers.
-	SessionRequestHeaders optionalnullable.OptionalNullable[[]SessionRequestHeaders] `json:"session_request_headers,omitempty"`
+	SessionRequestHeaders []SessionRequestHeaders `json:"session_request_headers,omitempty"`
 	// Set of headers to send to downstream, use id, audience, subject, timeout, idling-timeout, rolling-timeout, absolute-timeout. E.g. `[ "id", "timeout" ]` will set Session-Id and Session-Timeout response headers.
-	SessionResponseHeaders optionalnullable.OptionalNullable[[]SessionResponseHeaders] `json:"session_response_headers,omitempty"`
+	SessionResponseHeaders []SessionResponseHeaders `json:"session_response_headers,omitempty"`
 	// Specifies how long the session can be used in seconds until it needs to be renewed. 0 disables the checks and rolling.
-	SessionRollingTimeout optionalnullable.OptionalNullable[float64] `json:"session_rolling_timeout,omitempty"`
+	SessionRollingTimeout *float64 `default:"3600" json:"session_rolling_timeout"`
 	// The session secret.
-	SessionSecret optionalnullable.OptionalNullable[string] `json:"session_secret,omitempty"`
+	SessionSecret *string `json:"session_secret,omitempty"`
 	// The session storage for session data: - `cookie`: stores session data with the session cookie (the session cannot be invalidated or revoked without changing session secret, but is stateless, and doesn't require a database) - `memcache`: stores session data in memcached - `redis`: stores session data in Redis.
-	SessionStorage optionalnullable.OptionalNullable[SessionStorage] `json:"session_storage,omitempty"`
+	SessionStorage *SessionStorage `default:"cookie" json:"session_storage"`
 	// Configures whether or not session metadata should be stored. This metadata includes information about the active sessions for a specific audience belonging to a specific subject.
-	SessionStoreMetadata optionalnullable.OptionalNullable[bool] `json:"session_store_metadata,omitempty"`
+	SessionStoreMetadata *bool `default:"false" json:"session_store_metadata"`
 	// Verify identity provider server certificate. If set to `true`, the plugin uses the CA certificate set in the `kong.conf` config parameter `lua_ssl_trusted_certificate`.
-	SslVerify optionalnullable.OptionalNullable[bool] `json:"ssl_verify,omitempty"`
+	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Network IO timeout in milliseconds.
-	Timeout optionalnullable.OptionalNullable[float64] `json:"timeout,omitempty"`
+	Timeout *float64 `default:"10000" json:"timeout"`
 	// ID of the Certificate entity representing the client certificate to use for mTLS client authentication for connections between Kong and the Auth Server.
-	TLSClientAuthCertID optionalnullable.OptionalNullable[string] `json:"tls_client_auth_cert_id,omitempty"`
+	TLSClientAuthCertID *string `json:"tls_client_auth_cert_id,omitempty"`
 	// Verify identity provider server certificate during mTLS client authentication.
-	TLSClientAuthSslVerify optionalnullable.OptionalNullable[bool] `json:"tls_client_auth_ssl_verify,omitempty"`
+	TLSClientAuthSslVerify *bool `default:"true" json:"tls_client_auth_ssl_verify"`
 	// Include the scope in the token cache key, so token with different scopes are considered diffrent tokens.
-	TokenCacheKeyIncludeScope optionalnullable.OptionalNullable[bool] `json:"token_cache_key_include_scope,omitempty"`
+	TokenCacheKeyIncludeScope *bool `default:"false" json:"token_cache_key_include_scope"`
 	// The token endpoint. If set it overrides the value in `token_endpoint` returned by the discovery endpoint.
-	TokenEndpoint optionalnullable.OptionalNullable[string] `json:"token_endpoint,omitempty"`
+	TokenEndpoint *string `json:"token_endpoint,omitempty"`
 	// The token endpoint authentication method: `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	TokenEndpointAuthMethod optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod] `json:"token_endpoint_auth_method,omitempty"`
+	TokenEndpointAuthMethod *AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod `json:"token_endpoint_auth_method,omitempty"`
 	// Details on how to accept tokens from other identity providers.
-	TokenExchange optionalnullable.OptionalNullable[TokenExchange] `json:"token_exchange,omitempty"`
+	TokenExchange *TokenExchange `json:"token_exchange,omitempty"`
 	// Endpoint used to perform the legacy token exchange.
-	TokenExchangeEndpoint optionalnullable.OptionalNullable[string] `json:"token_exchange_endpoint,omitempty"`
+	TokenExchangeEndpoint *string `json:"token_exchange_endpoint,omitempty"`
 	// Extra headers passed from the client to the token endpoint.
-	TokenHeadersClient optionalnullable.OptionalNullable[[]string] `json:"token_headers_client,omitempty"`
+	TokenHeadersClient []string `json:"token_headers_client,omitempty"`
 	// Enable the sending of the token endpoint response headers only with certain grants: - `password`: with OAuth password grant - `client_credentials`: with OAuth client credentials grant - `authorization_code`: with authorization code flow - `refresh_token` with refresh token grant.
-	TokenHeadersGrants optionalnullable.OptionalNullable[[]TokenHeadersGrants] `json:"token_headers_grants,omitempty"`
+	TokenHeadersGrants []TokenHeadersGrants `json:"token_headers_grants,omitempty"`
 	// Extra header names passed to the token endpoint.
-	TokenHeadersNames optionalnullable.OptionalNullable[[]string] `json:"token_headers_names,omitempty"`
+	TokenHeadersNames []string `json:"token_headers_names,omitempty"`
 	// Add a prefix to the token endpoint response headers before forwarding them to the downstream client.
-	TokenHeadersPrefix optionalnullable.OptionalNullable[string] `json:"token_headers_prefix,omitempty"`
+	TokenHeadersPrefix *string `json:"token_headers_prefix,omitempty"`
 	// The names of token endpoint response headers to forward to the downstream client.
-	TokenHeadersReplay optionalnullable.OptionalNullable[[]string] `json:"token_headers_replay,omitempty"`
+	TokenHeadersReplay []string `json:"token_headers_replay,omitempty"`
 	// Extra header values passed to the token endpoint.
-	TokenHeadersValues optionalnullable.OptionalNullable[[]string] `json:"token_headers_values,omitempty"`
+	TokenHeadersValues []string `json:"token_headers_values,omitempty"`
 	// Pass extra arguments from the client to the OpenID-Connect plugin. If arguments exist, the client can pass them using: - Query parameters - Request Body - Request Header  This parameter can be used with `scope` values, like this:  `config.token_post_args_client=scope`  In this case, the token would take the `scope` value from the query parameter or from the request body or from the header and send it to the token endpoint.
-	TokenPostArgsClient optionalnullable.OptionalNullable[[]string] `json:"token_post_args_client,omitempty"`
+	TokenPostArgsClient []string `json:"token_post_args_client,omitempty"`
 	// Extra post argument names passed to the token endpoint.
-	TokenPostArgsNames optionalnullable.OptionalNullable[[]string] `json:"token_post_args_names,omitempty"`
+	TokenPostArgsNames []string `json:"token_post_args_names,omitempty"`
 	// Extra post argument values passed to the token endpoint.
-	TokenPostArgsValues optionalnullable.OptionalNullable[[]string] `json:"token_post_args_values,omitempty"`
+	TokenPostArgsValues []string `json:"token_post_args_values,omitempty"`
 	// Destroy any active session for the unauthorized requests.
-	UnauthorizedDestroySession optionalnullable.OptionalNullable[bool] `json:"unauthorized_destroy_session,omitempty"`
+	UnauthorizedDestroySession *bool `default:"true" json:"unauthorized_destroy_session"`
 	// The error message for the unauthorized requests (when not using the redirection).
-	UnauthorizedErrorMessage optionalnullable.OptionalNullable[string] `json:"unauthorized_error_message,omitempty"`
+	UnauthorizedErrorMessage *string `default:"Unauthorized" json:"unauthorized_error_message"`
 	// Where to redirect the client on unauthorized requests.
-	UnauthorizedRedirectURI optionalnullable.OptionalNullable[[]string] `json:"unauthorized_redirect_uri,omitempty"`
+	UnauthorizedRedirectURI []string `json:"unauthorized_redirect_uri,omitempty"`
 	// Where to redirect the client when unexpected errors happen with the requests.
-	UnexpectedRedirectURI optionalnullable.OptionalNullable[[]string] `json:"unexpected_redirect_uri,omitempty"`
+	UnexpectedRedirectURI []string `json:"unexpected_redirect_uri,omitempty"`
 	// The upstream access token header.
 	UpstreamAccessTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_access_token_header,omitempty"`
 	// The upstream access token JWK header.
-	UpstreamAccessTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"upstream_access_token_jwk_header,omitempty"`
+	UpstreamAccessTokenJwkHeader *string `json:"upstream_access_token_jwk_header,omitempty"`
 	// The upstream claim to header mappings.
-	UpstreamHeaders optionalnullable.OptionalNullable[[]UpstreamHeaders] `json:"upstream_headers,omitempty"`
+	UpstreamHeaders []UpstreamHeaders `json:"upstream_headers,omitempty"`
 	// The upstream header claims. Only top level claims are supported.
-	UpstreamHeadersClaims optionalnullable.OptionalNullable[[]string] `json:"upstream_headers_claims,omitempty"`
+	UpstreamHeadersClaims []string `json:"upstream_headers_claims,omitempty"`
 	// The upstream header names for the claim values.
-	UpstreamHeadersNames optionalnullable.OptionalNullable[[]string] `json:"upstream_headers_names,omitempty"`
+	UpstreamHeadersNames []string `json:"upstream_headers_names,omitempty"`
 	// The upstream id token header.
-	UpstreamIDTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_id_token_header,omitempty"`
+	UpstreamIDTokenHeader *string `json:"upstream_id_token_header,omitempty"`
 	// The upstream id token JWK header.
-	UpstreamIDTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"upstream_id_token_jwk_header,omitempty"`
+	UpstreamIDTokenJwkHeader *string `json:"upstream_id_token_jwk_header,omitempty"`
 	// The upstream introspection header.
-	UpstreamIntrospectionHeader optionalnullable.OptionalNullable[string] `json:"upstream_introspection_header,omitempty"`
+	UpstreamIntrospectionHeader *string `json:"upstream_introspection_header,omitempty"`
 	// The upstream introspection JWT header.
-	UpstreamIntrospectionJwtHeader optionalnullable.OptionalNullable[string] `json:"upstream_introspection_jwt_header,omitempty"`
+	UpstreamIntrospectionJwtHeader *string `json:"upstream_introspection_jwt_header,omitempty"`
 	// The upstream refresh token header.
-	UpstreamRefreshTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_refresh_token_header,omitempty"`
+	UpstreamRefreshTokenHeader *string `json:"upstream_refresh_token_header,omitempty"`
 	// The upstream session id header.
-	UpstreamSessionIDHeader optionalnullable.OptionalNullable[string] `json:"upstream_session_id_header,omitempty"`
+	UpstreamSessionIDHeader *string `json:"upstream_session_id_header,omitempty"`
 	// The upstream user info header.
-	UpstreamUserInfoHeader optionalnullable.OptionalNullable[string] `json:"upstream_user_info_header,omitempty"`
+	UpstreamUserInfoHeader *string `json:"upstream_user_info_header,omitempty"`
 	// The upstream user info JWT header (in case the user info returns a JWT response).
-	UpstreamUserInfoJwtHeader optionalnullable.OptionalNullable[string] `json:"upstream_user_info_jwt_header,omitempty"`
+	UpstreamUserInfoJwtHeader *string `json:"upstream_user_info_jwt_header,omitempty"`
 	// The value of `Accept` header for user info requests: - `application/json`: user info response as JSON - `application/jwt`: user info response as JWT (from the obsolete IETF draft document).
-	UserinfoAccept optionalnullable.OptionalNullable[UserinfoAccept] `json:"userinfo_accept,omitempty"`
+	UserinfoAccept *UserinfoAccept `default:"application/json" json:"userinfo_accept"`
 	// The user info endpoint. If set it overrides the value in `userinfo_endpoint` returned by the discovery endpoint.
-	UserinfoEndpoint optionalnullable.OptionalNullable[string] `json:"userinfo_endpoint,omitempty"`
+	UserinfoEndpoint *string `json:"userinfo_endpoint,omitempty"`
 	// Extra headers passed from the client to the user info endpoint.
-	UserinfoHeadersClient optionalnullable.OptionalNullable[[]string] `json:"userinfo_headers_client,omitempty"`
+	UserinfoHeadersClient []string `json:"userinfo_headers_client,omitempty"`
 	// Extra header names passed to the user info endpoint.
-	UserinfoHeadersNames optionalnullable.OptionalNullable[[]string] `json:"userinfo_headers_names,omitempty"`
+	UserinfoHeadersNames []string `json:"userinfo_headers_names,omitempty"`
 	// Extra header values passed to the user info endpoint.
-	UserinfoHeadersValues optionalnullable.OptionalNullable[[]string] `json:"userinfo_headers_values,omitempty"`
+	UserinfoHeadersValues []string `json:"userinfo_headers_values,omitempty"`
 	// Extra query arguments passed from the client to the user info endpoint.
-	UserinfoQueryArgsClient optionalnullable.OptionalNullable[[]string] `json:"userinfo_query_args_client,omitempty"`
+	UserinfoQueryArgsClient []string `json:"userinfo_query_args_client,omitempty"`
 	// Extra query argument names passed to the user info endpoint.
-	UserinfoQueryArgsNames optionalnullable.OptionalNullable[[]string] `json:"userinfo_query_args_names,omitempty"`
+	UserinfoQueryArgsNames []string `json:"userinfo_query_args_names,omitempty"`
 	// Extra query argument values passed to the user info endpoint.
-	UserinfoQueryArgsValues optionalnullable.OptionalNullable[[]string] `json:"userinfo_query_args_values,omitempty"`
+	UserinfoQueryArgsValues []string `json:"userinfo_query_args_values,omitempty"`
 	// If the plugin uses a pseudo issuer. When set to true, the plugin will not discover the configuration from the issuer URL specified with `config.issuer`.
-	UsingPseudoIssuer optionalnullable.OptionalNullable[bool] `json:"using_pseudo_issuer,omitempty"`
+	UsingPseudoIssuer *bool `default:"false" json:"using_pseudo_issuer"`
 	// Verify tokens for standard claims.
-	VerifyClaims optionalnullable.OptionalNullable[bool] `json:"verify_claims,omitempty"`
+	VerifyClaims *bool `default:"true" json:"verify_claims"`
 	// Verify nonce on authorization code flow.
-	VerifyNonce optionalnullable.OptionalNullable[bool] `json:"verify_nonce,omitempty"`
+	VerifyNonce *bool `default:"true" json:"verify_nonce"`
 	// Verify plugin configuration against discovery.
-	VerifyParameters optionalnullable.OptionalNullable[bool] `json:"verify_parameters,omitempty"`
+	VerifyParameters *bool `default:"false" json:"verify_parameters"`
 	// Verify the cryptographic signature of tokens. Disabling this skips verification for every token source, including tokens presented directly by clients (bearer); this is insecure for that path. To trust only tokens fetched from the identity provider for specific grants, use `ignore_signature` instead, which never affects bearer tokens.
-	VerifySignature optionalnullable.OptionalNullable[bool] `json:"verify_signature,omitempty"`
+	VerifySignature *bool `default:"true" json:"verify_signature"`
 	// Claim path used to derive virtual credentials when consumer mapping is not used.
-	CredentialClaim      optionalnullable.OptionalNullable[[]string] `json:"credential_claim,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	CredentialClaim []string `json:"credential_claim,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigOutput) MarshalJSON() ([]byte, error) {
@@ -3430,219 +3207,168 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAnonymous() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Anonymous.Get()
-	return value
+	return a.Anonymous
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAudience() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Audience.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.Audience
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAudienceClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AudienceClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AudienceClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAudienceRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AudienceRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AudienceRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthMethods() []AuthMethods {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthMethods.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthMethods
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthenticatedGroupsClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthenticatedGroupsClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthenticatedGroupsClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationCookieDomain() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieDomain.Get()
-	return value
+	return a.AuthorizationCookieDomain
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationCookieHTTPOnly() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieHTTPOnly.Get()
-	return value
+	return a.AuthorizationCookieHTTPOnly
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieName.Get()
-	return value
+	return a.AuthorizationCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationCookiePath() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookiePath.Get()
-	return value
+	return a.AuthorizationCookiePath
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationCookieSameSite() *AuthorizationCookieSameSite {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieSameSite.Get()
-	return value
+	return a.AuthorizationCookieSameSite
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationCookieSecure() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieSecure.Get()
-	return value
+	return a.AuthorizationCookieSecure
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationEndpoint.Get()
-	return value
+	return a.AuthorizationEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationQueryArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationQueryArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthorizationQueryArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationQueryArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationQueryArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthorizationQueryArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationQueryArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationQueryArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthorizationQueryArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAuthorizationRollingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationRollingTimeout.Get()
-	return value
+	return a.AuthorizationRollingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetBearerTokenCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.BearerTokenCookieName.Get()
-	return value
+	return a.BearerTokenCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetBearerTokenHeaderName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.BearerTokenHeaderName.Get()
-	return value
+	return a.BearerTokenHeaderName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetBearerTokenParamType() []BearerTokenParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.BearerTokenParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.BearerTokenParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetByUsernameIgnoreCase() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ByUsernameIgnoreCase.Get()
-	return value
+	return a.ByUsernameIgnoreCase
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheIntrospection() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheIntrospection.Get()
-	return value
+	return a.CacheIntrospection
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTokenExchange() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTokenExchange.Get()
-	return value
+	return a.CacheTokenExchange
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTokens() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTokens.Get()
-	return value
+	return a.CacheTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTokensSalt() string {
@@ -3656,658 +3382,497 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTTL() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTL.Get()
-	return value
+	return a.CacheTTL
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTTLMax() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLMax.Get()
-	return value
+	return a.CacheTTLMax
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTTLMin() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLMin.Get()
-	return value
+	return a.CacheTTLMin
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTTLNeg() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLNeg.Get()
-	return value
+	return a.CacheTTLNeg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheTTLResurrect() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLResurrect.Get()
-	return value
+	return a.CacheTTLResurrect
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCacheUserInfo() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheUserInfo.Get()
-	return value
+	return a.CacheUserInfo
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClaimsForbidden() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClaimsForbidden.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClaimsForbidden
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClientAlg() []ClientAlg {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientAlg.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientAlg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClientArg() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientArg.Get()
-	return value
+	return a.ClientArg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClientAuth() []ClientAuth {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientAuth.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientAuth
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClientCredentialsParamType() []ClientCredentialsParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientCredentialsParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientCredentialsParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClientID() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientID.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClientJwk() []ClientJwk {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientJwk.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientJwk
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClusterCacheRedis() *ClusterCacheRedis {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClusterCacheRedis.Get()
-	return value
+	return a.ClusterCacheRedis
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetClusterCacheStrategy() *ClusterCacheStrategy {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClusterCacheStrategy.Get()
-	return value
+	return a.ClusterCacheStrategy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetConsumerBy() []ConsumerBy {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerBy.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ConsumerBy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetConsumerClaims() [][]string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ConsumerClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetConsumerGroupsClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerGroupsClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ConsumerGroupsClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetConsumerGroupsOptional() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerGroupsOptional.Get()
-	return value
+	return a.ConsumerGroupsOptional
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetConsumerOptional() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerOptional.Get()
-	return value
+	return a.ConsumerOptional
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCredentialClaims() [][]string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CredentialClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.CredentialClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDisableSession() []DisableSession {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DisableSession.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DisableSession
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDiscoveryHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DiscoveryHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DiscoveryHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDiscoveryHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DiscoveryHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DiscoveryHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDisplayErrors() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DisplayErrors.Get()
-	return value
+	return a.DisplayErrors
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDomains() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Domains.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.Domains
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamAccessTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamAccessTokenHeader.Get()
-	return value
+	return a.DownstreamAccessTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamAccessTokenJwkHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamAccessTokenJwkHeader.Get()
-	return value
+	return a.DownstreamAccessTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamHeaders() []DownstreamHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DownstreamHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamHeadersClaims() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamHeadersClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DownstreamHeadersClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DownstreamHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamIDTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIDTokenHeader.Get()
-	return value
+	return a.DownstreamIDTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamIDTokenJwkHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIDTokenJwkHeader.Get()
-	return value
+	return a.DownstreamIDTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamIntrospectionHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIntrospectionHeader.Get()
-	return value
+	return a.DownstreamIntrospectionHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamIntrospectionJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIntrospectionJwtHeader.Get()
-	return value
+	return a.DownstreamIntrospectionJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamRefreshTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamRefreshTokenHeader.Get()
-	return value
+	return a.DownstreamRefreshTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamSessionIDHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamSessionIDHeader.Get()
-	return value
+	return a.DownstreamSessionIDHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamUserInfoHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamUserInfoHeader.Get()
-	return value
+	return a.DownstreamUserInfoHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDownstreamUserInfoJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamUserInfoJwtHeader.Get()
-	return value
+	return a.DownstreamUserInfoJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDpopProofLifetime() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DpopProofLifetime.Get()
-	return value
+	return a.DpopProofLifetime
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDpopUseNonce() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DpopUseNonce.Get()
-	return value
+	return a.DpopUseNonce
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetEnableHsSignatures() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.EnableHsSignatures.Get()
-	return value
+	return a.EnableHsSignatures
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetEndSessionEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.EndSessionEndpoint.Get()
-	return value
+	return a.EndSessionEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetExposeErrorCode() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ExposeErrorCode.Get()
-	return value
+	return a.ExposeErrorCode
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetExtraJwksUris() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ExtraJwksUris.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ExtraJwksUris
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetForbiddenDestroySession() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ForbiddenDestroySession.Get()
-	return value
+	return a.ForbiddenDestroySession
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetForbiddenErrorMessage() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ForbiddenErrorMessage.Get()
-	return value
+	return a.ForbiddenErrorMessage
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetForbiddenRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ForbiddenRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ForbiddenRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetGroupsClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.GroupsClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.GroupsClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetGroupsRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.GroupsRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.GroupsRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetHideCredentials() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HideCredentials.Get()
-	return value
+	return a.HideCredentials
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetHTTPProxy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPProxy.Get()
-	return value
+	return a.HTTPProxy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetHTTPVersion() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPVersion.Get()
-	return value
+	return a.HTTPVersion
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetHTTPSProxy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPSProxy.Get()
-	return value
+	return a.HTTPSProxy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIDTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IDTokenParamName.Get()
-	return value
+	return a.IDTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIDTokenParamType() []IDTokenParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IDTokenParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IDTokenParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIgnoreSignature() []IgnoreSignature {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IgnoreSignature.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IgnoreSignature
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectJwtTokens() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectJwtTokens.Get()
-	return value
+	return a.IntrospectJwtTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionAccept() *IntrospectionAccept {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionAccept.Get()
-	return value
+	return a.IntrospectionAccept
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionCheckActive() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionCheckActive.Get()
-	return value
+	return a.IntrospectionCheckActive
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionEndpoint.Get()
-	return value
+	return a.IntrospectionEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionEndpointAuthMethod() *IntrospectionEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionEndpointAuthMethod.Get()
-	return value
+	return a.IntrospectionEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionHeadersClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHeadersClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionHeadersClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionHint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHint.Get()
-	return value
+	return a.IntrospectionHint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionPostArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionPostArgsClientHeaders() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsClientHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsClientHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionPostArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionPostArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIntrospectionTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionTokenParamName.Get()
-	return value
+	return a.IntrospectionTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIssuer() string {
@@ -4321,940 +3886,749 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetIssuersAllowed() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IssuersAllowed.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IssuersAllowed
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetJwksEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.JwksEndpoint.Get()
-	return value
+	return a.JwksEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetJwtSessionClaim() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.JwtSessionClaim.Get()
-	return value
+	return a.JwtSessionClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetJwtSessionCookie() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.JwtSessionCookie.Get()
-	return value
+	return a.JwtSessionCookie
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetKeepalive() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Keepalive.Get()
-	return value
+	return a.Keepalive
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLeeway() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Leeway.Get()
-	return value
+	return a.Leeway
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLoginAction() *LoginAction {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginAction.Get()
-	return value
+	return a.LoginAction
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLoginMethods() []LoginMethods {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginMethods.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LoginMethods
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLoginRedirectMode() *LoginRedirectMode {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginRedirectMode.Get()
-	return value
+	return a.LoginRedirectMode
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLoginRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LoginRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLoginTokens() []LoginTokens {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginTokens.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LoginTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutMethods() []LogoutMethods {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutMethods.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LogoutMethods
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutPostArg() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutPostArg.Get()
-	return value
+	return a.LogoutPostArg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutQueryArg() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutQueryArg.Get()
-	return value
+	return a.LogoutQueryArg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LogoutRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutRevoke() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRevoke.Get()
-	return value
+	return a.LogoutRevoke
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutRevokeAccessToken() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRevokeAccessToken.Get()
-	return value
+	return a.LogoutRevokeAccessToken
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutRevokeRefreshToken() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRevokeRefreshToken.Get()
-	return value
+	return a.LogoutRevokeRefreshToken
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetLogoutURISuffix() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutURISuffix.Get()
-	return value
+	return a.LogoutURISuffix
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetMaxAge() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MaxAge.Get()
-	return value
+	return a.MaxAge
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetMtlsIntrospectionEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MtlsIntrospectionEndpoint.Get()
-	return value
+	return a.MtlsIntrospectionEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetMtlsRevocationEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MtlsRevocationEndpoint.Get()
-	return value
+	return a.MtlsRevocationEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetMtlsTokenEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MtlsTokenEndpoint.Get()
-	return value
+	return a.MtlsTokenEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetNoProxy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.NoProxy.Get()
-	return value
+	return a.NoProxy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetPasswordParamType() []PasswordParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PasswordParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.PasswordParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetPreserveQueryArgs() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PreserveQueryArgs.Get()
-	return value
+	return a.PreserveQueryArgs
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetPrincipals() *AIGWOpenIDConnectGeneratedConfigPrincipals {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Principals.Get()
-	return value
+	return a.Principals
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetProofOfPossessionAuthMethodsValidation() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProofOfPossessionAuthMethodsValidation.Get()
-	return value
+	return a.ProofOfPossessionAuthMethodsValidation
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetProofOfPossessionDpop() *ProofOfPossessionDpop {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProofOfPossessionDpop.Get()
-	return value
+	return a.ProofOfPossessionDpop
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetProofOfPossessionMtls() *ProofOfPossessionMtls {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProofOfPossessionMtls.Get()
-	return value
+	return a.ProofOfPossessionMtls
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetProtectedResourceMetadata() *ProtectedResourceMetadata {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProtectedResourceMetadata.Get()
-	return value
+	return a.ProtectedResourceMetadata
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetPushedAuthorizationRequestEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PushedAuthorizationRequestEndpoint.Get()
-	return value
+	return a.PushedAuthorizationRequestEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetPushedAuthorizationRequestEndpointAuthMethod() *PushedAuthorizationRequestEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PushedAuthorizationRequestEndpointAuthMethod.Get()
-	return value
+	return a.PushedAuthorizationRequestEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRedis() *Redis {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Redis.Get()
-	return value
+	return a.Redis
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRediscoveryLifetime() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RediscoveryLifetime.Get()
-	return value
+	return a.RediscoveryLifetime
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRefreshTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RefreshTokenParamName.Get()
-	return value
+	return a.RefreshTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRefreshTokenParamType() []RefreshTokenParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RefreshTokenParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RefreshTokenParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRefreshTokens() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RefreshTokens.Get()
-	return value
+	return a.RefreshTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRequireProofKeyForCodeExchange() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RequireProofKeyForCodeExchange.Get()
-	return value
+	return a.RequireProofKeyForCodeExchange
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRequirePushedAuthorizationRequests() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RequirePushedAuthorizationRequests.Get()
-	return value
+	return a.RequirePushedAuthorizationRequests
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRequireSignedRequestObject() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RequireSignedRequestObject.Get()
-	return value
+	return a.RequireSignedRequestObject
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetResolveDistributedClaims() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ResolveDistributedClaims.Get()
-	return value
+	return a.ResolveDistributedClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetResponseMode() *ResponseMode {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ResponseMode.Get()
-	return value
+	return a.ResponseMode
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetResponseType() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ResponseType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ResponseType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetReverify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Reverify.Get()
-	return value
+	return a.Reverify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRevocationEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RevocationEndpoint.Get()
-	return value
+	return a.RevocationEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRevocationEndpointAuthMethod() *RevocationEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RevocationEndpointAuthMethod.Get()
-	return value
+	return a.RevocationEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRevocationTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RevocationTokenParamName.Get()
-	return value
+	return a.RevocationTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRolesClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RolesClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RolesClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRolesRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RolesRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RolesRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetRunOnPreflight() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RunOnPreflight.Get()
-	return value
+	return a.RunOnPreflight
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetScopes() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Scopes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.Scopes
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetScopesClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ScopesClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ScopesClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetScopesRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ScopesRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ScopesRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSearchUserInfo() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SearchUserInfo.Get()
-	return value
+	return a.SearchUserInfo
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionAbsoluteTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionAbsoluteTimeout.Get()
-	return value
+	return a.SessionAbsoluteTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionAudience() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionAudience.Get()
-	return value
+	return a.SessionAudience
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionBind() []SessionBind {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionBind.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.SessionBind
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionCookieDomain() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieDomain.Get()
-	return value
+	return a.SessionCookieDomain
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionCookieHTTPOnly() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieHTTPOnly.Get()
-	return value
+	return a.SessionCookieHTTPOnly
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieName.Get()
-	return value
+	return a.SessionCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionCookiePath() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookiePath.Get()
-	return value
+	return a.SessionCookiePath
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionCookieSameSite() *SessionCookieSameSite {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieSameSite.Get()
-	return value
+	return a.SessionCookieSameSite
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionCookieSecure() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieSecure.Get()
-	return value
+	return a.SessionCookieSecure
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionEnforceSameSubject() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionEnforceSameSubject.Get()
-	return value
+	return a.SessionEnforceSameSubject
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionHashStorageKey() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionHashStorageKey.Get()
-	return value
+	return a.SessionHashStorageKey
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionHashSubject() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionHashSubject.Get()
-	return value
+	return a.SessionHashSubject
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionIdlingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionIdlingTimeout.Get()
-	return value
+	return a.SessionIdlingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionMemcachedHost() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedHost.Get()
-	return value
+	return a.SessionMemcachedHost
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionMemcachedPort() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedPort.Get()
-	return value
+	return a.SessionMemcachedPort
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionMemcachedPrefix() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedPrefix.Get()
-	return value
+	return a.SessionMemcachedPrefix
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionMemcachedSocket() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedSocket.Get()
-	return value
+	return a.SessionMemcachedSocket
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionMemcachedSsl() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedSsl.Get()
-	return value
+	return a.SessionMemcachedSsl
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionMemcachedSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedSslVerify.Get()
-	return value
+	return a.SessionMemcachedSslVerify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionRemember() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRemember.Get()
-	return value
+	return a.SessionRemember
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionRememberAbsoluteTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRememberAbsoluteTimeout.Get()
-	return value
+	return a.SessionRememberAbsoluteTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionRememberCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRememberCookieName.Get()
-	return value
+	return a.SessionRememberCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionRememberRollingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRememberRollingTimeout.Get()
-	return value
+	return a.SessionRememberRollingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionRequestHeaders() []SessionRequestHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRequestHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.SessionRequestHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionResponseHeaders() []SessionResponseHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionResponseHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.SessionResponseHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionRollingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRollingTimeout.Get()
-	return value
+	return a.SessionRollingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionSecret() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionSecret.Get()
-	return value
+	return a.SessionSecret
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionStorage() *SessionStorage {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionStorage.Get()
-	return value
+	return a.SessionStorage
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSessionStoreMetadata() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionStoreMetadata.Get()
-	return value
+	return a.SessionStoreMetadata
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SslVerify.Get()
-	return value
+	return a.SslVerify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Timeout.Get()
-	return value
+	return a.Timeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTLSClientAuthCertID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TLSClientAuthCertID.Get()
-	return value
+	return a.TLSClientAuthCertID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTLSClientAuthSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TLSClientAuthSslVerify.Get()
-	return value
+	return a.TLSClientAuthSslVerify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenCacheKeyIncludeScope() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenCacheKeyIncludeScope.Get()
-	return value
+	return a.TokenCacheKeyIncludeScope
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenEndpoint.Get()
-	return value
+	return a.TokenEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenEndpointAuthMethod() *AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenEndpointAuthMethod.Get()
-	return value
+	return a.TokenEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenExchange() *TokenExchange {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenExchange.Get()
-	return value
+	return a.TokenExchange
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenExchangeEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenExchangeEndpoint.Get()
-	return value
+	return a.TokenExchangeEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenHeadersClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenHeadersGrants() []TokenHeadersGrants {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersGrants.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersGrants
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenHeadersPrefix() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersPrefix.Get()
-	return value
+	return a.TokenHeadersPrefix
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenHeadersReplay() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersReplay.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersReplay
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenPostArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenPostArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenPostArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenPostArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenPostArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenPostArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetTokenPostArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenPostArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenPostArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUnauthorizedDestroySession() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnauthorizedDestroySession.Get()
-	return value
+	return a.UnauthorizedDestroySession
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUnauthorizedErrorMessage() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnauthorizedErrorMessage.Get()
-	return value
+	return a.UnauthorizedErrorMessage
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUnauthorizedRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnauthorizedRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UnauthorizedRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUnexpectedRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnexpectedRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UnexpectedRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamAccessTokenHeader() *string {
@@ -5269,716 +4643,659 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamAccessTokenJwkHeader
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamAccessTokenJwkHeader.Get()
-	return value
+	return a.UpstreamAccessTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamHeaders() []UpstreamHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UpstreamHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamHeadersClaims() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamHeadersClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UpstreamHeadersClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UpstreamHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamIDTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIDTokenHeader.Get()
-	return value
+	return a.UpstreamIDTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamIDTokenJwkHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIDTokenJwkHeader.Get()
-	return value
+	return a.UpstreamIDTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamIntrospectionHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIntrospectionHeader.Get()
-	return value
+	return a.UpstreamIntrospectionHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamIntrospectionJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIntrospectionJwtHeader.Get()
-	return value
+	return a.UpstreamIntrospectionJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamRefreshTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamRefreshTokenHeader.Get()
-	return value
+	return a.UpstreamRefreshTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamSessionIDHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamSessionIDHeader.Get()
-	return value
+	return a.UpstreamSessionIDHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamUserInfoHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamUserInfoHeader.Get()
-	return value
+	return a.UpstreamUserInfoHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUpstreamUserInfoJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamUserInfoJwtHeader.Get()
-	return value
+	return a.UpstreamUserInfoJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoAccept() *UserinfoAccept {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoAccept.Get()
-	return value
+	return a.UserinfoAccept
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoEndpoint.Get()
-	return value
+	return a.UserinfoEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoHeadersClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoHeadersClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoHeadersClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoQueryArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoQueryArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoQueryArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoQueryArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoQueryArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoQueryArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUserinfoQueryArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoQueryArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoQueryArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetUsingPseudoIssuer() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UsingPseudoIssuer.Get()
-	return value
+	return a.UsingPseudoIssuer
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetVerifyClaims() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifyClaims.Get()
-	return value
+	return a.VerifyClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetVerifyNonce() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifyNonce.Get()
-	return value
+	return a.VerifyNonce
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetVerifyParameters() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifyParameters.Get()
-	return value
+	return a.VerifyParameters
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetVerifySignature() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifySignature.Get()
-	return value
+	return a.VerifySignature
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCredentialClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CredentialClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.CredentialClaim
 }
 
 type AIGWOpenIDConnectGeneratedConfig struct {
 	// An optional string (consumer UUID or username) value that functions as an “anonymous” consumer if authentication fails. If empty (default null), requests that fail authentication will return a `4xx` HTTP status code. This value must refer to the consumer `id` or `username` attribute, and **not** its `custom_id`.
-	Anonymous optionalnullable.OptionalNullable[string] `json:"anonymous,omitempty"`
+	Anonymous *string `json:"anonymous,omitempty"`
 	// The audience passed to the authorization endpoint.
-	Audience optionalnullable.OptionalNullable[[]string] `json:"audience,omitempty"`
+	Audience []string `json:"audience,omitempty"`
 	// The claim that contains the audience. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	AudienceClaim optionalnullable.OptionalNullable[[]string] `json:"audience_claim,omitempty"`
+	AudienceClaim []string `json:"audience_claim,omitempty"`
 	// The audiences (`audience_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	AudienceRequired optionalnullable.OptionalNullable[[]string] `json:"audience_required,omitempty"`
+	AudienceRequired []string `json:"audience_required,omitempty"`
 	// Types of credentials/grants to enable.
-	AuthMethods optionalnullable.OptionalNullable[[]AuthMethods] `json:"auth_methods,omitempty"`
+	AuthMethods []AuthMethods `json:"auth_methods,omitempty"`
 	// The claim that contains authenticated groups. This setting can be used together with ACL plugin, but it also enables IdP managed groups with other applications and integrations. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	AuthenticatedGroupsClaim optionalnullable.OptionalNullable[[]string] `json:"authenticated_groups_claim,omitempty"`
+	AuthenticatedGroupsClaim []string `json:"authenticated_groups_claim,omitempty"`
 	// The authorization cookie Domain flag.
-	AuthorizationCookieDomain optionalnullable.OptionalNullable[string] `json:"authorization_cookie_domain,omitempty"`
+	AuthorizationCookieDomain *string `json:"authorization_cookie_domain,omitempty"`
 	// Forbids JavaScript from accessing the cookie, for example, through the `Document.cookie` property.
-	AuthorizationCookieHTTPOnly optionalnullable.OptionalNullable[bool] `json:"authorization_cookie_http_only,omitempty"`
+	AuthorizationCookieHTTPOnly *bool `default:"true" json:"authorization_cookie_http_only"`
 	// The authorization cookie name.
-	AuthorizationCookieName optionalnullable.OptionalNullable[string] `json:"authorization_cookie_name,omitempty"`
+	AuthorizationCookieName *string `default:"authorization" json:"authorization_cookie_name"`
 	// The authorization cookie Path flag.
-	AuthorizationCookiePath optionalnullable.OptionalNullable[string] `json:"authorization_cookie_path,omitempty"`
+	AuthorizationCookiePath *string `default:"/" json:"authorization_cookie_path"`
 	// Controls whether a cookie is sent with cross-origin requests, providing some protection against cross-site request forgery attacks.
-	AuthorizationCookieSameSite optionalnullable.OptionalNullable[AuthorizationCookieSameSite] `json:"authorization_cookie_same_site,omitempty"`
+	AuthorizationCookieSameSite *AuthorizationCookieSameSite `default:"Default" json:"authorization_cookie_same_site"`
 	// Cookie is only sent to the server when a request is made with the https: scheme (except on localhost), and therefore is more resistant to man-in-the-middle attacks.
-	AuthorizationCookieSecure optionalnullable.OptionalNullable[bool] `json:"authorization_cookie_secure,omitempty"`
+	AuthorizationCookieSecure *bool `json:"authorization_cookie_secure,omitempty"`
 	// The authorization endpoint. If set it overrides the value in `authorization_endpoint` returned by the discovery endpoint.
-	AuthorizationEndpoint optionalnullable.OptionalNullable[string] `json:"authorization_endpoint,omitempty"`
+	AuthorizationEndpoint *string `json:"authorization_endpoint,omitempty"`
 	// Extra query arguments passed from the client to the authorization endpoint.
-	AuthorizationQueryArgsClient optionalnullable.OptionalNullable[[]string] `json:"authorization_query_args_client,omitempty"`
+	AuthorizationQueryArgsClient []string `json:"authorization_query_args_client,omitempty"`
 	// Extra query argument names passed to the authorization endpoint.
-	AuthorizationQueryArgsNames optionalnullable.OptionalNullable[[]string] `json:"authorization_query_args_names,omitempty"`
+	AuthorizationQueryArgsNames []string `json:"authorization_query_args_names,omitempty"`
 	// Extra query argument values passed to the authorization endpoint.
-	AuthorizationQueryArgsValues optionalnullable.OptionalNullable[[]string] `json:"authorization_query_args_values,omitempty"`
+	AuthorizationQueryArgsValues []string `json:"authorization_query_args_values,omitempty"`
 	// Specifies how long the session used for the authorization code flow can be used in seconds until it needs to be renewed. 0 disables the checks and rolling.
-	AuthorizationRollingTimeout optionalnullable.OptionalNullable[float64] `json:"authorization_rolling_timeout,omitempty"`
+	AuthorizationRollingTimeout *float64 `default:"600" json:"authorization_rolling_timeout"`
 	// The name of the cookie in which the bearer token is passed.
-	BearerTokenCookieName optionalnullable.OptionalNullable[string] `json:"bearer_token_cookie_name,omitempty"`
+	BearerTokenCookieName *string `json:"bearer_token_cookie_name,omitempty"`
 	// The name of the HTTP header from which the bearer token is retrieved. The default value is `authorization:bearer`, which reads the token from the `Authorization: Bearer <token>` header. Accepts plain header names such as `x-my-token` as well as Kong's special `authorization:bearer` notation. The `access-token` and `x-access-token` headers are also checked as a fallback for backward compatibility regardless of this setting.
 	//
 	// **Requires a minimum runtime version of `2.1`**.
-	BearerTokenHeaderName optionalnullable.OptionalNullable[string] `json:"bearer_token_header_name,omitempty"`
+	BearerTokenHeaderName *string `default:"authorization:bearer" json:"bearer_token_header_name"`
 	// Where to look for the bearer token: - `header`: search the `Authorization`, `access-token`, and `x-access-token` HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body - `cookie`: search the HTTP request cookies specified with `config.bearer_token_cookie_name`.
-	BearerTokenParamType optionalnullable.OptionalNullable[[]BearerTokenParamType] `json:"bearer_token_param_type,omitempty"`
+	BearerTokenParamType []BearerTokenParamType `json:"bearer_token_param_type,omitempty"`
 	// If `consumer_by` is set to `username`, specify whether `username` can match consumers case-insensitively.
-	ByUsernameIgnoreCase optionalnullable.OptionalNullable[bool] `json:"by_username_ignore_case,omitempty"`
+	ByUsernameIgnoreCase *bool `default:"false" json:"by_username_ignore_case"`
 	// Cache the introspection endpoint requests.
-	CacheIntrospection optionalnullable.OptionalNullable[bool] `json:"cache_introspection,omitempty"`
+	CacheIntrospection *bool `default:"true" json:"cache_introspection"`
 	// Cache the legacy token exchange endpoint requests.
-	CacheTokenExchange optionalnullable.OptionalNullable[bool] `json:"cache_token_exchange,omitempty"`
+	CacheTokenExchange *bool `default:"true" json:"cache_token_exchange"`
 	// Cache the token endpoint requests.
-	CacheTokens optionalnullable.OptionalNullable[bool] `json:"cache_tokens,omitempty"`
+	CacheTokens *bool `default:"true" json:"cache_tokens"`
 	// Salt used for generating the cache key that is used for caching the token endpoint requests.
 	CacheTokensSalt string `json:"cache_tokens_salt"`
 	// The default cache ttl in seconds that is used in case the cached object does not specify the expiry.
-	CacheTTL optionalnullable.OptionalNullable[float64] `json:"cache_ttl,omitempty"`
+	CacheTTL *float64 `default:"3600" json:"cache_ttl"`
 	// The maximum cache ttl in seconds (enforced).
-	CacheTTLMax optionalnullable.OptionalNullable[float64] `json:"cache_ttl_max,omitempty"`
+	CacheTTLMax *float64 `json:"cache_ttl_max,omitempty"`
 	// The minimum cache ttl in seconds (enforced).
-	CacheTTLMin optionalnullable.OptionalNullable[float64] `json:"cache_ttl_min,omitempty"`
+	CacheTTLMin *float64 `json:"cache_ttl_min,omitempty"`
 	// The negative cache ttl in seconds.
-	CacheTTLNeg optionalnullable.OptionalNullable[float64] `json:"cache_ttl_neg,omitempty"`
+	CacheTTLNeg *float64 `json:"cache_ttl_neg,omitempty"`
 	// The resurrection ttl in seconds.
-	CacheTTLResurrect optionalnullable.OptionalNullable[float64] `json:"cache_ttl_resurrect,omitempty"`
+	CacheTTLResurrect *float64 `json:"cache_ttl_resurrect,omitempty"`
 	// Cache the user info requests.
-	CacheUserInfo optionalnullable.OptionalNullable[bool] `json:"cache_user_info,omitempty"`
+	CacheUserInfo *bool `default:"true" json:"cache_user_info"`
 	// If given, these claims are forbidden in the token payload.
-	ClaimsForbidden optionalnullable.OptionalNullable[[]string] `json:"claims_forbidden,omitempty"`
+	ClaimsForbidden []string `json:"claims_forbidden,omitempty"`
 	// The algorithm to use for client_secret_jwt (only HS***) or private_key_jwt authentication.
-	ClientAlg optionalnullable.OptionalNullable[[]ClientAlg] `json:"client_alg,omitempty"`
+	ClientAlg []ClientAlg `json:"client_alg,omitempty"`
 	// The client to use for this request (the selection is made with a request parameter with the same name).
-	ClientArg optionalnullable.OptionalNullable[string] `json:"client_arg,omitempty"`
+	ClientArg *string `default:"client_id" json:"client_arg"`
 	// The default OpenID Connect client authentication method is 'client_secret_basic' (using 'Authorization: Basic' header), 'client_secret_post' (credentials in body), 'client_secret_jwt' (signed client assertion in body), 'private_key_jwt' (private key-signed assertion), 'tls_client_auth' (client certificate), 'self_signed_tls_client_auth' (self-signed client certificate), and 'none' (no authentication).
-	ClientAuth optionalnullable.OptionalNullable[[]ClientAuth] `json:"client_auth,omitempty"`
+	ClientAuth []ClientAuth `json:"client_auth,omitempty"`
 	// Where to look for the client credentials: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search from the HTTP request body.
-	ClientCredentialsParamType optionalnullable.OptionalNullable[[]ClientCredentialsParamType] `json:"client_credentials_param_type,omitempty"`
+	ClientCredentialsParamType []ClientCredentialsParamType `json:"client_credentials_param_type,omitempty"`
 	// The client id(s) that the plugin uses when it calls authenticated endpoints on the identity provider.
-	ClientID optionalnullable.OptionalNullable[[]string] `json:"client_id,omitempty"`
+	ClientID []string `json:"client_id,omitempty"`
 	// The JWK used for the private_key_jwt authentication.
-	ClientJwk optionalnullable.OptionalNullable[[]ClientJwk] `json:"client_jwk,omitempty"`
+	ClientJwk []ClientJwk `json:"client_jwk,omitempty"`
 	// The client secret.
-	ClientSecret      optionalnullable.OptionalNullable[[]string]          `json:"client_secret,omitempty"`
-	ClusterCacheRedis optionalnullable.OptionalNullable[ClusterCacheRedis] `json:"cluster_cache_redis,omitempty"`
+	ClientSecret      []string           `json:"client_secret,omitempty"`
+	ClusterCacheRedis *ClusterCacheRedis `json:"cluster_cache_redis,omitempty"`
 	// The strategy to use for the cluster cache. If set, the plugin will share cache with nodes configured with the same strategy backend. Currentlly only introspection cache is shared.
-	ClusterCacheStrategy optionalnullable.OptionalNullable[ClusterCacheStrategy] `json:"cluster_cache_strategy,omitempty"`
+	ClusterCacheStrategy *ClusterCacheStrategy `default:"off" json:"cluster_cache_strategy"`
 	// Consumer fields used for mapping: - `id`: try to find the matching Consumer by `id` - `username`: try to find the matching Consumer by `username` - `custom_id`: try to find the matching Consumer by `custom_id`.
-	ConsumerBy optionalnullable.OptionalNullable[[]ConsumerBy] `json:"consumer_by,omitempty"`
+	ConsumerBy []ConsumerBy `json:"consumer_by,omitempty"`
 	// The claims used for consumer mapping. Each entry represents a claim path inside the token payload. The paths are evaluated in order, and the first matching claim is used.
-	ConsumerClaims optionalnullable.OptionalNullable[[][]string] `json:"consumer_claims,omitempty"`
+	ConsumerClaims [][]string `json:"consumer_claims,omitempty"`
 	// The claim used for consumer groups mapping. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	ConsumerGroupsClaim optionalnullable.OptionalNullable[[]string] `json:"consumer_groups_claim,omitempty"`
+	ConsumerGroupsClaim []string `json:"consumer_groups_claim,omitempty"`
 	// Do not terminate the request if consumer groups mapping fails.
-	ConsumerGroupsOptional optionalnullable.OptionalNullable[bool] `json:"consumer_groups_optional,omitempty"`
+	ConsumerGroupsOptional *bool `default:"false" json:"consumer_groups_optional"`
 	// Do not terminate the request if consumer mapping fails.
-	ConsumerOptional optionalnullable.OptionalNullable[bool] `json:"consumer_optional,omitempty"`
+	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
 	// The claims used to derive a virtual credential, for example to be consumed by the rate-limiting plugin, when consumer mapping is not used. Each entry represents a claim path inside the token payload. The paths are evaluated in order, and the first matching claim is used.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	CredentialClaims optionalnullable.OptionalNullable[[][]string] `json:"credential_claims,omitempty"`
+	CredentialClaims [][]string `json:"credential_claims,omitempty"`
 	// Disable issuing the session cookie with the specified grants.
-	DisableSession optionalnullable.OptionalNullable[[]DisableSession] `json:"disable_session,omitempty"`
+	DisableSession []DisableSession `json:"disable_session,omitempty"`
 	// Extra header names passed to the discovery endpoint.
-	DiscoveryHeadersNames optionalnullable.OptionalNullable[[]string] `json:"discovery_headers_names,omitempty"`
+	DiscoveryHeadersNames []string `json:"discovery_headers_names,omitempty"`
 	// Extra header values passed to the discovery endpoint.
-	DiscoveryHeadersValues optionalnullable.OptionalNullable[[]string] `json:"discovery_headers_values,omitempty"`
+	DiscoveryHeadersValues []string `json:"discovery_headers_values,omitempty"`
 	// Display errors on failure responses.
-	DisplayErrors optionalnullable.OptionalNullable[bool] `json:"display_errors,omitempty"`
+	DisplayErrors *bool `default:"false" json:"display_errors"`
 	// The allowed values for the `hd` claim.
-	Domains optionalnullable.OptionalNullable[[]string] `json:"domains,omitempty"`
+	Domains []string `json:"domains,omitempty"`
 	// The downstream access token header.
-	DownstreamAccessTokenHeader optionalnullable.OptionalNullable[string] `json:"downstream_access_token_header,omitempty"`
+	DownstreamAccessTokenHeader *string `json:"downstream_access_token_header,omitempty"`
 	// The downstream access token JWK header.
-	DownstreamAccessTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"downstream_access_token_jwk_header,omitempty"`
+	DownstreamAccessTokenJwkHeader *string `json:"downstream_access_token_jwk_header,omitempty"`
 	// The downstream claim to header mappings.
-	DownstreamHeaders optionalnullable.OptionalNullable[[]DownstreamHeaders] `json:"downstream_headers,omitempty"`
+	DownstreamHeaders []DownstreamHeaders `json:"downstream_headers,omitempty"`
 	// The downstream header claims. Only top level claims are supported.
-	DownstreamHeadersClaims optionalnullable.OptionalNullable[[]string] `json:"downstream_headers_claims,omitempty"`
+	DownstreamHeadersClaims []string `json:"downstream_headers_claims,omitempty"`
 	// The downstream header names for the claim values.
-	DownstreamHeadersNames optionalnullable.OptionalNullable[[]string] `json:"downstream_headers_names,omitempty"`
+	DownstreamHeadersNames []string `json:"downstream_headers_names,omitempty"`
 	// The downstream id token header.
-	DownstreamIDTokenHeader optionalnullable.OptionalNullable[string] `json:"downstream_id_token_header,omitempty"`
+	DownstreamIDTokenHeader *string `json:"downstream_id_token_header,omitempty"`
 	// The downstream id token JWK header.
-	DownstreamIDTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"downstream_id_token_jwk_header,omitempty"`
+	DownstreamIDTokenJwkHeader *string `json:"downstream_id_token_jwk_header,omitempty"`
 	// The downstream introspection header.
-	DownstreamIntrospectionHeader optionalnullable.OptionalNullable[string] `json:"downstream_introspection_header,omitempty"`
+	DownstreamIntrospectionHeader *string `json:"downstream_introspection_header,omitempty"`
 	// The downstream introspection JWT header.
-	DownstreamIntrospectionJwtHeader optionalnullable.OptionalNullable[string] `json:"downstream_introspection_jwt_header,omitempty"`
+	DownstreamIntrospectionJwtHeader *string `json:"downstream_introspection_jwt_header,omitempty"`
 	// The downstream refresh token header.
-	DownstreamRefreshTokenHeader optionalnullable.OptionalNullable[string] `json:"downstream_refresh_token_header,omitempty"`
+	DownstreamRefreshTokenHeader *string `json:"downstream_refresh_token_header,omitempty"`
 	// The downstream session id header.
-	DownstreamSessionIDHeader optionalnullable.OptionalNullable[string] `json:"downstream_session_id_header,omitempty"`
+	DownstreamSessionIDHeader *string `json:"downstream_session_id_header,omitempty"`
 	// The downstream user info header.
-	DownstreamUserInfoHeader optionalnullable.OptionalNullable[string] `json:"downstream_user_info_header,omitempty"`
+	DownstreamUserInfoHeader *string `json:"downstream_user_info_header,omitempty"`
 	// The downstream user info JWT header (in case the user info returns a JWT response).
-	DownstreamUserInfoJwtHeader optionalnullable.OptionalNullable[string] `json:"downstream_user_info_jwt_header,omitempty"`
+	DownstreamUserInfoJwtHeader *string `json:"downstream_user_info_jwt_header,omitempty"`
 	// Specifies the lifetime in seconds of the DPoP proof. It determines how long the same proof can be used after creation. The creation time is determined by the nonce creation time if a nonce is used, and the iat claim otherwise.
-	DpopProofLifetime optionalnullable.OptionalNullable[float64] `json:"dpop_proof_lifetime,omitempty"`
+	DpopProofLifetime *float64 `default:"300" json:"dpop_proof_lifetime"`
 	// Specifies whether to challenge the client with a nonce value for DPoP proof. When enabled it will also be used to calculate the DPoP proof lifetime.
-	DpopUseNonce optionalnullable.OptionalNullable[bool] `json:"dpop_use_nonce,omitempty"`
+	DpopUseNonce *bool `default:"false" json:"dpop_use_nonce"`
 	// Enable shared secret, for example, HS256, signatures (when disabled they will not be accepted).
-	EnableHsSignatures optionalnullable.OptionalNullable[bool] `json:"enable_hs_signatures,omitempty"`
+	EnableHsSignatures *bool `default:"false" json:"enable_hs_signatures"`
 	// The end session endpoint. If set it overrides the value in `end_session_endpoint` returned by the discovery endpoint.
-	EndSessionEndpoint optionalnullable.OptionalNullable[string] `json:"end_session_endpoint,omitempty"`
+	EndSessionEndpoint *string `json:"end_session_endpoint,omitempty"`
 	// Specifies whether to expose the error code header, as defined in RFC 6750. If an authorization request fails, this header is sent in the response. Set to `false` to disable.
-	ExposeErrorCode optionalnullable.OptionalNullable[bool] `json:"expose_error_code,omitempty"`
+	ExposeErrorCode *bool `default:"true" json:"expose_error_code"`
 	// JWKS URIs whose public keys are trusted (in addition to the keys found with the discovery).
-	ExtraJwksUris optionalnullable.OptionalNullable[[]string] `json:"extra_jwks_uris,omitempty"`
+	ExtraJwksUris []string `json:"extra_jwks_uris,omitempty"`
 	// Destroy any active session for the forbidden requests.
-	ForbiddenDestroySession optionalnullable.OptionalNullable[bool] `json:"forbidden_destroy_session,omitempty"`
+	ForbiddenDestroySession *bool `default:"true" json:"forbidden_destroy_session"`
 	// The error message for the forbidden requests (when not using the redirection).
-	ForbiddenErrorMessage optionalnullable.OptionalNullable[string] `json:"forbidden_error_message,omitempty"`
+	ForbiddenErrorMessage *string `default:"Forbidden" json:"forbidden_error_message"`
 	// Where to redirect the client on forbidden requests.
-	ForbiddenRedirectURI optionalnullable.OptionalNullable[[]string] `json:"forbidden_redirect_uri,omitempty"`
+	ForbiddenRedirectURI []string `json:"forbidden_redirect_uri,omitempty"`
 	// The claim that contains the groups. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	GroupsClaim optionalnullable.OptionalNullable[[]string] `json:"groups_claim,omitempty"`
+	GroupsClaim []string `json:"groups_claim,omitempty"`
 	// The groups (`groups_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	GroupsRequired optionalnullable.OptionalNullable[[]string] `json:"groups_required,omitempty"`
+	GroupsRequired []string `json:"groups_required,omitempty"`
 	// Remove the credentials used for authentication from the request. If multiple credentials are sent with the same request, the plugin will remove those that were used for successful authentication.
-	HideCredentials optionalnullable.OptionalNullable[bool] `json:"hide_credentials,omitempty"`
+	HideCredentials *bool `default:"true" json:"hide_credentials"`
 	// The HTTP proxy.
-	HTTPProxy optionalnullable.OptionalNullable[string] `json:"http_proxy,omitempty"`
+	HTTPProxy *string `json:"http_proxy,omitempty"`
 	// The HTTP proxy authorization.
-	HTTPProxyAuthorization optionalnullable.OptionalNullable[string] `json:"http_proxy_authorization,omitempty"`
+	HTTPProxyAuthorization *string `json:"http_proxy_authorization,omitempty"`
 	// The HTTP version used for the requests by this plugin: - `1.1`: HTTP 1.1 (the default) - `1.0`: HTTP 1.0.
-	HTTPVersion optionalnullable.OptionalNullable[float64] `json:"http_version,omitempty"`
+	HTTPVersion *float64 `default:"1.1" json:"http_version"`
 	// The HTTPS proxy.
-	HTTPSProxy optionalnullable.OptionalNullable[string] `json:"https_proxy,omitempty"`
+	HTTPSProxy *string `json:"https_proxy,omitempty"`
 	// The HTTPS proxy authorization.
-	HTTPSProxyAuthorization optionalnullable.OptionalNullable[string] `json:"https_proxy_authorization,omitempty"`
+	HTTPSProxyAuthorization *string `json:"https_proxy_authorization,omitempty"`
 	// The name of the parameter used to pass the id token.
-	IDTokenParamName optionalnullable.OptionalNullable[string] `json:"id_token_param_name,omitempty"`
+	IDTokenParamName *string `json:"id_token_param_name,omitempty"`
 	// Where to look for the id token: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body.
-	IDTokenParamType optionalnullable.OptionalNullable[[]IDTokenParamType] `json:"id_token_param_type,omitempty"`
+	IDTokenParamType []IDTokenParamType `json:"id_token_param_type,omitempty"`
 	// Skip the token signature verification on certain grants. This is insecure and logs a warning; use it only for providers that publish no verification key. Grants: - `password`: OAuth password grant - `client_credentials`: OAuth client credentials grant - `authorization_code`: authorization code flow - `refresh_token`: OAuth refresh token grant - `session`: session cookie authentication - `introspection`: OAuth introspection - `userinfo`: OpenID Connect user info endpoint authentication.
-	IgnoreSignature optionalnullable.OptionalNullable[[]IgnoreSignature] `json:"ignore_signature,omitempty"`
+	IgnoreSignature []IgnoreSignature `json:"ignore_signature,omitempty"`
 	// Specifies whether to introspect the JWT access tokens (can be used to check for revocations).
-	IntrospectJwtTokens optionalnullable.OptionalNullable[bool] `json:"introspect_jwt_tokens,omitempty"`
+	IntrospectJwtTokens *bool `default:"false" json:"introspect_jwt_tokens"`
 	// The value of `Accept` header for introspection requests: - `application/json`: introspection response as JSON - `application/token-introspection+jwt`: introspection response as JWT (from the current IETF draft document) - `application/jwt`: introspection response as JWT (from the obsolete IETF draft document).
-	IntrospectionAccept optionalnullable.OptionalNullable[IntrospectionAccept] `json:"introspection_accept,omitempty"`
+	IntrospectionAccept *IntrospectionAccept `default:"application/json" json:"introspection_accept"`
 	// Check that the introspection response has an `active` claim with a value of `true`.
-	IntrospectionCheckActive optionalnullable.OptionalNullable[bool] `json:"introspection_check_active,omitempty"`
+	IntrospectionCheckActive *bool `default:"true" json:"introspection_check_active"`
 	// The introspection endpoint. If set it overrides the value in `introspection_endpoint` returned by the discovery endpoint.
-	IntrospectionEndpoint optionalnullable.OptionalNullable[string] `json:"introspection_endpoint,omitempty"`
+	IntrospectionEndpoint *string `json:"introspection_endpoint,omitempty"`
 	// The introspection endpoint authentication method: : `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	IntrospectionEndpointAuthMethod optionalnullable.OptionalNullable[IntrospectionEndpointAuthMethod] `json:"introspection_endpoint_auth_method,omitempty"`
+	IntrospectionEndpointAuthMethod *IntrospectionEndpointAuthMethod `json:"introspection_endpoint_auth_method,omitempty"`
 	// Extra headers passed from the client to the introspection endpoint.
-	IntrospectionHeadersClient optionalnullable.OptionalNullable[[]string] `json:"introspection_headers_client,omitempty"`
+	IntrospectionHeadersClient []string `json:"introspection_headers_client,omitempty"`
 	// Extra header names passed to the introspection endpoint.
-	IntrospectionHeadersNames optionalnullable.OptionalNullable[[]string] `json:"introspection_headers_names,omitempty"`
+	IntrospectionHeadersNames []string `json:"introspection_headers_names,omitempty"`
 	// Extra header values passed to the introspection endpoint.
-	IntrospectionHeadersValues optionalnullable.OptionalNullable[[]string] `json:"introspection_headers_values,omitempty"`
+	IntrospectionHeadersValues []string `json:"introspection_headers_values,omitempty"`
 	// Introspection hint parameter value passed to the introspection endpoint.
-	IntrospectionHint optionalnullable.OptionalNullable[string] `json:"introspection_hint,omitempty"`
+	IntrospectionHint *string `default:"access_token" json:"introspection_hint"`
 	// Extra post arguments passed from the client to the introspection endpoint.
-	IntrospectionPostArgsClient optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_client,omitempty"`
+	IntrospectionPostArgsClient []string `json:"introspection_post_args_client,omitempty"`
 	// Extra post arguments passed from the client headers to the introspection endpoint.
-	IntrospectionPostArgsClientHeaders optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_client_headers,omitempty"`
+	IntrospectionPostArgsClientHeaders []string `json:"introspection_post_args_client_headers,omitempty"`
 	// Extra post argument names passed to the introspection endpoint.
-	IntrospectionPostArgsNames optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_names,omitempty"`
+	IntrospectionPostArgsNames []string `json:"introspection_post_args_names,omitempty"`
 	// Extra post argument values passed to the introspection endpoint.
-	IntrospectionPostArgsValues optionalnullable.OptionalNullable[[]string] `json:"introspection_post_args_values,omitempty"`
+	IntrospectionPostArgsValues []string `json:"introspection_post_args_values,omitempty"`
 	// Designate token's parameter name for introspection.
-	IntrospectionTokenParamName optionalnullable.OptionalNullable[string] `json:"introspection_token_param_name,omitempty"`
+	IntrospectionTokenParamName *string `default:"token" json:"introspection_token_param_name"`
 	// The discovery endpoint (or the issuer identifier). When there is no discovery endpoint, please also configure `config.using_pseudo_issuer=true`.
 	Issuer string `json:"issuer"`
 	// The issuers allowed to be present in the tokens (`iss` claim).
-	IssuersAllowed optionalnullable.OptionalNullable[[]string] `json:"issuers_allowed,omitempty"`
+	IssuersAllowed []string `json:"issuers_allowed,omitempty"`
 	// Overrides the `jwks_uri` returned by discovery. Use when the IdP exposes a non-standard JWKS endpoint.
-	JwksEndpoint optionalnullable.OptionalNullable[string] `json:"jwks_endpoint,omitempty"`
+	JwksEndpoint *string `json:"jwks_endpoint,omitempty"`
 	// The claim to match against the JWT session cookie.
-	JwtSessionClaim optionalnullable.OptionalNullable[string] `json:"jwt_session_claim,omitempty"`
+	JwtSessionClaim *string `default:"sid" json:"jwt_session_claim"`
 	// The name of the JWT session cookie.
-	JwtSessionCookie optionalnullable.OptionalNullable[string] `json:"jwt_session_cookie,omitempty"`
+	JwtSessionCookie *string `json:"jwt_session_cookie,omitempty"`
 	// Use keepalive with the HTTP client.
-	Keepalive optionalnullable.OptionalNullable[bool] `json:"keepalive,omitempty"`
+	Keepalive *bool `default:"true" json:"keepalive"`
 	// Defines leeway time (in seconds) for `auth_time`, `exp`, `iat`, and `nbf` claims
-	Leeway optionalnullable.OptionalNullable[float64] `json:"leeway,omitempty"`
+	Leeway *float64 `default:"0" json:"leeway"`
 	// What to do after successful login: - `upstream`: proxy request to upstream service - `response`: terminate request with a response - `redirect`: redirect to a different location.
-	LoginAction optionalnullable.OptionalNullable[LoginAction] `json:"login_action,omitempty"`
+	LoginAction *LoginAction `default:"upstream" json:"login_action"`
 	// Enable login functionality with specified grants.
-	LoginMethods optionalnullable.OptionalNullable[[]LoginMethods] `json:"login_methods,omitempty"`
+	LoginMethods []LoginMethods `json:"login_methods,omitempty"`
 	// Where to place `login_tokens` when using `redirect` `login_action`: - `query`: place tokens in query string - `fragment`: place tokens in url fragment (not readable by servers).
-	LoginRedirectMode optionalnullable.OptionalNullable[LoginRedirectMode] `json:"login_redirect_mode,omitempty"`
+	LoginRedirectMode *LoginRedirectMode `default:"fragment" json:"login_redirect_mode"`
 	// Where to redirect the client when `login_action` is set to `redirect`.
-	LoginRedirectURI optionalnullable.OptionalNullable[[]string] `json:"login_redirect_uri,omitempty"`
+	LoginRedirectURI []string `json:"login_redirect_uri,omitempty"`
 	// What tokens to include in `response` body or `redirect` query string or fragment: - `id_token`: include id token - `access_token`: include access token - `refresh_token`: include refresh token - `tokens`: include the full token endpoint response - `introspection`: include introspection response.
-	LoginTokens optionalnullable.OptionalNullable[[]LoginTokens] `json:"login_tokens,omitempty"`
+	LoginTokens []LoginTokens `json:"login_tokens,omitempty"`
 	// The request methods that can activate the logout: - `POST`: HTTP POST method - `GET`: HTTP GET method - `DELETE`: HTTP DELETE method.
-	LogoutMethods optionalnullable.OptionalNullable[[]LogoutMethods] `json:"logout_methods,omitempty"`
+	LogoutMethods []LogoutMethods `json:"logout_methods,omitempty"`
 	// The request body argument that activates the logout.
-	LogoutPostArg optionalnullable.OptionalNullable[string] `json:"logout_post_arg,omitempty"`
+	LogoutPostArg *string `json:"logout_post_arg,omitempty"`
 	// The request query argument that activates the logout.
-	LogoutQueryArg optionalnullable.OptionalNullable[string] `json:"logout_query_arg,omitempty"`
+	LogoutQueryArg *string `json:"logout_query_arg,omitempty"`
 	// Where to redirect the client after the logout.
-	LogoutRedirectURI optionalnullable.OptionalNullable[[]string] `json:"logout_redirect_uri,omitempty"`
+	LogoutRedirectURI []string `json:"logout_redirect_uri,omitempty"`
 	// Revoke tokens as part of the logout.
 	//
 	// For more granular token revocation, you can also adjust the `logout_revoke_access_token` and `logout_revoke_refresh_token` parameters.
-	LogoutRevoke optionalnullable.OptionalNullable[bool] `json:"logout_revoke,omitempty"`
+	LogoutRevoke *bool `default:"false" json:"logout_revoke"`
 	// Revoke the access token as part of the logout. Requires `logout_revoke` to be set to `true`.
-	LogoutRevokeAccessToken optionalnullable.OptionalNullable[bool] `json:"logout_revoke_access_token,omitempty"`
+	LogoutRevokeAccessToken *bool `default:"true" json:"logout_revoke_access_token"`
 	// Revoke the refresh token as part of the logout. Requires `logout_revoke` to be set to `true`.
-	LogoutRevokeRefreshToken optionalnullable.OptionalNullable[bool] `json:"logout_revoke_refresh_token,omitempty"`
+	LogoutRevokeRefreshToken *bool `default:"true" json:"logout_revoke_refresh_token"`
 	// The request URI suffix that activates the logout.
-	LogoutURISuffix optionalnullable.OptionalNullable[string] `json:"logout_uri_suffix,omitempty"`
+	LogoutURISuffix *string `json:"logout_uri_suffix,omitempty"`
 	// The maximum age (in seconds) compared to the `auth_time` claim.
-	MaxAge optionalnullable.OptionalNullable[float64] `json:"max_age,omitempty"`
+	MaxAge *float64 `json:"max_age,omitempty"`
 	// Alias for the introspection endpoint to be used for mTLS client authentication. If set it overrides the value in `mtls_endpoint_aliases` returned by the discovery endpoint.
-	MtlsIntrospectionEndpoint optionalnullable.OptionalNullable[string] `json:"mtls_introspection_endpoint,omitempty"`
+	MtlsIntrospectionEndpoint *string `json:"mtls_introspection_endpoint,omitempty"`
 	// Alias for the introspection endpoint to be used for mTLS client authentication. If set it overrides the value in `mtls_endpoint_aliases` returned by the discovery endpoint.
-	MtlsRevocationEndpoint optionalnullable.OptionalNullable[string] `json:"mtls_revocation_endpoint,omitempty"`
+	MtlsRevocationEndpoint *string `json:"mtls_revocation_endpoint,omitempty"`
 	// Alias for the token endpoint to be used for mTLS client authentication. If set it overrides the value in `mtls_endpoint_aliases` returned by the discovery endpoint.
-	MtlsTokenEndpoint optionalnullable.OptionalNullable[string] `json:"mtls_token_endpoint,omitempty"`
+	MtlsTokenEndpoint *string `json:"mtls_token_endpoint,omitempty"`
 	// Do not use proxy with these hosts.
-	NoProxy optionalnullable.OptionalNullable[string] `json:"no_proxy,omitempty"`
+	NoProxy *string `json:"no_proxy,omitempty"`
 	// Where to look for the username and password: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body.
-	PasswordParamType optionalnullable.OptionalNullable[[]PasswordParamType] `json:"password_param_type,omitempty"`
+	PasswordParamType []PasswordParamType `json:"password_param_type,omitempty"`
 	// With this parameter, you can preserve request query arguments even when doing authorization code flow.
-	PreserveQueryArgs optionalnullable.OptionalNullable[bool] `json:"preserve_query_args,omitempty"`
+	PreserveQueryArgs *bool `default:"false" json:"preserve_query_args"`
 	// Configuration for Kong Identity principal hydration after token verification.
-	Principals optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigPrincipals] `json:"principals,omitempty"`
+	Principals *AIGWOpenIDConnectGeneratedConfigPrincipals `json:"principals,omitempty"`
 	// If set to true, only the auth_methods that are compatible with Proof of Possession (PoP) can be configured when PoP is enabled. If set to false, all auth_methods will be configurable and PoP checks will be silently skipped for those auth_methods that are not compatible with PoP.
-	ProofOfPossessionAuthMethodsValidation optionalnullable.OptionalNullable[bool] `json:"proof_of_possession_auth_methods_validation,omitempty"`
+	ProofOfPossessionAuthMethodsValidation *bool `default:"true" json:"proof_of_possession_auth_methods_validation"`
 	// Enable Demonstrating Proof-of-Possession (DPoP). If set to strict, all request are verified despite the presence of the DPoP key claim (cnf.jkt). If set to optional, only tokens bound with DPoP's key are verified with the proof.
-	ProofOfPossessionDpop optionalnullable.OptionalNullable[ProofOfPossessionDpop] `json:"proof_of_possession_dpop,omitempty"`
+	ProofOfPossessionDpop *ProofOfPossessionDpop `default:"off" json:"proof_of_possession_dpop"`
 	// Enable mtls proof of possession. If set to strict, all tokens (from supported auth_methods: bearer, introspection, and session granted with bearer or introspection) are verified, if set to optional, only tokens that contain the certificate hash claim are verified. If the verification fails, the request will be rejected with 401.
-	ProofOfPossessionMtls optionalnullable.OptionalNullable[ProofOfPossessionMtls] `json:"proof_of_possession_mtls,omitempty"`
+	ProofOfPossessionMtls *ProofOfPossessionMtls `default:"off" json:"proof_of_possession_mtls"`
 	// When configured, the plugin advertises this API as an OAuth 2.0 protected resource per RFC 9728. It serves a discovery document at the well-known URI and includes resource_metadata in WWW-Authenticate challenge headers.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	ProtectedResourceMetadata optionalnullable.OptionalNullable[ProtectedResourceMetadata] `json:"protected_resource_metadata,omitempty"`
+	ProtectedResourceMetadata *ProtectedResourceMetadata `json:"protected_resource_metadata,omitempty"`
 	// The pushed authorization endpoint. If set it overrides the value in `pushed_authorization_request_endpoint` returned by the discovery endpoint.
-	PushedAuthorizationRequestEndpoint optionalnullable.OptionalNullable[string] `json:"pushed_authorization_request_endpoint,omitempty"`
+	PushedAuthorizationRequestEndpoint *string `json:"pushed_authorization_request_endpoint,omitempty"`
 	// The pushed authorization request endpoint authentication method: `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	PushedAuthorizationRequestEndpointAuthMethod optionalnullable.OptionalNullable[PushedAuthorizationRequestEndpointAuthMethod] `json:"pushed_authorization_request_endpoint_auth_method,omitempty"`
+	PushedAuthorizationRequestEndpointAuthMethod *PushedAuthorizationRequestEndpointAuthMethod `json:"pushed_authorization_request_endpoint_auth_method,omitempty"`
 	// The redirect URI passed to the authorization and token endpoints.
-	RedirectURI optionalnullable.OptionalNullable[[]string] `json:"redirect_uri,omitempty"`
-	Redis       optionalnullable.OptionalNullable[Redis]    `json:"redis,omitempty"`
+	RedirectURI []string `json:"redirect_uri,omitempty"`
+	Redis       *Redis   `json:"redis,omitempty"`
 	// Specifies how long (in seconds) the plugin waits between discovery attempts. Discovery is still triggered on an as-needed basis.
-	RediscoveryLifetime optionalnullable.OptionalNullable[float64] `json:"rediscovery_lifetime,omitempty"`
+	RediscoveryLifetime *float64 `default:"30" json:"rediscovery_lifetime"`
 	// The name of the parameter used to pass the refresh token.
-	RefreshTokenParamName optionalnullable.OptionalNullable[string] `json:"refresh_token_param_name,omitempty"`
+	RefreshTokenParamName *string `json:"refresh_token_param_name,omitempty"`
 	// Where to look for the refresh token: - `header`: search the HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body.
-	RefreshTokenParamType optionalnullable.OptionalNullable[[]RefreshTokenParamType] `json:"refresh_token_param_type,omitempty"`
+	RefreshTokenParamType []RefreshTokenParamType `json:"refresh_token_param_type,omitempty"`
 	// Specifies whether the plugin should try to refresh (soon to be) expired access tokens if the plugin has a `refresh_token` available.
-	RefreshTokens optionalnullable.OptionalNullable[bool] `json:"refresh_tokens,omitempty"`
+	RefreshTokens *bool `default:"true" json:"refresh_tokens"`
 	// Forcibly enable or disable the proof key for code exchange. When not set the value is determined through the discovery using the value of `code_challenge_methods_supported`, and enabled automatically (in case the `code_challenge_methods_supported` is missing, the PKCE will not be enabled).
-	RequireProofKeyForCodeExchange optionalnullable.OptionalNullable[bool] `json:"require_proof_key_for_code_exchange,omitempty"`
+	RequireProofKeyForCodeExchange *bool `json:"require_proof_key_for_code_exchange,omitempty"`
 	// Forcibly enable or disable the pushed authorization requests. When not set the value is determined through the discovery using the value of `require_pushed_authorization_requests` (which defaults to `false`).
-	RequirePushedAuthorizationRequests optionalnullable.OptionalNullable[bool] `json:"require_pushed_authorization_requests,omitempty"`
+	RequirePushedAuthorizationRequests *bool `json:"require_pushed_authorization_requests,omitempty"`
 	// Forcibly enable or disable the usage of signed request object on authorization or pushed authorization endpoint. When not set the value is determined through the discovery using the value of `require_signed_request_object`, and enabled automatically (in case the `require_signed_request_object` is missing, the feature will not be enabled).
-	RequireSignedRequestObject optionalnullable.OptionalNullable[bool] `json:"require_signed_request_object,omitempty"`
+	RequireSignedRequestObject *bool `json:"require_signed_request_object,omitempty"`
 	// Distributed claims are represented by the `_claim_names` and `_claim_sources` members of the JSON object containing the claims. If this parameter is set to `true`, the plugin explicitly resolves these distributed claims.
-	ResolveDistributedClaims optionalnullable.OptionalNullable[bool] `json:"resolve_distributed_claims,omitempty"`
+	ResolveDistributedClaims *bool `default:"false" json:"resolve_distributed_claims"`
 	// Response mode passed to the authorization endpoint: - `query`: for parameters in query string - `form_post`: for parameters in request body - `fragment`: for parameters in uri fragment (rarely useful as the plugin itself cannot read it) - `query.jwt`, `form_post.jwt`, `fragment.jwt`: similar to `query`, `form_post` and `fragment` but the parameters are encoded in a JWT - `jwt`: shortcut that indicates the default encoding for the requested response type.
-	ResponseMode optionalnullable.OptionalNullable[ResponseMode] `json:"response_mode,omitempty"`
+	ResponseMode *ResponseMode `default:"query" json:"response_mode"`
 	// The response type passed to the authorization endpoint.
-	ResponseType optionalnullable.OptionalNullable[[]string] `json:"response_type,omitempty"`
+	ResponseType []string `json:"response_type,omitempty"`
 	// Specifies whether to always verify tokens stored in the session.
-	Reverify optionalnullable.OptionalNullable[bool] `json:"reverify,omitempty"`
+	Reverify *bool `default:"false" json:"reverify"`
 	// The revocation endpoint. If set it overrides the value in `revocation_endpoint` returned by the discovery endpoint.
-	RevocationEndpoint optionalnullable.OptionalNullable[string] `json:"revocation_endpoint,omitempty"`
+	RevocationEndpoint *string `json:"revocation_endpoint,omitempty"`
 	// The revocation endpoint authentication method: : `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	RevocationEndpointAuthMethod optionalnullable.OptionalNullable[RevocationEndpointAuthMethod] `json:"revocation_endpoint_auth_method,omitempty"`
+	RevocationEndpointAuthMethod *RevocationEndpointAuthMethod `json:"revocation_endpoint_auth_method,omitempty"`
 	// Designate token's parameter name for revocation.
-	RevocationTokenParamName optionalnullable.OptionalNullable[string] `json:"revocation_token_param_name,omitempty"`
+	RevocationTokenParamName *string `default:"token" json:"revocation_token_param_name"`
 	// The claim that contains the roles. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	RolesClaim optionalnullable.OptionalNullable[[]string] `json:"roles_claim,omitempty"`
+	RolesClaim []string `json:"roles_claim,omitempty"`
 	// The roles (`roles_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	RolesRequired optionalnullable.OptionalNullable[[]string] `json:"roles_required,omitempty"`
+	RolesRequired []string `json:"roles_required,omitempty"`
 	// Specifies whether to run this plugin on pre-flight (`OPTIONS`) requests.
-	RunOnPreflight optionalnullable.OptionalNullable[bool] `json:"run_on_preflight,omitempty"`
+	RunOnPreflight *bool `default:"true" json:"run_on_preflight"`
 	// The scopes passed to the authorization and token endpoints.
-	Scopes optionalnullable.OptionalNullable[[]string] `json:"scopes,omitempty"`
+	Scopes []string `json:"scopes,omitempty"`
 	// The claim that contains the scopes. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	ScopesClaim optionalnullable.OptionalNullable[[]string] `json:"scopes_claim,omitempty"`
+	ScopesClaim []string `json:"scopes_claim,omitempty"`
 	// The scopes (`scopes_claim` claim) required to be present in the access token (or introspection results) for successful authorization. This config parameter works in both **AND** / **OR** cases.
-	ScopesRequired optionalnullable.OptionalNullable[[]string] `json:"scopes_required,omitempty"`
+	ScopesRequired []string `json:"scopes_required,omitempty"`
 	// Specify whether to use the user info endpoint to get additional claims for consumer mapping, credential mapping, authenticated groups, and upstream and downstream headers.
-	SearchUserInfo optionalnullable.OptionalNullable[bool] `json:"search_user_info,omitempty"`
+	SearchUserInfo *bool `default:"false" json:"search_user_info"`
 	// Limits how long the session can be renewed in seconds, until re-authentication is required. 0 disables the checks.
-	SessionAbsoluteTimeout optionalnullable.OptionalNullable[float64] `json:"session_absolute_timeout,omitempty"`
+	SessionAbsoluteTimeout *float64 `default:"86400" json:"session_absolute_timeout"`
 	// The session audience, which is the intended target application. For example `"my-application"`.
-	SessionAudience optionalnullable.OptionalNullable[string] `json:"session_audience,omitempty"`
+	SessionAudience *string `default:"default" json:"session_audience"`
 	// Bind the session to data acquired from the HTTP request or connection.
-	SessionBind optionalnullable.OptionalNullable[[]SessionBind] `json:"session_bind,omitempty"`
+	SessionBind []SessionBind `json:"session_bind,omitempty"`
 	// The session cookie Domain flag.
-	SessionCookieDomain optionalnullable.OptionalNullable[string] `json:"session_cookie_domain,omitempty"`
+	SessionCookieDomain *string `json:"session_cookie_domain,omitempty"`
 	// Forbids JavaScript from accessing the cookie, for example, through the `Document.cookie` property.
-	SessionCookieHTTPOnly optionalnullable.OptionalNullable[bool] `json:"session_cookie_http_only,omitempty"`
+	SessionCookieHTTPOnly *bool `default:"true" json:"session_cookie_http_only"`
 	// The session cookie name.
-	SessionCookieName optionalnullable.OptionalNullable[string] `json:"session_cookie_name,omitempty"`
+	SessionCookieName *string `default:"session" json:"session_cookie_name"`
 	// The session cookie Path flag.
-	SessionCookiePath optionalnullable.OptionalNullable[string] `json:"session_cookie_path,omitempty"`
+	SessionCookiePath *string `default:"/" json:"session_cookie_path"`
 	// Controls whether a cookie is sent with cross-origin requests, providing some protection against cross-site request forgery attacks.
-	SessionCookieSameSite optionalnullable.OptionalNullable[SessionCookieSameSite] `json:"session_cookie_same_site,omitempty"`
+	SessionCookieSameSite *SessionCookieSameSite `default:"Lax" json:"session_cookie_same_site"`
 	// Cookie is only sent to the server when a request is made with the https: scheme (except on localhost), and therefore is more resistant to man-in-the-middle attacks.
-	SessionCookieSecure optionalnullable.OptionalNullable[bool] `json:"session_cookie_secure,omitempty"`
+	SessionCookieSecure *bool `json:"session_cookie_secure,omitempty"`
 	// When set to `true`, audiences are forced to share the same subject.
-	SessionEnforceSameSubject optionalnullable.OptionalNullable[bool] `json:"session_enforce_same_subject,omitempty"`
+	SessionEnforceSameSubject *bool `default:"false" json:"session_enforce_same_subject"`
 	// When set to `true`, the storage key (session ID) is hashed for extra security. Hashing the storage key means it is impossible to decrypt data from the storage without a cookie.
-	SessionHashStorageKey optionalnullable.OptionalNullable[bool] `json:"session_hash_storage_key,omitempty"`
+	SessionHashStorageKey *bool `default:"false" json:"session_hash_storage_key"`
 	// When set to `true`, the value of subject is hashed before being stored. Only applies when `session_store_metadata` is enabled.
-	SessionHashSubject optionalnullable.OptionalNullable[bool] `json:"session_hash_subject,omitempty"`
+	SessionHashSubject *bool `default:"false" json:"session_hash_subject"`
 	// Specifies how long the session can be inactive until it is considered invalid in seconds. 0 disables the checks and touching.
-	SessionIdlingTimeout optionalnullable.OptionalNullable[float64] `json:"session_idling_timeout,omitempty"`
+	SessionIdlingTimeout *float64 `default:"900" json:"session_idling_timeout"`
 	// The memcached host.
-	SessionMemcachedHost optionalnullable.OptionalNullable[string] `json:"session_memcached_host,omitempty"`
+	SessionMemcachedHost *string `default:"127.0.0.1" json:"session_memcached_host"`
 	// The memcached port.
-	SessionMemcachedPort optionalnullable.OptionalNullable[int64] `json:"session_memcached_port,omitempty"`
+	SessionMemcachedPort *int64 `default:"11211" json:"session_memcached_port"`
 	// The memcached session key prefix.
-	SessionMemcachedPrefix optionalnullable.OptionalNullable[string] `json:"session_memcached_prefix,omitempty"`
+	SessionMemcachedPrefix *string `json:"session_memcached_prefix,omitempty"`
 	// The memcached unix socket path.
-	SessionMemcachedSocket optionalnullable.OptionalNullable[string] `json:"session_memcached_socket,omitempty"`
+	SessionMemcachedSocket *string `json:"session_memcached_socket,omitempty"`
 	// If set to true, uses SSL to connect to memcached
-	SessionMemcachedSsl optionalnullable.OptionalNullable[bool] `json:"session_memcached_ssl,omitempty"`
+	SessionMemcachedSsl *bool `json:"session_memcached_ssl,omitempty"`
 	// If set to true, verifies the validity of the memcached server SSL certificate
-	SessionMemcachedSslVerify optionalnullable.OptionalNullable[bool] `json:"session_memcached_ssl_verify,omitempty"`
+	SessionMemcachedSslVerify *bool `default:"true" json:"session_memcached_ssl_verify"`
 	// Enables or disables persistent sessions.
-	SessionRemember optionalnullable.OptionalNullable[bool] `json:"session_remember,omitempty"`
+	SessionRemember *bool `default:"false" json:"session_remember"`
 	// Limits how long the persistent session can be renewed in seconds, until re-authentication is required. 0 disables the checks.
-	SessionRememberAbsoluteTimeout optionalnullable.OptionalNullable[float64] `json:"session_remember_absolute_timeout,omitempty"`
+	SessionRememberAbsoluteTimeout *float64 `default:"2592000" json:"session_remember_absolute_timeout"`
 	// Persistent session cookie name. Use with the `remember` configuration parameter.
-	SessionRememberCookieName optionalnullable.OptionalNullable[string] `json:"session_remember_cookie_name,omitempty"`
+	SessionRememberCookieName *string `default:"remember" json:"session_remember_cookie_name"`
 	// Specifies how long the persistent session is considered valid in seconds. 0 disables the checks and rolling.
-	SessionRememberRollingTimeout optionalnullable.OptionalNullable[float64] `json:"session_remember_rolling_timeout,omitempty"`
+	SessionRememberRollingTimeout *float64 `default:"604800" json:"session_remember_rolling_timeout"`
 	// Set of headers to send to upstream, use id, audience, subject, timeout, idling-timeout, rolling-timeout, absolute-timeout. E.g. `[ "id", "timeout" ]` will set Session-Id and Session-Timeout request headers.
-	SessionRequestHeaders optionalnullable.OptionalNullable[[]SessionRequestHeaders] `json:"session_request_headers,omitempty"`
+	SessionRequestHeaders []SessionRequestHeaders `json:"session_request_headers,omitempty"`
 	// Set of headers to send to downstream, use id, audience, subject, timeout, idling-timeout, rolling-timeout, absolute-timeout. E.g. `[ "id", "timeout" ]` will set Session-Id and Session-Timeout response headers.
-	SessionResponseHeaders optionalnullable.OptionalNullable[[]SessionResponseHeaders] `json:"session_response_headers,omitempty"`
+	SessionResponseHeaders []SessionResponseHeaders `json:"session_response_headers,omitempty"`
 	// Specifies how long the session can be used in seconds until it needs to be renewed. 0 disables the checks and rolling.
-	SessionRollingTimeout optionalnullable.OptionalNullable[float64] `json:"session_rolling_timeout,omitempty"`
+	SessionRollingTimeout *float64 `default:"3600" json:"session_rolling_timeout"`
 	// The session secret.
-	SessionSecret optionalnullable.OptionalNullable[string] `json:"session_secret,omitempty"`
+	SessionSecret *string `json:"session_secret,omitempty"`
 	// The session storage for session data: - `cookie`: stores session data with the session cookie (the session cannot be invalidated or revoked without changing session secret, but is stateless, and doesn't require a database) - `memcache`: stores session data in memcached - `redis`: stores session data in Redis.
-	SessionStorage optionalnullable.OptionalNullable[SessionStorage] `json:"session_storage,omitempty"`
+	SessionStorage *SessionStorage `default:"cookie" json:"session_storage"`
 	// Configures whether or not session metadata should be stored. This metadata includes information about the active sessions for a specific audience belonging to a specific subject.
-	SessionStoreMetadata optionalnullable.OptionalNullable[bool] `json:"session_store_metadata,omitempty"`
+	SessionStoreMetadata *bool `default:"false" json:"session_store_metadata"`
 	// Verify identity provider server certificate. If set to `true`, the plugin uses the CA certificate set in the `kong.conf` config parameter `lua_ssl_trusted_certificate`.
-	SslVerify optionalnullable.OptionalNullable[bool] `json:"ssl_verify,omitempty"`
+	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Network IO timeout in milliseconds.
-	Timeout optionalnullable.OptionalNullable[float64] `json:"timeout,omitempty"`
+	Timeout *float64 `default:"10000" json:"timeout"`
 	// ID of the Certificate entity representing the client certificate to use for mTLS client authentication for connections between Kong and the Auth Server.
-	TLSClientAuthCertID optionalnullable.OptionalNullable[string] `json:"tls_client_auth_cert_id,omitempty"`
+	TLSClientAuthCertID *string `json:"tls_client_auth_cert_id,omitempty"`
 	// Verify identity provider server certificate during mTLS client authentication.
-	TLSClientAuthSslVerify optionalnullable.OptionalNullable[bool] `json:"tls_client_auth_ssl_verify,omitempty"`
+	TLSClientAuthSslVerify *bool `default:"true" json:"tls_client_auth_ssl_verify"`
 	// Include the scope in the token cache key, so token with different scopes are considered diffrent tokens.
-	TokenCacheKeyIncludeScope optionalnullable.OptionalNullable[bool] `json:"token_cache_key_include_scope,omitempty"`
+	TokenCacheKeyIncludeScope *bool `default:"false" json:"token_cache_key_include_scope"`
 	// The token endpoint. If set it overrides the value in `token_endpoint` returned by the discovery endpoint.
-	TokenEndpoint optionalnullable.OptionalNullable[string] `json:"token_endpoint,omitempty"`
+	TokenEndpoint *string `json:"token_endpoint,omitempty"`
 	// The token endpoint authentication method: `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth`, or `none`: do not authenticate
-	TokenEndpointAuthMethod optionalnullable.OptionalNullable[AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod] `json:"token_endpoint_auth_method,omitempty"`
+	TokenEndpointAuthMethod *AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod `json:"token_endpoint_auth_method,omitempty"`
 	// Details on how to accept tokens from other identity providers.
-	TokenExchange optionalnullable.OptionalNullable[TokenExchange] `json:"token_exchange,omitempty"`
+	TokenExchange *TokenExchange `json:"token_exchange,omitempty"`
 	// Endpoint used to perform the legacy token exchange.
-	TokenExchangeEndpoint optionalnullable.OptionalNullable[string] `json:"token_exchange_endpoint,omitempty"`
+	TokenExchangeEndpoint *string `json:"token_exchange_endpoint,omitempty"`
 	// Extra headers passed from the client to the token endpoint.
-	TokenHeadersClient optionalnullable.OptionalNullable[[]string] `json:"token_headers_client,omitempty"`
+	TokenHeadersClient []string `json:"token_headers_client,omitempty"`
 	// Enable the sending of the token endpoint response headers only with certain grants: - `password`: with OAuth password grant - `client_credentials`: with OAuth client credentials grant - `authorization_code`: with authorization code flow - `refresh_token` with refresh token grant.
-	TokenHeadersGrants optionalnullable.OptionalNullable[[]TokenHeadersGrants] `json:"token_headers_grants,omitempty"`
+	TokenHeadersGrants []TokenHeadersGrants `json:"token_headers_grants,omitempty"`
 	// Extra header names passed to the token endpoint.
-	TokenHeadersNames optionalnullable.OptionalNullable[[]string] `json:"token_headers_names,omitempty"`
+	TokenHeadersNames []string `json:"token_headers_names,omitempty"`
 	// Add a prefix to the token endpoint response headers before forwarding them to the downstream client.
-	TokenHeadersPrefix optionalnullable.OptionalNullable[string] `json:"token_headers_prefix,omitempty"`
+	TokenHeadersPrefix *string `json:"token_headers_prefix,omitempty"`
 	// The names of token endpoint response headers to forward to the downstream client.
-	TokenHeadersReplay optionalnullable.OptionalNullable[[]string] `json:"token_headers_replay,omitempty"`
+	TokenHeadersReplay []string `json:"token_headers_replay,omitempty"`
 	// Extra header values passed to the token endpoint.
-	TokenHeadersValues optionalnullable.OptionalNullable[[]string] `json:"token_headers_values,omitempty"`
+	TokenHeadersValues []string `json:"token_headers_values,omitempty"`
 	// Pass extra arguments from the client to the OpenID-Connect plugin. If arguments exist, the client can pass them using: - Query parameters - Request Body - Request Header  This parameter can be used with `scope` values, like this:  `config.token_post_args_client=scope`  In this case, the token would take the `scope` value from the query parameter or from the request body or from the header and send it to the token endpoint.
-	TokenPostArgsClient optionalnullable.OptionalNullable[[]string] `json:"token_post_args_client,omitempty"`
+	TokenPostArgsClient []string `json:"token_post_args_client,omitempty"`
 	// Extra post argument names passed to the token endpoint.
-	TokenPostArgsNames optionalnullable.OptionalNullable[[]string] `json:"token_post_args_names,omitempty"`
+	TokenPostArgsNames []string `json:"token_post_args_names,omitempty"`
 	// Extra post argument values passed to the token endpoint.
-	TokenPostArgsValues optionalnullable.OptionalNullable[[]string] `json:"token_post_args_values,omitempty"`
+	TokenPostArgsValues []string `json:"token_post_args_values,omitempty"`
 	// Destroy any active session for the unauthorized requests.
-	UnauthorizedDestroySession optionalnullable.OptionalNullable[bool] `json:"unauthorized_destroy_session,omitempty"`
+	UnauthorizedDestroySession *bool `default:"true" json:"unauthorized_destroy_session"`
 	// The error message for the unauthorized requests (when not using the redirection).
-	UnauthorizedErrorMessage optionalnullable.OptionalNullable[string] `json:"unauthorized_error_message,omitempty"`
+	UnauthorizedErrorMessage *string `default:"Unauthorized" json:"unauthorized_error_message"`
 	// Where to redirect the client on unauthorized requests.
-	UnauthorizedRedirectURI optionalnullable.OptionalNullable[[]string] `json:"unauthorized_redirect_uri,omitempty"`
+	UnauthorizedRedirectURI []string `json:"unauthorized_redirect_uri,omitempty"`
 	// Where to redirect the client when unexpected errors happen with the requests.
-	UnexpectedRedirectURI optionalnullable.OptionalNullable[[]string] `json:"unexpected_redirect_uri,omitempty"`
+	UnexpectedRedirectURI []string `json:"unexpected_redirect_uri,omitempty"`
 	// The upstream access token header.
 	UpstreamAccessTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_access_token_header,omitempty"`
 	// The upstream access token JWK header.
-	UpstreamAccessTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"upstream_access_token_jwk_header,omitempty"`
+	UpstreamAccessTokenJwkHeader *string `json:"upstream_access_token_jwk_header,omitempty"`
 	// The upstream claim to header mappings.
-	UpstreamHeaders optionalnullable.OptionalNullable[[]UpstreamHeaders] `json:"upstream_headers,omitempty"`
+	UpstreamHeaders []UpstreamHeaders `json:"upstream_headers,omitempty"`
 	// The upstream header claims. Only top level claims are supported.
-	UpstreamHeadersClaims optionalnullable.OptionalNullable[[]string] `json:"upstream_headers_claims,omitempty"`
+	UpstreamHeadersClaims []string `json:"upstream_headers_claims,omitempty"`
 	// The upstream header names for the claim values.
-	UpstreamHeadersNames optionalnullable.OptionalNullable[[]string] `json:"upstream_headers_names,omitempty"`
+	UpstreamHeadersNames []string `json:"upstream_headers_names,omitempty"`
 	// The upstream id token header.
-	UpstreamIDTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_id_token_header,omitempty"`
+	UpstreamIDTokenHeader *string `json:"upstream_id_token_header,omitempty"`
 	// The upstream id token JWK header.
-	UpstreamIDTokenJwkHeader optionalnullable.OptionalNullable[string] `json:"upstream_id_token_jwk_header,omitempty"`
+	UpstreamIDTokenJwkHeader *string `json:"upstream_id_token_jwk_header,omitempty"`
 	// The upstream introspection header.
-	UpstreamIntrospectionHeader optionalnullable.OptionalNullable[string] `json:"upstream_introspection_header,omitempty"`
+	UpstreamIntrospectionHeader *string `json:"upstream_introspection_header,omitempty"`
 	// The upstream introspection JWT header.
-	UpstreamIntrospectionJwtHeader optionalnullable.OptionalNullable[string] `json:"upstream_introspection_jwt_header,omitempty"`
+	UpstreamIntrospectionJwtHeader *string `json:"upstream_introspection_jwt_header,omitempty"`
 	// The upstream refresh token header.
-	UpstreamRefreshTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_refresh_token_header,omitempty"`
+	UpstreamRefreshTokenHeader *string `json:"upstream_refresh_token_header,omitempty"`
 	// The upstream session id header.
-	UpstreamSessionIDHeader optionalnullable.OptionalNullable[string] `json:"upstream_session_id_header,omitempty"`
+	UpstreamSessionIDHeader *string `json:"upstream_session_id_header,omitempty"`
 	// The upstream user info header.
-	UpstreamUserInfoHeader optionalnullable.OptionalNullable[string] `json:"upstream_user_info_header,omitempty"`
+	UpstreamUserInfoHeader *string `json:"upstream_user_info_header,omitempty"`
 	// The upstream user info JWT header (in case the user info returns a JWT response).
-	UpstreamUserInfoJwtHeader optionalnullable.OptionalNullable[string] `json:"upstream_user_info_jwt_header,omitempty"`
+	UpstreamUserInfoJwtHeader *string `json:"upstream_user_info_jwt_header,omitempty"`
 	// The value of `Accept` header for user info requests: - `application/json`: user info response as JSON - `application/jwt`: user info response as JWT (from the obsolete IETF draft document).
-	UserinfoAccept optionalnullable.OptionalNullable[UserinfoAccept] `json:"userinfo_accept,omitempty"`
+	UserinfoAccept *UserinfoAccept `default:"application/json" json:"userinfo_accept"`
 	// The user info endpoint. If set it overrides the value in `userinfo_endpoint` returned by the discovery endpoint.
-	UserinfoEndpoint optionalnullable.OptionalNullable[string] `json:"userinfo_endpoint,omitempty"`
+	UserinfoEndpoint *string `json:"userinfo_endpoint,omitempty"`
 	// Extra headers passed from the client to the user info endpoint.
-	UserinfoHeadersClient optionalnullable.OptionalNullable[[]string] `json:"userinfo_headers_client,omitempty"`
+	UserinfoHeadersClient []string `json:"userinfo_headers_client,omitempty"`
 	// Extra header names passed to the user info endpoint.
-	UserinfoHeadersNames optionalnullable.OptionalNullable[[]string] `json:"userinfo_headers_names,omitempty"`
+	UserinfoHeadersNames []string `json:"userinfo_headers_names,omitempty"`
 	// Extra header values passed to the user info endpoint.
-	UserinfoHeadersValues optionalnullable.OptionalNullable[[]string] `json:"userinfo_headers_values,omitempty"`
+	UserinfoHeadersValues []string `json:"userinfo_headers_values,omitempty"`
 	// Extra query arguments passed from the client to the user info endpoint.
-	UserinfoQueryArgsClient optionalnullable.OptionalNullable[[]string] `json:"userinfo_query_args_client,omitempty"`
+	UserinfoQueryArgsClient []string `json:"userinfo_query_args_client,omitempty"`
 	// Extra query argument names passed to the user info endpoint.
-	UserinfoQueryArgsNames optionalnullable.OptionalNullable[[]string] `json:"userinfo_query_args_names,omitempty"`
+	UserinfoQueryArgsNames []string `json:"userinfo_query_args_names,omitempty"`
 	// Extra query argument values passed to the user info endpoint.
-	UserinfoQueryArgsValues optionalnullable.OptionalNullable[[]string] `json:"userinfo_query_args_values,omitempty"`
+	UserinfoQueryArgsValues []string `json:"userinfo_query_args_values,omitempty"`
 	// If the plugin uses a pseudo issuer. When set to true, the plugin will not discover the configuration from the issuer URL specified with `config.issuer`.
-	UsingPseudoIssuer optionalnullable.OptionalNullable[bool] `json:"using_pseudo_issuer,omitempty"`
+	UsingPseudoIssuer *bool `default:"false" json:"using_pseudo_issuer"`
 	// Verify tokens for standard claims.
-	VerifyClaims optionalnullable.OptionalNullable[bool] `json:"verify_claims,omitempty"`
+	VerifyClaims *bool `default:"true" json:"verify_claims"`
 	// Verify nonce on authorization code flow.
-	VerifyNonce optionalnullable.OptionalNullable[bool] `json:"verify_nonce,omitempty"`
+	VerifyNonce *bool `default:"true" json:"verify_nonce"`
 	// Verify plugin configuration against discovery.
-	VerifyParameters optionalnullable.OptionalNullable[bool] `json:"verify_parameters,omitempty"`
+	VerifyParameters *bool `default:"false" json:"verify_parameters"`
 	// Verify the cryptographic signature of tokens. Disabling this skips verification for every token source, including tokens presented directly by clients (bearer); this is insecure for that path. To trust only tokens fetched from the identity provider for specific grants, use `ignore_signature` instead, which never affects bearer tokens.
-	VerifySignature optionalnullable.OptionalNullable[bool] `json:"verify_signature,omitempty"`
+	VerifySignature *bool `default:"true" json:"verify_signature"`
 	// Claim path used to derive virtual credentials when consumer mapping is not used.
-	CredentialClaim      optionalnullable.OptionalNullable[[]string] `json:"credential_claim,omitempty"`
-	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
+	CredentialClaim []string `json:"credential_claim,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfig) MarshalJSON() ([]byte, error) {
@@ -5996,219 +5313,168 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetAnonymous() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Anonymous.Get()
-	return value
+	return a.Anonymous
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAudience() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Audience.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.Audience
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAudienceClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AudienceClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AudienceClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAudienceRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AudienceRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AudienceRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthMethods() []AuthMethods {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthMethods.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthMethods
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthenticatedGroupsClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthenticatedGroupsClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthenticatedGroupsClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationCookieDomain() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieDomain.Get()
-	return value
+	return a.AuthorizationCookieDomain
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationCookieHTTPOnly() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieHTTPOnly.Get()
-	return value
+	return a.AuthorizationCookieHTTPOnly
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieName.Get()
-	return value
+	return a.AuthorizationCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationCookiePath() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookiePath.Get()
-	return value
+	return a.AuthorizationCookiePath
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationCookieSameSite() *AuthorizationCookieSameSite {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieSameSite.Get()
-	return value
+	return a.AuthorizationCookieSameSite
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationCookieSecure() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationCookieSecure.Get()
-	return value
+	return a.AuthorizationCookieSecure
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationEndpoint.Get()
-	return value
+	return a.AuthorizationEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationQueryArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationQueryArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthorizationQueryArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationQueryArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationQueryArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthorizationQueryArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationQueryArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationQueryArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.AuthorizationQueryArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetAuthorizationRollingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.AuthorizationRollingTimeout.Get()
-	return value
+	return a.AuthorizationRollingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetBearerTokenCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.BearerTokenCookieName.Get()
-	return value
+	return a.BearerTokenCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetBearerTokenHeaderName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.BearerTokenHeaderName.Get()
-	return value
+	return a.BearerTokenHeaderName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetBearerTokenParamType() []BearerTokenParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.BearerTokenParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.BearerTokenParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetByUsernameIgnoreCase() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ByUsernameIgnoreCase.Get()
-	return value
+	return a.ByUsernameIgnoreCase
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheIntrospection() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheIntrospection.Get()
-	return value
+	return a.CacheIntrospection
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTokenExchange() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTokenExchange.Get()
-	return value
+	return a.CacheTokenExchange
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTokens() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTokens.Get()
-	return value
+	return a.CacheTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTokensSalt() string {
@@ -6222,685 +5488,518 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTTL() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTL.Get()
-	return value
+	return a.CacheTTL
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTTLMax() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLMax.Get()
-	return value
+	return a.CacheTTLMax
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTTLMin() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLMin.Get()
-	return value
+	return a.CacheTTLMin
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTTLNeg() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLNeg.Get()
-	return value
+	return a.CacheTTLNeg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheTTLResurrect() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheTTLResurrect.Get()
-	return value
+	return a.CacheTTLResurrect
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCacheUserInfo() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CacheUserInfo.Get()
-	return value
+	return a.CacheUserInfo
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClaimsForbidden() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClaimsForbidden.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClaimsForbidden
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientAlg() []ClientAlg {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientAlg.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientAlg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientArg() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientArg.Get()
-	return value
+	return a.ClientArg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientAuth() []ClientAuth {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientAuth.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientAuth
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientCredentialsParamType() []ClientCredentialsParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientCredentialsParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientCredentialsParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientID() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientID.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientJwk() []ClientJwk {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientJwk.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientJwk
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClientSecret() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClientSecret.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ClientSecret
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClusterCacheRedis() *ClusterCacheRedis {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClusterCacheRedis.Get()
-	return value
+	return a.ClusterCacheRedis
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetClusterCacheStrategy() *ClusterCacheStrategy {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ClusterCacheStrategy.Get()
-	return value
+	return a.ClusterCacheStrategy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetConsumerBy() []ConsumerBy {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerBy.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ConsumerBy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetConsumerClaims() [][]string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ConsumerClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetConsumerGroupsClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerGroupsClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ConsumerGroupsClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetConsumerGroupsOptional() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerGroupsOptional.Get()
-	return value
+	return a.ConsumerGroupsOptional
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetConsumerOptional() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ConsumerOptional.Get()
-	return value
+	return a.ConsumerOptional
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCredentialClaims() [][]string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CredentialClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.CredentialClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDisableSession() []DisableSession {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DisableSession.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DisableSession
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDiscoveryHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DiscoveryHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DiscoveryHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDiscoveryHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DiscoveryHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DiscoveryHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDisplayErrors() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DisplayErrors.Get()
-	return value
+	return a.DisplayErrors
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDomains() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Domains.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.Domains
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamAccessTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamAccessTokenHeader.Get()
-	return value
+	return a.DownstreamAccessTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamAccessTokenJwkHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamAccessTokenJwkHeader.Get()
-	return value
+	return a.DownstreamAccessTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamHeaders() []DownstreamHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DownstreamHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamHeadersClaims() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamHeadersClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DownstreamHeadersClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.DownstreamHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamIDTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIDTokenHeader.Get()
-	return value
+	return a.DownstreamIDTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamIDTokenJwkHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIDTokenJwkHeader.Get()
-	return value
+	return a.DownstreamIDTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamIntrospectionHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIntrospectionHeader.Get()
-	return value
+	return a.DownstreamIntrospectionHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamIntrospectionJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamIntrospectionJwtHeader.Get()
-	return value
+	return a.DownstreamIntrospectionJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamRefreshTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamRefreshTokenHeader.Get()
-	return value
+	return a.DownstreamRefreshTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamSessionIDHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamSessionIDHeader.Get()
-	return value
+	return a.DownstreamSessionIDHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamUserInfoHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamUserInfoHeader.Get()
-	return value
+	return a.DownstreamUserInfoHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDownstreamUserInfoJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DownstreamUserInfoJwtHeader.Get()
-	return value
+	return a.DownstreamUserInfoJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDpopProofLifetime() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DpopProofLifetime.Get()
-	return value
+	return a.DpopProofLifetime
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDpopUseNonce() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.DpopUseNonce.Get()
-	return value
+	return a.DpopUseNonce
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetEnableHsSignatures() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.EnableHsSignatures.Get()
-	return value
+	return a.EnableHsSignatures
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetEndSessionEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.EndSessionEndpoint.Get()
-	return value
+	return a.EndSessionEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetExposeErrorCode() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ExposeErrorCode.Get()
-	return value
+	return a.ExposeErrorCode
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetExtraJwksUris() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ExtraJwksUris.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ExtraJwksUris
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetForbiddenDestroySession() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ForbiddenDestroySession.Get()
-	return value
+	return a.ForbiddenDestroySession
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetForbiddenErrorMessage() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ForbiddenErrorMessage.Get()
-	return value
+	return a.ForbiddenErrorMessage
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetForbiddenRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ForbiddenRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ForbiddenRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetGroupsClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.GroupsClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.GroupsClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetGroupsRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.GroupsRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.GroupsRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetHideCredentials() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HideCredentials.Get()
-	return value
+	return a.HideCredentials
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetHTTPProxy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPProxy.Get()
-	return value
+	return a.HTTPProxy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetHTTPProxyAuthorization() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPProxyAuthorization.Get()
-	return value
+	return a.HTTPProxyAuthorization
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetHTTPVersion() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPVersion.Get()
-	return value
+	return a.HTTPVersion
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetHTTPSProxy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPSProxy.Get()
-	return value
+	return a.HTTPSProxy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetHTTPSProxyAuthorization() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.HTTPSProxyAuthorization.Get()
-	return value
+	return a.HTTPSProxyAuthorization
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIDTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IDTokenParamName.Get()
-	return value
+	return a.IDTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIDTokenParamType() []IDTokenParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IDTokenParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IDTokenParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIgnoreSignature() []IgnoreSignature {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IgnoreSignature.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IgnoreSignature
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectJwtTokens() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectJwtTokens.Get()
-	return value
+	return a.IntrospectJwtTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionAccept() *IntrospectionAccept {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionAccept.Get()
-	return value
+	return a.IntrospectionAccept
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionCheckActive() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionCheckActive.Get()
-	return value
+	return a.IntrospectionCheckActive
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionEndpoint.Get()
-	return value
+	return a.IntrospectionEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionEndpointAuthMethod() *IntrospectionEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionEndpointAuthMethod.Get()
-	return value
+	return a.IntrospectionEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionHeadersClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHeadersClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionHeadersClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionHint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionHint.Get()
-	return value
+	return a.IntrospectionHint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionPostArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionPostArgsClientHeaders() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsClientHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsClientHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionPostArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionPostArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionPostArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IntrospectionPostArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIntrospectionTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IntrospectionTokenParamName.Get()
-	return value
+	return a.IntrospectionTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetIssuer() string {
@@ -6914,940 +6013,749 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetIssuersAllowed() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.IssuersAllowed.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.IssuersAllowed
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetJwksEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.JwksEndpoint.Get()
-	return value
+	return a.JwksEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetJwtSessionClaim() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.JwtSessionClaim.Get()
-	return value
+	return a.JwtSessionClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetJwtSessionCookie() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.JwtSessionCookie.Get()
-	return value
+	return a.JwtSessionCookie
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetKeepalive() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Keepalive.Get()
-	return value
+	return a.Keepalive
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLeeway() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Leeway.Get()
-	return value
+	return a.Leeway
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLoginAction() *LoginAction {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginAction.Get()
-	return value
+	return a.LoginAction
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLoginMethods() []LoginMethods {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginMethods.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LoginMethods
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLoginRedirectMode() *LoginRedirectMode {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginRedirectMode.Get()
-	return value
+	return a.LoginRedirectMode
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLoginRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LoginRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLoginTokens() []LoginTokens {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LoginTokens.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LoginTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutMethods() []LogoutMethods {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutMethods.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LogoutMethods
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutPostArg() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutPostArg.Get()
-	return value
+	return a.LogoutPostArg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutQueryArg() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutQueryArg.Get()
-	return value
+	return a.LogoutQueryArg
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.LogoutRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutRevoke() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRevoke.Get()
-	return value
+	return a.LogoutRevoke
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutRevokeAccessToken() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRevokeAccessToken.Get()
-	return value
+	return a.LogoutRevokeAccessToken
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutRevokeRefreshToken() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutRevokeRefreshToken.Get()
-	return value
+	return a.LogoutRevokeRefreshToken
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetLogoutURISuffix() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.LogoutURISuffix.Get()
-	return value
+	return a.LogoutURISuffix
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetMaxAge() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MaxAge.Get()
-	return value
+	return a.MaxAge
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetMtlsIntrospectionEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MtlsIntrospectionEndpoint.Get()
-	return value
+	return a.MtlsIntrospectionEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetMtlsRevocationEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MtlsRevocationEndpoint.Get()
-	return value
+	return a.MtlsRevocationEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetMtlsTokenEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.MtlsTokenEndpoint.Get()
-	return value
+	return a.MtlsTokenEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetNoProxy() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.NoProxy.Get()
-	return value
+	return a.NoProxy
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetPasswordParamType() []PasswordParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PasswordParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.PasswordParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetPreserveQueryArgs() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PreserveQueryArgs.Get()
-	return value
+	return a.PreserveQueryArgs
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetPrincipals() *AIGWOpenIDConnectGeneratedConfigPrincipals {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Principals.Get()
-	return value
+	return a.Principals
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetProofOfPossessionAuthMethodsValidation() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProofOfPossessionAuthMethodsValidation.Get()
-	return value
+	return a.ProofOfPossessionAuthMethodsValidation
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetProofOfPossessionDpop() *ProofOfPossessionDpop {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProofOfPossessionDpop.Get()
-	return value
+	return a.ProofOfPossessionDpop
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetProofOfPossessionMtls() *ProofOfPossessionMtls {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProofOfPossessionMtls.Get()
-	return value
+	return a.ProofOfPossessionMtls
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetProtectedResourceMetadata() *ProtectedResourceMetadata {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ProtectedResourceMetadata.Get()
-	return value
+	return a.ProtectedResourceMetadata
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetPushedAuthorizationRequestEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PushedAuthorizationRequestEndpoint.Get()
-	return value
+	return a.PushedAuthorizationRequestEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetPushedAuthorizationRequestEndpointAuthMethod() *PushedAuthorizationRequestEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.PushedAuthorizationRequestEndpointAuthMethod.Get()
-	return value
+	return a.PushedAuthorizationRequestEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRedis() *Redis {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Redis.Get()
-	return value
+	return a.Redis
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRediscoveryLifetime() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RediscoveryLifetime.Get()
-	return value
+	return a.RediscoveryLifetime
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRefreshTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RefreshTokenParamName.Get()
-	return value
+	return a.RefreshTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRefreshTokenParamType() []RefreshTokenParamType {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RefreshTokenParamType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RefreshTokenParamType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRefreshTokens() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RefreshTokens.Get()
-	return value
+	return a.RefreshTokens
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRequireProofKeyForCodeExchange() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RequireProofKeyForCodeExchange.Get()
-	return value
+	return a.RequireProofKeyForCodeExchange
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRequirePushedAuthorizationRequests() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RequirePushedAuthorizationRequests.Get()
-	return value
+	return a.RequirePushedAuthorizationRequests
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRequireSignedRequestObject() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RequireSignedRequestObject.Get()
-	return value
+	return a.RequireSignedRequestObject
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetResolveDistributedClaims() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ResolveDistributedClaims.Get()
-	return value
+	return a.ResolveDistributedClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetResponseMode() *ResponseMode {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ResponseMode.Get()
-	return value
+	return a.ResponseMode
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetResponseType() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ResponseType.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ResponseType
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetReverify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Reverify.Get()
-	return value
+	return a.Reverify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRevocationEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RevocationEndpoint.Get()
-	return value
+	return a.RevocationEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRevocationEndpointAuthMethod() *RevocationEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RevocationEndpointAuthMethod.Get()
-	return value
+	return a.RevocationEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRevocationTokenParamName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RevocationTokenParamName.Get()
-	return value
+	return a.RevocationTokenParamName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRolesClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RolesClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RolesClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRolesRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RolesRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.RolesRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetRunOnPreflight() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.RunOnPreflight.Get()
-	return value
+	return a.RunOnPreflight
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetScopes() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Scopes.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.Scopes
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetScopesClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ScopesClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ScopesClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetScopesRequired() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.ScopesRequired.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.ScopesRequired
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSearchUserInfo() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SearchUserInfo.Get()
-	return value
+	return a.SearchUserInfo
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionAbsoluteTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionAbsoluteTimeout.Get()
-	return value
+	return a.SessionAbsoluteTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionAudience() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionAudience.Get()
-	return value
+	return a.SessionAudience
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionBind() []SessionBind {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionBind.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.SessionBind
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionCookieDomain() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieDomain.Get()
-	return value
+	return a.SessionCookieDomain
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionCookieHTTPOnly() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieHTTPOnly.Get()
-	return value
+	return a.SessionCookieHTTPOnly
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieName.Get()
-	return value
+	return a.SessionCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionCookiePath() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookiePath.Get()
-	return value
+	return a.SessionCookiePath
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionCookieSameSite() *SessionCookieSameSite {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieSameSite.Get()
-	return value
+	return a.SessionCookieSameSite
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionCookieSecure() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionCookieSecure.Get()
-	return value
+	return a.SessionCookieSecure
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionEnforceSameSubject() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionEnforceSameSubject.Get()
-	return value
+	return a.SessionEnforceSameSubject
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionHashStorageKey() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionHashStorageKey.Get()
-	return value
+	return a.SessionHashStorageKey
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionHashSubject() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionHashSubject.Get()
-	return value
+	return a.SessionHashSubject
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionIdlingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionIdlingTimeout.Get()
-	return value
+	return a.SessionIdlingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionMemcachedHost() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedHost.Get()
-	return value
+	return a.SessionMemcachedHost
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionMemcachedPort() *int64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedPort.Get()
-	return value
+	return a.SessionMemcachedPort
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionMemcachedPrefix() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedPrefix.Get()
-	return value
+	return a.SessionMemcachedPrefix
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionMemcachedSocket() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedSocket.Get()
-	return value
+	return a.SessionMemcachedSocket
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionMemcachedSsl() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedSsl.Get()
-	return value
+	return a.SessionMemcachedSsl
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionMemcachedSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionMemcachedSslVerify.Get()
-	return value
+	return a.SessionMemcachedSslVerify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionRemember() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRemember.Get()
-	return value
+	return a.SessionRemember
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionRememberAbsoluteTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRememberAbsoluteTimeout.Get()
-	return value
+	return a.SessionRememberAbsoluteTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionRememberCookieName() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRememberCookieName.Get()
-	return value
+	return a.SessionRememberCookieName
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionRememberRollingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRememberRollingTimeout.Get()
-	return value
+	return a.SessionRememberRollingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionRequestHeaders() []SessionRequestHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRequestHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.SessionRequestHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionResponseHeaders() []SessionResponseHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionResponseHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.SessionResponseHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionRollingTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionRollingTimeout.Get()
-	return value
+	return a.SessionRollingTimeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionSecret() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionSecret.Get()
-	return value
+	return a.SessionSecret
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionStorage() *SessionStorage {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionStorage.Get()
-	return value
+	return a.SessionStorage
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSessionStoreMetadata() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SessionStoreMetadata.Get()
-	return value
+	return a.SessionStoreMetadata
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.SslVerify.Get()
-	return value
+	return a.SslVerify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTimeout() *float64 {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.Timeout.Get()
-	return value
+	return a.Timeout
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTLSClientAuthCertID() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TLSClientAuthCertID.Get()
-	return value
+	return a.TLSClientAuthCertID
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTLSClientAuthSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TLSClientAuthSslVerify.Get()
-	return value
+	return a.TLSClientAuthSslVerify
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenCacheKeyIncludeScope() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenCacheKeyIncludeScope.Get()
-	return value
+	return a.TokenCacheKeyIncludeScope
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenEndpoint.Get()
-	return value
+	return a.TokenEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenEndpointAuthMethod() *AIGWOpenIDConnectGeneratedConfigTokenEndpointAuthMethod {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenEndpointAuthMethod.Get()
-	return value
+	return a.TokenEndpointAuthMethod
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenExchange() *TokenExchange {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenExchange.Get()
-	return value
+	return a.TokenExchange
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenExchangeEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenExchangeEndpoint.Get()
-	return value
+	return a.TokenExchangeEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenHeadersClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenHeadersGrants() []TokenHeadersGrants {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersGrants.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersGrants
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenHeadersPrefix() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersPrefix.Get()
-	return value
+	return a.TokenHeadersPrefix
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenHeadersReplay() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersReplay.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersReplay
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenPostArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenPostArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenPostArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenPostArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenPostArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenPostArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetTokenPostArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.TokenPostArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.TokenPostArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUnauthorizedDestroySession() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnauthorizedDestroySession.Get()
-	return value
+	return a.UnauthorizedDestroySession
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUnauthorizedErrorMessage() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnauthorizedErrorMessage.Get()
-	return value
+	return a.UnauthorizedErrorMessage
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUnauthorizedRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnauthorizedRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UnauthorizedRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUnexpectedRedirectURI() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UnexpectedRedirectURI.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UnexpectedRedirectURI
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamAccessTokenHeader() *string {
@@ -7862,236 +6770,180 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamAccessTokenJwkHeader() *st
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamAccessTokenJwkHeader.Get()
-	return value
+	return a.UpstreamAccessTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamHeaders() []UpstreamHeaders {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamHeaders.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UpstreamHeaders
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamHeadersClaims() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamHeadersClaims.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UpstreamHeadersClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UpstreamHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamIDTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIDTokenHeader.Get()
-	return value
+	return a.UpstreamIDTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamIDTokenJwkHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIDTokenJwkHeader.Get()
-	return value
+	return a.UpstreamIDTokenJwkHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamIntrospectionHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIntrospectionHeader.Get()
-	return value
+	return a.UpstreamIntrospectionHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamIntrospectionJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamIntrospectionJwtHeader.Get()
-	return value
+	return a.UpstreamIntrospectionJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamRefreshTokenHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamRefreshTokenHeader.Get()
-	return value
+	return a.UpstreamRefreshTokenHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamSessionIDHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamSessionIDHeader.Get()
-	return value
+	return a.UpstreamSessionIDHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamUserInfoHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamUserInfoHeader.Get()
-	return value
+	return a.UpstreamUserInfoHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUpstreamUserInfoJwtHeader() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UpstreamUserInfoJwtHeader.Get()
-	return value
+	return a.UpstreamUserInfoJwtHeader
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoAccept() *UserinfoAccept {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoAccept.Get()
-	return value
+	return a.UserinfoAccept
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoEndpoint() *string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoEndpoint.Get()
-	return value
+	return a.UserinfoEndpoint
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoHeadersClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoHeadersClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoHeadersClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoHeadersNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoHeadersNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoHeadersNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoHeadersValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoHeadersValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoHeadersValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoQueryArgsClient() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoQueryArgsClient.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoQueryArgsClient
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoQueryArgsNames() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoQueryArgsNames.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoQueryArgsNames
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUserinfoQueryArgsValues() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UserinfoQueryArgsValues.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.UserinfoQueryArgsValues
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetUsingPseudoIssuer() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.UsingPseudoIssuer.Get()
-	return value
+	return a.UsingPseudoIssuer
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetVerifyClaims() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifyClaims.Get()
-	return value
+	return a.VerifyClaims
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetVerifyNonce() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifyNonce.Get()
-	return value
+	return a.VerifyNonce
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetVerifyParameters() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifyParameters.Get()
-	return value
+	return a.VerifyParameters
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetVerifySignature() *bool {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.VerifySignature.Get()
-	return value
+	return a.VerifySignature
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetCredentialClaim() []string {
 	if a == nil {
 		return nil
 	}
-	value, _ := a.CredentialClaim.Get()
-	if value == nil {
-		return nil
-	}
-	return *value
+	return a.CredentialClaim
 }
