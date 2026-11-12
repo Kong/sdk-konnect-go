@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.17.3 and generator version 2.960.8
+// Generated from OpenAPI doc version 3.18.0 and generator version 2.960.8
 
 import (
 	"context"
@@ -500,8 +500,6 @@ type SDK struct {
 	PortalCustomDomains *PortalCustomDomains
 	// APIs related to customization of Konnect Developer Portals.
 	PortalCustomization *PortalCustomization
-	// APIs related to Konnect Developer Portal sidebar navigation configuration.
-	PortalNavigation *PortalNavigation
 	// APIs related to Konnect Developer Portal Custom Pages.
 	Pages *Pages
 	// APIs related to Konnect Developer Portal developers.
@@ -606,10 +604,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.84.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.84.0 2.960.8 3.17.3 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.84.0 2.960.8 3.18.0 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.84.0",
 			GenVersion:        "2.960.8",
-			OpenAPIDocVersion: "3.17.3",
+			OpenAPIDocVersion: "3.18.0",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
@@ -788,7 +786,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalNavigation = newPortalNavigation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)

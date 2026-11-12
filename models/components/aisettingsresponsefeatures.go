@@ -7,30 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AISettingsResponseFeaturesAISearch - AI Search configuration
-type AISettingsResponseFeaturesAISearch struct {
-	// Whether AI Search is enabled or not
-	Enabled *bool `default:"false" json:"enabled"`
-}
-
-func (a AISettingsResponseFeaturesAISearch) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AISettingsResponseFeaturesAISearch) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AISettingsResponseFeaturesAISearch) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
 // AISettingsResponseFeaturesMcpServer - MCP Server configuration
 type AISettingsResponseFeaturesMcpServer struct {
 	// Whether the Portal MCP Server is enabled or not
@@ -66,17 +42,8 @@ func (a *AISettingsResponseFeaturesMcpServer) GetWriteOperationsEnabled() *bool 
 
 // AISettingsResponseFeatures - AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
 type AISettingsResponseFeatures struct {
-	// AI Search configuration
-	AiSearch AISettingsResponseFeaturesAISearch `json:"ai_search"`
 	// MCP Server configuration
 	McpServer AISettingsResponseFeaturesMcpServer `json:"mcp_server"`
-}
-
-func (a *AISettingsResponseFeatures) GetAiSearch() AISettingsResponseFeaturesAISearch {
-	if a == nil {
-		return AISettingsResponseFeaturesAISearch{}
-	}
-	return a.AiSearch
 }
 
 func (a *AISettingsResponseFeatures) GetMcpServer() AISettingsResponseFeaturesMcpServer {
