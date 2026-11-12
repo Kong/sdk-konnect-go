@@ -50,7 +50,7 @@ type AIGatewayAuthStrategyOpenIDConnect struct {
 	//
 	// **Requires a minimum runtime version of `2.3`**.
 	TokenVault *AIGatewayTokenVaultEnrollmentProtectionInput `json:"token_vault,omitempty"`
-	Config     map[string]any                                `json:"config,omitempty"`
+	Config     *AIGWOpenIDConnectGeneratedConfig             `json:"config,omitempty"`
 }
 
 func (a AIGatewayAuthStrategyOpenIDConnect) MarshalJSON() ([]byte, error) {
@@ -110,7 +110,7 @@ func (a *AIGatewayAuthStrategyOpenIDConnect) GetTokenVault() *AIGatewayTokenVaul
 	return a.TokenVault
 }
 
-func (a *AIGatewayAuthStrategyOpenIDConnect) GetConfig() map[string]any {
+func (a *AIGatewayAuthStrategyOpenIDConnect) GetConfig() *AIGWOpenIDConnectGeneratedConfig {
 	if a == nil {
 		return nil
 	}

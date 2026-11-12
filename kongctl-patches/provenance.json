@@ -1,11 +1,11 @@
 {
   "repository": "Kong/kongctl",
-  "commit": "5bbbd76cd1fac3018be0c0c507cdf2f7e4c06eca",
+  "commit": "58a39f5f68f18be4ea639dc623e344919b00fb3d",
   "path": "tools/sdk-patches",
   "sha256": {
-    "apply.py": "2be2a0cfc0b0ea0fe4d2a18e9d6a0e12df05a56c97b9647d23e3d770d3f2a304",
-    "manifest.json": "8f31c2d9c71213d4d4d76e8b051ac36c6f561389f088f692e2e5f23ca94b9685",
-    "README.md": "1aec8da617af0384749e3680288b63e11f42f367509af08d0292f8d4094c204e",
+    "apply.py": "dd5be881c95d98775328c461e13e7f9ec867dd7607adb7cfda4b27d969d8afac",
+    "manifest.json": "bd33d7b4d32fc6e2312b431812efb42a2cef88bb2031b594be076cc5cf48d4f4",
+    "README.md": "530d511bdf3d31f62a69462432b99a77cff6ba7fba20b9f8a454b10c71586cac",
     "overlays/ai-gateway-pgvector-connection-defaults.yaml": "e95b749c182ea219916960587eb5a697209191356121a3efbb13d67396de5dc1",
     "overlays/ai-gateway-update-runtime-defaults.yaml": "90cd581cf7a301c6270b4cfd63dca367610af20e7a31fa0db926ade10c3f4ce6",
     "overlays/backend-cluster-tls-defaults.yaml": "3c5f065ec53cb0ab53345ac0407af11944433ae6730328adf1bead7a4d5c03ae",
@@ -33,6 +33,7 @@
     "tests/identity_credential_expiration_test.go.txt": "6c1f9beab33c2af9776e44a536827cdcc213ae3a9f81e67b999bbb6cf7823b40",
     "tests/identity_key_metadata_test.go.txt": "2c252882174578841b09ad476a12a0a826ecabdb4fc3d2f3244f09ec174e2b61",
     "tests/ai_gateway_update_defaults_test.go.txt": "952c6107d0aab72245a1ee13584f85a01aaa36678130b8bb75fdc30e41cc1d3b",
-    "tests/ai_gateway_oidc_config_presence_test.go.txt": "77e5cbe52ac2bd475c9791c126a865460d9f222f5b5bd90880ed36ce0e990877"
+    "tests/ai_gateway_oidc_config_presence_test.go.txt": "1daecfa01c05eb848ed68076bdb0b4d936f38aabb6be8d68b6b7a157916b1654",
+    "tests/ai_gateway_oidc_config_typed_test.go.txt": "b1b129b1c7cf2f287025447d70290e0a0e1cd3b711a0cd6c0b6fc4993d20680a"
   }
 }

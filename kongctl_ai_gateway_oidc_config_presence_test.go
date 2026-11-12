@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"reflect"
 	"strings"
 	"testing"
 
@@ -39,6 +40,8 @@ func TestKongctlOIDCConfigWirePresence(t *testing.T) {
 		{"null", `{"issuer":"https://example.com","cache_tokens_salt":"probe-salt","upstream_access_token_header":null}`, true, nil, 3},
 		{"explicit-default", `{"issuer":"https://example.com","cache_tokens_salt":"probe-salt","upstream_access_token_header":"authorization:bearer"}`, true, "authorization:bearer", 3},
 		{"custom", `{"issuer":"https://example.com","cache_tokens_salt":"probe-salt","upstream_access_token_header":"x-custom-token","hide_credentials":false,"scopes":[]}`, true, "x-custom-token", 5},
+		{"nested", `{"issuer":"https://example.com","cache_tokens_salt":"probe-salt","principals":{"enabled":false,"future_mapping":{"value":null}},"audience":null}`, false, nil, 4},
+		{"server-extension", `{"issuer":"https://example.com","cache_tokens_salt":"probe-salt","future_server_option":{"enabled":true}}`, false, nil, 3},
 	} {
 		for _, verb := range []string{"create", "update", "response"} {
 			t.Run(tc.name+"/"+verb, func(t *testing.T) {
@@ -91,6 +94,9 @@ func TestKongctlOIDCConfigWirePresence(t *testing.T) {
 					t.Fatal(err)
 				}
 				config := body["config"].(map[string]any)
+				if !reflect.DeepEqual(fields["config"], config) {
+					t.Fatalf("config changed: got %#v, want %#v", config, fields["config"])
+				}
 				if len(config) != tc.count {
 					t.Fatalf("wire config has %d fields, want %d", len(config), tc.count)
 				}
