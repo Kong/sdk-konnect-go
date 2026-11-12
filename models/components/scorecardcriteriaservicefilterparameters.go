@@ -20,6 +20,7 @@ const (
 
 // ScorecardCriteriaServiceFilterParametersCustomFields - Filter by custom fields using dot-notation to specify the custom field.
 // Filter operators are dictated by the custom field type. For example:
+//
 //   - `filter[custom_fields.owner]`
 //   - `filter[custom_fields.owner][neq]=kong`
 //   - `filter[custom_fields.dashboard.link][contains]=https`
@@ -620,6 +621,8 @@ type ScorecardCriteriaServiceFilterParameters struct {
 	DisplayName *StringFieldFilter `queryParam:"name=display_name"`
 	// Filter by custom fields using dot-notation to specify the custom field.
 	// Filter operators are dictated by the custom field type. For example:
+	//
+	//
 	//   - `filter[custom_fields.owner]`
 	//   - `filter[custom_fields.owner][neq]=kong`
 	//   - `filter[custom_fields.dashboard.link][contains]=https`
