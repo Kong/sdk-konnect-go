@@ -24,7 +24,7 @@ func (l *ListAuthServerClientTokensQueryParamFilter) GetID() *components.StringF
 type ListAuthServerClientTokensRequest struct {
 	// The auth server ID
 	AuthServerID string `pathParam:"style=simple,explode=false,name=authServerId"`
-	// The OAuth 2.0 client ID
+	// The OAuth 2.0 client ID. A client whose client_id is the URL of its Client ID Metadata Document is registered and managed by that document: it is not addressable through these endpoints, and any request that targets it is rejected.
 	ClientID string `pathParam:"style=simple,explode=false,name=clientId"`
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
