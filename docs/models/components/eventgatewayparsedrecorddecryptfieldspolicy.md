@@ -4,6 +4,9 @@ Decrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 25
 
 Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
 
+This policy only runs on records that the parent schema validation policy successfully parses.
+If the parent policy's `failure_mode` is `passthrough` or `mark`, records that fail schema validation are delivered to the client without parsing, so this policy doesn't run on them and their fields stay encrypted.
+
 **Requires a minimum runtime version of `1.2`**.
 
 
