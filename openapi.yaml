@@ -7918,14 +7918,10 @@ paths:
 
         Client-initiated signals fetch with long-polling capabilities.
         The client supplies `capabilities` as a deepObject query parameter:
-
-
           - Keys are capability names (e.g. `mcp`)
           - Values contain the capability request fields (`version`)
 
         Example:
-
-
           GET /mcp-cp/{controlPlaneId}/signals?capabilities[mcp][version]=5
 
         The CP responds with a JSON payload containing zero or more signals that the client should process.
@@ -29979,8 +29975,6 @@ components:
       name: sort
       description: |
         Sorts a collection of API implementations. Supported sort attributes are:
-
-
           - id
           - api_id
           - control_plane_id
@@ -30036,8 +30030,6 @@ components:
       name: sort
       description: |
         Sorts a collection of API Packages Operations. Supported sort attributes are:
-
-
           - path
           - method
           - api_id
@@ -30183,8 +30175,6 @@ components:
       style: deepObject
       description: |
         Filters a collection of catalog API service mappings for a given API. Supported filter attributes are:
-
-
           - `service_id`
       schema:
         $ref: '#/components/schemas/CatalogApiServiceMappingFilterParameters'
@@ -30294,8 +30284,6 @@ components:
       style: deepObject
       description: |
         Filters a collection of catalog service API mappings for a given Service. Supported filter attributes are:
-
-
           - `api_id`
       schema:
         $ref: '#/components/schemas/CatalogServiceApiMappingFilterParameters'
@@ -30305,8 +30293,6 @@ components:
       required: false
       description: |
         Sorts a collection of catalog service API mappings. Supported sort attributes are:
-
-
           - `created_at`
           - `updated_at`
 
@@ -30977,8 +30963,6 @@ components:
       name: sort
       description: |
         Sorts a collection of integration instances. Supported sort attributes are:
-
-
           - `display_name`
           - `name`
           - `created_at`
@@ -31371,8 +31355,6 @@ components:
       name: sort
       description: |
         Sorts a collection of API publications within a portal. Supported sort attributes are:
-
-
           - api_id
           - api_name
           - created_at
@@ -31526,8 +31508,6 @@ components:
       name: sort
       description: |
         Sorts a collection of services targeted by a scorecard criteria. Supported sort attributes are:
-
-
           - `display_name`
           - `name`
           - `evaluation.is_passing`
@@ -31543,8 +31523,6 @@ components:
       name: sort
       description: |
         Sorts a collection of criteria belonging to a scorecard. Supported sort attributes are:
-
-
           - `evaluation.passing_services_count`
 
         By default, criteria will be returned in the order that they are configured in the scorecard.
@@ -31572,8 +31550,6 @@ components:
       name: sort
       description: |
         Sorts a collection of services targeted by a scorecard. Supported sort attributes are:
-
-
           - `display_name`
           - `name`
           - `score.value`
@@ -31609,8 +31585,6 @@ components:
       name: sort
       description: |
         Sorts a collection of scorecard templates. Supported sort attributes are:
-
-
           - `display_name`
           - `name`
 
@@ -31694,8 +31668,6 @@ components:
       name: sort
       description: |
         Sorts a collection of application auth strategies. Supported sort attributes are:
-
-
           - created_at
           - updated_at
           - strategy_type
@@ -31712,8 +31684,6 @@ components:
       name: sort
       description: |
         Sorts a set of developers for an application. Supported sort attributes are:
-
-
           - id
       in: query
       required: false
@@ -31723,8 +31693,6 @@ components:
       name: sort
       description: |
         Sorts a set of registrations for an application. Supported sort attributes are:
-
-
           - created_at
           - updated_at
           - status
@@ -31784,8 +31752,6 @@ components:
       name: sort
       description: |
         Sorts a collection of application registrations. Supported sort attributes are:
-
-
           - created_at
           - updated_at
           - developer_id
@@ -43534,8 +43500,6 @@ components:
           description: |
             Filters on the resource's `labels` field. Filters must use dot-notation to identify
             the label key that will be used to filter the results. For example:
-
-
               - `filter[labels.owner]`
               - `filter[labels.owner][neq]=kong`
               - `filter[labels.env]=dev`
@@ -43547,8 +43511,6 @@ components:
           description: |
             Filters on the resource's `attributes` field. Filters must use dot-notation to identify
             the attribute key that will be used to filter the results. For example:
-
-
               - `filter[attributes.owner]`
               - `filter[attributes.owner][neq]=kong`
               - `filter[attributes.env]=dev`
@@ -48927,8 +48889,6 @@ components:
           description: |
             Filter by custom fields using dot-notation to specify the custom field.
             Filter operators are dictated by the custom field type. For example:
-
-
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -49409,8 +49369,6 @@ components:
         Defines the resource types that the integration manages within the catalog.
 
         This schema is a key-value object where:
-
-
           - Keys are globally unique, machine-readable identifiers for each resource type.
           - Values are objects describing metadata about the resource type.
 
@@ -49452,8 +49410,6 @@ components:
         resource_integration_data_examples:
           description: |
             A map of example resource `integration_data` payloads by resource type.
-
-
 
               - Keys are the machine-readable, globally unique names of resource types registered by this integration.
               - Values are example `integration_data` payloads.
@@ -49547,8 +49503,6 @@ components:
       description: |
         Defines the event types across all resource types belonging to the integration that will be ingested into the catalog.
 
-
-
           - Keys are the machine-readable, globally unique names of resource types registered by this integration.
           - Values are a map of event type definitions.
       type: object
@@ -49565,8 +49519,6 @@ components:
     IntegrationResourceEvents:
       description: |
         Defines the event types for a given resource type belonging to the integration that will be ingested in the catalog.
-
-
 
           - Keys are the machine-readable, globally unique names of resource types registered by this integration.
           - Values are the event type definition.
@@ -50280,8 +50232,6 @@ components:
       description: |
         Filters on the resource's `config` field. Filters must use dot-notation to identify
         the property that will be used to filter the results. For example:
-
-
           - `filter[config.control_plane_id]`
           - `filter[config.gateway_service_id][neq]=cedbd134-fc5c-4d44-9e38-ccd2a0c6e0ae`
       type: object
@@ -50307,8 +50257,6 @@ components:
       description: |
         Filters on the resource's `integration_data` field. Filters must use dot-notation to identify
         the property that will be used to filter the results. For example:
-
-
           - `filter[integration_data.control_plane.id]=760562c3-fedd-43e4-b742-fc1663fef188`
           - `filter[integration_data.gateway_service.name][contains]=legacy`
       type: object
@@ -50986,8 +50934,6 @@ components:
           description: |
             Filter by custom fields using dot-notation to specify the custom field.
             Filter operators are dictated by the custom field type. For example:
-
-
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -51076,8 +51022,6 @@ components:
           description: |
             Filter by custom fields using dot-notation to specify the custom field.
             Filter operators are dictated by the custom field type. For example:
-
-
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -52787,16 +52731,10 @@ components:
           description: |
             Methods to mediate authentication:
             * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
-
-
               validation
             * validate_forward - pass authentication from the client through proxy to the backend cluster.
-
-
               Proxy does the validation before forwarding it to the client.
             * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
-
-
               using the configuration defined at BackendCluster's authentication.
               SASL auth is not originated if authentication on the backend_cluster is not configured.
           type: string
@@ -52921,8 +52859,6 @@ components:
       description: |
         Configures whether or not ACL policies are enforced on the gateway.
         - `enforce_on_gateway` means the gateway enforces its own ACL policies for this virtual cluster
-
-
           and does not forward ACL-related commands to the backend cluster.
           Note that if there are no ACL policies configured, all access is denied.
         - `passthrough` tells the gateway to forward all ACL-related commands.
@@ -54451,12 +54387,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -54586,12 +54518,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -54904,12 +54832,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -55039,12 +54963,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -55220,12 +55140,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -55353,12 +55269,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -55521,12 +55433,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -55654,12 +55562,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -55971,12 +55875,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -56106,12 +56006,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -56262,12 +56158,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -56397,12 +56289,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -56669,12 +56557,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -56801,12 +56685,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -56927,12 +56807,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -57047,12 +56923,8 @@ components:
                   Confluent schema-registry metadata for the record value. Present (as empty maps)
                   whenever `record.value.schema` is present. Fields:
                   * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
-
-
                     empty map when the registry omits it.
                   * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
-
-
                     of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
                     empty map when the registry omits it.
 
@@ -59224,8 +59096,6 @@ components:
         Defines a behavior when record key is not valid.
         * reject - rejects a batch for topic partition. Only available for produce.
         * mark - marks a record with kong/server header and client ID value
-
-
           to help to identify the clients violating schema.
       type: string
       enum:
@@ -59237,8 +59107,6 @@ components:
         Defines a behavior when record value is not valid.
         * reject - rejects a batch for topic partition. Only available for produce.
         * mark - marks a record with kong/server header and client ID value
-
-
           to help to identify the clients violating schema.
       type: string
       enum:
@@ -59357,12 +59225,8 @@ components:
         mode:
           description: |
             * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
-
-
               Created resources are written with the prefix on the backend cluster.
             * enforce_prefix - the configured prefix remains visible to clients.
-
-
               Created resources must include the prefix or the request will fail.
           type: string
           enum:
@@ -99175,8 +99039,6 @@ components:
         If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 
         Different relative times support different granularities:
-
-
           - 15m => tenSecondly, thirtySecondly, minutely
           - 1h  => tenSecondly, thirtySecondly, minutely, fiveMinutely, tenMinutely
           - 6h  => thirtySecondly, minutely, fiveMinutely, tenMinutely, thirtyMinutely, hourly
@@ -99186,8 +99048,6 @@ components:
           - 30d => hourly, twoHourly, twelveHourly, daily, weekly
 
         For special time ranges:
-
-
           - current_week, previous_week   => thirtyMinutely, hourly, twoHourly, twelveHourly, daily
           - current_month, previous_month => hourly, twoHourly, twelveHourly, daily, weekly
 
@@ -100161,8 +100021,6 @@ components:
         If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 
         Different relative times support different granularities:
-
-
           - 24h                                          => daily
           - 7d, current_week, previous_week              => daily, weekly
           - 30d, current_month, previous_month           => daily, weekly, monthly
@@ -100172,8 +100030,6 @@ components:
         For absolute time ranges, daily will be used.
 
         Granularity values:
-
-
           - `daily`: Groups data into 24-hour buckets.
           - `weekly`: Groups data into 7-day buckets.
           - `monthly`: Groups data into calendar month buckets.
@@ -120463,8 +120319,6 @@ tags:
       - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
       - `ws`: At least one of `hosts`, `headers`, or `paths`
       - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-
-
         <br>
         A route can't have both `tls` and `tls_passthrough` protocols at same time.
         <br><br>
