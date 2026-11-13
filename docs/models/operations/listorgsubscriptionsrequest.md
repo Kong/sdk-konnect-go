@@ -1,0 +1,10 @@
+# ListOrgSubscriptionsRequest
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `EventID`                                                                    | `string`                                                                     | :heavy_check_mark:                                                           | Formatted string ID of the notification event.                               | invoice-ready                                                                |
+| `PageBefore`                                                                 | `*string`                                                                    | :heavy_minus_sign:                                                           | Request the next page of data, starting with the item before this parameter. | ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ                                           |
+| `PageAfter`                                                                  | `*string`                                                                    | :heavy_minus_sign:                                                           | Request the next page of data, starting with the item after this parameter.  | ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ                                           |

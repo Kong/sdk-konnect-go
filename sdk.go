@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.18.0 and generator version 2.960.8
+// Generated from OpenAPI doc version 3.19.0 and generator version 2.961.1
 
 import (
 	"context"
@@ -265,6 +265,10 @@ type SDK struct {
 	Mesh               *Mesh
 	// Operations related to notifications
 	Notifications *Notifications
+	// Operations related to org scoped notifications and their org subscriptions. The http channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when http destinations are enabled.
+	OrgConfigurations *OrgConfigurations
+	// Operations related to http destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when http destinations are enabled.
+	Destinations *Destinations
 	// Resource mappings represent the link between a resource and a service.
 	// Once a resource is mapped to a service, a rich view of the resource will be presented on the service page.
 	// A resource may be mapped to multiple services, but it cannot be mapped to the same service twice.
@@ -342,8 +346,6 @@ type SDK struct {
 	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 	// - `ws`: At least one of `hosts`, `headers`, or `paths`
 	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	//
-	//
 	//   <br>
 	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
 	//   <br><br>
@@ -501,6 +503,8 @@ type SDK struct {
 	PortalCustomDomains *PortalCustomDomains
 	// APIs related to customization of Konnect Developer Portals.
 	PortalCustomization *PortalCustomization
+	// APIs related to Konnect Developer Portal sidebar navigation configuration.
+	PortalNavigation *PortalNavigation
 	// APIs related to Konnect Developer Portal Custom Pages.
 	Pages *Pages
 	// APIs related to Konnect Developer Portal developers.
@@ -605,10 +609,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.86.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.86.1 2.960.8 3.18.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.86.1 2.961.1 3.19.0 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.86.1",
-			GenVersion:        "2.960.8",
-			OpenAPIDocVersion: "3.18.0",
+			GenVersion:        "2.961.1",
+			OpenAPIDocVersion: "3.19.0",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
@@ -695,6 +699,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogMCPVersions = newCatalogMCPVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Mesh = newMesh(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OrgConfigurations = newOrgConfigurations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Destinations = newDestinations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -787,6 +793,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalNavigation = newPortalNavigation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
