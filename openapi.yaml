@@ -8580,6 +8580,358 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Notifications
+  /v1/notifications/configurations/organization:
+    get:
+      operationId: list-org-configurations
+      summary: List available org events
+      description: |-
+        Returns the organization event types that you can subscribe to, with each event's title, description, and namespace.
+        Only available to organization administrators.
+      responses:
+        '200':
+          $ref: '#/components/responses/OrgConfigurationListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Org Configurations
+  '/v1/notifications/configurations/organization/{eventId}/subscriptions':
+    parameters:
+      - $ref: '#/components/parameters/eventId'
+    get:
+      operationId: list-org-subscriptions
+      summary: List org subscriptions
+      description: |-
+        List existing organization subscriptions, including the subscription destinations.
+        Only available to organization administrators.
+      parameters:
+        - $ref: '#/components/parameters/PageBefore'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/OrgSubscriptionListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Org Configurations
+    post:
+      operationId: create-org-subscription
+      summary: Create an org subscription
+      description: |-
+        Create a subscription for an org scoped event.
+        The event ID to subscribe is placed in the URL. A destination may be used in multiple subscriptions.
+        Only available to organization administrators.
+      requestBody:
+        $ref: '#/components/requestBodies/OrgSubscriptionCreateRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/OrgSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Org Configurations
+  '/v1/notifications/configurations/organization/{eventId}/subscriptions/{subscriptionId}':
+    parameters:
+      - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/orgSubscriptionId'
+    get:
+      operationId: get-org-subscription
+      summary: Get an org subscription
+      description: |-
+        Fetch the details of a single org scoped subscription.
+        Only available to organization administrators.
+      responses:
+        '200':
+          $ref: '#/components/responses/OrgSubscriptionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Org Configurations
+    patch:
+      operationId: update-org-subscription
+      summary: Update an org subscription
+      description: |-
+        Update the details of an org scoped subscription.
+        Only available to organization administrators.
+      requestBody:
+        $ref: '#/components/requestBodies/OrgSubscriptionUpdateRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/OrgSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Org Configurations
+    delete:
+      operationId: delete-org-subscription
+      summary: Delete an org subscription
+      description: |-
+        Delete an org scoped subscription.
+        Only available to organization administrators.
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Org Configurations
+  /v1/notifications/deliveries:
+    get:
+      operationId: list-deliveries
+      summary: List delivery history
+      description: 'List the deliveries for all destinations in this organization. To filter to a specific destination, use `filter[destination_id][eq]`'
+      parameters:
+        - $ref: '#/components/parameters/PageBefore'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/OrgDeliveryFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/DeliveryListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Destinations
+  /v1/notifications/destinations:
+    get:
+      operationId: list-destinations
+      summary: List destinations
+      description: 'Returns the organization''s destinations, with the newest destinations first. Use the event type filter to list destinations with an enabled subscription for a specific event type.'
+      parameters:
+        - $ref: '#/components/parameters/PageBefore'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/DestinationFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Destinations
+    post:
+      operationId: create-destination
+      summary: Create a destination
+      description: |-
+        Creates an HTTP destination for organization event notifications. You can create up to 50 destinations for an organization.
+        The response includes the signing secret. Save it when you create the destination; later responses do not include it.
+      requestBody:
+        $ref: '#/components/requestBodies/DestinationCreateRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/DestinationWithSecretResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Destinations
+  '/v1/notifications/destinations/{destinationId}':
+    parameters:
+      - $ref: '#/components/parameters/destinationId'
+    get:
+      operationId: get-destination
+      summary: Get a destination
+      description: Show a destination's details. Does not return sensitive keys such as signing secret.
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Destinations
+    patch:
+      operationId: update-destination
+      summary: Update a destination
+      description: Update a destination's parameters
+      requestBody:
+        $ref: '#/components/requestBodies/DestinationUpdateRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Destinations
+    delete:
+      operationId: delete-destination
+      summary: Delete a destination
+      description: |-
+        Deletes the destination and removes it from all subscriptions that use it.
+        If this leaves a subscription with no destinations, that subscription is also deleted.
+        This action also deletes the destination's signing keys and delivery history. You cannot undo this action.
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Destinations
+  '/v1/notifications/destinations/{destinationId}/deliveries/{deliveryId}':
+    get:
+      operationId: get-destination-delivery
+      summary: Get a delivery and its attempts
+      description: 'Show a notification''s delivery status, including information about each delivery attempt.'
+      parameters:
+        - $ref: '#/components/parameters/destinationId'
+        - $ref: '#/components/parameters/deliveryId'
+      responses:
+        '200':
+          $ref: '#/components/responses/DeliveryDetailResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Destinations
+  '/v1/notifications/destinations/{destinationId}/deliveries/{deliveryId}/resend':
+    post:
+      operationId: resend-destination-delivery
+      summary: Resend a delivery
+      description: |-
+        Trigger a redelivery of a failed notification. The redelivery has a new delivery ID in the "Delivery history" endpoint.
+        The payload is identical to the original delivery, including the `event_id` which can be used to deduplicate notifications.
+      parameters:
+        - $ref: '#/components/parameters/destinationId'
+        - $ref: '#/components/parameters/deliveryId'
+      responses:
+        '200':
+          $ref: '#/components/responses/DeliveryResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - Destinations
+  '/v1/notifications/destinations/{destinationId}/secret/rotate':
+    post:
+      operationId: rotate-destination-secret
+      summary: Rotate the destination signing secret
+      description: Creates a new signing secret for the HTTP destination. The response includes the new secret only once. The previous secret remains valid for 24 hours so you can update your integration.
+      parameters:
+        - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationSecretResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Destinations
+  '/v1/notifications/destinations/{destinationId}/subscriptions':
+    get:
+      operationId: list-destination-subscriptions
+      summary: List destination subscriptions
+      description: Returns the organization's subscriptions that use this destination.
+      parameters:
+        - $ref: '#/components/parameters/destinationId'
+        - $ref: '#/components/parameters/PageBefore'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/OrgSubscriptionListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Destinations
+  '/v1/notifications/destinations/{destinationId}/test':
+    post:
+      operationId: test-destination
+      summary: Test a destination
+      description: |-
+        Trigger a test delivery to a destination. The test outcome is returned in the "Delivery history" endpoint.
+        Tests may be triggered every 5 seconds.
+      parameters:
+        - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/DeliveryResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - Destinations
   /v1/notifications/inbox:
     get:
       operationId: list-notifications
@@ -30586,6 +30938,30 @@ components:
       required: true
       schema:
         type: string
+    deliveryId:
+      name: deliveryId
+      in: path
+      required: true
+      description: 'ID of the delivery, a UUID v7.'
+      schema:
+        type: string
+        format: uuid
+    DestinationFilter:
+      name: filter
+      description: 'Filters a collection of destinations. filter[event_type] returns the destinations with an enabled org subscription to that event type.'
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/DestinationFilterParameters'
+      style: deepObject
+    destinationId:
+      name: destinationId
+      in: path
+      required: true
+      description: 'ID of the http destination, a UUID v7.'
+      schema:
+        type: string
+        format: uuid
     DeveloperId:
       schema:
         type: string
@@ -31222,6 +31598,22 @@ components:
       required: true
       description: The API operation identifier
       x-speakeasy-match: id
+    OrgDeliveryFilter:
+      name: filter
+      description: 'Filters the deliveries of the organization. filter[destination_id] returns the deliveries of that destination.'
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/OrgDeliveryFilterParameters'
+      style: deepObject
+    orgSubscriptionId:
+      name: subscriptionId
+      in: path
+      required: true
+      description: 'ID of the org subscription, a UUID v7.'
+      schema:
+        type: string
+        format: uuid
     PageAfter:
       name: 'page[after]'
       description: 'Request the next page of data, starting with the item after this parameter.'
@@ -37761,6 +38153,460 @@ components:
           $ref: '#/components/schemas/LegacyStringFieldFilter'
       additionalProperties: false
       title: ConfigurationFilterParameters
+    DestinationFilterParameters:
+      type: object
+      properties:
+        event_type:
+          $ref: '#/components/schemas/StringFieldEqualsFilter'
+      additionalProperties: false
+      title: DestinationFilterParameters
+    OrgDeliveryFilterParameters:
+      type: object
+      properties:
+        destination_id:
+          $ref: '#/components/schemas/StringFieldEqualsFilter'
+        event_type:
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
+        status:
+          $ref: '#/components/schemas/StatusFieldFilter'
+      additionalProperties: false
+      title: OrgDeliveryFilterParameters
+    StatusFieldFilter:
+      description: 'Filter using **one** of the following operators: `eq`, `neq`, `contains`'
+      type: object
+      properties:
+        eq:
+          description: The field exactly matches the provided value.
+          type: string
+          example: '?filter[status][eq]=failed'
+        neq:
+          description: The field does not match the provided value.
+          type: string
+          example: '?filter[status][neq]=failed'
+        contains:
+          description: The field contains the provided value.
+          type: string
+          example: '?filter[status][contains]=fail'
+      additionalProperties: false
+    DestinationState:
+      description: Destination status. pending_verification means the destination is waiting for verification; enabled means it can receive notifications; disabled means it is paused; disabled_system means it was disabled automatically.
+      type: string
+      enum:
+        - pending_verification
+        - enabled
+        - disabled
+        - disabled_system
+      x-speakeasy-unknown-values: allow
+    DestinationSigningAlgo:
+      description: Signing algorithm of the signing key.
+      type: string
+      enum:
+        - hmac-sha256
+        - ed25519
+      x-speakeasy-unknown-values: allow
+    DestinationCreatePayload:
+      discriminator:
+        propertyName: type
+        mapping:
+          http: '#/components/schemas/HttpDestinationCreatePayload'
+      oneOf:
+        - $ref: '#/components/schemas/HttpDestinationCreatePayload'
+    HttpDestinationCreatePayload:
+      type: object
+      properties:
+        name:
+          description: Destination name. The name must contain 1 to 255 characters after leading and trailing spaces are removed.
+          type: string
+        type:
+          type: string
+          enum:
+            - http
+        url:
+          description: |-
+            Full URL of the endpoint that receives notifications.
+            Must be a publicly resolvable address.
+          type: string
+          maxLength: 2048
+          x-go-type-skip-optional-pointer: true
+        custom_headers:
+          description: |-
+            Custom headers to include in notification requests. You can set up to 10 headers.
+            The Standard Webhooks headers and the transport headers are reserved.
+          type: object
+          additionalProperties:
+            type: string
+      example:
+        name: Production webhooks
+        type: http
+        url: 'https://example.com/webhooks'
+        custom_headers:
+          X-Environment: production
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - url
+    DestinationUpdatePayload:
+      oneOf:
+        - $ref: '#/components/schemas/HttpDestinationUpdatePayload'
+    HttpDestinationUpdatePayload:
+      type: object
+      properties:
+        type:
+          description: Destination type. This value must match the type set when the destination was created. You cannot change the destination type.
+          type: string
+          enum:
+            - http
+        name:
+          description: Name of the destination.
+          type: string
+        url:
+          description: Full URL of the endpoint that receives notifications.
+          type: string
+        custom_headers:
+          description: Custom headers to add or change. Headers that you do not include keep their current values. Set a header to `null` to remove it. An empty object changes nothing.
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+        state:
+          description: 'Set to enabled to allow notifications to be sent, or disabled to pause them. Setting a destination that was automatically disabled back to enabled restarts delivery attempts.'
+          type: string
+          enum:
+            - enabled
+            - disabled
+          x-speakeasy-unknown-values: allow
+      example:
+        type: http
+        name: Production webhooks
+        custom_headers:
+          X-Environment: staging
+        state: enabled
+      additionalProperties: false
+    Destination:
+      discriminator:
+        propertyName: type
+        mapping:
+          http: '#/components/schemas/HttpDestination'
+      oneOf:
+        - $ref: '#/components/schemas/HttpDestination'
+    HttpDestination:
+      type: object
+      properties:
+        id:
+          description: UUID v7 identifier of the destination.
+          type: string
+        name:
+          description: Name of the destination.
+          type: string
+        type:
+          type: string
+          enum:
+            - http
+        state:
+          $ref: '#/components/schemas/DestinationState'
+        url:
+          description: Endpoint URL of the destination.
+          type: string
+        url_host:
+          description: Host part of the target URL.
+          type: string
+        custom_header_names:
+          description: Names of the configured custom headers. Header values are not returned.
+          type: array
+          items:
+            type: string
+        last_success_at:
+          description: 'Time of the most recent successful notification delivery, if any.'
+          type: string
+          format: date-time
+        last_failure_at:
+          description: 'Time of the most recent failed notification delivery, if any.'
+          type: string
+          format: date-time
+        last_failure_reason:
+          description: 'Reason for the most recent failed notification delivery, if any.'
+          type: string
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - name
+        - type
+        - state
+        - created_at
+        - updated_at
+    DestinationWithSecret:
+      discriminator:
+        propertyName: type
+        mapping:
+          http: '#/components/schemas/HttpDestinationWithSecret'
+      oneOf:
+        - $ref: '#/components/schemas/HttpDestinationWithSecret'
+    HttpDestinationWithSecret:
+      description: An HTTP destination with its new plaintext signing secret. The signing secret is returned only when a destination is created.
+      type: object
+      properties:
+        id:
+          description: UUID v7 identifier of the destination.
+          type: string
+        name:
+          description: Name of the destination.
+          type: string
+        type:
+          type: string
+          enum:
+            - http
+        state:
+          $ref: '#/components/schemas/DestinationState'
+        url:
+          description: Endpoint URL of the destination.
+          type: string
+        url_host:
+          description: Host part of the target URL.
+          type: string
+        custom_header_names:
+          description: Names of the configured custom headers. Header values are not returned.
+          type: array
+          items:
+            type: string
+        last_success_at:
+          description: 'Time of the most recent successful notification delivery, if any.'
+          type: string
+          format: date-time
+        last_failure_at:
+          description: 'Time of the most recent failed notification delivery, if any.'
+          type: string
+          format: date-time
+        last_failure_reason:
+          description: 'Reason for the most recent failed notification delivery, if any.'
+          type: string
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        signing_algo:
+          $ref: '#/components/schemas/DestinationSigningAlgo'
+        verified_at:
+          description: 'Time when the destination was verified, if verification is complete.'
+          type: string
+          format: date-time
+        signing_secret:
+          description: Secret used to verify that an HTTP notification was sent by Kong.
+          type: string
+      required:
+        - id
+        - name
+        - type
+        - state
+        - created_at
+        - updated_at
+    DestinationSecret:
+      description: Newly generated signing secret for the destination.
+      type: object
+      properties:
+        signing_secret:
+          description: Secret used to verify that an HTTP notification was sent by Kong.
+          type: string
+      additionalProperties: false
+      required:
+        - signing_secret
+    DeliveryStatus:
+      description: Delivery status. scheduled means delivery is pending; succeeded means delivery completed successfully; failed means delivery attempts ended without success; expired means the delivery reached its expiry time before it succeeded.
+      type: string
+      enum:
+        - scheduled
+        - succeeded
+        - failed
+        - expired
+      x-speakeasy-unknown-values: allow
+    DeliveryMode:
+      description: Indicates whether the delivery is for a live event or a test.
+      type: string
+      enum:
+        - live
+        - test
+      x-speakeasy-unknown-values: allow
+    Delivery:
+      type: object
+      properties:
+        id:
+          description: UUID v7 identifier of the delivery.
+          type: string
+        destination_id:
+          description: UUID v7 identifier of the destination.
+          type: string
+        event_id:
+          description: Identifier of the event occurrence.
+          type: string
+        event_type:
+          description: 'Event type name, for example kai.cost.budget.exceeded.'
+          type: string
+        event_occurred_at:
+          description: 'When the event happened, not when it was sent.'
+          type: string
+          format: date-time
+        region:
+          description: 'Region where the delivery was created, in uppercase. For example, `US` or `EU`.'
+          type: string
+        mode:
+          $ref: '#/components/schemas/DeliveryMode'
+        status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        attempt_count:
+          description: Number of attempts made so far.
+          type: integer
+        failure_reason:
+          description: 'Reason why delivery did not succeed: render_failed means the notification could not be prepared; http_error means the endpoint returned an unsuccessful HTTP response; retries_exhausted means no more attempts will be made; destination_inactive means the destination could not receive notifications; client_error means the request was rejected; expired means the delivery reached its expiry time.'
+          type: string
+          enum:
+            - render_failed
+            - http_error
+            - retries_exhausted
+            - destination_inactive
+            - client_error
+            - expired
+          x-speakeasy-unknown-values: allow
+        last_status_code:
+          description: HTTP status code of the last attempt.
+          type: integer
+        payload:
+          description: The payload sent to the destination. Present when fetching a single delivery only.
+          type: string
+        next_attempt_at:
+          type: string
+          format: date-time
+        expires_at:
+          description: Time after which no more delivery attempts are made.
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - destination_id
+        - event_type
+        - status
+        - mode
+        - attempt_count
+        - expires_at
+        - created_at
+        - updated_at
+    DeliveryAttemptStatus:
+      description: Lifecycle state of a delivery attempt.
+      type: string
+      enum:
+        - failed
+        - succeeded
+      x-speakeasy-unknown-values: allow
+    DeliveryAttempt:
+      description: Properties of one HTTP request of a delivery.
+      type: object
+      properties:
+        id:
+          description: Sequence number of the attempt within the delivery.
+          type: integer
+        status:
+          $ref: '#/components/schemas/DeliveryAttemptStatus'
+        created_at:
+          description: 'When the attempt was recorded, after the response.'
+          type: string
+          format: date-time
+        response_status:
+          type: integer
+        response_body:
+          description: Truncated response body of the attempt.
+          type: string
+        response_truncated:
+          type: boolean
+      additionalProperties: false
+      required:
+        - id
+        - status
+        - created_at
+    DeliveryDetail:
+      description: A single delivery with the full list of its attempts.
+      type: object
+      properties:
+        id:
+          description: UUID v7 identifier of the delivery.
+          type: string
+        destination_id:
+          description: UUID v7 identifier of the destination.
+          type: string
+        event_id:
+          description: Identifier of the event occurrence.
+          type: string
+        event_type:
+          description: 'Event type name, for example kai.cost.budget.exceeded.'
+          type: string
+        event_occurred_at:
+          description: 'When the event happened, not when it was sent.'
+          type: string
+          format: date-time
+        region:
+          description: 'Region where the delivery was created, in uppercase. For example, `US` or `EU`.'
+          type: string
+        mode:
+          $ref: '#/components/schemas/DeliveryMode'
+        status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        attempt_count:
+          description: Number of attempts made so far.
+          type: integer
+        failure_reason:
+          description: 'Reason why delivery did not succeed: render_failed means the notification could not be prepared; http_error means the endpoint returned an unsuccessful HTTP response; retries_exhausted means no more attempts will be made; destination_inactive means the destination could not receive notifications; client_error means the request was rejected; expired means the delivery reached its expiry time.'
+          type: string
+          enum:
+            - render_failed
+            - http_error
+            - retries_exhausted
+            - destination_inactive
+            - client_error
+            - expired
+          x-speakeasy-unknown-values: allow
+        last_status_code:
+          description: HTTP status code of the last attempt.
+          type: integer
+        payload:
+          description: The payload sent to the destination. Present when fetching a single delivery only.
+          type: string
+        next_attempt_at:
+          type: string
+          format: date-time
+        expires_at:
+          description: Time after which no more delivery attempts are made.
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        attempts:
+          description: All attempts made so far for this delivery.
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryAttempt'
+      required:
+        - id
+        - destination_id
+        - event_type
+        - status
+        - mode
+        - attempt_count
+        - expires_at
+        - created_at
+        - updated_at
     Notification:
       description: Properties of a notification.
       type: object
@@ -37838,7 +38684,7 @@ components:
         - type
         - enabled
     NotificationChannelType:
-      description: 'Channel of a user scoped subscription. The http channel is not a user channel: it belongs to org scoped notifications.'
+      description: Channel of a user scoped subscription
       type: string
       enum:
         - EMAIL
@@ -37901,6 +38747,159 @@ components:
       required:
         - channel
         - enabled
+    OrgConfiguration:
+      description: An organization event type that you can subscribe to.
+      type: object
+      properties:
+        event_type:
+          description: Event type identifier. Use this value to create or list subscriptions for the event. Use the list org configurations operation to find the valid values.
+          type: string
+          example: kai.feature.enablement
+        event_title:
+          type: string
+        event_description:
+          type: string
+        event_namespace:
+          $ref: '#/components/schemas/OrgConfigurationNamespace'
+      additionalProperties: false
+      required:
+        - event_type
+        - event_title
+        - event_description
+        - event_namespace
+    OrgConfigurationNamespace:
+      description: Category that identifies the organization event's area of the product.
+      type: string
+      enum:
+        - plan-and-usage
+        - organization
+        - dev-portal
+        - cloud-gateways
+        - regional-event-namespace
+        - gateway-manager
+        - advanced-analytics
+        - ai-management
+      x-speakeasy-unknown-values: allow
+    OrgSubscriptionCreatePayload:
+      description: Defines which destinations receive an event and the regions and entities for which notifications are sent.
+      type: object
+      properties:
+        destination_ids:
+          description: IDs of 1 to 50 HTTP destinations that receive this event. Each ID must be unique.
+          type: array
+          items:
+            type: string
+            format: uuid
+          maxItems: 50
+          minItems: 1
+          uniqueItems: true
+        regions:
+          description: Regions for which notifications are sent. Use `*` for all regions.
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationRegion'
+        entities:
+          description: Entity IDs for which notifications are sent. Use `*` for all entities.
+          type: array
+          items:
+            type: string
+            description: ID of the entity. Use '*' to represent all entities of this type.
+        enabled:
+          description: Set to false to create the subscription in a paused state.
+          type: boolean
+        name:
+          description: Name that identifies the subscription.
+          type: string
+      additionalProperties: false
+      required:
+        - destination_ids
+        - regions
+        - entities
+        - enabled
+        - name
+    OrgSubscriptionUpdatePayload:
+      description: Properties of an org subscription to update. Include only the properties that you want to change. A property that you do not include keeps its current value. A property that you include replaces the current value.
+      type: object
+      properties:
+        destination_ids:
+          description: IDs of 1 to 50 HTTP destinations that receive this event. Each ID must be unique. This list replaces the current destinations.
+          type: array
+          items:
+            type: string
+            format: uuid
+          maxItems: 50
+          minItems: 1
+          uniqueItems: true
+        regions:
+          description: Regions for which notifications are sent. Use `*` for all regions. This replaces the current regions.
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationRegion'
+        entities:
+          description: Entity IDs for which notifications are sent. Use `*` for all entities. This replaces the current entities.
+          type: array
+          items:
+            type: string
+            description: ID of the entity. Use '*' to represent all entities of this type.
+        enabled:
+          description: Set to false to pause the subscription without deleting it.
+          type: boolean
+        name:
+          description: Name that identifies the subscription.
+          type: string
+      additionalProperties: false
+    OrgSubscription:
+      description: Subscription that sends an organization event to one or more destinations for the selected regions and entities.
+      type: object
+      properties:
+        id:
+          description: UUID v7 identifier of the subscription.
+          type: string
+          format: uuid
+        name:
+          description: Name that identifies the subscription.
+          type: string
+        event_type:
+          description: Event type sent by this subscription.
+          type: string
+        destination_ids:
+          description: IDs of the HTTP destinations that receive this event. Deleting a destination removes its ID from this list. The subscription is deleted if no destinations remain.
+          type: array
+          items:
+            type: string
+            format: uuid
+          maxItems: 50
+          minItems: 1
+          uniqueItems: true
+        regions:
+          description: Regions for which this subscription sends notifications. `*` represents all regions.
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationRegion'
+        entities:
+          description: Entity IDs for which this subscription sends notifications. `*` represents all entities.
+          type: array
+          items:
+            type: string
+            description: ID of the entity. Use '*' to represent all entities of this type.
+        enabled:
+          description: Indicates whether this subscription sends notifications.
+          type: boolean
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - event_type
+        - destination_ids
+        - regions
+        - entities
+        - enabled
+        - created_at
+        - updated_at
     EventSubscriptionResponse:
       description: Properties associated with an event subscription.
       type: object
@@ -109455,6 +110454,34 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BulkPayload'
+    DestinationCreateRequest:
+      description: Request body schema for creating a destination.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DestinationCreatePayload'
+    DestinationUpdateRequest:
+      description: Request body schema for updating a destination.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DestinationUpdatePayload'
+    OrgSubscriptionCreateRequest:
+      description: Request body schema for creating an org subscription.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrgSubscriptionCreatePayload'
+    OrgSubscriptionUpdateRequest:
+      description: Request body schema for updating an org subscription.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrgSubscriptionUpdatePayload'
     CreateDcrProvider:
       required: true
       content:
@@ -116089,6 +117116,20 @@ components:
             additionalProperties: false
             required:
               - data
+    OrgConfigurationListResponse:
+      description: A list of objects representing an available event
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrgConfiguration'
+            additionalProperties: false
+            required:
+              - data
     EventSubscriptionListResponse:
       description: A paginated list response for all subscriptions associated with an event.
       content:
@@ -116112,6 +117153,93 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EventSubscriptionResponse'
+    DestinationResponse:
+      description: A single destination.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Destination'
+    DestinationWithSecretResponse:
+      description: A single http destination with its new signing secret.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DestinationWithSecret'
+    DestinationSecretResponse:
+      description: A newly generated destination signing secret.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DestinationSecret'
+    DestinationListResponse:
+      description: A paginated list response for a collection of destinations.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Destination'
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+            additionalProperties: false
+            required:
+              - data
+              - meta
+    OrgSubscriptionResponse:
+      description: A single org subscription.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrgSubscription'
+    OrgSubscriptionListResponse:
+      description: 'A paginated list of the org subscriptions of one event type, or of the org subscriptions that hold one destination.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrgSubscription'
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+            additionalProperties: false
+            required:
+              - data
+              - meta
+    DeliveryResponse:
+      description: A single delivery.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Delivery'
+    DeliveryListResponse:
+      description: A paginated list response for a collection of deliveries.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Delivery'
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+            additionalProperties: false
+            required:
+              - data
+              - meta
+    DeliveryDetailResponse:
+      description: A single delivery and all its attempts.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeliveryDetail'
     TooManyRequests:
       description: Too Many Requests
       content:
@@ -119912,6 +121040,10 @@ tags:
       Resource Availability is a public, unauthenticated endpoint that describes what Kong Cloud Gateway infrastructure is available to provision. Use it to discover supported cloud providers, regions, gateway versions, and instance type details — all the building blocks you need before creating networks or configuring data plane groups.
   - name: Notifications
     description: Operations related to notifications
+  - name: Org Configurations
+    description: 'Operations related to org scoped notifications and their org subscriptions. The http channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when http destinations are enabled.'
+  - name: Destinations
+    description: Operations related to http destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when http destinations are enabled.
   - name: DCR Providers
     description: |
       Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
@@ -120412,7 +121544,7 @@ x-input-schemas:
     version: 1.6.0
     path: src/konnect/definitions/metering-and-billing/v3/openapi.yaml
   - title: Konnect Notification Hub
-    version: 1.1.1
+    version: 1.1.2
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
     version: 3.19.0
