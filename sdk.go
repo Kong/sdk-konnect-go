@@ -265,6 +265,10 @@ type SDK struct {
 	Mesh               *Mesh
 	// Operations related to notifications
 	Notifications *Notifications
+	// Operations related to org scoped notifications and their org subscriptions. The http channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when http destinations are enabled.
+	OrgConfigurations *OrgConfigurations
+	// Operations related to http destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when http destinations are enabled.
+	Destinations *Destinations
 	// Resource mappings represent the link between a resource and a service.
 	// Once a resource is mapped to a service, a rich view of the resource will be presented on the service page.
 	// A resource may be mapped to multiple services, but it cannot be mapped to the same service twice.
@@ -695,6 +699,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogMCPVersions = newCatalogMCPVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Mesh = newMesh(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OrgConfigurations = newOrgConfigurations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Destinations = newDestinations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)

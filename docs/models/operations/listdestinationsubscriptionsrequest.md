@@ -1,0 +1,10 @@
+# ListDestinationSubscriptionsRequest
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `DestinationID`                                                              | `string`                                                                     | :heavy_check_mark:                                                           | ID of the http destination, a UUID v7.                                       |                                                                              |
+| `PageBefore`                                                                 | `*string`                                                                    | :heavy_minus_sign:                                                           | Request the next page of data, starting with the item before this parameter. | ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ                                           |
+| `PageAfter`                                                                  | `*string`                                                                    | :heavy_minus_sign:                                                           | Request the next page of data, starting with the item after this parameter.  | ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ                                           |
