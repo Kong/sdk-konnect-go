@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.19.0
+  version: 3.20.0
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -48707,6 +48707,55 @@ components:
           - type: array
             items:
               type: string
+    OIDCIdentityProviderBackChannelLogoutEnabled:
+      description: |
+        Indicates whether back-channel logout is enabled. When enabled, the identity provider can notify
+        the portal to end a user's session when they log out of the identity provider.
+
+        Configure your identity provider's back-channel logout URL as your portal's URL followed by
+        `/api/v3/oauth/backchannel-logout`, for example
+        `https://my-portal.example.com/api/v3/oauth/backchannel-logout`.
+      type: boolean
+      example: false
+      default: false
+      title: OIDC Identity Provider Back-Channel Logout Enabled Property
+    OIDCIdentityProviderBackChannelLogoutSupported:
+      description: |
+        Indicates whether the OpenID Provider advertises support for back-channel logout
+        (`backchannel_logout_supported` in its discovery metadata). Null when the discovery metadata could not
+        be retrieved or validated, in which case support is unknown.
+      type: boolean
+      example: true
+      nullable: true
+      readOnly: true
+      title: OIDC Identity Provider Back-Channel Logout Supported Property
+    OIDCIdentityProviderBackChannelLogoutSessionSupported:
+      description: |
+        Indicates whether the OpenID Provider advertises that it includes the `sid` claim in logout tokens
+        (`backchannel_logout_session_supported` in its discovery metadata). A provider that omits the value does
+        not include it. Null when the discovery metadata could not be retrieved or validated, in which case
+        support is unknown.
+      type: boolean
+      example: true
+      nullable: true
+      readOnly: true
+      title: OIDC Identity Provider Back-Channel Logout Session Supported Property
+    OIDCIdentityProviderBackChannelLogout:
+      description: |
+        The back-channel logout settings for the OIDC identity provider. To receive logout notifications, set
+        your identity provider's back-channel logout URL to your portal's URL followed by
+        `/api/v3/oauth/backchannel-logout`, for example
+        `https://my-portal.example.com/api/v3/oauth/backchannel-logout`.
+      type: object
+      properties:
+        enabled:
+          $ref: '#/components/schemas/OIDCIdentityProviderBackChannelLogoutEnabled'
+        supported:
+          $ref: '#/components/schemas/OIDCIdentityProviderBackChannelLogoutSupported'
+        session_supported:
+          $ref: '#/components/schemas/OIDCIdentityProviderBackChannelLogoutSessionSupported'
+      additionalProperties: false
+      title: OIDC Identity Provider Back-Channel Logout
     PortalOIDCIdentityProviderConfig:
       description: The identity provider that contains configuration data for the OIDC authentication integration.
       type: object
@@ -48721,6 +48770,8 @@ components:
           $ref: '#/components/schemas/OIDCIdentityProviderScopes'
         claim_mappings:
           $ref: '#/components/schemas/OIDCIdentityProviderClaimMappings'
+        backchannel_logout:
+          $ref: '#/components/schemas/OIDCIdentityProviderBackChannelLogout'
       additionalProperties: false
       required:
         - issuer_url
@@ -48817,6 +48868,15 @@ components:
           pattern: \S
       additionalProperties: false
       title: Update OIDC Claim Mappings
+    UpdateOIDCIdentityProviderBackChannelLogout:
+      description: The back-channel logout settings to update. Only the provided properties are updated.
+      type: object
+      properties:
+        enabled:
+          $ref: '#/components/schemas/OIDCIdentityProviderBackChannelLogoutEnabled'
+      additionalProperties: false
+      minProperties: 1
+      title: Update OIDC Identity Provider Back-Channel Logout
     UpdateOIDCIdentityProviderConfig:
       description: |
         The properties of an OIDC identity provider to update. Only the provided properties are updated. When
@@ -48859,6 +48919,8 @@ components:
           minItems: 1
         claim_mappings:
           $ref: '#/components/schemas/UpdateOIDCIdentityProviderClaimMappings'
+        backchannel_logout:
+          $ref: '#/components/schemas/UpdateOIDCIdentityProviderBackChannelLogout'
       additionalProperties: false
       minProperties: 1
       title: Update OIDC Identity Provider Config
@@ -125607,7 +125669,7 @@ x-input-schemas:
     version: 1.1.2
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.19.0
+    version: 3.20.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.4
