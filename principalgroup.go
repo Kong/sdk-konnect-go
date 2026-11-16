@@ -56,11 +56,12 @@ func (s *PrincipalGroup) CreateGroup(ctx context.Context, directoryID string, cr
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateGroupServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -373,11 +374,12 @@ func (s *PrincipalGroup) ListGroups(ctx context.Context, request operations.List
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListGroupsServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -628,11 +630,12 @@ func (s *PrincipalGroup) GetGroup(ctx context.Context, directoryID string, group
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetGroupServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -899,11 +902,12 @@ func (s *PrincipalGroup) ReplaceGroup(ctx context.Context, request operations.Re
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ReplaceGroupServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1220,11 +1224,12 @@ func (s *PrincipalGroup) DeleteGroup(ctx context.Context, directoryID string, gr
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteGroupServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1469,11 +1474,12 @@ func (s *PrincipalGroup) CreateGroupKey(ctx context.Context, request operations.
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateGroupKeyServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/api-keys", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1786,11 +1792,12 @@ func (s *PrincipalGroup) ListGroupKeys(ctx context.Context, request operations.L
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListGroupKeysServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/api-keys", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2058,11 +2065,12 @@ func (s *PrincipalGroup) UpdateGroupKey(ctx context.Context, request operations.
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.UpdateGroupKeyServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2375,11 +2383,12 @@ func (s *PrincipalGroup) GetGroupKey(ctx context.Context, request operations.Get
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetGroupKeyServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2643,11 +2652,12 @@ func (s *PrincipalGroup) DeleteGroupKey(ctx context.Context, request operations.
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteGroupKeyServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2913,11 +2923,12 @@ func (s *PrincipalGroup) ListGroupMembership(ctx context.Context, request operat
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListGroupMembershipServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/membership", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -3184,11 +3195,12 @@ func (s *PrincipalGroup) CreateGroupMembershipEntry(ctx context.Context, request
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateGroupMembershipEntryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/membership", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -3500,11 +3512,12 @@ func (s *PrincipalGroup) GetGroupMembershipEntry(ctx context.Context, request op
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetGroupMembershipEntryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/membership/{groupMembershipId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -3767,11 +3780,12 @@ func (s *PrincipalGroup) DeleteGroupMembershipEntry(ctx context.Context, request
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteGroupMembershipEntryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/membership/{groupMembershipId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -4016,11 +4030,12 @@ func (s *PrincipalGroup) BatchCreateGroupMembershipEntries(ctx context.Context, 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.BatchCreateGroupMembershipEntriesServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/groups/{groupId}/membership/batch", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)

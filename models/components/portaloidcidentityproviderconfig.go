@@ -13,14 +13,18 @@ type PortalOIDCIdentityProviderConfig struct {
 	IssuerURL string `json:"issuer_url"`
 	// The client ID assigned to your application by the identity provider.
 	ClientID string `json:"client_id"`
-	// The Client Secret assigned to your application by the identity provider.
-	ClientSecret *string `json:"client_secret,omitempty"`
 	// The scopes requested by your application when authenticating with the identity provider.
 	Scopes []string `json:"scopes,omitempty"`
 	// Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
 	// authentication.
 	//
 	ClaimMappings *OIDCIdentityProviderClaimMappings `json:"claim_mappings,omitempty"`
+	// The back-channel logout settings for the OIDC identity provider. To receive logout notifications, set
+	// your identity provider's back-channel logout URL to your portal's URL followed by
+	// `/api/v3/oauth/backchannel-logout`, for example
+	// `https://my-portal.example.com/api/v3/oauth/backchannel-logout`.
+	//
+	BackchannelLogout *OIDCIdentityProviderBackChannelLogout `json:"backchannel_logout,omitempty"`
 }
 
 func (p PortalOIDCIdentityProviderConfig) MarshalJSON() ([]byte, error) {
@@ -48,13 +52,6 @@ func (p *PortalOIDCIdentityProviderConfig) GetClientID() string {
 	return p.ClientID
 }
 
-func (p *PortalOIDCIdentityProviderConfig) GetClientSecret() *string {
-	if p == nil {
-		return nil
-	}
-	return p.ClientSecret
-}
-
 func (p *PortalOIDCIdentityProviderConfig) GetScopes() []string {
 	if p == nil {
 		return nil
@@ -67,4 +64,11 @@ func (p *PortalOIDCIdentityProviderConfig) GetClaimMappings() *OIDCIdentityProvi
 		return nil
 	}
 	return p.ClaimMappings
+}
+
+func (p *PortalOIDCIdentityProviderConfig) GetBackchannelLogout() *OIDCIdentityProviderBackChannelLogout {
+	if p == nil {
+		return nil
+	}
+	return p.BackchannelLogout
 }

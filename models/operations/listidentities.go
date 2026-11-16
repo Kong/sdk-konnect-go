@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var ListIdentitiesServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 // QueryParamType - Filter using **one** of the following operators: `eq`, `oeq`
 type QueryParamType struct {
 	// The field exactly matches the provided value.

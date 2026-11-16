@@ -78,9 +78,10 @@ _generate.omitempty:
 	$(SED) -i 's#StripPath \*bool `default:"true" json:"strip_path"`#StripPath *bool `json:"strip_path,omitempty"`#g' \
 		models/components/routejson.go
 	# An empty identity_realms list must reach Konnect to disable its default
-	# identity realm, but speakeasy emits omitempty for the field.
-	$(SED) -i 's#IdentityRealms \[\]IdentityRealms `json:"identity_realms,omitempty"`#IdentityRealms []IdentityRealms `json:"identity_realms,omitzero"`#g' \
-		models/components/aigwkeyauthgeneratedconfig.go
+	# identity realm, but speakeasy emits omitempty for the field. The config is
+	# generated inline in the key-auth request and response models.
+	@files=$$(grep -l 'json:"identity_realms,omitempty"' models/components/*keyauth*.go) && \
+		$(SED) -i 's#json:"identity_realms,omitempty"#json:"identity_realms,omitzero"#g' $$files
 
 .PHONY: generate.deepcopy
 generate.deepcopy: controller-gen

@@ -12,23 +12,23 @@ import (
 type PortalCreateIdentityProviderConfigType string
 
 const (
-	PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfig      PortalCreateIdentityProviderConfigType = "PortalOIDCIdentityProviderConfig"
+	PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput PortalCreateIdentityProviderConfigType = "PortalOIDCIdentityProviderConfig_input"
 	PortalCreateIdentityProviderConfigTypePortalSAMLIdentityProviderConfigInput PortalCreateIdentityProviderConfigType = "PortalSAMLIdentityProviderConfig_input"
 )
 
 type PortalCreateIdentityProviderConfig struct {
-	PortalOIDCIdentityProviderConfig      *PortalOIDCIdentityProviderConfig      `queryParam:"inline" union:"member"`
+	PortalOIDCIdentityProviderConfigInput *PortalOIDCIdentityProviderConfigInput `queryParam:"inline" union:"member"`
 	PortalSAMLIdentityProviderConfigInput *PortalSAMLIdentityProviderConfigInput `queryParam:"inline" union:"member"`
 
 	Type PortalCreateIdentityProviderConfigType
 }
 
-func CreatePortalCreateIdentityProviderConfigPortalOIDCIdentityProviderConfig(portalOIDCIdentityProviderConfig PortalOIDCIdentityProviderConfig) PortalCreateIdentityProviderConfig {
-	typ := PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfig
+func CreatePortalCreateIdentityProviderConfigPortalOIDCIdentityProviderConfigInput(portalOIDCIdentityProviderConfigInput PortalOIDCIdentityProviderConfigInput) PortalCreateIdentityProviderConfig {
+	typ := PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput
 
 	return PortalCreateIdentityProviderConfig{
-		PortalOIDCIdentityProviderConfig: &portalOIDCIdentityProviderConfig,
-		Type:                             typ,
+		PortalOIDCIdentityProviderConfigInput: &portalOIDCIdentityProviderConfigInput,
+		Type:                                  typ,
 	}
 }
 
@@ -50,10 +50,10 @@ func (u *PortalCreateIdentityProviderConfig) UnmarshalJSON(data []byte) (err err
 		}
 	}()
 
-	var portalOIDCIdentityProviderConfig PortalOIDCIdentityProviderConfig = PortalOIDCIdentityProviderConfig{}
-	if err := utils.UnmarshalJSON(data, &portalOIDCIdentityProviderConfig, "", true, nil); err == nil {
-		u.PortalOIDCIdentityProviderConfig = &portalOIDCIdentityProviderConfig
-		u.Type = PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfig
+	var portalOIDCIdentityProviderConfigInput PortalOIDCIdentityProviderConfigInput = PortalOIDCIdentityProviderConfigInput{}
+	if err := utils.UnmarshalJSON(data, &portalOIDCIdentityProviderConfigInput, "", true, nil); err == nil {
+		u.PortalOIDCIdentityProviderConfigInput = &portalOIDCIdentityProviderConfigInput
+		u.Type = PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput
 		return nil
 	}
 
@@ -68,8 +68,8 @@ func (u *PortalCreateIdentityProviderConfig) UnmarshalJSON(data []byte) (err err
 }
 
 func (u PortalCreateIdentityProviderConfig) MarshalJSON() ([]byte, error) {
-	if u.PortalOIDCIdentityProviderConfig != nil {
-		return utils.MarshalJSON(u.PortalOIDCIdentityProviderConfig, "", true)
+	if u.PortalOIDCIdentityProviderConfigInput != nil {
+		return utils.MarshalJSON(u.PortalOIDCIdentityProviderConfigInput, "", true)
 	}
 
 	if u.PortalSAMLIdentityProviderConfigInput != nil {
