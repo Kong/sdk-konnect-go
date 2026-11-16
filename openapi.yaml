@@ -16128,8 +16128,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
   '/v2/credential-provider-templates/{credentialProviderTemplateName}':
@@ -16148,8 +16146,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
   /v2/dashboards:
@@ -16454,8 +16450,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
     get:
@@ -16483,8 +16477,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
   '/v2/directories/{directoryId}':
@@ -16509,8 +16501,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
     put:
@@ -16535,8 +16525,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
     get:
@@ -16555,8 +16543,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
     delete:
@@ -16588,8 +16574,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
   '/v2/directories/{directoryId}/groups':
@@ -16622,8 +16606,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     get:
@@ -16685,8 +16667,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/groups/{groupId}':
@@ -16709,8 +16689,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     put:
@@ -16740,8 +16718,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     delete:
@@ -16761,8 +16737,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/groups/{groupId}/api-keys':
@@ -16793,8 +16767,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     get:
@@ -16824,8 +16796,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}':
@@ -16857,8 +16827,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     get:
@@ -16879,8 +16847,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     delete:
@@ -16903,8 +16869,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/groups/{groupId}/membership':
@@ -16944,8 +16908,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     post:
@@ -16971,8 +16933,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/groups/{groupId}/membership/{groupMembershipId}':
@@ -16996,8 +16956,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
     delete:
@@ -17017,8 +16975,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/groups/{groupId}/membership/batch':
@@ -17046,8 +17002,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - PrincipalGroup
   '/v2/directories/{directoryId}/org-chart/import':
@@ -17083,8 +17037,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
   '/v2/directories/{directoryId}/principals':
@@ -17114,8 +17066,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
     get:
@@ -17169,8 +17119,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
   '/v2/directories/{directoryId}/principals/{principalId}':
@@ -17196,8 +17144,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
     put:
@@ -17222,8 +17168,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
     get:
@@ -17242,8 +17186,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
     delete:
@@ -17265,8 +17207,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
   '/v2/directories/{directoryId}/principals/{principalId}/api-keys':
@@ -17295,8 +17235,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     get:
@@ -17324,8 +17262,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
   '/v2/directories/{directoryId}/principals/{principalId}/api-keys/{apiKeyId}':
@@ -17355,8 +17291,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     get:
@@ -17377,8 +17311,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     delete:
@@ -17401,8 +17333,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
   '/v2/directories/{directoryId}/principals/{principalId}/basic-auths':
@@ -17423,8 +17353,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     post:
@@ -17448,8 +17376,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
   '/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}':
@@ -17474,8 +17400,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     patch:
@@ -17496,8 +17420,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     put:
@@ -17521,8 +17443,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     delete:
@@ -17545,8 +17465,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
   '/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords':
@@ -17568,8 +17486,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     post:
@@ -17594,8 +17510,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     delete:
@@ -17615,8 +17529,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
   '/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords/{passwordId}':
@@ -17642,8 +17554,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     patch:
@@ -17664,8 +17574,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     put:
@@ -17689,8 +17597,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
     delete:
@@ -17713,8 +17619,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
   '/v2/directories/{directoryId}/principals/{principalId}/groups':
@@ -17739,8 +17643,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipal
   '/v2/directories/{directoryId}/principals/{principalId}/identities':
@@ -17797,8 +17699,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
     post:
@@ -17824,8 +17724,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
   '/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}':
@@ -17849,8 +17747,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
     put:
@@ -17877,8 +17773,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
     patch:
@@ -17902,8 +17796,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
     delete:
@@ -17926,8 +17818,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
   '/v2/directories/{directoryId}/principals/{principalId}/vault-credentials':
@@ -17960,8 +17850,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultCredentials
   '/v2/directories/{directoryId}/principals/{principalId}/vault-credentials/{vaultCredentialId}':
@@ -17982,8 +17870,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultCredentials
     delete:
@@ -18000,8 +17886,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultCredentials
   '/v2/directories/{directoryId}/trusted-idps':
@@ -18022,8 +17906,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
     post:
@@ -18049,8 +17931,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
   '/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}':
@@ -18073,8 +17953,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
     put:
@@ -18100,8 +17978,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
     patch:
@@ -18122,8 +17998,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
     delete:
@@ -18142,8 +18016,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
   '/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}/principals':
@@ -18189,8 +18061,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - Trusted IdPs
   '/v2/directories/{directoryId}/vault/keys':
@@ -18221,8 +18091,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultKeys
     get:
@@ -18254,8 +18122,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultKeys
   '/v2/directories/{directoryId}/vault/keys/{keyId}':
@@ -18278,8 +18144,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultKeys
     patch:
@@ -18305,8 +18169,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultKeys
     delete:
@@ -18328,8 +18190,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultKeys
   '/v2/directories/{directoryId}/vault/providers':
@@ -18356,8 +18216,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     get:
@@ -18413,8 +18271,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
   '/v2/directories/{directoryId}/vault/providers/{providerId}':
@@ -18437,8 +18293,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     patch:
@@ -18458,8 +18312,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     put:
@@ -18484,8 +18336,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     delete:
@@ -18504,8 +18354,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
   '/v2/directories/{directoryId}/vault/providers/{providerId}/credentials':
@@ -18538,8 +18386,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     get:
@@ -18575,8 +18421,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
   '/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}':
@@ -18604,8 +18448,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     put:
@@ -18632,8 +18474,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
     delete:
@@ -18651,8 +18491,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      servers:
-        - url: 'https://us.api.konghq.com/'
       tags:
         - TokenVaultProviders
   /v3/api-attributes:
