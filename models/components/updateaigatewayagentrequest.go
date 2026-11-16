@@ -67,7 +67,7 @@ type UpdateAIGatewayAgentRequestConfig struct {
 	// Helper field to set protocol, host, port and path of the upstream A2A Agent using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
-	URL string `json:"url"`
+	URL *string `json:"url,omitempty"`
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 	// Configuration for an AI Gateway route.
@@ -113,9 +113,9 @@ func (u *UpdateAIGatewayAgentRequestConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (u *UpdateAIGatewayAgentRequestConfig) GetURL() string {
+func (u *UpdateAIGatewayAgentRequestConfig) GetURL() *string {
 	if u == nil {
-		return ""
+		return nil
 	}
 	return u.URL
 }
