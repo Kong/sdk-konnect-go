@@ -90672,8 +90672,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/AIGatewayCACertificateReference'
-          required:
-            - url
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -90785,8 +90783,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/AIGatewayCACertificateReference'
-          required:
-            - url
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -90898,8 +90894,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/AIGatewayCACertificateReference'
-          required:
-            - url
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -121268,7 +121262,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.15
+    version: 2.3.16
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
