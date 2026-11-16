@@ -229,8 +229,16 @@ func main() {
 ## UpdateAiGatewayDatastore
 
 Updates the configuration of an existing AI Gateway Datastore.
-
 `name` and `type` are immutable after creation; attempting to change either is rejected.
+
+Write-only fields in `config`, such as passwords and cloud credentials, are never returned in responses.
+On update, each write-only field follows these rules:
+
+- Omit the field to keep the stored value. A request built from a GET response therefore keeps every stored secret.
+- Set the field to `null` to clear the stored value.
+- Set the field to a new value to replace the stored value.
+
+If the request changes `config.cloud_authentication.auth_provider`, the stored cloud secrets of the previous provider are not kept.
 
 
 ### Example Usage

@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 213b6fe8cca5d5161cb6d008e09dfa83
+  docChecksum: 08e0bdc2e57101a333f2e4be14cdf839
   docVersion: 3.19.0
   speakeasyVersion: 1.809.0
   generationVersion: 2.961.1
   releaseVersion: 0.86.1
   configChecksum: ebfff997a1bfcad197faa5240f40c0f0
 persistentEdits:
-  generation_id: e0ece369-57ec-4b3d-a5d2-ed8906a8ead9
-  pristine_commit_hash: c4e03ade547fe046782c727f427a7aa53e971769
-  pristine_tree_hash: 1c0ed052ba952e582bffe98af385a7217586ffa4
+  generation_id: 0860deb6-3aea-4d49-aa49-a15fe19db551
+  pristine_commit_hash: cb7ec3ae4e16842d1733316e48a08ec752e064ec
+  pristine_tree_hash: 40ed60178f44382b4c638858936d9cc1543a0117
 features:
   go:
     acceptHeaders: 2.81.2
@@ -98,8 +98,8 @@ trackedFiles:
     pristine_git_object: ae170e797b8e03da2234c53ad41d337e0376d2fc
   aigatewaydatastores.go:
     id: e436740717e2
-    last_write_checksum: sha1:58d67d3ada38dc0ed110349a7df7ce6a2b41d9e5
-    pristine_git_object: 62e03c3a7330fc9238ab732d7076c900f44a5c8c
+    last_write_checksum: sha1:c1dbe03fdb8a009e9e5e79d1cea1a77f1704014f
+    pristine_git_object: b02e4271c15bc58acd89d6ababc940c6510ee33d
   aigatewayidentityproviders.go:
     id: 7dd00ef8242a
     last_write_checksum: sha1:6d8a7d594d991c19051fdc282a24311bfa8ba150
@@ -27662,8 +27662,8 @@ trackedFiles:
     pristine_git_object: f82fe68cfbf246e349752e0a3fbe3a1fb067f9d9
   docs/sdks/aigatewaydatastores/README.md:
     id: d5c7104a6b15
-    last_write_checksum: sha1:01641d2900963ba79ca69279024f821f0d8b61f8
-    pristine_git_object: 93fe485feab3704d1056d1a0f4fd651433394e08
+    last_write_checksum: sha1:214170bcfd14612fde0c188057d2109322ed106e
+    pristine_git_object: 01bab78a6d7a23d8333dbe35d1146c58db6cb43f
   docs/sdks/aigatewayidentityproviders/README.md:
     id: 9a01f9e02915
     last_write_checksum: sha1:8b5bca59b8308f5ad9beb15d049c91676c0f0f4e
