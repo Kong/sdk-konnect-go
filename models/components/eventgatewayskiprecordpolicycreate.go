@@ -4,39 +4,14 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// EventGatewaySkipRecordPolicyCreateType - The type name of the policy.
-type EventGatewaySkipRecordPolicyCreateType string
-
-const (
-	EventGatewaySkipRecordPolicyCreateTypeSkipRecord EventGatewaySkipRecordPolicyCreateType = "skip_record"
-)
-
-func (e EventGatewaySkipRecordPolicyCreateType) ToPointer() *EventGatewaySkipRecordPolicyCreateType {
-	return &e
-}
-func (e *EventGatewaySkipRecordPolicyCreateType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "skip_record":
-		*e = EventGatewaySkipRecordPolicyCreateType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewaySkipRecordPolicyCreateType: %v", v)
-	}
-}
 
 // EventGatewaySkipRecordPolicyCreate - A policy that skips processing of a record.
 type EventGatewaySkipRecordPolicyCreate struct {
 	// The type name of the policy.
-	Type EventGatewaySkipRecordPolicyCreateType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"skip_record" json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -69,11 +44,8 @@ func (e *EventGatewaySkipRecordPolicyCreate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewaySkipRecordPolicyCreate) GetType() EventGatewaySkipRecordPolicyCreateType {
-	if e == nil {
-		return EventGatewaySkipRecordPolicyCreateType("")
-	}
-	return e.Type
+func (e *EventGatewaySkipRecordPolicyCreate) GetType() string {
+	return "skip_record"
 }
 
 func (e *EventGatewaySkipRecordPolicyCreate) GetName() *string {

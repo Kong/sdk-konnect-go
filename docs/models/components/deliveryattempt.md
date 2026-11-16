@@ -1,0 +1,15 @@
+# DeliveryAttempt
+
+Properties of one HTTP request of a delivery.
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ID`                                                                                 | `int64`                                                                              | :heavy_check_mark:                                                                   | Sequence number of the attempt within the delivery.                                  |
+| `Status`                                                                             | [components.DeliveryAttemptStatus](../../models/components/deliveryattemptstatus.md) | :heavy_check_mark:                                                                   | Lifecycle state of a delivery attempt.                                               |
+| `CreatedAt`                                                                          | [time.Time](https://pkg.go.dev/time#Time)                                            | :heavy_check_mark:                                                                   | When the attempt was recorded, after the response.                                   |
+| `ResponseStatus`                                                                     | `*int64`                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `ResponseBody`                                                                       | `*string`                                                                            | :heavy_minus_sign:                                                                   | Truncated response body of the attempt.                                              |
+| `ResponseTruncated`                                                                  | `*bool`                                                                              | :heavy_minus_sign:                                                                   | N/A                                                                                  |

@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type KongPrincipalIdentityOIDCType string
-
-const (
-	KongPrincipalIdentityOIDCTypeOidc KongPrincipalIdentityOIDCType = "oidc"
-)
-
-func (e KongPrincipalIdentityOIDCType) ToPointer() *KongPrincipalIdentityOIDCType {
-	return &e
-}
-func (e *KongPrincipalIdentityOIDCType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oidc":
-		*e = KongPrincipalIdentityOIDCType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for KongPrincipalIdentityOIDCType: %v", v)
-	}
-}
 
 type KongPrincipalIdentityOIDCClaim struct {
 	Name  string `json:"name"`
@@ -74,10 +49,11 @@ type KongPrincipalIdentityOIDC struct {
 	// Values must be 1–127 characters long and must not be empty.
 	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string              `json:"managed_by,omitempty"`
-	Type      KongPrincipalIdentityOIDCType  `json:"type"`
-	Issuer    string                         `json:"issuer"`
-	Claim     KongPrincipalIdentityOIDCClaim `json:"claim"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                         `const:"oidc" json:"type"`
+	Issuer string                         `json:"issuer"`
+	Claim  KongPrincipalIdentityOIDCClaim `json:"claim"`
 }
 
 func (k KongPrincipalIdentityOIDC) MarshalJSON() ([]byte, error) {
@@ -105,11 +81,8 @@ func (k *KongPrincipalIdentityOIDC) GetManagedBy() map[string]string {
 	return k.ManagedBy
 }
 
-func (k *KongPrincipalIdentityOIDC) GetType() KongPrincipalIdentityOIDCType {
-	if k == nil {
-		return KongPrincipalIdentityOIDCType("")
-	}
-	return k.Type
+func (k *KongPrincipalIdentityOIDC) GetType() string {
+	return "oidc"
 }
 
 func (k *KongPrincipalIdentityOIDC) GetIssuer() string {

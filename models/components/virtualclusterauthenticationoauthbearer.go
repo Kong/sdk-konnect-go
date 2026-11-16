@@ -4,47 +4,17 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type VirtualClusterAuthenticationOauthBearerType string
-
-const (
-	VirtualClusterAuthenticationOauthBearerTypeOauthBearer VirtualClusterAuthenticationOauthBearerType = "oauth_bearer"
-)
-
-func (e VirtualClusterAuthenticationOauthBearerType) ToPointer() *VirtualClusterAuthenticationOauthBearerType {
-	return &e
-}
-func (e *VirtualClusterAuthenticationOauthBearerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oauth_bearer":
-		*e = VirtualClusterAuthenticationOauthBearerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for VirtualClusterAuthenticationOauthBearerType: %v", v)
-	}
-}
-
 // VirtualClusterAuthenticationOauthBearerMediation - Methods to mediate authentication:
-// * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
-//
-//	validation
-//
-// * validate_forward - pass authentication from the client through proxy to the backend cluster.
-//
-//	Proxy does the validation before forwarding it to the client.
-//
-// * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
-//
-//	using the configuration defined at BackendCluster's authentication.
-//	SASL auth is not originated if authentication on the backend_cluster is not configured.
+//   - passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
+//     validation
+//   - validate_forward - pass authentication from the client through proxy to the backend cluster.
+//     Proxy does the validation before forwarding it to the client.
+//   - terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
+//     using the configuration defined at BackendCluster's authentication.
+//     SASL auth is not originated if authentication on the backend_cluster is not configured.
 type VirtualClusterAuthenticationOauthBearerMediation string
 
 const (
@@ -70,19 +40,14 @@ func (e *VirtualClusterAuthenticationOauthBearerMediation) IsExact() bool {
 
 // VirtualClusterAuthenticationOauthBearer - Oauth Bearer authentication scheme for the virtual cluster.
 type VirtualClusterAuthenticationOauthBearer struct {
-	Type VirtualClusterAuthenticationOauthBearerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"oauth_bearer" json:"type"`
 	// Methods to mediate authentication:
 	// * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
-	//
-	//
 	//   validation
 	// * validate_forward - pass authentication from the client through proxy to the backend cluster.
-	//
-	//
 	//   Proxy does the validation before forwarding it to the client.
 	// * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
-	//
-	//
 	//   using the configuration defined at BackendCluster's authentication.
 	//   SASL auth is not originated if authentication on the backend_cluster is not configured.
 	//
@@ -111,11 +76,8 @@ func (v *VirtualClusterAuthenticationOauthBearer) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationOauthBearer) GetType() VirtualClusterAuthenticationOauthBearerType {
-	if v == nil {
-		return VirtualClusterAuthenticationOauthBearerType("")
-	}
-	return v.Type
+func (v *VirtualClusterAuthenticationOauthBearer) GetType() string {
+	return "oauth_bearer"
 }
 
 func (v *VirtualClusterAuthenticationOauthBearer) GetMediation() VirtualClusterAuthenticationOauthBearerMediation {

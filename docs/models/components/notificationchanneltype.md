@@ -1,6 +1,6 @@
 # NotificationChannelType
 
-Channel of a user scoped subscription. The http channel is not a user channel: it belongs to org scoped notifications.
+Channel of a user scoped subscription
 
 ## Example Usage
 

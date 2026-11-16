@@ -28,9 +28,6 @@ type EventGatewayClusterPolicyModify struct {
 func CreateEventGatewayClusterPolicyModifyAcls(acls EventGatewayACLsPolicy) EventGatewayClusterPolicyModify {
 	typ := EventGatewayClusterPolicyModifyTypeAcls
 
-	typStr := EventGatewayACLsPolicyType(typ)
-	acls.Type = typStr
-
 	return EventGatewayClusterPolicyModify{
 		EventGatewayACLsPolicy: &acls,
 		Type:                   typ,
@@ -39,9 +36,6 @@ func CreateEventGatewayClusterPolicyModifyAcls(acls EventGatewayACLsPolicy) Even
 
 func CreateEventGatewayClusterPolicyModifyRequestRuleValidator(requestRuleValidator EventGatewayRequestRuleValidatorPolicy) EventGatewayClusterPolicyModify {
 	typ := EventGatewayClusterPolicyModifyTypeRequestRuleValidator
-
-	typStr := EventGatewayRequestRuleValidatorPolicyType(typ)
-	requestRuleValidator.Type = typStr
 
 	return EventGatewayClusterPolicyModify{
 		EventGatewayRequestRuleValidatorPolicy: &requestRuleValidator,

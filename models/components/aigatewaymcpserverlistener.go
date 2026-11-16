@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayMCPServerListenerType string
-
-const (
-	AIGatewayMCPServerListenerTypeListener AIGatewayMCPServerListenerType = "listener"
-)
-
-func (e AIGatewayMCPServerListenerType) ToPointer() *AIGatewayMCPServerListenerType {
-	return &e
-}
-func (e *AIGatewayMCPServerListenerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "listener":
-		*e = AIGatewayMCPServerListenerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerListenerType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerListenerLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerListenerLogging struct {
@@ -203,7 +178,8 @@ func (a *AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig) GetCach
 }
 
 type AIGatewayMCPServerListener struct {
-	Type AIGatewayMCPServerListenerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"listener" json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
@@ -265,11 +241,8 @@ func (a *AIGatewayMCPServerListener) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerListener) GetType() AIGatewayMCPServerListenerType {
-	if a == nil {
-		return AIGatewayMCPServerListenerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerListener) GetType() string {
+	return "listener"
 }
 
 func (a *AIGatewayMCPServerListener) GetConfig() AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig {

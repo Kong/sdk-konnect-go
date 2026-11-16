@@ -4,8 +4,8 @@
 package components
 
 // KongPrincipalType - Classifies the kind of principal. `agent` is a deployed AI agent,
-// `user` is a human in the organization.
-// When omitted or null, the principal is not classified.
+// `user` is a human in the organization, and null means not classified.
+// Immutable after creation: on update or replace, omit it or send the current value.
 type KongPrincipalType string
 
 const (

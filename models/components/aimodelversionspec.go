@@ -4,35 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-// SpecType - The type of specification document. Currently always `oas` (OpenAPI Specification).
-type SpecType string
-
-const (
-	SpecTypeOas SpecType = "oas"
-)
-
-func (e SpecType) ToPointer() *SpecType {
-	return &e
-}
-func (e *SpecType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oas":
-		*e = SpecType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SpecType: %v", v)
-	}
-}
 
 type AiModelVersionSpecSource string
 
@@ -76,7 +50,8 @@ type AiModelVersionSpec struct {
 	SpecContent string `json:"spec_content"`
 	// The type of specification document. Currently always `oas` (OpenAPI Specification).
 	//
-	SpecType SpecType `json:"spec_type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	specType string `const:"oas" json:"spec_type"`
 	// Provenance of the specification. `null` (or absent) for a user-uploaded specification.
 	//
 	SpecProvider *SpecProvider `json:"spec_provider,omitempty"`
@@ -104,11 +79,8 @@ func (a *AiModelVersionSpec) GetSpecContent() string {
 	return a.SpecContent
 }
 
-func (a *AiModelVersionSpec) GetSpecType() SpecType {
-	if a == nil {
-		return SpecType("")
-	}
-	return a.SpecType
+func (a *AiModelVersionSpec) GetSpecType() string {
+	return "oas"
 }
 
 func (a *AiModelVersionSpec) GetSpecProvider() *SpecProvider {

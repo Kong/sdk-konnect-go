@@ -246,7 +246,6 @@ func main() {
         Remotes: []components.MCPRemoteTransport{
             components.CreateMCPRemoteTransportMCPStreamableHTTPTransportMCPStreamableHTTPTransport(
                 components.MCPStreamableHTTPTransportMCPStreamableHTTPTransport{
-                    Type: components.MCPStreamableHTTPTransportMCPRemoteTransportTypeStreamableHTTP,
                     URL: "https://api.example.com/mcp",
                 },
             ),
@@ -261,9 +260,7 @@ func main() {
                 Version: sdkkonnectgo.Pointer("1.0.2"),
                 FileSha256: sdkkonnectgo.Pointer("fe333e598595000ae021bd27117db32ec69af6987f507ba7a63c90638ff633ce"),
                 Transport: components.CreateMCPTransportMCPStdioTransport(
-                    components.MCPStdioTransport{
-                        Type: components.MCPStdioTransportTypeStdio,
-                    },
+                    components.MCPStdioTransport{},
                 ),
                 Runtime: &components.Runtime{
                     Hint: sdkkonnectgo.Pointer("npx"),
@@ -271,7 +268,6 @@ func main() {
                         components.CreateMCPArgumentMCPPositionalArgument(
                             components.CreateMCPPositionalArgumentMCPPositionalArgument1(
                                 components.MCPPositionalArgument1{
-                                    Type: components.MCPPositionalArgumentTypePositional,
                                     ValueHint: "file_path",
                                 },
                             ),
@@ -282,7 +278,6 @@ func main() {
                     components.CreateMCPArgumentMCPPositionalArgument(
                         components.CreateMCPPositionalArgumentMCPPositionalArgument1(
                             components.MCPPositionalArgument1{
-                                Type: components.MCPPositionalArgumentTypePositional,
                                 ValueHint: "file_path",
                             },
                         ),
@@ -377,9 +372,7 @@ func main() {
                 Version: sdkkonnectgo.Pointer("1.0.2"),
                 FileSha256: sdkkonnectgo.Pointer("fe333e598595000ae021bd27117db32ec69af6987f507ba7a63c90638ff633ce"),
                 Transport: components.CreateMCPTransportMCPStdioTransport(
-                    components.MCPStdioTransport{
-                        Type: components.MCPStdioTransportTypeStdio,
-                    },
+                    components.MCPStdioTransport{},
                 ),
                 Runtime: &components.Runtime{
                     Hint: sdkkonnectgo.Pointer("npx"),
@@ -387,7 +380,6 @@ func main() {
                         components.CreateMCPArgumentMCPPositionalArgument(
                             components.CreateMCPPositionalArgumentMCPPositionalArgument1(
                                 components.MCPPositionalArgument1{
-                                    Type: components.MCPPositionalArgumentTypePositional,
                                     ValueHint: "file_path",
                                 },
                             ),
@@ -398,7 +390,6 @@ func main() {
                     components.CreateMCPArgumentMCPPositionalArgument(
                         components.CreateMCPPositionalArgumentMCPPositionalArgument1(
                             components.MCPPositionalArgument1{
-                                Type: components.MCPPositionalArgumentTypePositional,
                                 ValueHint: "file_path",
                             },
                         ),

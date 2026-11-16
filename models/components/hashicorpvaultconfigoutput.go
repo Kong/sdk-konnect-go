@@ -44,9 +44,6 @@ type HashiCorpVaultConfigOutput struct {
 func CreateHashiCorpVaultConfigOutputToken(token HashiCorpVaultTokenConfigOutput) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeToken
 
-	typStr := AuthMethod(typ)
-	token.AuthMethod = typStr
-
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultTokenConfigOutput: &token,
 		Type:                            typ,
@@ -55,9 +52,6 @@ func CreateHashiCorpVaultConfigOutputToken(token HashiCorpVaultTokenConfigOutput
 
 func CreateHashiCorpVaultConfigOutputCert(cert HashiCorpVaultCertConfigOutput) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeCert
-
-	typStr := HashiCorpVaultCertConfigAuthMethod(typ)
-	cert.AuthMethod = typStr
 
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultCertConfigOutput: &cert,
@@ -68,9 +62,6 @@ func CreateHashiCorpVaultConfigOutputCert(cert HashiCorpVaultCertConfigOutput) H
 func CreateHashiCorpVaultConfigOutputJwt(jwt HashiCorpVaultOauth2ConfigOutput) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeJwt
 
-	typStr := HashiCorpVaultOauth2ConfigAuthMethod(typ)
-	jwt.AuthMethod = typStr
-
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultOauth2ConfigOutput: &jwt,
 		Type:                             typ,
@@ -79,9 +70,6 @@ func CreateHashiCorpVaultConfigOutputJwt(jwt HashiCorpVaultOauth2ConfigOutput) H
 
 func CreateHashiCorpVaultConfigOutputApprole(approle HashiCorpVaultAppRoleConfig) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeApprole
-
-	typStr := HashiCorpVaultAppRoleConfigAuthMethod(typ)
-	approle.AuthMethod = typStr
 
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultAppRoleConfig: &approle,
@@ -92,9 +80,6 @@ func CreateHashiCorpVaultConfigOutputApprole(approle HashiCorpVaultAppRoleConfig
 func CreateHashiCorpVaultConfigOutputKubernetes(kubernetes HashiCorpVaultKubernetesConfig) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeKubernetes
 
-	typStr := HashiCorpVaultKubernetesConfigAuthMethod(typ)
-	kubernetes.AuthMethod = typStr
-
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultKubernetesConfig: &kubernetes,
 		Type:                           typ,
@@ -103,9 +88,6 @@ func CreateHashiCorpVaultConfigOutputKubernetes(kubernetes HashiCorpVaultKuberne
 
 func CreateHashiCorpVaultConfigOutputGcpIam(gcpIam HashiCorpVaultGcpIAMConfig) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeGcpIam
-
-	typStr := HashiCorpVaultGcpIAMConfigAuthMethod(typ)
-	gcpIam.AuthMethod = typStr
 
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultGcpIAMConfig: &gcpIam,
@@ -116,9 +98,6 @@ func CreateHashiCorpVaultConfigOutputGcpIam(gcpIam HashiCorpVaultGcpIAMConfig) H
 func CreateHashiCorpVaultConfigOutputGcpGce(gcpGce HashiCorpVaultGcpGCEConfig) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeGcpGce
 
-	typStr := HashiCorpVaultGcpGCEConfigAuthMethod(typ)
-	gcpGce.AuthMethod = typStr
-
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultGcpGCEConfig: &gcpGce,
 		Type:                       typ,
@@ -127,9 +106,6 @@ func CreateHashiCorpVaultConfigOutputGcpGce(gcpGce HashiCorpVaultGcpGCEConfig) H
 
 func CreateHashiCorpVaultConfigOutputAwsEc2(awsEc2 HashiCorpVaultAwsEc2Config) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeAwsEc2
-
-	typStr := HashiCorpVaultAwsEc2ConfigAuthMethod(typ)
-	awsEc2.AuthMethod = typStr
 
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultAwsEc2Config: &awsEc2,
@@ -140,9 +116,6 @@ func CreateHashiCorpVaultConfigOutputAwsEc2(awsEc2 HashiCorpVaultAwsEc2Config) H
 func CreateHashiCorpVaultConfigOutputAwsIam(awsIam HashiCorpVaultAwsIAMConfigOutput) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeAwsIam
 
-	typStr := HashiCorpVaultAwsIAMConfigAuthMethod(typ)
-	awsIam.AuthMethod = typStr
-
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultAwsIAMConfigOutput: &awsIam,
 		Type:                             typ,
@@ -151,9 +124,6 @@ func CreateHashiCorpVaultConfigOutputAwsIam(awsIam HashiCorpVaultAwsIAMConfigOut
 
 func CreateHashiCorpVaultConfigOutputAzure(azure HashiCorpVaultAzureConfig) HashiCorpVaultConfigOutput {
 	typ := HashiCorpVaultConfigOutputTypeAzure
-
-	typStr := HashiCorpVaultAzureConfigAuthMethod(typ)
-	azure.AuthMethod = typStr
 
 	return HashiCorpVaultConfigOutput{
 		HashiCorpVaultAzureConfig: &azure,

@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -55,29 +53,6 @@ func (e *HashiCorpVaultAwsIAMConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultAwsIAMConfigAuthMethod string
-
-const (
-	HashiCorpVaultAwsIAMConfigAuthMethodAwsIam HashiCorpVaultAwsIAMConfigAuthMethod = "aws_iam"
-)
-
-func (e HashiCorpVaultAwsIAMConfigAuthMethod) ToPointer() *HashiCorpVaultAwsIAMConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultAwsIAMConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "aws_iam":
-		*e = HashiCorpVaultAwsIAMConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultAwsIAMConfigAuthMethod: %v", v)
-	}
-}
-
 type HashiCorpVaultAwsIAMConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -111,8 +86,9 @@ type HashiCorpVaultAwsIAMConfigOutput struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultAwsIAMConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"aws_iam" json:"auth_method"`
 	// The role to use for AWS IAM auth.
 	Role string `json:"role"`
 	// The AWS region for auth.
@@ -227,11 +203,8 @@ func (h *HashiCorpVaultAwsIAMConfigOutput) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultAwsIAMConfigOutput) GetAuthMethod() HashiCorpVaultAwsIAMConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultAwsIAMConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultAwsIAMConfigOutput) GetAuthMethod() string {
+	return "aws_iam"
 }
 
 func (h *HashiCorpVaultAwsIAMConfigOutput) GetRole() string {
@@ -316,8 +289,9 @@ type HashiCorpVaultAwsIAMConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultAwsIAMConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"aws_iam" json:"auth_method"`
 	// The role to use for AWS IAM auth.
 	Role string `json:"role"`
 	// The AWS region for auth.
@@ -436,11 +410,8 @@ func (h *HashiCorpVaultAwsIAMConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultAwsIAMConfig) GetAuthMethod() HashiCorpVaultAwsIAMConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultAwsIAMConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultAwsIAMConfig) GetAuthMethod() string {
+	return "aws_iam"
 }
 
 func (h *HashiCorpVaultAwsIAMConfig) GetRole() string {

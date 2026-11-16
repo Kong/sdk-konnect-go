@@ -30,9 +30,6 @@ type SchemaValidationInlineSchemaConfig struct {
 func CreateSchemaValidationInlineSchemaConfigJSON(json SchemaValidationInlineSchemaConfigJSON) SchemaValidationInlineSchemaConfig {
 	typ := SchemaValidationInlineSchemaConfigTypeJSON
 
-	typStr := SchemaValidationInlineSchemaConfigJSONSchemaType(typ)
-	json.SchemaType = typStr
-
 	return SchemaValidationInlineSchemaConfig{
 		SchemaValidationInlineSchemaConfigJSON: &json,
 		Type:                                   typ,
@@ -41,9 +38,6 @@ func CreateSchemaValidationInlineSchemaConfigJSON(json SchemaValidationInlineSch
 
 func CreateSchemaValidationInlineSchemaConfigAvro(avro SchemaValidationInlineSchemaConfigAvro) SchemaValidationInlineSchemaConfig {
 	typ := SchemaValidationInlineSchemaConfigTypeAvro
-
-	typStr := SchemaValidationInlineSchemaConfigAvroSchemaType(typ)
-	avro.SchemaType = typStr
 
 	return SchemaValidationInlineSchemaConfig{
 		SchemaValidationInlineSchemaConfigAvro: &avro,

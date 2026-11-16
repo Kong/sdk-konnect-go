@@ -20,8 +20,6 @@ type ListScorecardCriteriaServicesRequest struct {
 	// Filters a collection of services targeted by a scorecard criteria.
 	Filter *components.ScorecardCriteriaServiceFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of services targeted by a scorecard criteria. Supported sort attributes are:
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//   - `evaluation.is_passing`

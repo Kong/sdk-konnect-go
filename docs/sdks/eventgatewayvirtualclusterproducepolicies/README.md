@@ -111,11 +111,8 @@ func main() {
         VirtualClusterID: "cb5c6cc6-ed6d-4ae5-8b28-fd349b94ea6e",
         EventGatewayProducePolicyCreate: sdkkonnectgo.Pointer(components.CreateEventGatewayProducePolicyCreateSchemaValidation(
             components.EventGatewayProduceSchemaValidationPolicy{
-                Type: components.EventGatewayProduceSchemaValidationPolicyTypeSchemaValidation,
                 Config: components.CreateEventGatewayProduceSchemaValidationPolicyConfigJSON(
-                    components.EventGatewayProduceSchemaValidationPolicyJSONConfig{
-                        Type: components.EventGatewayProduceSchemaValidationPolicyJSONConfigTypeJSON,
-                    },
+                    components.EventGatewayProduceSchemaValidationPolicyJSONConfig{},
                 ),
                 Condition: sdkkonnectgo.Pointer("context.topic.name.endsWith(\"my_suffix\") && records.headers[\"x-flag\"] == \"a-value\""),
             },
@@ -246,11 +243,8 @@ func main() {
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayProducePolicyUpdate: sdkkonnectgo.Pointer(components.CreateEventGatewayProducePolicyUpdateSchemaValidation(
             components.EventGatewayProduceSchemaValidationPolicy{
-                Type: components.EventGatewayProduceSchemaValidationPolicyTypeSchemaValidation,
                 Config: components.CreateEventGatewayProduceSchemaValidationPolicyConfigConfluentSchemaRegistry(
-                    components.EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig{
-                        Type: components.EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigTypeConfluentSchemaRegistry,
-                    },
+                    components.EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig{},
                 ),
                 Condition: sdkkonnectgo.Pointer("context.topic.name.endsWith(\"my_suffix\") && records.headers[\"x-flag\"] == \"a-value\""),
             },

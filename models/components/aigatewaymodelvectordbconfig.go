@@ -28,9 +28,6 @@ type AIGatewayModelVectorDBConfig struct {
 func CreateAIGatewayModelVectorDBConfigPgvector(pgvector AIGatewayModelVectorDBConfigPgVector) AIGatewayModelVectorDBConfig {
 	typ := AIGatewayModelVectorDBConfigTypePgvector
 
-	typStr := AIGatewayModelVectorDBConfigPgVectorType(typ)
-	pgvector.Type = typStr
-
 	return AIGatewayModelVectorDBConfig{
 		AIGatewayModelVectorDBConfigPgVector: &pgvector,
 		Type:                                 typ,
@@ -39,9 +36,6 @@ func CreateAIGatewayModelVectorDBConfigPgvector(pgvector AIGatewayModelVectorDBC
 
 func CreateAIGatewayModelVectorDBConfigRedis(redis AIGatewayModelVectorDBConfigRedis) AIGatewayModelVectorDBConfig {
 	typ := AIGatewayModelVectorDBConfigTypeRedis
-
-	typStr := AIGatewayModelVectorDBConfigRedisType(typ)
-	redis.Type = typStr
 
 	return AIGatewayModelVectorDBConfig{
 		AIGatewayModelVectorDBConfigRedis: &redis,

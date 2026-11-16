@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EventGatewayParsedRecordTranscodeSchemaSourceInlineType string
-
-const (
-	EventGatewayParsedRecordTranscodeSchemaSourceInlineTypeInline EventGatewayParsedRecordTranscodeSchemaSourceInlineType = "inline"
-)
-
-func (e EventGatewayParsedRecordTranscodeSchemaSourceInlineType) ToPointer() *EventGatewayParsedRecordTranscodeSchemaSourceInlineType {
-	return &e
-}
-func (e *EventGatewayParsedRecordTranscodeSchemaSourceInlineType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "inline":
-		*e = EventGatewayParsedRecordTranscodeSchemaSourceInlineType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayParsedRecordTranscodeSchemaSourceInlineType: %v", v)
-	}
-}
-
 // EventGatewayParsedRecordTranscodeSchemaSourceInline - A schema embedded directly in the policy configuration.
 type EventGatewayParsedRecordTranscodeSchemaSourceInline struct {
-	Type EventGatewayParsedRecordTranscodeSchemaSourceInlineType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"inline" json:"type"`
 	// The raw schema text (e.g. an Avro JSON schema) to use for the transcoded output data.
 	Inline string `json:"inline"`
 }
@@ -50,11 +26,8 @@ func (e *EventGatewayParsedRecordTranscodeSchemaSourceInline) UnmarshalJSON(data
 	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeSchemaSourceInline) GetType() EventGatewayParsedRecordTranscodeSchemaSourceInlineType {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeSchemaSourceInlineType("")
-	}
-	return e.Type
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceInline) GetType() string {
+	return "inline"
 }
 
 func (e *EventGatewayParsedRecordTranscodeSchemaSourceInline) GetInline() string {

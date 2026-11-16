@@ -106,7 +106,6 @@ func main() {
         components.AIGatewayAuthStrategyOpenIDConnect{
             DisplayName: "Okta AI SE",
             Name: "okta-ai-se",
-            Type: components.AIGatewayAuthStrategyOpenIDConnectTypeOpenidConnect,
         },
     ))
     if err != nil {
@@ -247,7 +246,6 @@ func main() {
             components.AIGatewayAuthStrategyOpenIDConnect{
                 DisplayName: "Okta AI SE",
                 Name: "okta-ai-se",
-                Type: components.AIGatewayAuthStrategyOpenIDConnectTypeOpenidConnect,
             },
         ),
     })

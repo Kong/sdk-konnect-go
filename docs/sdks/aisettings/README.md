@@ -95,6 +95,7 @@ func main() {
 
     res, err := s.AISettings.ReplaceAiSettings(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.ReplaceAISettingsRequest{
         Features: components.ReplaceAISettingsRequestFeatures{
+            AiSearch: components.ReplaceAISettingsRequestFeaturesAISearch{},
             McpServer: components.ReplaceAISettingsRequestFeaturesMcpServer{},
         },
     })

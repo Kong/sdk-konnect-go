@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EventGatewayMaskStrategyEmailType string
-
-const (
-	EventGatewayMaskStrategyEmailTypeEmail EventGatewayMaskStrategyEmailType = "email"
-)
-
-func (e EventGatewayMaskStrategyEmailType) ToPointer() *EventGatewayMaskStrategyEmailType {
-	return &e
-}
-func (e *EventGatewayMaskStrategyEmailType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "email":
-		*e = EventGatewayMaskStrategyEmailType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayMaskStrategyEmailType: %v", v)
-	}
-}
-
 // EventGatewayMaskStrategyEmail - Masks an email address by applying a separate strategy to the local part and to the domain.
 type EventGatewayMaskStrategyEmail struct {
-	Type EventGatewayMaskStrategyEmailType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"email" json:"type"`
 	// The strategy used to redact the local part of an email address.
 	LocalPart EventGatewayMaskEmailLocalPartStrategy `json:"local_part"`
 	// The strategy used to redact the domain of an email address.
@@ -52,11 +28,8 @@ func (e *EventGatewayMaskStrategyEmail) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayMaskStrategyEmail) GetType() EventGatewayMaskStrategyEmailType {
-	if e == nil {
-		return EventGatewayMaskStrategyEmailType("")
-	}
-	return e.Type
+func (e *EventGatewayMaskStrategyEmail) GetType() string {
+	return "email"
 }
 
 func (e *EventGatewayMaskStrategyEmail) GetLocalPart() EventGatewayMaskEmailLocalPartStrategy {

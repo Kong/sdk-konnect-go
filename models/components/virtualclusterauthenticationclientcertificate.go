@@ -4,39 +4,15 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type VirtualClusterAuthenticationClientCertificateType string
-
-const (
-	VirtualClusterAuthenticationClientCertificateTypeClientCertificate VirtualClusterAuthenticationClientCertificateType = "client_certificate"
-)
-
-func (e VirtualClusterAuthenticationClientCertificateType) ToPointer() *VirtualClusterAuthenticationClientCertificateType {
-	return &e
-}
-func (e *VirtualClusterAuthenticationClientCertificateType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "client_certificate":
-		*e = VirtualClusterAuthenticationClientCertificateType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for VirtualClusterAuthenticationClientCertificateType: %v", v)
-	}
-}
 
 // VirtualClusterAuthenticationClientCertificate - Client certificate (mTLS) authentication scheme for the virtual cluster.
 //
 // **Requires a minimum runtime version of `1.1`**.
 type VirtualClusterAuthenticationClientCertificate struct {
-	Type VirtualClusterAuthenticationClientCertificateType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"client_certificate" json:"type"`
 	// Fetches principal metadata from Kong Identity after successful authentication.
 	// The principal is looked up by a custom key matched against the authenticated identity.
 	//
@@ -55,11 +31,8 @@ func (v *VirtualClusterAuthenticationClientCertificate) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationClientCertificate) GetType() VirtualClusterAuthenticationClientCertificateType {
-	if v == nil {
-		return VirtualClusterAuthenticationClientCertificateType("")
-	}
-	return v.Type
+func (v *VirtualClusterAuthenticationClientCertificate) GetType() string {
+	return "client_certificate"
 }
 
 func (v *VirtualClusterAuthenticationClientCertificate) GetFetchKongIdentityPrincipal() *FetchKongIdentityPrincipal {

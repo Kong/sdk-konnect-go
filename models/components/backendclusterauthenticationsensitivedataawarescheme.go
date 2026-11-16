@@ -31,9 +31,6 @@ type BackendClusterAuthenticationSensitiveDataAwareScheme struct {
 func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeAnonymous(anonymous BackendClusterAuthenticationAnonymous) BackendClusterAuthenticationSensitiveDataAwareScheme {
 	typ := BackendClusterAuthenticationSensitiveDataAwareSchemeTypeAnonymous
 
-	typStr := BackendClusterAuthenticationAnonymousType(typ)
-	anonymous.Type = typStr
-
 	return BackendClusterAuthenticationSensitiveDataAwareScheme{
 		BackendClusterAuthenticationAnonymous: &anonymous,
 		Type:                                  typ,
@@ -42,9 +39,6 @@ func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeAnonymous(anonymo
 
 func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslPlain(saslPlain BackendClusterAuthenticationSaslPlainSensitiveDataAware) BackendClusterAuthenticationSensitiveDataAwareScheme {
 	typ := BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslPlain
-
-	typStr := BackendClusterAuthenticationSaslPlainSensitiveDataAwareType(typ)
-	saslPlain.Type = typStr
 
 	return BackendClusterAuthenticationSensitiveDataAwareScheme{
 		BackendClusterAuthenticationSaslPlainSensitiveDataAware: &saslPlain,
@@ -55,9 +49,6 @@ func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslPlain(saslPla
 func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslScram(saslScram BackendClusterAuthenticationSaslScramSensitiveDataAware) BackendClusterAuthenticationSensitiveDataAwareScheme {
 	typ := BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram
 
-	typStr := BackendClusterAuthenticationSaslScramSensitiveDataAwareType(typ)
-	saslScram.Type = typStr
-
 	return BackendClusterAuthenticationSensitiveDataAwareScheme{
 		BackendClusterAuthenticationSaslScramSensitiveDataAware: &saslScram,
 		Type: typ,
@@ -66,9 +57,6 @@ func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslScram(saslScr
 
 func CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslAwsIam(saslAwsIam BackendClusterAuthenticationSaslAwsIam) BackendClusterAuthenticationSensitiveDataAwareScheme {
 	typ := BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslAwsIam
-
-	typStr := BackendClusterAuthenticationSaslAwsIamType(typ)
-	saslAwsIam.Type = typStr
 
 	return BackendClusterAuthenticationSensitiveDataAwareScheme{
 		BackendClusterAuthenticationSaslAwsIam: &saslAwsIam,

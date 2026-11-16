@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayTargetGeminiConfigType string
-
-const (
-	AIGatewayTargetGeminiConfigTypeGemini AIGatewayTargetGeminiConfigType = "gemini"
-)
-
-func (e AIGatewayTargetGeminiConfigType) ToPointer() *AIGatewayTargetGeminiConfigType {
-	return &e
-}
-func (e *AIGatewayTargetGeminiConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gemini":
-		*e = AIGatewayTargetGeminiConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayTargetGeminiConfigType: %v", v)
-	}
-}
 
 // AIGatewayTargetGeminiConfig - Google Gemini-specific configuration for a model.
 type AIGatewayTargetGeminiConfig struct {
@@ -71,8 +46,9 @@ type AIGatewayTargetGeminiConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string                         `json:"upstream_url,omitempty"`
-	Type        AIGatewayTargetGeminiConfigType `json:"type"`
+	UpstreamURL *string `json:"upstream_url,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"gemini" json:"type"`
 	// Configuration for a model hosted on Google Cloud Project.
 	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }
@@ -200,11 +176,8 @@ func (a *AIGatewayTargetGeminiConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetGeminiConfig) GetType() AIGatewayTargetGeminiConfigType {
-	if a == nil {
-		return AIGatewayTargetGeminiConfigType("")
-	}
-	return a.Type
+func (a *AIGatewayTargetGeminiConfig) GetType() string {
+	return "gemini"
 }
 
 func (a *AIGatewayTargetGeminiConfig) GetGcpEnvironment() *GCPModelConfig {

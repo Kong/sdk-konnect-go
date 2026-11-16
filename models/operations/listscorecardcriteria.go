@@ -18,8 +18,6 @@ type ListScorecardCriteriaRequest struct {
 	// Filters a collection of criteria belonging to a scorecard.
 	Filter *components.ScorecardCriteriaFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of criteria belonging to a scorecard. Supported sort attributes are:
-	//
-	//
 	//   - `evaluation.passing_services_count`
 	//
 	// By default, criteria will be returned in the order that they are configured in the scorecard.

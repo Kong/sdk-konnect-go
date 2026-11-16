@@ -38,9 +38,6 @@ type EventGatewayConsumePolicyUpdate struct {
 func CreateEventGatewayConsumePolicyUpdateModifyHeaders(modifyHeaders EventGatewayModifyHeadersPolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeModifyHeaders
 
-	typStr := EventGatewayModifyHeadersPolicyType(typ)
-	modifyHeaders.Type = typStr
-
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewayModifyHeadersPolicy: &modifyHeaders,
 		Type:                            typ,
@@ -49,9 +46,6 @@ func CreateEventGatewayConsumePolicyUpdateModifyHeaders(modifyHeaders EventGatew
 
 func CreateEventGatewayConsumePolicyUpdateSchemaValidation(schemaValidation EventGatewayConsumeSchemaValidationPolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeSchemaValidation
-
-	typStr := EventGatewayConsumeSchemaValidationPolicyType(typ)
-	schemaValidation.Type = typStr
 
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewayConsumeSchemaValidationPolicy: &schemaValidation,
@@ -62,9 +56,6 @@ func CreateEventGatewayConsumePolicyUpdateSchemaValidation(schemaValidation Even
 func CreateEventGatewayConsumePolicyUpdateDecrypt(decrypt EventGatewayDecryptPolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeDecrypt
 
-	typStr := EventGatewayDecryptPolicyType(typ)
-	decrypt.Type = typStr
-
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewayDecryptPolicy: &decrypt,
 		Type:                      typ,
@@ -73,9 +64,6 @@ func CreateEventGatewayConsumePolicyUpdateDecrypt(decrypt EventGatewayDecryptPol
 
 func CreateEventGatewayConsumePolicyUpdateSkipRecord(skipRecord EventGatewaySkipRecordPolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeSkipRecord
-
-	typStr := EventGatewaySkipRecordPolicyType(typ)
-	skipRecord.Type = typStr
 
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewaySkipRecordPolicy: &skipRecord,
@@ -86,9 +74,6 @@ func CreateEventGatewayConsumePolicyUpdateSkipRecord(skipRecord EventGatewaySkip
 func CreateEventGatewayConsumePolicyUpdateDecryptFields(decryptFields EventGatewayParsedRecordDecryptFieldsPolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeDecryptFields
 
-	typStr := EventGatewayParsedRecordDecryptFieldsPolicyType(typ)
-	decryptFields.Type = typStr
-
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewayParsedRecordDecryptFieldsPolicy: &decryptFields,
 		Type: typ,
@@ -98,9 +83,6 @@ func CreateEventGatewayConsumePolicyUpdateDecryptFields(decryptFields EventGatew
 func CreateEventGatewayConsumePolicyUpdateTranscode(transcode EventGatewayParsedRecordTranscodeConsumePolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeTranscode
 
-	typStr := EventGatewayParsedRecordTranscodeConsumePolicyType(typ)
-	transcode.Type = typStr
-
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewayParsedRecordTranscodeConsumePolicy: &transcode,
 		Type: typ,
@@ -109,9 +91,6 @@ func CreateEventGatewayConsumePolicyUpdateTranscode(transcode EventGatewayParsed
 
 func CreateEventGatewayConsumePolicyUpdateMaskFields(maskFields EventGatewayParsedRecordMaskFieldsConsumePolicy) EventGatewayConsumePolicyUpdate {
 	typ := EventGatewayConsumePolicyUpdateTypeMaskFields
-
-	typStr := EventGatewayParsedRecordMaskFieldsConsumePolicyType(typ)
-	maskFields.Type = typStr
 
 	return EventGatewayConsumePolicyUpdate{
 		EventGatewayParsedRecordMaskFieldsConsumePolicy: &maskFields,

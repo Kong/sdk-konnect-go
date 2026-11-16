@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType string
-
-const (
-	EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneTypeNone EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType = "none"
-)
-
-func (e EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType) ToPointer() *EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType {
-	return &e
-}
-func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "none":
-		*e = EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType: %v", v)
-	}
-}
-
 // EventGatewayParsedRecordTranscodeSchemaRefDestinationNone - Do not persist the schema anywhere.
 type EventGatewayParsedRecordTranscodeSchemaRefDestinationNone struct {
-	Type EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"none" json:"type"`
 }
 
 func (e EventGatewayParsedRecordTranscodeSchemaRefDestinationNone) MarshalJSON() ([]byte, error) {
@@ -48,9 +24,6 @@ func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone) UnmarshalJSO
 	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone) GetType() EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType("")
-	}
-	return e.Type
+func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone) GetType() string {
+	return "none"
 }

@@ -122,7 +122,6 @@ func main() {
             Upstream: &components.AIGatewayUpstreamConfig{
                 Auth: sdkkonnectgo.Pointer(components.CreateAuthAws(
                     components.AIGatewayUpstreamAuthAWS{
-                        Type: components.AIGatewayUpstreamAuthAWSTypeAws,
                         AccessKeyID: sdkkonnectgo.Pointer("AKIAIOSFODNN7EXAMPLE"),
                         Region: sdkkonnectgo.Pointer("us-east-1"),
                     },
@@ -300,7 +299,6 @@ func main() {
                 Upstream: &components.AIGatewayUpstreamConfig{
                     Auth: sdkkonnectgo.Pointer(components.CreateAuthAws(
                         components.AIGatewayUpstreamAuthAWS{
-                            Type: components.AIGatewayUpstreamAuthAWSTypeAws,
                             AccessKeyID: sdkkonnectgo.Pointer("AKIAIOSFODNN7EXAMPLE"),
                             Region: sdkkonnectgo.Pointer("us-east-1"),
                         },

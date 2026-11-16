@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderBasetenType string
-
-const (
-	AIGatewayModelProviderBasetenTypeBaseten AIGatewayModelProviderBasetenType = "baseten"
-)
-
-func (e AIGatewayModelProviderBasetenType) ToPointer() *AIGatewayModelProviderBasetenType {
-	return &e
-}
-func (e *AIGatewayModelProviderBasetenType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "baseten":
-		*e = AIGatewayModelProviderBasetenType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderBasetenType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderBasetenConfig - Configuration for the model provider.
 type AIGatewayModelProviderBasetenConfig struct {
@@ -59,7 +34,8 @@ func (a *AIGatewayModelProviderBasetenConfig) GetAuth() AIGatewayModelProviderCo
 
 // AIGatewayModelProviderBaseten - Configuration for an upstream model provider.
 type AIGatewayModelProviderBaseten struct {
-	Type AIGatewayModelProviderBasetenType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"baseten" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -110,11 +86,8 @@ func (a *AIGatewayModelProviderBaseten) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderBaseten) GetType() AIGatewayModelProviderBasetenType {
-	if a == nil {
-		return AIGatewayModelProviderBasetenType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderBaseten) GetType() string {
+	return "baseten"
 }
 
 func (a *AIGatewayModelProviderBaseten) GetDisplayName() string {

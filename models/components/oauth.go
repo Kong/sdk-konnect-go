@@ -4,34 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-type OauthType string
-
-const (
-	OauthTypeOauth OauthType = "oauth"
-)
-
-func (e OauthType) ToPointer() *OauthType {
-	return &e
-}
-func (e *OauthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oauth":
-		*e = OauthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for OauthType: %v", v)
-	}
-}
 
 // Oauth - Represents a credential scoped to an integration instance that supports the `OAuth` authorization strategy.
 type Oauth struct {
@@ -50,7 +25,8 @@ type Oauth struct {
 	ExpiresAt *time.Time `json:"expires_at"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
-	Type      OauthType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"oauth" json:"type"`
 }
 
 func (o Oauth) MarshalJSON() ([]byte, error) {
@@ -106,9 +82,6 @@ func (o *Oauth) GetCreatedAt() time.Time {
 	return o.CreatedAt
 }
 
-func (o *Oauth) GetType() OauthType {
-	if o == nil {
-		return OauthType("")
-	}
-	return o.Type
+func (o *Oauth) GetType() string {
+	return "oauth"
 }

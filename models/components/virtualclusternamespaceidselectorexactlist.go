@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type VirtualClusterNamespaceIDSelectorExactListType string
-
-const (
-	VirtualClusterNamespaceIDSelectorExactListTypeExactList VirtualClusterNamespaceIDSelectorExactListType = "exact_list"
-)
-
-func (e VirtualClusterNamespaceIDSelectorExactListType) ToPointer() *VirtualClusterNamespaceIDSelectorExactListType {
-	return &e
-}
-func (e *VirtualClusterNamespaceIDSelectorExactListType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "exact_list":
-		*e = VirtualClusterNamespaceIDSelectorExactListType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for VirtualClusterNamespaceIDSelectorExactListType: %v", v)
-	}
-}
 
 type ExactList struct {
 	Value string `json:"value"`
@@ -55,8 +30,9 @@ func (e *ExactList) GetValue() string {
 }
 
 type VirtualClusterNamespaceIDSelectorExactList struct {
-	Type      VirtualClusterNamespaceIDSelectorExactListType `json:"type"`
-	ExactList []ExactList                                    `json:"exact_list,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_     string      `const:"exact_list" json:"type"`
+	ExactList []ExactList `json:"exact_list,omitempty"`
 }
 
 func (v VirtualClusterNamespaceIDSelectorExactList) MarshalJSON() ([]byte, error) {
@@ -70,11 +46,8 @@ func (v *VirtualClusterNamespaceIDSelectorExactList) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (v *VirtualClusterNamespaceIDSelectorExactList) GetType() VirtualClusterNamespaceIDSelectorExactListType {
-	if v == nil {
-		return VirtualClusterNamespaceIDSelectorExactListType("")
-	}
-	return v.Type
+func (v *VirtualClusterNamespaceIDSelectorExactList) GetType() string {
+	return "exact_list"
 }
 
 func (v *VirtualClusterNamespaceIDSelectorExactList) GetExactList() []ExactList {
