@@ -234,6 +234,7 @@ func main() {
 
     res, err := s.AIGateways.UpdateAiGateway(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.UpdateAIGatewayRequest{
         MinRuntimeVersion: sdkkonnectgo.Pointer("2.0"),
+        RuntimeAutoUpgrade: sdkkonnectgo.Pointer(true),
         DisplayName: "My AI Gateway",
         Name: "my-ai-gateway",
         Description: sdkkonnectgo.Pointer("An AI Gateway for my organization."),

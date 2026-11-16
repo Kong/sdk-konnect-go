@@ -79,9 +79,13 @@ _generate.omitempty:
 		models/components/routejson.go
 	# An empty identity_realms list must reach Konnect to disable its default
 	# identity realm, but speakeasy emits omitempty for the field. The config is
-	# generated inline in the key-auth request and response models.
-	@files=$$(grep -l 'json:"identity_realms,omitempty"' models/components/*keyauth*.go) && \
-		$(SED) -i 's#json:"identity_realms,omitempty"#json:"identity_realms,omitzero"#g' $$files
+	# generated inline in the key-auth request and response models. Upstream
+	# generation may already emit omitzero natively; skip rather than fail
+	# when no file still has the old tag.
+	@files=$$(grep -l 'json:"identity_realms,omitempty"' models/components/*keyauth*.go || true) && \
+		if [ -n "$$files" ]; then \
+			$(SED) -i 's#json:"identity_realms,omitempty"#json:"identity_realms,omitzero"#g' $$files; \
+		fi
 
 .PHONY: generate.deepcopy
 generate.deepcopy: controller-gen
@@ -151,7 +155,7 @@ generate.deepcopy: controller-gen
 		$(shell git ls-files docs/models/components/healthchecks*.md)
 
 .PHONY: generate.sdk.speakeasy
-generate.sdk.speakeasy: speakeasy
+generate.sdk.speakeasy: speakeasy validate.kongctl-overlays
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 
 .PHONY: lint.sdk
@@ -168,6 +172,8 @@ generate.sdk:
 	git add --update .
 	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
+	python3 kongctl-patches/apply.py post-generate .
+	$(MAKE) test.kongctl-patches
 	go mod tidy
 	$(MAKE) lint.sdk
 
@@ -287,3 +293,14 @@ test.fields:
 .PHONY: verify.diff
 verify.diff:
 	@$(PROJECT_DIR)/scripts/verify-diff.sh $(PROJECT_DIR)
+
+.PHONY: validate.kongctl-overlays
+validate.kongctl-overlays:
+	@for overlay in $(sort $(wildcard kongctl-patches/overlays/*.yaml)); do \
+		speakeasy overlay validate --overlay $$overlay; \
+		speakeasy overlay apply --strict --schema $(OPENAPI_FILE) --overlay $$overlay --out /dev/null; \
+	done
+
+.PHONY: test.kongctl-patches
+test.kongctl-patches:
+	CGO_ENABLED=0 go test -count=1 -tags=kongctl_sdk_patched .

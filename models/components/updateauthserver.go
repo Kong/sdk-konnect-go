@@ -21,7 +21,7 @@ type UpdateAuthServer struct {
 	//
 	Labels map[string]*string `json:"labels,omitempty"`
 	// A list or trusted origins to apply the CORS header on for the auth server
-	TrustedOrigins []string `json:"trusted_origins,omitempty"`
+	TrustedOrigins []string `json:"trusted_origins,omitzero"`
 	// Dynamic Client Registration settings for the auth server
 	Dcr *UpdateDcrSettings `json:"dcr,omitempty"`
 }
