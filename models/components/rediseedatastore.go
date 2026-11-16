@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type RedisEEDatastoreType string
-
-const (
-	RedisEEDatastoreTypeRedisEe RedisEEDatastoreType = "redis-ee"
-)
-
-func (e RedisEEDatastoreType) ToPointer() *RedisEEDatastoreType {
-	return &e
-}
-func (e *RedisEEDatastoreType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "redis-ee":
-		*e = RedisEEDatastoreType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RedisEEDatastoreType: %v", v)
-	}
-}
 
 type RedisEEDatastore struct {
 	// A user-defined unique identifier for this Datastore, used as a stable human-readable reference.
@@ -54,9 +29,10 @@ type RedisEEDatastore struct {
 	// Values must be 1–127 characters long and must not be empty.
 	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string      `json:"managed_by,omitempty"`
-	Type      RedisEEDatastoreType   `json:"type"`
-	Config    RedisEEDatastoreConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                 `const:"redis-ee" json:"type"`
+	Config RedisEEDatastoreConfig `json:"config"`
 }
 
 func (r RedisEEDatastore) MarshalJSON() ([]byte, error) {
@@ -105,11 +81,8 @@ func (r *RedisEEDatastore) GetManagedBy() map[string]string {
 	return r.ManagedBy
 }
 
-func (r *RedisEEDatastore) GetType() RedisEEDatastoreType {
-	if r == nil {
-		return RedisEEDatastoreType("")
-	}
-	return r.Type
+func (r *RedisEEDatastore) GetType() string {
+	return "redis-ee"
 }
 
 func (r *RedisEEDatastore) GetConfig() RedisEEDatastoreConfig {

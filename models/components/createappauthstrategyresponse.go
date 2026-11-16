@@ -320,24 +320,24 @@ func (a *AppAuthStrategyKeyAuthResponseConfigs) GetKeyAuth() AppAuthStrategyConf
 	return a.KeyAuth
 }
 
-// AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType - The type of DCR provider.
-type AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType string
+// ProviderType - The type of DCR provider.
+type ProviderType string
 
 const (
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAuth0        AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "auth0"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAzureAd      AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "azureAd"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeCurity       AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "curity"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeOkta         AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "okta"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeHTTP         AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "http"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeKongIdentity AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "kongIdentity"
+	ProviderTypeAuth0        ProviderType = "auth0"
+	ProviderTypeAzureAd      ProviderType = "azureAd"
+	ProviderTypeCurity       ProviderType = "curity"
+	ProviderTypeOkta         ProviderType = "okta"
+	ProviderTypeHTTP         ProviderType = "http"
+	ProviderTypeKongIdentity ProviderType = "kongIdentity"
 )
 
-func (e AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType) ToPointer() *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType {
+func (e ProviderType) ToPointer() *ProviderType {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType) IsExact() bool {
+func (e *ProviderType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "auth0", "azureAd", "curity", "okta", "http", "kongIdentity":
@@ -355,7 +355,7 @@ type AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider stru
 	//
 	DisplayName *string `json:"display_name,omitempty"`
 	// The type of DCR provider.
-	ProviderType AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType `json:"provider_type"`
+	ProviderType ProviderType `json:"provider_type"`
 }
 
 func (a AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) MarshalJSON() ([]byte, error) {
@@ -390,9 +390,9 @@ func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider)
 	return a.DisplayName
 }
 
-func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetProviderType() AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType {
+func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetProviderType() ProviderType {
 	if a == nil {
-		return AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType("")
+		return ProviderType("")
 	}
 	return a.ProviderType
 }

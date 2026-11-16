@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -34,21 +32,21 @@ func (e *PartialRedisCeAuthProvider) IsExact() bool {
 	return false
 }
 
-// PartialRedisCeAuthMethod - Client authentication method used against the token endpoint.
-type PartialRedisCeAuthMethod string
+// AuthMethod - Client authentication method used against the token endpoint.
+type AuthMethod string
 
 const (
-	PartialRedisCeAuthMethodClientSecretBasic PartialRedisCeAuthMethod = "client_secret_basic"
-	PartialRedisCeAuthMethodClientSecretJwt   PartialRedisCeAuthMethod = "client_secret_jwt"
-	PartialRedisCeAuthMethodClientSecretPost  PartialRedisCeAuthMethod = "client_secret_post"
+	AuthMethodClientSecretBasic AuthMethod = "client_secret_basic"
+	AuthMethodClientSecretJwt   AuthMethod = "client_secret_jwt"
+	AuthMethodClientSecretPost  AuthMethod = "client_secret_post"
 )
 
-func (e PartialRedisCeAuthMethod) ToPointer() *PartialRedisCeAuthMethod {
+func (e AuthMethod) ToPointer() *AuthMethod {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *PartialRedisCeAuthMethod) IsExact() bool {
+func (e *AuthMethod) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "client_secret_basic", "client_secret_jwt", "client_secret_post":
@@ -107,7 +105,7 @@ func (e *PartialRedisCeGrantType) IsExact() bool {
 // PartialRedisCeOauth - OAuth 2.0 client configuration used to authenticate to Redis when `auth_provider` is set to `oauth`.
 type PartialRedisCeOauth struct {
 	// Client authentication method used against the token endpoint.
-	AuthMethod *PartialRedisCeAuthMethod `default:"client_secret_post" json:"auth_method"`
+	AuthMethod *AuthMethod `default:"client_secret_post" json:"auth_method"`
 	// OAuth 2.0 client ID.
 	ClientID *string `json:"client_id,omitempty"`
 	// OAuth 2.0 client secret.
@@ -149,7 +147,7 @@ func (p *PartialRedisCeOauth) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (p *PartialRedisCeOauth) GetAuthMethod() *PartialRedisCeAuthMethod {
+func (p *PartialRedisCeOauth) GetAuthMethod() *AuthMethod {
 	if p == nil {
 		return nil
 	}
@@ -490,29 +488,6 @@ func (p *PartialRedisCeConfig) GetUsername() *string {
 	return p.Username
 }
 
-type PartialRedisCeType string
-
-const (
-	PartialRedisCeTypeRedisCe PartialRedisCeType = "redis-ce"
-)
-
-func (e PartialRedisCeType) ToPointer() *PartialRedisCeType {
-	return &e
-}
-func (e *PartialRedisCeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "redis-ce":
-		*e = PartialRedisCeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PartialRedisCeType: %v", v)
-	}
-}
-
 type PartialRedisCe struct {
 	Config PartialRedisCeConfig `json:"config"`
 	// Unix epoch when the resource was created.
@@ -522,8 +497,9 @@ type PartialRedisCe struct {
 	// A unique string representing a UTF-8 encoded name.
 	Name *string `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags []string           `json:"tags,omitempty"`
-	Type PartialRedisCeType `json:"type"`
+	Tags []string `json:"tags,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"redis-ce" json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
@@ -574,11 +550,8 @@ func (p *PartialRedisCe) GetTags() []string {
 	return p.Tags
 }
 
-func (p *PartialRedisCe) GetType() PartialRedisCeType {
-	if p == nil {
-		return PartialRedisCeType("")
-	}
-	return p.Type
+func (p *PartialRedisCe) GetType() string {
+	return "redis-ce"
 }
 
 func (p *PartialRedisCe) GetUpdatedAt() *int64 {

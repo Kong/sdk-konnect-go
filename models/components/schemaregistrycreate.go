@@ -26,9 +26,6 @@ type SchemaRegistryCreate struct {
 func CreateSchemaRegistryCreateConfluent(confluent SchemaRegistryConfluent) SchemaRegistryCreate {
 	typ := SchemaRegistryCreateTypeConfluent
 
-	typStr := SchemaRegistryConfluentType(typ)
-	confluent.Type = typStr
-
 	return SchemaRegistryCreate{
 		SchemaRegistryConfluent: &confluent,
 		Type:                    typ,

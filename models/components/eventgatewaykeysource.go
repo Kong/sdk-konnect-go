@@ -30,9 +30,6 @@ type EventGatewayKeySource struct {
 func CreateEventGatewayKeySourceAws(aws EventGatewayAWSKeySource) EventGatewayKeySource {
 	typ := EventGatewayKeySourceTypeAws
 
-	typStr := EventGatewayAWSKeySourceType(typ)
-	aws.Type = typStr
-
 	return EventGatewayKeySource{
 		EventGatewayAWSKeySource: &aws,
 		Type:                     typ,
@@ -41,9 +38,6 @@ func CreateEventGatewayKeySourceAws(aws EventGatewayAWSKeySource) EventGatewayKe
 
 func CreateEventGatewayKeySourceStatic(static EventGatewayStaticKeySource) EventGatewayKeySource {
 	typ := EventGatewayKeySourceTypeStatic
-
-	typStr := EventGatewayStaticKeySourceType(typ)
-	static.Type = typStr
 
 	return EventGatewayKeySource{
 		EventGatewayStaticKeySource: &static,

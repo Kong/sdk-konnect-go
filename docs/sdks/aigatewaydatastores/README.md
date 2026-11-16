@@ -107,7 +107,6 @@ func main() {
             Name: "shared-redis",
             DisplayName: "Shared Redis",
             Description: sdkkonnectgo.Pointer("Redis shared by rate limiting and semantic cache"),
-            Type: components.VectorDBDatastoreTypeVectordb,
             Config: components.VectorDBDatastoreConfig{
                 Host: "127.0.0.1",
                 Database: "kong-pgvector",
@@ -265,7 +264,6 @@ func main() {
                 Name: "shared-redis",
                 DisplayName: "Shared Redis",
                 Description: sdkkonnectgo.Pointer("Redis shared by rate limiting and semantic cache"),
-                Type: components.TokenVaultDatastoreTypeTokenVault,
                 Config: components.TokenVaultDatastoreConfig{
                     Directory: "my-directory",
                     CurrentVersion: "v1",

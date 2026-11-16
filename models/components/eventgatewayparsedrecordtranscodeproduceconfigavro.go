@@ -4,34 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat - The serialization format to convert the record value into.
-type EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat string
-
-const (
-	EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormatAvro EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat = "avro"
-)
-
-func (e EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat) ToPointer() *EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat {
-	return &e
-}
-func (e *EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "avro":
-		*e = EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat: %v", v)
-	}
-}
 
 // EventGatewayParsedRecordTranscodeProduceConfigAvro - The configuration of the transcode parsed record policy when converting produced records to Avro.
 // Avro requires a schema to serialize the record value, so `schema_source` must be set.
@@ -57,7 +31,8 @@ type EventGatewayParsedRecordTranscodeProduceConfigAvro struct {
 	//
 	SchemaSource EventGatewayParsedRecordTranscodeSchemaSource `json:"schema_source"`
 	// The serialization format to convert the record value into.
-	OutputFormat EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat `json:"output_format"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	outputFormat string `const:"avro" json:"output_format"`
 }
 
 func (e EventGatewayParsedRecordTranscodeProduceConfigAvro) MarshalJSON() ([]byte, error) {
@@ -100,9 +75,6 @@ func (e *EventGatewayParsedRecordTranscodeProduceConfigAvro) GetSchemaSourceInli
 	return e.GetSchemaSource().EventGatewayParsedRecordTranscodeSchemaSourceInline
 }
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfigAvro) GetOutputFormat() EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat("")
-	}
-	return e.OutputFormat
+func (e *EventGatewayParsedRecordTranscodeProduceConfigAvro) GetOutputFormat() string {
+	return "avro"
 }

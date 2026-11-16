@@ -38,9 +38,6 @@ type AIGatewayModelBalancerConfigOutput struct {
 func CreateAIGatewayModelBalancerConfigOutputConsistentHashing(consistentHashing AIGatewayModelBalancerConsistentHashingConfig) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypeConsistentHashing
 
-	typStr := AIGatewayModelBalancerConsistentHashingConfigAlgorithm(typ)
-	consistentHashing.Algorithm = typStr
-
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerConsistentHashingConfig: &consistentHashing,
 		Type: typ,
@@ -49,9 +46,6 @@ func CreateAIGatewayModelBalancerConfigOutputConsistentHashing(consistentHashing
 
 func CreateAIGatewayModelBalancerConfigOutputLeastConnections(leastConnections AIGatewayModelBalancerLeastConnectionsConfig) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypeLeastConnections
-
-	typStr := AIGatewayModelBalancerLeastConnectionsConfigAlgorithm(typ)
-	leastConnections.Algorithm = typStr
 
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerLeastConnectionsConfig: &leastConnections,
@@ -62,9 +56,6 @@ func CreateAIGatewayModelBalancerConfigOutputLeastConnections(leastConnections A
 func CreateAIGatewayModelBalancerConfigOutputLowestLatency(lowestLatency AIGatewayModelBalancerLowestLatencyConfig) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypeLowestLatency
 
-	typStr := AIGatewayModelBalancerLowestLatencyConfigAlgorithm(typ)
-	lowestLatency.Algorithm = typStr
-
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerLowestLatencyConfig: &lowestLatency,
 		Type: typ,
@@ -73,9 +64,6 @@ func CreateAIGatewayModelBalancerConfigOutputLowestLatency(lowestLatency AIGatew
 
 func CreateAIGatewayModelBalancerConfigOutputLowestUsage(lowestUsage AIGatewayModelBalancerLowestUsageConfig) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypeLowestUsage
-
-	typStr := AIGatewayModelBalancerLowestUsageConfigAlgorithm(typ)
-	lowestUsage.Algorithm = typStr
 
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerLowestUsageConfig: &lowestUsage,
@@ -86,9 +74,6 @@ func CreateAIGatewayModelBalancerConfigOutputLowestUsage(lowestUsage AIGatewayMo
 func CreateAIGatewayModelBalancerConfigOutputPriority(priority AIGatewayModelBalancerPriorityConfig) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypePriority
 
-	typStr := AIGatewayModelBalancerPriorityConfigAlgorithm(typ)
-	priority.Algorithm = typStr
-
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerPriorityConfig: &priority,
 		Type:                                 typ,
@@ -98,9 +83,6 @@ func CreateAIGatewayModelBalancerConfigOutputPriority(priority AIGatewayModelBal
 func CreateAIGatewayModelBalancerConfigOutputRoundRobin(roundRobin AIGatewayModelBalancerRoundRobinConfig) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypeRoundRobin
 
-	typStr := AIGatewayModelBalancerRoundRobinConfigAlgorithm(typ)
-	roundRobin.Algorithm = typStr
-
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerRoundRobinConfig: &roundRobin,
 		Type:                                   typ,
@@ -109,9 +91,6 @@ func CreateAIGatewayModelBalancerConfigOutputRoundRobin(roundRobin AIGatewayMode
 
 func CreateAIGatewayModelBalancerConfigOutputSemantic(semantic AIGatewayModelBalancerSemanticConfigOutput) AIGatewayModelBalancerConfigOutput {
 	typ := AIGatewayModelBalancerConfigOutputTypeSemantic
-
-	typStr := AIGatewayModelBalancerSemanticConfigAlgorithm(typ)
-	semantic.Algorithm = typStr
 
 	return AIGatewayModelBalancerConfigOutput{
 		AIGatewayModelBalancerSemanticConfigOutput: &semantic,

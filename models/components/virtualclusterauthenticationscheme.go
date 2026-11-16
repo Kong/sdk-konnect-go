@@ -33,9 +33,6 @@ type VirtualClusterAuthenticationScheme struct {
 func CreateVirtualClusterAuthenticationSchemeAnonymous(anonymous VirtualClusterAuthenticationAnonymous) VirtualClusterAuthenticationScheme {
 	typ := VirtualClusterAuthenticationSchemeTypeAnonymous
 
-	typStr := VirtualClusterAuthenticationAnonymousType(typ)
-	anonymous.Type = typStr
-
 	return VirtualClusterAuthenticationScheme{
 		VirtualClusterAuthenticationAnonymous: &anonymous,
 		Type:                                  typ,
@@ -44,9 +41,6 @@ func CreateVirtualClusterAuthenticationSchemeAnonymous(anonymous VirtualClusterA
 
 func CreateVirtualClusterAuthenticationSchemeSaslPlain(saslPlain VirtualClusterAuthenticationSaslPlain) VirtualClusterAuthenticationScheme {
 	typ := VirtualClusterAuthenticationSchemeTypeSaslPlain
-
-	typStr := VirtualClusterAuthenticationSaslPlainType(typ)
-	saslPlain.Type = typStr
 
 	return VirtualClusterAuthenticationScheme{
 		VirtualClusterAuthenticationSaslPlain: &saslPlain,
@@ -57,9 +51,6 @@ func CreateVirtualClusterAuthenticationSchemeSaslPlain(saslPlain VirtualClusterA
 func CreateVirtualClusterAuthenticationSchemeSaslScram(saslScram VirtualClusterAuthenticationSaslScram) VirtualClusterAuthenticationScheme {
 	typ := VirtualClusterAuthenticationSchemeTypeSaslScram
 
-	typStr := VirtualClusterAuthenticationSaslScramType(typ)
-	saslScram.Type = typStr
-
 	return VirtualClusterAuthenticationScheme{
 		VirtualClusterAuthenticationSaslScram: &saslScram,
 		Type:                                  typ,
@@ -69,9 +60,6 @@ func CreateVirtualClusterAuthenticationSchemeSaslScram(saslScram VirtualClusterA
 func CreateVirtualClusterAuthenticationSchemeOauthBearer(oauthBearer VirtualClusterAuthenticationOauthBearer) VirtualClusterAuthenticationScheme {
 	typ := VirtualClusterAuthenticationSchemeTypeOauthBearer
 
-	typStr := VirtualClusterAuthenticationOauthBearerType(typ)
-	oauthBearer.Type = typStr
-
 	return VirtualClusterAuthenticationScheme{
 		VirtualClusterAuthenticationOauthBearer: &oauthBearer,
 		Type:                                    typ,
@@ -80,9 +68,6 @@ func CreateVirtualClusterAuthenticationSchemeOauthBearer(oauthBearer VirtualClus
 
 func CreateVirtualClusterAuthenticationSchemeClientCertificate(clientCertificate VirtualClusterAuthenticationClientCertificate) VirtualClusterAuthenticationScheme {
 	typ := VirtualClusterAuthenticationSchemeTypeClientCertificate
-
-	typStr := VirtualClusterAuthenticationClientCertificateType(typ)
-	clientCertificate.Type = typStr
 
 	return VirtualClusterAuthenticationScheme{
 		VirtualClusterAuthenticationClientCertificate: &clientCertificate,

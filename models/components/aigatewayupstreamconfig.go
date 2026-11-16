@@ -26,9 +26,6 @@ type Auth struct {
 func CreateAuthAws(aws AIGatewayUpstreamAuthAWS) Auth {
 	typ := AuthUnionTypeAws
 
-	typStr := AIGatewayUpstreamAuthAWSType(typ)
-	aws.Type = typStr
-
 	return Auth{
 		AIGatewayUpstreamAuthAWS: &aws,
 		Type:                     typ,

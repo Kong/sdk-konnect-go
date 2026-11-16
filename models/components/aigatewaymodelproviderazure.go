@@ -10,29 +10,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayModelProviderAzureType string
-
-const (
-	AIGatewayModelProviderAzureTypeAzure AIGatewayModelProviderAzureType = "azure"
-)
-
-func (e AIGatewayModelProviderAzureType) ToPointer() *AIGatewayModelProviderAzureType {
-	return &e
-}
-func (e *AIGatewayModelProviderAzureType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "azure":
-		*e = AIGatewayModelProviderAzureType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderAzureType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderAzureAuthType string
 
 const (
@@ -50,9 +27,6 @@ type AIGatewayModelProviderAzureAuth struct {
 func CreateAIGatewayModelProviderAzureAuthBasic(basic AIGatewayModelProviderConfigAuthBasic) AIGatewayModelProviderAzureAuth {
 	typ := AIGatewayModelProviderAzureAuthTypeBasic
 
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
-
 	return AIGatewayModelProviderAzureAuth{
 		AIGatewayModelProviderConfigAuthBasic: &basic,
 		Type:                                  typ,
@@ -61,9 +35,6 @@ func CreateAIGatewayModelProviderAzureAuthBasic(basic AIGatewayModelProviderConf
 
 func CreateAIGatewayModelProviderAzureAuthAzure(azure AIGatewayModelProviderConfigAuthAzure) AIGatewayModelProviderAzureAuth {
 	typ := AIGatewayModelProviderAzureAuthTypeAzure
-
-	typStr := AIGatewayModelProviderConfigAuthAzureType(typ)
-	azure.Type = typStr
 
 	return AIGatewayModelProviderAzureAuth{
 		AIGatewayModelProviderConfigAuthAzure: &azure,
@@ -247,7 +218,8 @@ func (a *AIGatewayModelProviderAzureConfig) GetFoundry() *Foundry {
 
 // AIGatewayModelProviderAzure - Config for Azure model provider.
 type AIGatewayModelProviderAzure struct {
-	Type AIGatewayModelProviderAzureType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"azure" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -297,11 +269,8 @@ func (a *AIGatewayModelProviderAzure) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderAzure) GetType() AIGatewayModelProviderAzureType {
-	if a == nil {
-		return AIGatewayModelProviderAzureType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAzure) GetType() string {
+	return "azure"
 }
 
 func (a *AIGatewayModelProviderAzure) GetDisplayName() string {

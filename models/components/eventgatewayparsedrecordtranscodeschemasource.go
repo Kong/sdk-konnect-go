@@ -29,9 +29,6 @@ type EventGatewayParsedRecordTranscodeSchemaSource struct {
 func CreateEventGatewayParsedRecordTranscodeSchemaSourceReference(reference EventGatewayParsedRecordTranscodeSchemaSourceReference) EventGatewayParsedRecordTranscodeSchemaSource {
 	typ := EventGatewayParsedRecordTranscodeSchemaSourceTypeReference
 
-	typStr := EventGatewayParsedRecordTranscodeSchemaSourceReferenceType(typ)
-	reference.Type = typStr
-
 	return EventGatewayParsedRecordTranscodeSchemaSource{
 		EventGatewayParsedRecordTranscodeSchemaSourceReference: &reference,
 		Type: typ,
@@ -40,9 +37,6 @@ func CreateEventGatewayParsedRecordTranscodeSchemaSourceReference(reference Even
 
 func CreateEventGatewayParsedRecordTranscodeSchemaSourceInline(inline EventGatewayParsedRecordTranscodeSchemaSourceInline) EventGatewayParsedRecordTranscodeSchemaSource {
 	typ := EventGatewayParsedRecordTranscodeSchemaSourceTypeInline
-
-	typStr := EventGatewayParsedRecordTranscodeSchemaSourceInlineType(typ)
-	inline.Type = typStr
 
 	return EventGatewayParsedRecordTranscodeSchemaSource{
 		EventGatewayParsedRecordTranscodeSchemaSourceInline: &inline,

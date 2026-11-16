@@ -103,7 +103,6 @@ func main() {
 
     res, err := s.AIGatewayMCPServers.CreateAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayMCPServerRequestUpstreamServer(
         components.AIGatewayMCPServerUpstreamServer{
-            Type: components.AIGatewayMCPServerUpstreamServerTypeUpstreamServer,
             Config: components.AIGatewayMCPServerUpstreamServerConfig{
                 Route: components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(
                     components.AIGatewayMCPServerRouteWithMatcher1{
@@ -283,7 +282,6 @@ func main() {
         McpServerIDOrName: "my-entity-name",
         UpdateAIGatewayMCPServerRequest: components.CreateUpdateAIGatewayMCPServerRequestUpstreamServer(
             components.AIGatewayMCPServerUpstreamServer{
-                Type: components.AIGatewayMCPServerUpstreamServerTypeUpstreamServer,
                 Config: components.AIGatewayMCPServerUpstreamServerConfig{
                     Route: components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(
                         components.AIGatewayMCPServerRouteWithMatcher1{

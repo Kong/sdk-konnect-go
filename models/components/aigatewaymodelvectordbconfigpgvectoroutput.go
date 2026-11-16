@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelVectorDBConfigPgVectorType string
-
-const (
-	AIGatewayModelVectorDBConfigPgVectorTypePgvector AIGatewayModelVectorDBConfigPgVectorType = "pgvector"
-)
-
-func (e AIGatewayModelVectorDBConfigPgVectorType) ToPointer() *AIGatewayModelVectorDBConfigPgVectorType {
-	return &e
-}
-func (e *AIGatewayModelVectorDBConfigPgVectorType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pgvector":
-		*e = AIGatewayModelVectorDBConfigPgVectorType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelVectorDBConfigPgVectorType: %v", v)
-	}
-}
 
 // DistanceMetric - the distance metric to use for vector searches
 type DistanceMetric string
@@ -148,7 +123,8 @@ func (s *Ssl) GetVersion() *AIGatewayModelVectorDBConfigPgVectorVersion {
 }
 
 type AIGatewayModelVectorDBConfigPgVectorOutput struct {
-	Type AIGatewayModelVectorDBConfigPgVectorType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"pgvector" json:"type"`
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
@@ -181,11 +157,8 @@ func (a *AIGatewayModelVectorDBConfigPgVectorOutput) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetType() AIGatewayModelVectorDBConfigPgVectorType {
-	if a == nil {
-		return AIGatewayModelVectorDBConfigPgVectorType("")
-	}
-	return a.Type
+func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetType() string {
+	return "pgvector"
 }
 
 func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetDimensions() int64 {
@@ -252,7 +225,8 @@ func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetUser() *string {
 }
 
 type AIGatewayModelVectorDBConfigPgVector struct {
-	Type AIGatewayModelVectorDBConfigPgVectorType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"pgvector" json:"type"`
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
@@ -289,11 +263,8 @@ func (a *AIGatewayModelVectorDBConfigPgVector) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (a *AIGatewayModelVectorDBConfigPgVector) GetType() AIGatewayModelVectorDBConfigPgVectorType {
-	if a == nil {
-		return AIGatewayModelVectorDBConfigPgVectorType("")
-	}
-	return a.Type
+func (a *AIGatewayModelVectorDBConfigPgVector) GetType() string {
+	return "pgvector"
 }
 
 func (a *AIGatewayModelVectorDBConfigPgVector) GetDimensions() int64 {

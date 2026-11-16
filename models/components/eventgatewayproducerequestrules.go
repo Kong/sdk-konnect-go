@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EventGatewayProduceRequestRulesType string
-
-const (
-	EventGatewayProduceRequestRulesTypeProduce EventGatewayProduceRequestRulesType = "produce"
-)
-
-func (e EventGatewayProduceRequestRulesType) ToPointer() *EventGatewayProduceRequestRulesType {
-	return &e
-}
-func (e *EventGatewayProduceRequestRulesType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "produce":
-		*e = EventGatewayProduceRequestRulesType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayProduceRequestRulesType: %v", v)
-	}
-}
-
 // EventGatewayProduceRequestRules - The rules to apply to Kafka `Produce` requests.
 type EventGatewayProduceRequestRules struct {
-	Type EventGatewayProduceRequestRulesType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"produce" json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -53,11 +29,8 @@ func (e *EventGatewayProduceRequestRules) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayProduceRequestRules) GetType() EventGatewayProduceRequestRulesType {
-	if e == nil {
-		return EventGatewayProduceRequestRulesType("")
-	}
-	return e.Type
+func (e *EventGatewayProduceRequestRules) GetType() string {
+	return "produce"
 }
 
 func (e *EventGatewayProduceRequestRules) GetRules() []EventGatewayProduceRule {

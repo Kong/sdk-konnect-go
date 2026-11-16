@@ -7,19 +7,19 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AuthStrategyClientCredentialsCredentialType string
+type CredentialType string
 
 const (
-	AuthStrategyClientCredentialsCredentialTypeClientCredentials            AuthStrategyClientCredentialsCredentialType = "client_credentials"
-	AuthStrategyClientCredentialsCredentialTypeSelfManagedClientCredentials AuthStrategyClientCredentialsCredentialType = "self_managed_client_credentials"
+	CredentialTypeClientCredentials            CredentialType = "client_credentials"
+	CredentialTypeSelfManagedClientCredentials CredentialType = "self_managed_client_credentials"
 )
 
-func (e AuthStrategyClientCredentialsCredentialType) ToPointer() *AuthStrategyClientCredentialsCredentialType {
+func (e CredentialType) ToPointer() *CredentialType {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AuthStrategyClientCredentialsCredentialType) IsExact() bool {
+func (e *CredentialType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "client_credentials", "self_managed_client_credentials":
@@ -32,10 +32,10 @@ func (e *AuthStrategyClientCredentialsCredentialType) IsExact() bool {
 // AuthStrategyClientCredentials - Client Credential Auth strategy that the application uses.
 type AuthStrategyClientCredentials struct {
 	// The Application Auth Strategy ID.
-	ID             string                                      `json:"id"`
-	Name           *string                                     `default:"name" json:"name"`
-	CredentialType AuthStrategyClientCredentialsCredentialType `json:"credential_type"`
-	AuthMethods    []string                                    `json:"auth_methods"`
+	ID             string         `json:"id"`
+	Name           *string        `default:"name" json:"name"`
+	CredentialType CredentialType `json:"credential_type"`
+	AuthMethods    []string       `json:"auth_methods"`
 	// Possible developer selectable scopes for an application. Only present when using DCR Provider that supports it.
 	AvailableScopes []string `json:"available_scopes,omitempty"`
 }
@@ -65,9 +65,9 @@ func (a *AuthStrategyClientCredentials) GetName() *string {
 	return a.Name
 }
 
-func (a *AuthStrategyClientCredentials) GetCredentialType() AuthStrategyClientCredentialsCredentialType {
+func (a *AuthStrategyClientCredentials) GetCredentialType() CredentialType {
 	if a == nil {
-		return AuthStrategyClientCredentialsCredentialType("")
+		return CredentialType("")
 	}
 	return a.CredentialType
 }

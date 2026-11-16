@@ -33,9 +33,6 @@ type VirtualClusterAuthenticationSensitiveDataAwareScheme struct {
 func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeAnonymous(anonymous VirtualClusterAuthenticationAnonymous) VirtualClusterAuthenticationSensitiveDataAwareScheme {
 	typ := VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeAnonymous
 
-	typStr := VirtualClusterAuthenticationAnonymousType(typ)
-	anonymous.Type = typStr
-
 	return VirtualClusterAuthenticationSensitiveDataAwareScheme{
 		VirtualClusterAuthenticationAnonymous: &anonymous,
 		Type:                                  typ,
@@ -44,9 +41,6 @@ func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeAnonymous(anonymo
 
 func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeSaslPlain(saslPlain VirtualClusterAuthenticationSaslPlainSensitiveDataAware) VirtualClusterAuthenticationSensitiveDataAwareScheme {
 	typ := VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeSaslPlain
-
-	typStr := VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType(typ)
-	saslPlain.Type = typStr
 
 	return VirtualClusterAuthenticationSensitiveDataAwareScheme{
 		VirtualClusterAuthenticationSaslPlainSensitiveDataAware: &saslPlain,
@@ -57,9 +51,6 @@ func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeSaslPlain(saslPla
 func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeSaslScram(saslScram VirtualClusterAuthenticationSaslScram) VirtualClusterAuthenticationSensitiveDataAwareScheme {
 	typ := VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram
 
-	typStr := VirtualClusterAuthenticationSaslScramType(typ)
-	saslScram.Type = typStr
-
 	return VirtualClusterAuthenticationSensitiveDataAwareScheme{
 		VirtualClusterAuthenticationSaslScram: &saslScram,
 		Type:                                  typ,
@@ -69,9 +60,6 @@ func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeSaslScram(saslScr
 func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeOauthBearer(oauthBearer VirtualClusterAuthenticationOauthBearer) VirtualClusterAuthenticationSensitiveDataAwareScheme {
 	typ := VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeOauthBearer
 
-	typStr := VirtualClusterAuthenticationOauthBearerType(typ)
-	oauthBearer.Type = typStr
-
 	return VirtualClusterAuthenticationSensitiveDataAwareScheme{
 		VirtualClusterAuthenticationOauthBearer: &oauthBearer,
 		Type:                                    typ,
@@ -80,9 +68,6 @@ func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeOauthBearer(oauth
 
 func CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeClientCertificate(clientCertificate VirtualClusterAuthenticationClientCertificate) VirtualClusterAuthenticationSensitiveDataAwareScheme {
 	typ := VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeClientCertificate
-
-	typStr := VirtualClusterAuthenticationClientCertificateType(typ)
-	clientCertificate.Type = typStr
 
 	return VirtualClusterAuthenticationSensitiveDataAwareScheme{
 		VirtualClusterAuthenticationClientCertificate: &clientCertificate,

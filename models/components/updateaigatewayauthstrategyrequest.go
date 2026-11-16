@@ -27,9 +27,6 @@ type UpdateAIGatewayAuthStrategyRequest struct {
 func CreateUpdateAIGatewayAuthStrategyRequestKeyAuth(keyAuth AIGatewayAuthStrategyKeyAuth) UpdateAIGatewayAuthStrategyRequest {
 	typ := UpdateAIGatewayAuthStrategyRequestTypeKeyAuth
 
-	typStr := AIGatewayAuthStrategyKeyAuthType(typ)
-	keyAuth.Type = typStr
-
 	return UpdateAIGatewayAuthStrategyRequest{
 		AIGatewayAuthStrategyKeyAuth: &keyAuth,
 		Type:                         typ,
@@ -38,9 +35,6 @@ func CreateUpdateAIGatewayAuthStrategyRequestKeyAuth(keyAuth AIGatewayAuthStrate
 
 func CreateUpdateAIGatewayAuthStrategyRequestOpenidConnect(openidConnect AIGatewayAuthStrategyOpenIDConnect) UpdateAIGatewayAuthStrategyRequest {
 	typ := UpdateAIGatewayAuthStrategyRequestTypeOpenidConnect
-
-	typStr := AIGatewayAuthStrategyOpenIDConnectType(typ)
-	openidConnect.Type = typStr
 
 	return UpdateAIGatewayAuthStrategyRequest{
 		AIGatewayAuthStrategyOpenIDConnect: &openidConnect,

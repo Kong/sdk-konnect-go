@@ -28,9 +28,6 @@ type CreatePrincipalKeyBody struct {
 func CreateCreatePrincipalKeyBodyImported(imported CreatePrincipalKeyBodyImported) CreatePrincipalKeyBody {
 	typ := CreatePrincipalKeyBodyTypeImported
 
-	typStr := CreatePrincipalKeyBodyImportedType(typ)
-	imported.Type = typStr
-
 	return CreatePrincipalKeyBody{
 		CreatePrincipalKeyBodyImported: &imported,
 		Type:                           typ,
@@ -39,9 +36,6 @@ func CreateCreatePrincipalKeyBodyImported(imported CreatePrincipalKeyBodyImporte
 
 func CreateCreatePrincipalKeyBodyV1(v1 CreatePrincipalKeyBodyv1) CreatePrincipalKeyBody {
 	typ := CreatePrincipalKeyBodyTypeV1
-
-	typStr := CreatePrincipalKeyBodyv1Type(typ)
-	v1.Type = typStr
 
 	return CreatePrincipalKeyBody{
 		CreatePrincipalKeyBodyv1: &v1,

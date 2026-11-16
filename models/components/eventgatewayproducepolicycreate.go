@@ -36,9 +36,6 @@ type EventGatewayProducePolicyCreate struct {
 func CreateEventGatewayProducePolicyCreateModifyHeaders(modifyHeaders EventGatewayModifyHeadersPolicyCreate) EventGatewayProducePolicyCreate {
 	typ := EventGatewayProducePolicyCreateTypeModifyHeaders
 
-	typStr := EventGatewayModifyHeadersPolicyCreateType(typ)
-	modifyHeaders.Type = typStr
-
 	return EventGatewayProducePolicyCreate{
 		EventGatewayModifyHeadersPolicyCreate: &modifyHeaders,
 		Type:                                  typ,
@@ -47,9 +44,6 @@ func CreateEventGatewayProducePolicyCreateModifyHeaders(modifyHeaders EventGatew
 
 func CreateEventGatewayProducePolicyCreateSchemaValidation(schemaValidation EventGatewayProduceSchemaValidationPolicy) EventGatewayProducePolicyCreate {
 	typ := EventGatewayProducePolicyCreateTypeSchemaValidation
-
-	typStr := EventGatewayProduceSchemaValidationPolicyType(typ)
-	schemaValidation.Type = typStr
 
 	return EventGatewayProducePolicyCreate{
 		EventGatewayProduceSchemaValidationPolicy: &schemaValidation,
@@ -60,9 +54,6 @@ func CreateEventGatewayProducePolicyCreateSchemaValidation(schemaValidation Even
 func CreateEventGatewayProducePolicyCreateEncrypt(encrypt EventGatewayEncryptPolicy) EventGatewayProducePolicyCreate {
 	typ := EventGatewayProducePolicyCreateTypeEncrypt
 
-	typStr := EventGatewayEncryptPolicyType(typ)
-	encrypt.Type = typStr
-
 	return EventGatewayProducePolicyCreate{
 		EventGatewayEncryptPolicy: &encrypt,
 		Type:                      typ,
@@ -71,9 +62,6 @@ func CreateEventGatewayProducePolicyCreateEncrypt(encrypt EventGatewayEncryptPol
 
 func CreateEventGatewayProducePolicyCreateEncryptFields(encryptFields EventGatewayParsedRecordEncryptFieldsPolicyCreate) EventGatewayProducePolicyCreate {
 	typ := EventGatewayProducePolicyCreateTypeEncryptFields
-
-	typStr := EventGatewayParsedRecordEncryptFieldsPolicyCreateType(typ)
-	encryptFields.Type = typStr
 
 	return EventGatewayProducePolicyCreate{
 		EventGatewayParsedRecordEncryptFieldsPolicyCreate: &encryptFields,
@@ -84,9 +72,6 @@ func CreateEventGatewayProducePolicyCreateEncryptFields(encryptFields EventGatew
 func CreateEventGatewayProducePolicyCreateTranscode(transcode EventGatewayParsedRecordTranscodeProducePolicyCreate) EventGatewayProducePolicyCreate {
 	typ := EventGatewayProducePolicyCreateTypeTranscode
 
-	typStr := EventGatewayParsedRecordTranscodeProducePolicyCreateType(typ)
-	transcode.Type = typStr
-
 	return EventGatewayProducePolicyCreate{
 		EventGatewayParsedRecordTranscodeProducePolicyCreate: &transcode,
 		Type: typ,
@@ -95,9 +80,6 @@ func CreateEventGatewayProducePolicyCreateTranscode(transcode EventGatewayParsed
 
 func CreateEventGatewayProducePolicyCreateMaskFields(maskFields EventGatewayParsedRecordMaskFieldsProducePolicyCreate) EventGatewayProducePolicyCreate {
 	typ := EventGatewayProducePolicyCreateTypeMaskFields
-
-	typStr := EventGatewayParsedRecordMaskFieldsProducePolicyCreateType(typ)
-	maskFields.Type = typStr
 
 	return EventGatewayProducePolicyCreate{
 		EventGatewayParsedRecordMaskFieldsProducePolicyCreate: &maskFields,

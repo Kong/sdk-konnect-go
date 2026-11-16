@@ -111,7 +111,6 @@ func main() {
         ListenerID: "3407fe24-3af9-43d2-92df-f7396e794e62",
         EventGatewayListenerPolicyCreate: components.CreateEventGatewayListenerPolicyCreateTLSServer(
             components.EventGatewayTLSListenerPolicy{
-                Type: components.EventGatewayTLSListenerPolicyTypeTLSServer,
                 Config: components.EventGatewayTLSListenerPolicyConfig{
                     Certificates: []components.TLSCertificate{},
                 },
@@ -243,10 +242,8 @@ func main() {
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayListenerPolicyUpdate: components.CreateEventGatewayListenerPolicyUpdateForwardToVirtualCluster(
             components.ForwardToVirtualClusterPolicy{
-                Type: components.ForwardToVirtualClusterPolicyTypeForwardToVirtualCluster,
                 Config: components.CreateForwardToVirtualClusterPolicyConfigPortMapping(
                     components.ForwardToClusterByPortMappingConfig{
-                        Type: components.ForwardToClusterByPortMappingConfigTypePortMapping,
                         Destination: components.CreateVirtualClusterReferenceVirtualClusterReferenceByName(
                             components.VirtualClusterReferenceByName{
                                 Name: "<value>",

@@ -33,9 +33,6 @@ type AIGatewayMCPServer struct {
 func CreateAIGatewayMCPServerConversionOnly(conversionOnly AIGatewayMCPServerConversionOnlyResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeConversionOnly
 
-	typStr := AIGatewayMCPServerConversionOnlyResponseType(typ)
-	conversionOnly.Type = typStr
-
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerConversionOnlyResponse: &conversionOnly,
 		Type:                                     typ,
@@ -44,9 +41,6 @@ func CreateAIGatewayMCPServerConversionOnly(conversionOnly AIGatewayMCPServerCon
 
 func CreateAIGatewayMCPServerConversionListener(conversionListener AIGatewayMCPServerConversionListenerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeConversionListener
-
-	typStr := AIGatewayMCPServerConversionListenerResponseType(typ)
-	conversionListener.Type = typStr
 
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerConversionListenerResponse: &conversionListener,
@@ -57,9 +51,6 @@ func CreateAIGatewayMCPServerConversionListener(conversionListener AIGatewayMCPS
 func CreateAIGatewayMCPServerListener(listener AIGatewayMCPServerListenerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeListener
 
-	typStr := AIGatewayMCPServerListenerResponseType(typ)
-	listener.Type = typStr
-
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerListenerResponse: &listener,
 		Type:                               typ,
@@ -69,9 +60,6 @@ func CreateAIGatewayMCPServerListener(listener AIGatewayMCPServerListenerRespons
 func CreateAIGatewayMCPServerPassthroughListener(passthroughListener AIGatewayMCPServerPassthroughListenerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypePassthroughListener
 
-	typStr := AIGatewayMCPServerPassthroughListenerResponseType(typ)
-	passthroughListener.Type = typStr
-
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerPassthroughListenerResponse: &passthroughListener,
 		Type: typ,
@@ -80,9 +68,6 @@ func CreateAIGatewayMCPServerPassthroughListener(passthroughListener AIGatewayMC
 
 func CreateAIGatewayMCPServerUpstreamServer(upstreamServer AIGatewayMCPServerUpstreamServerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeUpstreamServer
-
-	typStr := AIGatewayMCPServerUpstreamServerResponseType(typ)
-	upstreamServer.Type = typStr
 
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerUpstreamServerResponse: &upstreamServer,

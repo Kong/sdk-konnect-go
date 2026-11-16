@@ -26,9 +26,6 @@ type SchemaRegistryUpdate struct {
 func CreateSchemaRegistryUpdateConfluent(confluent SchemaRegistryConfluentSensitiveDataAware) SchemaRegistryUpdate {
 	typ := SchemaRegistryUpdateTypeConfluent
 
-	typStr := SchemaRegistryConfluentSensitiveDataAwareType(typ)
-	confluent.Type = typStr
-
 	return SchemaRegistryUpdate{
 		SchemaRegistryConfluentSensitiveDataAware: &confluent,
 		Type: typ,

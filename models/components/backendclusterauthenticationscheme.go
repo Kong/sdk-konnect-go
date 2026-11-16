@@ -31,9 +31,6 @@ type BackendClusterAuthenticationScheme struct {
 func CreateBackendClusterAuthenticationSchemeAnonymous(anonymous BackendClusterAuthenticationAnonymous) BackendClusterAuthenticationScheme {
 	typ := BackendClusterAuthenticationSchemeTypeAnonymous
 
-	typStr := BackendClusterAuthenticationAnonymousType(typ)
-	anonymous.Type = typStr
-
 	return BackendClusterAuthenticationScheme{
 		BackendClusterAuthenticationAnonymous: &anonymous,
 		Type:                                  typ,
@@ -42,9 +39,6 @@ func CreateBackendClusterAuthenticationSchemeAnonymous(anonymous BackendClusterA
 
 func CreateBackendClusterAuthenticationSchemeSaslPlain(saslPlain BackendClusterAuthenticationSaslPlain) BackendClusterAuthenticationScheme {
 	typ := BackendClusterAuthenticationSchemeTypeSaslPlain
-
-	typStr := BackendClusterAuthenticationSaslPlainType(typ)
-	saslPlain.Type = typStr
 
 	return BackendClusterAuthenticationScheme{
 		BackendClusterAuthenticationSaslPlain: &saslPlain,
@@ -55,9 +49,6 @@ func CreateBackendClusterAuthenticationSchemeSaslPlain(saslPlain BackendClusterA
 func CreateBackendClusterAuthenticationSchemeSaslScram(saslScram BackendClusterAuthenticationSaslScram) BackendClusterAuthenticationScheme {
 	typ := BackendClusterAuthenticationSchemeTypeSaslScram
 
-	typStr := BackendClusterAuthenticationSaslScramType(typ)
-	saslScram.Type = typStr
-
 	return BackendClusterAuthenticationScheme{
 		BackendClusterAuthenticationSaslScram: &saslScram,
 		Type:                                  typ,
@@ -66,9 +57,6 @@ func CreateBackendClusterAuthenticationSchemeSaslScram(saslScram BackendClusterA
 
 func CreateBackendClusterAuthenticationSchemeSaslAwsIam(saslAwsIam BackendClusterAuthenticationSaslAwsIam) BackendClusterAuthenticationScheme {
 	typ := BackendClusterAuthenticationSchemeTypeSaslAwsIam
-
-	typStr := BackendClusterAuthenticationSaslAwsIamType(typ)
-	saslAwsIam.Type = typStr
 
 	return BackendClusterAuthenticationScheme{
 		BackendClusterAuthenticationSaslAwsIam: &saslAwsIam,
