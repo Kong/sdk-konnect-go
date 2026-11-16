@@ -4,34 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// EventGatewayModifyHeadersPolicyCreateType - The type name of the policy.
-type EventGatewayModifyHeadersPolicyCreateType string
-
-const (
-	EventGatewayModifyHeadersPolicyCreateTypeModifyHeaders EventGatewayModifyHeadersPolicyCreateType = "modify_headers"
-)
-
-func (e EventGatewayModifyHeadersPolicyCreateType) ToPointer() *EventGatewayModifyHeadersPolicyCreateType {
-	return &e
-}
-func (e *EventGatewayModifyHeadersPolicyCreateType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "modify_headers":
-		*e = EventGatewayModifyHeadersPolicyCreateType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayModifyHeadersPolicyCreateType: %v", v)
-	}
-}
 
 // EventGatewayModifyHeadersPolicyCreateConfig - The configuration of the modify headers policy.
 type EventGatewayModifyHeadersPolicyCreateConfig struct {
@@ -60,7 +34,8 @@ func (e *EventGatewayModifyHeadersPolicyCreateConfig) GetActions() []EventGatewa
 // EventGatewayModifyHeadersPolicyCreate - A policy that modifies headers for requests.
 type EventGatewayModifyHeadersPolicyCreate struct {
 	// The type name of the policy.
-	Type EventGatewayModifyHeadersPolicyCreateType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"modify_headers" json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -95,11 +70,8 @@ func (e *EventGatewayModifyHeadersPolicyCreate) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (e *EventGatewayModifyHeadersPolicyCreate) GetType() EventGatewayModifyHeadersPolicyCreateType {
-	if e == nil {
-		return EventGatewayModifyHeadersPolicyCreateType("")
-	}
-	return e.Type
+func (e *EventGatewayModifyHeadersPolicyCreate) GetType() string {
+	return "modify_headers"
 }
 
 func (e *EventGatewayModifyHeadersPolicyCreate) GetName() *string {

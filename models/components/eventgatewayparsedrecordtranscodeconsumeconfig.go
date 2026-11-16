@@ -28,9 +28,6 @@ type EventGatewayParsedRecordTranscodeConsumeConfig struct {
 func CreateEventGatewayParsedRecordTranscodeConsumeConfigJSON(json EventGatewayParsedRecordTranscodeConsumeConfigJSON) EventGatewayParsedRecordTranscodeConsumeConfig {
 	typ := EventGatewayParsedRecordTranscodeConsumeConfigTypeJSON
 
-	typStr := OutputFormat(typ)
-	json.OutputFormat = typStr
-
 	return EventGatewayParsedRecordTranscodeConsumeConfig{
 		EventGatewayParsedRecordTranscodeConsumeConfigJSON: &json,
 		Type: typ,
@@ -39,9 +36,6 @@ func CreateEventGatewayParsedRecordTranscodeConsumeConfigJSON(json EventGatewayP
 
 func CreateEventGatewayParsedRecordTranscodeConsumeConfigAvro(avro EventGatewayParsedRecordTranscodeConsumeConfigAvro) EventGatewayParsedRecordTranscodeConsumeConfig {
 	typ := EventGatewayParsedRecordTranscodeConsumeConfigTypeAvro
-
-	typStr := EventGatewayParsedRecordTranscodeConsumeConfigAvroOutputFormat(typ)
-	avro.OutputFormat = typStr
 
 	return EventGatewayParsedRecordTranscodeConsumeConfig{
 		EventGatewayParsedRecordTranscodeConsumeConfigAvro: &avro,

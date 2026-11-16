@@ -98,9 +98,7 @@ func main() {
         Hostname: "lavish-custody.org",
         Enabled: true,
         Ssl: components.CreateCreatePortalCustomDomainSSLHTTP(
-            components.HTTP{
-                DomainVerificationMethod: components.CreatePortalCustomDomainSSLStandardDomainVerificationMethodHTTP,
-            },
+            components.HTTP{},
         ),
     })
     if err != nil {
@@ -137,9 +135,7 @@ func main() {
         Hostname: "lavish-custody.org",
         Enabled: true,
         Ssl: components.CreateCreatePortalCustomDomainSSLHTTP(
-            components.HTTP{
-                DomainVerificationMethod: components.CreatePortalCustomDomainSSLStandardDomainVerificationMethodHTTP,
-            },
+            components.HTTP{},
         ),
     })
     if err != nil {
@@ -176,9 +172,7 @@ func main() {
         Hostname: "lavish-custody.org",
         Enabled: true,
         Ssl: components.CreateCreatePortalCustomDomainSSLHTTP(
-            components.HTTP{
-                DomainVerificationMethod: components.CreatePortalCustomDomainSSLStandardDomainVerificationMethodHTTP,
-            },
+            components.HTTP{},
         ),
     })
     if err != nil {
@@ -215,9 +209,7 @@ func main() {
         Hostname: "lavish-custody.org",
         Enabled: true,
         Ssl: components.CreateCreatePortalCustomDomainSSLHTTP(
-            components.HTTP{
-                DomainVerificationMethod: components.CreatePortalCustomDomainSSLStandardDomainVerificationMethodHTTP,
-            },
+            components.HTTP{},
         ),
     })
     if err != nil {

@@ -4,34 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-type AIGatewayMCPServerConversionListenerResponseType string
-
-const (
-	AIGatewayMCPServerConversionListenerResponseTypeConversionListener AIGatewayMCPServerConversionListenerResponseType = "conversion-listener"
-)
-
-func (e AIGatewayMCPServerConversionListenerResponseType) ToPointer() *AIGatewayMCPServerConversionListenerResponseType {
-	return &e
-}
-func (e *AIGatewayMCPServerConversionListenerResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conversion-listener":
-		*e = AIGatewayMCPServerConversionListenerResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionListenerResponseType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerConversionListenerResponseLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerConversionListenerResponseLogging struct {
@@ -260,7 +235,8 @@ func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListe
 }
 
 type AIGatewayMCPServerConversionListenerResponse struct {
-	Type AIGatewayMCPServerConversionListenerResponseType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"conversion-listener" json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
@@ -332,11 +308,8 @@ func (a *AIGatewayMCPServerConversionListenerResponse) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (a *AIGatewayMCPServerConversionListenerResponse) GetType() AIGatewayMCPServerConversionListenerResponseType {
-	if a == nil {
-		return AIGatewayMCPServerConversionListenerResponseType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerConversionListenerResponse) GetType() string {
+	return "conversion-listener"
 }
 
 func (a *AIGatewayMCPServerConversionListenerResponse) GetConfig() AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig {

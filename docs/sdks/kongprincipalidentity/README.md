@@ -116,7 +116,6 @@ func main() {
         PrincipalID: "f4db939a-b2be-46c7-99ed-261e9e77b76f",
         KongPrincipalIdentityBody: components.CreateKongPrincipalIdentityBodyCustom(
             components.KongPrincipalIdentityCustom{
-                Type: components.KongPrincipalIdentityCustomTypeCustom,
                 Key: "<key>",
                 Value: "<value>",
             },
@@ -271,7 +270,6 @@ func main() {
         IdentityID: "ea06476f-4b1b-41e5-89e4-fb05512fa5f8",
         KongPrincipalIdentityBody: components.CreateKongPrincipalIdentityBodyAuthServerClient(
             components.KongPrincipalIdentityAuthServerClient{
-                Type: components.KongPrincipalIdentityAuthServerClientTypeAuthServerClient,
                 AuthServerID: "52749349-21f9-414a-a46e-098326545de5",
                 ClientID: "<id>",
             },

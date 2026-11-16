@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EventGatewayMaskStrategyReplaceType string
-
-const (
-	EventGatewayMaskStrategyReplaceTypeReplace EventGatewayMaskStrategyReplaceType = "replace"
-)
-
-func (e EventGatewayMaskStrategyReplaceType) ToPointer() *EventGatewayMaskStrategyReplaceType {
-	return &e
-}
-func (e *EventGatewayMaskStrategyReplaceType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "replace":
-		*e = EventGatewayMaskStrategyReplaceType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayMaskStrategyReplaceType: %v", v)
-	}
-}
-
 // EventGatewayMaskStrategyReplace - Replaces the whole value with a fixed phrase. The masked length does not reflect the original value length.
 type EventGatewayMaskStrategyReplace struct {
-	Type EventGatewayMaskStrategyReplaceType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"replace" json:"type"`
 	// The phrase to replace the value with.
 	Phrase string `json:"phrase"`
 }
@@ -50,11 +26,8 @@ func (e *EventGatewayMaskStrategyReplace) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayMaskStrategyReplace) GetType() EventGatewayMaskStrategyReplaceType {
-	if e == nil {
-		return EventGatewayMaskStrategyReplaceType("")
-	}
-	return e.Type
+func (e *EventGatewayMaskStrategyReplace) GetType() string {
+	return "replace"
 }
 
 func (e *EventGatewayMaskStrategyReplace) GetPhrase() string {

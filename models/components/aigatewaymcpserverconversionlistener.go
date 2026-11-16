@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayMCPServerConversionListenerType string
-
-const (
-	AIGatewayMCPServerConversionListenerTypeConversionListener AIGatewayMCPServerConversionListenerType = "conversion-listener"
-)
-
-func (e AIGatewayMCPServerConversionListenerType) ToPointer() *AIGatewayMCPServerConversionListenerType {
-	return &e
-}
-func (e *AIGatewayMCPServerConversionListenerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conversion-listener":
-		*e = AIGatewayMCPServerConversionListenerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionListenerType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerConversionListenerLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerConversionListenerLogging struct {
@@ -258,7 +233,8 @@ func (a *AIGatewayMCPServerKongListenerConfig) GetCache() *AIGatewayMCPServerCon
 }
 
 type AIGatewayMCPServerConversionListener struct {
-	Type AIGatewayMCPServerConversionListenerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"conversion-listener" json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerKongListenerConfig `json:"config"`
 	// List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
@@ -324,11 +300,8 @@ func (a *AIGatewayMCPServerConversionListener) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (a *AIGatewayMCPServerConversionListener) GetType() AIGatewayMCPServerConversionListenerType {
-	if a == nil {
-		return AIGatewayMCPServerConversionListenerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerConversionListener) GetType() string {
+	return "conversion-listener"
 }
 
 func (a *AIGatewayMCPServerConversionListener) GetConfig() AIGatewayMCPServerKongListenerConfig {

@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EventGatewayMaskEmailDomainKeepAllType string
-
-const (
-	EventGatewayMaskEmailDomainKeepAllTypeKeepAll EventGatewayMaskEmailDomainKeepAllType = "keep_all"
-)
-
-func (e EventGatewayMaskEmailDomainKeepAllType) ToPointer() *EventGatewayMaskEmailDomainKeepAllType {
-	return &e
-}
-func (e *EventGatewayMaskEmailDomainKeepAllType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "keep_all":
-		*e = EventGatewayMaskEmailDomainKeepAllType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EventGatewayMaskEmailDomainKeepAllType: %v", v)
-	}
-}
-
 // EventGatewayMaskEmailDomainKeepAll - Keeps the whole domain unmasked.
 type EventGatewayMaskEmailDomainKeepAll struct {
-	Type EventGatewayMaskEmailDomainKeepAllType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"keep_all" json:"type"`
 }
 
 func (e EventGatewayMaskEmailDomainKeepAll) MarshalJSON() ([]byte, error) {
@@ -48,9 +24,6 @@ func (e *EventGatewayMaskEmailDomainKeepAll) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayMaskEmailDomainKeepAll) GetType() EventGatewayMaskEmailDomainKeepAllType {
-	if e == nil {
-		return EventGatewayMaskEmailDomainKeepAllType("")
-	}
-	return e.Type
+func (e *EventGatewayMaskEmailDomainKeepAll) GetType() string {
+	return "keep_all"
 }

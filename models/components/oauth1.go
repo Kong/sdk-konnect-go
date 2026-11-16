@@ -9,29 +9,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type OAuthType1 string
-
-const (
-	OAuthType1Oauth OAuthType1 = "oauth"
-)
-
-func (e OAuthType1) ToPointer() *OAuthType1 {
-	return &e
-}
-func (e *OAuthType1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oauth":
-		*e = OAuthType1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for OAuthType1: %v", v)
-	}
-}
-
 type OverridableConfig string
 
 const (
@@ -217,7 +194,8 @@ func (o *OAuthConfig1) GetRollingRefreshExpSeconds() *float64 {
 // This schema provides all necessary information for the platform to initiate
 // and manage OAuth-based authorization flows on behalf of customers.
 type OAuth1 struct {
-	Type OAuthType1 `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"oauth" json:"type"`
 	// A list of field names from the `config` object (e.g., `client_id`, `authorization_endpoint`, etc)
 	// that can be overridden on a per-customer basis. When a field is listed here, the catalog allows
 	// customer-defined values to take precedence over the default configuration provided by the integration.
@@ -238,11 +216,8 @@ func (o *OAuth1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *OAuth1) GetType() OAuthType1 {
-	if o == nil {
-		return OAuthType1("")
-	}
-	return o.Type
+func (o *OAuth1) GetType() string {
+	return "oauth"
 }
 
 func (o *OAuth1) GetOverridableConfig() []OverridableConfig {

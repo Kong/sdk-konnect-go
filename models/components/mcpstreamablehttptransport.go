@@ -4,38 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// MCPStreamableHTTPTransportType - Transport type
-type MCPStreamableHTTPTransportType string
-
-const (
-	MCPStreamableHTTPTransportTypeStreamableHTTP MCPStreamableHTTPTransportType = "streamable-http"
-)
-
-func (e MCPStreamableHTTPTransportType) ToPointer() *MCPStreamableHTTPTransportType {
-	return &e
-}
-func (e *MCPStreamableHTTPTransportType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "streamable-http":
-		*e = MCPStreamableHTTPTransportType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for MCPStreamableHTTPTransportType: %v", v)
-	}
-}
-
 type MCPStreamableHTTPTransport struct {
 	// Transport type
-	Type MCPStreamableHTTPTransportType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"streamable-http" json:"type"`
 	// URL template for the streamable-http transport.
 	URL string `json:"url"`
 	// HTTP headers to include
@@ -53,11 +28,8 @@ func (m *MCPStreamableHTTPTransport) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *MCPStreamableHTTPTransport) GetType() MCPStreamableHTTPTransportType {
-	if m == nil {
-		return MCPStreamableHTTPTransportType("")
-	}
-	return m.Type
+func (m *MCPStreamableHTTPTransport) GetType() string {
+	return "streamable-http"
 }
 
 func (m *MCPStreamableHTTPTransport) GetURL() string {

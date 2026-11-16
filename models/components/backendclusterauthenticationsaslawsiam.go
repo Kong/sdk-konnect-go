@@ -10,29 +10,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type BackendClusterAuthenticationSaslAwsIamType string
-
-const (
-	BackendClusterAuthenticationSaslAwsIamTypeSaslAwsIam BackendClusterAuthenticationSaslAwsIamType = "sasl_aws_iam"
-)
-
-func (e BackendClusterAuthenticationSaslAwsIamType) ToPointer() *BackendClusterAuthenticationSaslAwsIamType {
-	return &e
-}
-func (e *BackendClusterAuthenticationSaslAwsIamType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "sasl_aws_iam":
-		*e = BackendClusterAuthenticationSaslAwsIamType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslAwsIamType: %v", v)
-	}
-}
-
 type SaslAwsIamType string
 
 const (
@@ -50,9 +27,6 @@ type SaslAwsIam struct {
 func CreateSaslAwsIamDefaultProviderChain(defaultProviderChain BackendClusterAuthenticationSaslAwsIamDefaultProviderChain) SaslAwsIam {
 	typ := SaslAwsIamTypeDefaultProviderChain
 
-	typStr := BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType(typ)
-	defaultProviderChain.Type = typStr
-
 	return SaslAwsIam{
 		BackendClusterAuthenticationSaslAwsIamDefaultProviderChain: &defaultProviderChain,
 		Type: typ,
@@ -61,9 +35,6 @@ func CreateSaslAwsIamDefaultProviderChain(defaultProviderChain BackendClusterAut
 
 func CreateSaslAwsIamAssumeRole(assumeRole BackendClusterAuthenticationSaslAwsIamAssumeRole) SaslAwsIam {
 	typ := SaslAwsIamTypeAssumeRole
-
-	typStr := BackendClusterAuthenticationSaslAwsIamAssumeRoleType(typ)
-	assumeRole.Type = typStr
 
 	return SaslAwsIam{
 		BackendClusterAuthenticationSaslAwsIamAssumeRole: &assumeRole,
@@ -130,8 +101,9 @@ func (u SaslAwsIam) MarshalJSON() ([]byte, error) {
 //
 // **Requires a minimum runtime version of `1.3`**.
 type BackendClusterAuthenticationSaslAwsIam struct {
-	Type       BackendClusterAuthenticationSaslAwsIamType `json:"type"`
-	SaslAwsIam SaslAwsIam                                 `json:"sasl_aws_iam"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_      string     `const:"sasl_aws_iam" json:"type"`
+	SaslAwsIam SaslAwsIam `json:"sasl_aws_iam"`
 }
 
 func (b BackendClusterAuthenticationSaslAwsIam) MarshalJSON() ([]byte, error) {
@@ -145,11 +117,8 @@ func (b *BackendClusterAuthenticationSaslAwsIam) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslAwsIam) GetType() BackendClusterAuthenticationSaslAwsIamType {
-	if b == nil {
-		return BackendClusterAuthenticationSaslAwsIamType("")
-	}
-	return b.Type
+func (b *BackendClusterAuthenticationSaslAwsIam) GetType() string {
+	return "sasl_aws_iam"
 }
 
 func (b *BackendClusterAuthenticationSaslAwsIam) GetSaslAwsIam() SaslAwsIam {

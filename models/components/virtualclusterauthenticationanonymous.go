@@ -4,36 +4,12 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type VirtualClusterAuthenticationAnonymousType string
-
-const (
-	VirtualClusterAuthenticationAnonymousTypeAnonymous VirtualClusterAuthenticationAnonymousType = "anonymous"
-)
-
-func (e VirtualClusterAuthenticationAnonymousType) ToPointer() *VirtualClusterAuthenticationAnonymousType {
-	return &e
-}
-func (e *VirtualClusterAuthenticationAnonymousType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "anonymous":
-		*e = VirtualClusterAuthenticationAnonymousType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for VirtualClusterAuthenticationAnonymousType: %v", v)
-	}
-}
-
 type VirtualClusterAuthenticationAnonymous struct {
-	Type VirtualClusterAuthenticationAnonymousType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"anonymous" json:"type"`
 }
 
 func (v VirtualClusterAuthenticationAnonymous) MarshalJSON() ([]byte, error) {
@@ -47,9 +23,6 @@ func (v *VirtualClusterAuthenticationAnonymous) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationAnonymous) GetType() VirtualClusterAuthenticationAnonymousType {
-	if v == nil {
-		return VirtualClusterAuthenticationAnonymousType("")
-	}
-	return v.Type
+func (v *VirtualClusterAuthenticationAnonymous) GetType() string {
+	return "anonymous"
 }

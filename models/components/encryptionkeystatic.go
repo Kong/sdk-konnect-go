@@ -4,37 +4,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type EncryptionKeyStaticType string
-
-const (
-	EncryptionKeyStaticTypeStatic EncryptionKeyStaticType = "static"
-)
-
-func (e EncryptionKeyStaticType) ToPointer() *EncryptionKeyStaticType {
-	return &e
-}
-func (e *EncryptionKeyStaticType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "static":
-		*e = EncryptionKeyStaticType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EncryptionKeyStaticType: %v", v)
-	}
-}
-
 // EncryptionKeyStatic - A static encryption key.
 type EncryptionKeyStatic struct {
-	Type EncryptionKeyStaticType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"static" json:"type"`
 	// A static encryption key reference, either by ID or by value.
 	//
 	Key EncryptionKeyStaticReference `json:"key"`
@@ -51,11 +27,8 @@ func (e *EncryptionKeyStatic) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EncryptionKeyStatic) GetType() EncryptionKeyStaticType {
-	if e == nil {
-		return EncryptionKeyStaticType("")
-	}
-	return e.Type
+func (e *EncryptionKeyStatic) GetType() string {
+	return "static"
 }
 
 func (e *EncryptionKeyStatic) GetKey() EncryptionKeyStaticReference {

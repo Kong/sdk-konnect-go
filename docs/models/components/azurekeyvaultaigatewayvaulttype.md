@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AzureKeyVaultAIGatewayVaultTypeAzure
+value := components.AzureKeyVaultAIGatewayVaultTypeSecrets
 ```
 
 
 ## Values
 
-| Name                                   | Value                                  |
-| -------------------------------------- | -------------------------------------- |
-| `AzureKeyVaultAIGatewayVaultTypeAzure` | azure                                  |
+| Name                                     | Value                                    |
+| ---------------------------------------- | ---------------------------------------- |
+| `AzureKeyVaultAIGatewayVaultTypeSecrets` | secrets                                  |

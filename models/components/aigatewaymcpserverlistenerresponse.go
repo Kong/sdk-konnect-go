@@ -4,34 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-type AIGatewayMCPServerListenerResponseType string
-
-const (
-	AIGatewayMCPServerListenerResponseTypeListener AIGatewayMCPServerListenerResponseType = "listener"
-)
-
-func (e AIGatewayMCPServerListenerResponseType) ToPointer() *AIGatewayMCPServerListenerResponseType {
-	return &e
-}
-func (e *AIGatewayMCPServerListenerResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "listener":
-		*e = AIGatewayMCPServerListenerResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerListenerResponseType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerListenerResponseLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerListenerResponseLogging struct {
@@ -205,7 +180,8 @@ func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig)
 }
 
 type AIGatewayMCPServerListenerResponse struct {
-	Type AIGatewayMCPServerListenerResponseType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"listener" json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
@@ -273,11 +249,8 @@ func (a *AIGatewayMCPServerListenerResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerListenerResponse) GetType() AIGatewayMCPServerListenerResponseType {
-	if a == nil {
-		return AIGatewayMCPServerListenerResponseType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerListenerResponse) GetType() string {
+	return "listener"
 }
 
 func (a *AIGatewayMCPServerListenerResponse) GetConfig() AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig {

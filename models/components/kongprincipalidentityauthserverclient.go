@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type KongPrincipalIdentityAuthServerClientType string
-
-const (
-	KongPrincipalIdentityAuthServerClientTypeAuthServerClient KongPrincipalIdentityAuthServerClientType = "auth_server_client"
-)
-
-func (e KongPrincipalIdentityAuthServerClientType) ToPointer() *KongPrincipalIdentityAuthServerClientType {
-	return &e
-}
-func (e *KongPrincipalIdentityAuthServerClientType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "auth_server_client":
-		*e = KongPrincipalIdentityAuthServerClientType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for KongPrincipalIdentityAuthServerClientType: %v", v)
-	}
-}
 
 type KongPrincipalIdentityAuthServerClient struct {
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -44,10 +19,11 @@ type KongPrincipalIdentityAuthServerClient struct {
 	// Values must be 1–127 characters long and must not be empty.
 	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy    map[string]string                         `json:"managed_by,omitempty"`
-	Type         KongPrincipalIdentityAuthServerClientType `json:"type"`
-	AuthServerID string                                    `json:"auth_server_id"`
-	ClientID     string                                    `json:"client_id"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_        string `const:"auth_server_client" json:"type"`
+	AuthServerID string `json:"auth_server_id"`
+	ClientID     string `json:"client_id"`
 }
 
 func (k KongPrincipalIdentityAuthServerClient) MarshalJSON() ([]byte, error) {
@@ -75,11 +51,8 @@ func (k *KongPrincipalIdentityAuthServerClient) GetManagedBy() map[string]string
 	return k.ManagedBy
 }
 
-func (k *KongPrincipalIdentityAuthServerClient) GetType() KongPrincipalIdentityAuthServerClientType {
-	if k == nil {
-		return KongPrincipalIdentityAuthServerClientType("")
-	}
-	return k.Type
+func (k *KongPrincipalIdentityAuthServerClient) GetType() string {
+	return "auth_server_client"
 }
 
 func (k *KongPrincipalIdentityAuthServerClient) GetAuthServerID() string {

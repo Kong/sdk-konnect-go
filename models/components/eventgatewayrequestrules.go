@@ -50,9 +50,6 @@ type EventGatewayRequestRules struct {
 func CreateEventGatewayRequestRulesCreateTopics(createTopics EventGatewayCreateTopicsRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeCreateTopics
 
-	typStr := EventGatewayCreateTopicsRequestRulesType(typ)
-	createTopics.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayCreateTopicsRequestRules: &createTopics,
 		Type:                                 typ,
@@ -61,9 +58,6 @@ func CreateEventGatewayRequestRulesCreateTopics(createTopics EventGatewayCreateT
 
 func CreateEventGatewayRequestRulesCreatePartitions(createPartitions EventGatewayCreatePartitionsRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeCreatePartitions
-
-	typStr := EventGatewayCreatePartitionsRequestRulesType(typ)
-	createPartitions.Type = typStr
 
 	return EventGatewayRequestRules{
 		EventGatewayCreatePartitionsRequestRules: &createPartitions,
@@ -74,9 +68,6 @@ func CreateEventGatewayRequestRulesCreatePartitions(createPartitions EventGatewa
 func CreateEventGatewayRequestRulesAlterConfigs(alterConfigs EventGatewayAlterConfigsRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeAlterConfigs
 
-	typStr := EventGatewayAlterConfigsRequestRulesType(typ)
-	alterConfigs.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayAlterConfigsRequestRules: &alterConfigs,
 		Type:                                 typ,
@@ -85,9 +76,6 @@ func CreateEventGatewayRequestRulesAlterConfigs(alterConfigs EventGatewayAlterCo
 
 func CreateEventGatewayRequestRulesIncrementalAlterConfigs(incrementalAlterConfigs EventGatewayIncrementalAlterConfigsRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeIncrementalAlterConfigs
-
-	typStr := EventGatewayIncrementalAlterConfigsRequestRulesType(typ)
-	incrementalAlterConfigs.Type = typStr
 
 	return EventGatewayRequestRules{
 		EventGatewayIncrementalAlterConfigsRequestRules: &incrementalAlterConfigs,
@@ -98,9 +86,6 @@ func CreateEventGatewayRequestRulesIncrementalAlterConfigs(incrementalAlterConfi
 func CreateEventGatewayRequestRulesAlterClientQuotas(alterClientQuotas EventGatewayAlterClientQuotasRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeAlterClientQuotas
 
-	typStr := EventGatewayAlterClientQuotasRequestRulesType(typ)
-	alterClientQuotas.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayAlterClientQuotasRequestRules: &alterClientQuotas,
 		Type: typ,
@@ -109,9 +94,6 @@ func CreateEventGatewayRequestRulesAlterClientQuotas(alterClientQuotas EventGate
 
 func CreateEventGatewayRequestRulesAlterUserScramCredentials(alterUserScramCredentials EventGatewayAlterUserScramCredentialsRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeAlterUserScramCredentials
-
-	typStr := EventGatewayAlterUserScramCredentialsRequestRulesType(typ)
-	alterUserScramCredentials.Type = typStr
 
 	return EventGatewayRequestRules{
 		EventGatewayAlterUserScramCredentialsRequestRules: &alterUserScramCredentials,
@@ -122,9 +104,6 @@ func CreateEventGatewayRequestRulesAlterUserScramCredentials(alterUserScramCrede
 func CreateEventGatewayRequestRulesProduce(produce EventGatewayProduceRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeProduce
 
-	typStr := EventGatewayProduceRequestRulesType(typ)
-	produce.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayProduceRequestRules: &produce,
 		Type:                            typ,
@@ -133,9 +112,6 @@ func CreateEventGatewayRequestRulesProduce(produce EventGatewayProduceRequestRul
 
 func CreateEventGatewayRequestRulesFetch(fetch EventGatewayFetchRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeFetch
-
-	typStr := EventGatewayFetchRequestRulesType(typ)
-	fetch.Type = typStr
 
 	return EventGatewayRequestRules{
 		EventGatewayFetchRequestRules: &fetch,
@@ -146,9 +122,6 @@ func CreateEventGatewayRequestRulesFetch(fetch EventGatewayFetchRequestRules) Ev
 func CreateEventGatewayRequestRulesJoinGroup(joinGroup EventGatewayJoinGroupRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeJoinGroup
 
-	typStr := EventGatewayJoinGroupRequestRulesType(typ)
-	joinGroup.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayJoinGroupRequestRules: &joinGroup,
 		Type:                              typ,
@@ -157,9 +130,6 @@ func CreateEventGatewayRequestRulesJoinGroup(joinGroup EventGatewayJoinGroupRequ
 
 func CreateEventGatewayRequestRulesConsumerGroupHeartbeat(consumerGroupHeartbeat EventGatewayConsumerGroupHeartbeatRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeConsumerGroupHeartbeat
-
-	typStr := EventGatewayConsumerGroupHeartbeatRequestRulesType(typ)
-	consumerGroupHeartbeat.Type = typStr
 
 	return EventGatewayRequestRules{
 		EventGatewayConsumerGroupHeartbeatRequestRules: &consumerGroupHeartbeat,
@@ -170,9 +140,6 @@ func CreateEventGatewayRequestRulesConsumerGroupHeartbeat(consumerGroupHeartbeat
 func CreateEventGatewayRequestRulesOffsetCommit(offsetCommit EventGatewayOffsetCommitRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeOffsetCommit
 
-	typStr := EventGatewayOffsetCommitRequestRulesType(typ)
-	offsetCommit.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayOffsetCommitRequestRules: &offsetCommit,
 		Type:                                 typ,
@@ -182,9 +149,6 @@ func CreateEventGatewayRequestRulesOffsetCommit(offsetCommit EventGatewayOffsetC
 func CreateEventGatewayRequestRulesOffsetFetch(offsetFetch EventGatewayOffsetFetchRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeOffsetFetch
 
-	typStr := EventGatewayOffsetFetchRequestRulesType(typ)
-	offsetFetch.Type = typStr
-
 	return EventGatewayRequestRules{
 		EventGatewayOffsetFetchRequestRules: &offsetFetch,
 		Type:                                typ,
@@ -193,9 +157,6 @@ func CreateEventGatewayRequestRulesOffsetFetch(offsetFetch EventGatewayOffsetFet
 
 func CreateEventGatewayRequestRulesTxnOffsetCommit(txnOffsetCommit EventGatewayTxnOffsetCommitRequestRules) EventGatewayRequestRules {
 	typ := EventGatewayRequestRulesTypeTxnOffsetCommit
-
-	typStr := EventGatewayTxnOffsetCommitRequestRulesType(typ)
-	txnOffsetCommit.Type = typStr
 
 	return EventGatewayRequestRules{
 		EventGatewayTxnOffsetCommitRequestRules: &txnOffsetCommit,

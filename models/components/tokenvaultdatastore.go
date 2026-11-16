@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type TokenVaultDatastoreType string
-
-const (
-	TokenVaultDatastoreTypeTokenVault TokenVaultDatastoreType = "token-vault"
-)
-
-func (e TokenVaultDatastoreType) ToPointer() *TokenVaultDatastoreType {
-	return &e
-}
-func (e *TokenVaultDatastoreType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "token-vault":
-		*e = TokenVaultDatastoreType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TokenVaultDatastoreType: %v", v)
-	}
-}
 
 type TokenVaultDatastore struct {
 	// A user-defined unique identifier for this Datastore, used as a stable human-readable reference.
@@ -54,9 +29,10 @@ type TokenVaultDatastore struct {
 	// Values must be 1–127 characters long and must not be empty.
 	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string         `json:"managed_by,omitempty"`
-	Type      TokenVaultDatastoreType   `json:"type"`
-	Config    TokenVaultDatastoreConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                    `const:"token-vault" json:"type"`
+	Config TokenVaultDatastoreConfig `json:"config"`
 }
 
 func (t TokenVaultDatastore) MarshalJSON() ([]byte, error) {
@@ -105,11 +81,8 @@ func (t *TokenVaultDatastore) GetManagedBy() map[string]string {
 	return t.ManagedBy
 }
 
-func (t *TokenVaultDatastore) GetType() TokenVaultDatastoreType {
-	if t == nil {
-		return TokenVaultDatastoreType("")
-	}
-	return t.Type
+func (t *TokenVaultDatastore) GetType() string {
+	return "token-vault"
 }
 
 func (t *TokenVaultDatastore) GetConfig() TokenVaultDatastoreConfig {

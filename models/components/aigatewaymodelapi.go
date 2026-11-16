@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelAPIType string
-
-const (
-	AIGatewayModelAPITypeAPI AIGatewayModelAPIType = "api"
-)
-
-func (e AIGatewayModelAPIType) ToPointer() *AIGatewayModelAPIType {
-	return &e
-}
-func (e *AIGatewayModelAPIType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api":
-		*e = AIGatewayModelAPIType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelAPIType: %v", v)
-	}
-}
 
 // Capabilities - **`skills` requires a minimum runtime version of `2.2`**.
 type Capabilities string
@@ -89,7 +64,8 @@ type AIGatewayModelAPI struct {
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
 	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	Type       AIGatewayModelAPIType   `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"api" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelAPIConfig `json:"config"`
 	// The capabilities this model supports. Set to a specific capability to
@@ -182,11 +158,8 @@ func (a *AIGatewayModelAPI) GetDatastores() []AIGatewayDatastoreRef {
 	return a.Datastores
 }
 
-func (a *AIGatewayModelAPI) GetType() AIGatewayModelAPIType {
-	if a == nil {
-		return AIGatewayModelAPIType("")
-	}
-	return a.Type
+func (a *AIGatewayModelAPI) GetType() string {
+	return "api"
 }
 
 func (a *AIGatewayModelAPI) GetConfig() AIGatewayModelAPIConfig {

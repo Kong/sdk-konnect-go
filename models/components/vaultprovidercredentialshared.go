@@ -4,34 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-type CredentialType string
-
-const (
-	CredentialTypeShared CredentialType = "shared"
-)
-
-func (e CredentialType) ToPointer() *CredentialType {
-	return &e
-}
-func (e *CredentialType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "shared":
-		*e = CredentialType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CredentialType: %v", v)
-	}
-}
 
 // VaultProviderCredentialSharedStatus - "pending" until admin enrollment completes; "active" once the secret exists.
 type VaultProviderCredentialSharedStatus string
@@ -59,12 +34,13 @@ func (e *VaultProviderCredentialSharedStatus) IsExact() bool {
 // VaultProviderCredentialShared - The provider's shared secret: a static value, or a shared OAuth enrollment (pending or active).
 type VaultProviderCredentialShared struct {
 	// Contains a unique identifier used for this resource.
-	ID             *string        `json:"id,omitempty"`
-	CreatedAt      *time.Time     `json:"created_at,omitempty"`
-	UpdatedAt      *time.Time     `json:"updated_at,omitempty"`
-	CredentialType CredentialType `json:"credential_type"`
-	Selector       *string        `json:"selector,omitempty"`
-	Priority       *int64         `json:"priority,omitempty"`
+	ID        *string    `json:"id,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	credentialType string  `const:"shared" json:"credential_type"`
+	Selector       *string `json:"selector,omitempty"`
+	Priority       *int64  `json:"priority,omitempty"`
 	// "pending" until admin enrollment completes; "active" once the secret exists.
 	Status VaultProviderCredentialSharedStatus `json:"status"`
 	// URL to complete OAuth consent. Fresh on every get-by-id call; set on create for a shared authorization_code provider. Omitted from list responses.
@@ -103,11 +79,8 @@ func (v *VaultProviderCredentialShared) GetUpdatedAt() *time.Time {
 	return v.UpdatedAt
 }
 
-func (v *VaultProviderCredentialShared) GetCredentialType() CredentialType {
-	if v == nil {
-		return CredentialType("")
-	}
-	return v.CredentialType
+func (v *VaultProviderCredentialShared) GetCredentialType() string {
+	return "shared"
 }
 
 func (v *VaultProviderCredentialShared) GetSelector() *string {
