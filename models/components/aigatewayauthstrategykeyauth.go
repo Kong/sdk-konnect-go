@@ -7,6 +7,203 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayAuthStrategyKeyAuthScope string
+
+const (
+	AIGatewayAuthStrategyKeyAuthScopeCp    AIGatewayAuthStrategyKeyAuthScope = "cp"
+	AIGatewayAuthStrategyKeyAuthScopeRealm AIGatewayAuthStrategyKeyAuthScope = "realm"
+)
+
+func (e AIGatewayAuthStrategyKeyAuthScope) ToPointer() *AIGatewayAuthStrategyKeyAuthScope {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AIGatewayAuthStrategyKeyAuthScope) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "cp", "realm":
+			return true
+		}
+	}
+	return false
+}
+
+type AIGatewayAuthStrategyKeyAuthIdentityRealms struct {
+	// A string representing a UUID (universally unique identifier).
+	ID     *string                            `json:"id,omitempty"`
+	Region *string                            `json:"region,omitempty"`
+	Scope  *AIGatewayAuthStrategyKeyAuthScope `default:"cp" json:"scope"`
+}
+
+func (a AIGatewayAuthStrategyKeyAuthIdentityRealms) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthIdentityRealms) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthIdentityRealms) GetID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.ID
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthIdentityRealms) GetRegion() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Region
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthIdentityRealms) GetScope() *AIGatewayAuthStrategyKeyAuthScope {
+	if a == nil {
+		return nil
+	}
+	return a.Scope
+}
+
+type AIGatewayAuthStrategyKeyAuthPrincipals struct {
+	// The Kong Identity directory instance to authenticate against.
+	Directory *string `default:"default" json:"directory"`
+	// When true, authenticate against Kong Identity instead of local credentials.
+	Enabled *bool `default:"false" json:"enabled"`
+	// When true (default), return 401 if no matching principal is found in Kong Identity. When false, allow the request to continue unauthenticated instead.
+	ErrorOnMiss *bool `default:"true" json:"error_on_miss"`
+}
+
+func (a AIGatewayAuthStrategyKeyAuthPrincipals) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthPrincipals) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthPrincipals) GetDirectory() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Directory
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthPrincipals) GetEnabled() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Enabled
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthPrincipals) GetErrorOnMiss() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.ErrorOnMiss
+}
+
+// AIGatewayAuthStrategyKeyAuthConfig - Configuration for the key-auth auth strategy.
+type AIGatewayAuthStrategyKeyAuthConfig struct {
+	// An optional boolean value telling the plugin to show or hide the credential from the upstream service. If `true`, the plugin strips the credential from the request.
+	HideCredentials *bool `default:"true" json:"hide_credentials"`
+	// A configuration of Konnect Identity Realms that indicate where to source a consumer from.
+	IdentityRealms []AIGatewayAuthStrategyKeyAuthIdentityRealms `json:"identity_realms,omitzero"`
+	// If enabled, the plugin reads the request body. Supported MIME types: `application/www-form-urlencoded`, `application/json`, and `multipart/form-data`.
+	KeyInBody *bool `default:"false" json:"key_in_body"`
+	// If enabled (default), the plugin reads the request header and tries to find the key in it.
+	KeyInHeader *bool `default:"true" json:"key_in_header"`
+	// If enabled (default), the plugin reads the query parameter in the request and tries to find the key in it.
+	KeyInQuery *bool `default:"true" json:"key_in_query"`
+	// Describes an array of parameter names where the plugin will look for a key. The key names may only contain [a-z], [A-Z], [0-9], [_] underscore, and [-] hyphen.
+	KeyNames   []string                                `json:"key_names,omitempty"`
+	Principals *AIGatewayAuthStrategyKeyAuthPrincipals `json:"principals,omitempty"`
+	// When authentication fails the plugin sends `WWW-Authenticate` header with `realm` attribute value.
+	Realm *string `json:"realm,omitempty"`
+	// A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests are always allowed.
+	RunOnPreflight *bool `default:"true" json:"run_on_preflight"`
+}
+
+func (a AIGatewayAuthStrategyKeyAuthConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetHideCredentials() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.HideCredentials
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetIdentityRealms() []AIGatewayAuthStrategyKeyAuthIdentityRealms {
+	if a == nil {
+		return nil
+	}
+	return a.IdentityRealms
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetKeyInBody() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.KeyInBody
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetKeyInHeader() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.KeyInHeader
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetKeyInQuery() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.KeyInQuery
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetKeyNames() []string {
+	if a == nil {
+		return nil
+	}
+	return a.KeyNames
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetPrincipals() *AIGatewayAuthStrategyKeyAuthPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetRealm() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Realm
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetRunOnPreflight() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.RunOnPreflight
+}
+
 // AIGatewayAuthStrategyKeyAuth - Configuration for an auth strategy.
 type AIGatewayAuthStrategyKeyAuth struct {
 	// The display name for this auth strategy instance.
@@ -35,8 +232,10 @@ type AIGatewayAuthStrategyKeyAuth struct {
 	// **Requires a minimum runtime version of `2.3`**.
 	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                      `const:"key-auth" json:"type"`
-	Config *AIGWKeyAuthGeneratedConfig `json:"config,omitempty"`
+	type_ string `const:"key-auth" json:"type"`
+	// Configuration for the key-auth auth strategy.
+	//
+	Config *AIGatewayAuthStrategyKeyAuthConfig `json:"config,omitempty"`
 }
 
 func (a AIGatewayAuthStrategyKeyAuth) MarshalJSON() ([]byte, error) {
@@ -89,7 +288,7 @@ func (a *AIGatewayAuthStrategyKeyAuth) GetType() string {
 	return "key-auth"
 }
 
-func (a *AIGatewayAuthStrategyKeyAuth) GetConfig() *AIGWKeyAuthGeneratedConfig {
+func (a *AIGatewayAuthStrategyKeyAuth) GetConfig() *AIGatewayAuthStrategyKeyAuthConfig {
 	if a == nil {
 		return nil
 	}

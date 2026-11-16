@@ -118,7 +118,7 @@ func main() {
             },
         },
         Config: components.Config{
-            URL: "https://booking-agent.internal.kongair.com",
+            URL: sdkkonnectgo.Pointer("https://booking-agent.internal.kongair.com"),
             Upstream: &components.AIGatewayUpstreamConfig{
                 Auth: sdkkonnectgo.Pointer(components.CreateAuthAws(
                     components.AIGatewayUpstreamAuthAWS{
@@ -295,7 +295,7 @@ func main() {
                 },
             },
             Config: components.UpdateAIGatewayAgentRequestConfig{
-                URL: "https://booking-agent.internal.kongair.com",
+                URL: sdkkonnectgo.Pointer("https://booking-agent.internal.kongair.com"),
                 Upstream: &components.AIGatewayUpstreamConfig{
                     Auth: sdkkonnectgo.Pointer(components.CreateAuthAws(
                         components.AIGatewayUpstreamAuthAWS{

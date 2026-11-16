@@ -48,11 +48,12 @@ func (s *KongPrincipalIdentity) ListIdentities(ctx context.Context, request oper
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListIdentitiesServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/identities", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -319,11 +320,12 @@ func (s *KongPrincipalIdentity) CreateIdentity(ctx context.Context, request oper
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateIdentityServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/identities", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -635,11 +637,12 @@ func (s *KongPrincipalIdentity) GetIdentity(ctx context.Context, request operati
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetIdentityServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -903,11 +906,12 @@ func (s *KongPrincipalIdentity) ReplaceIdentity(ctx context.Context, request ope
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ReplaceIdentityServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1220,11 +1224,12 @@ func (s *KongPrincipalIdentity) UpdateIdentity(ctx context.Context, request oper
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.UpdateIdentityServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1537,11 +1542,12 @@ func (s *KongPrincipalIdentity) DeleteIdentity(ctx context.Context, request oper
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteIdentityServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)

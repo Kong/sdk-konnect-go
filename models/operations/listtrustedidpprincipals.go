@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var ListTrustedIdpPrincipalsServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 // ListTrustedIdpPrincipalsQueryParamFilter - Filter principals by field. Supported filter fields:
 // - `display_name`: exact match or contains
 type ListTrustedIdpPrincipalsQueryParamFilter struct {

@@ -49,11 +49,12 @@ func (s *TokenVaultCredentials) ListVaultCredentials(ctx context.Context, reques
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListVaultCredentialsServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/vault-credentials", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -320,11 +321,12 @@ func (s *TokenVaultCredentials) GetVaultCredential(ctx context.Context, request 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetVaultCredentialServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/vault-credentials/{vaultCredentialId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -587,11 +589,12 @@ func (s *TokenVaultCredentials) DeleteVaultCredential(ctx context.Context, reque
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteVaultCredentialServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/principals/{principalId}/vault-credentials/{vaultCredentialId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)

@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var ListTrustedIdpsServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 type ListTrustedIdpsRequest struct {
 	// ID of the directory
 	DirectoryID string `pathParam:"style=simple,explode=false,name=directoryId"`

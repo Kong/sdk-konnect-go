@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var UpdatePasswordServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 type UpdatePasswordRequest struct {
 	// ID of the directory
 	DirectoryID string `pathParam:"style=simple,explode=false,name=directoryId"`
