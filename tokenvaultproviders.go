@@ -52,11 +52,12 @@ func (s *TokenVaultProviders) ListCredentialProviderTemplates(ctx context.Contex
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListCredentialProviderTemplatesServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := url.JoinPath(baseURL, "/v2/credential-provider-templates")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -327,11 +328,12 @@ func (s *TokenVaultProviders) GetCredentialProviderTemplate(ctx context.Context,
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetCredentialProviderTemplateServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/credential-provider-templates/{credentialProviderTemplateName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -599,11 +601,12 @@ func (s *TokenVaultProviders) CreateVaultProvider(ctx context.Context, directory
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateVaultProviderServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -896,11 +899,12 @@ func (s *TokenVaultProviders) ListVaultProviders(ctx context.Context, request op
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListVaultProvidersServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1172,11 +1176,12 @@ func (s *TokenVaultProviders) GetVaultProvider(ctx context.Context, directoryID 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetVaultProviderServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1439,11 +1444,12 @@ func (s *TokenVaultProviders) UpdateVaultProvider(ctx context.Context, request o
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.UpdateVaultProviderServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1735,11 +1741,12 @@ func (s *TokenVaultProviders) ReplaceVaultProvider(ctx context.Context, request 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ReplaceVaultProviderServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2035,11 +2042,12 @@ func (s *TokenVaultProviders) DeleteVaultProvider(ctx context.Context, directory
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteVaultProviderServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2286,11 +2294,12 @@ func (s *TokenVaultProviders) CreateVaultProviderCredential(ctx context.Context,
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateVaultProviderCredentialServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2608,11 +2617,12 @@ func (s *TokenVaultProviders) ListVaultProviderCredentials(ctx context.Context, 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListVaultProviderCredentialsServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2903,11 +2913,12 @@ func (s *TokenVaultProviders) GetVaultProviderCredential(ctx context.Context, re
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetVaultProviderCredentialServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -3173,11 +3184,12 @@ func (s *TokenVaultProviders) UpdateVaultProviderCredential(ctx context.Context,
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.UpdateVaultProviderCredentialServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -3467,11 +3479,12 @@ func (s *TokenVaultProviders) DeleteVaultProviderCredential(ctx context.Context,
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteVaultProviderCredentialServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)

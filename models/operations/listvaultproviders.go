@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var ListVaultProvidersServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 // TemplateName - Filter using **one** of the following operators: `eq`, `oeq`
 type TemplateName struct {
 	// The field exactly matches the provided value.

@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var GetCredentialProviderTemplateServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 type GetCredentialProviderTemplateRequest struct {
 	// Name of the vault credential provider template
 	CredentialProviderTemplateName components.ProviderTemplateName `pathParam:"style=simple,explode=false,name=credentialProviderTemplateName"`

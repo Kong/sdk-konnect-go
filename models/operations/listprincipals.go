@@ -11,10 +11,6 @@ import (
 	"net/http"
 )
 
-var ListPrincipalsServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 type ActiveType string
 
 const (

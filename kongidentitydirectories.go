@@ -52,11 +52,12 @@ func (s *KongIdentityDirectories) CreateDirectory(ctx context.Context, request c
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.CreateDirectoryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := url.JoinPath(baseURL, "/v2/directories")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -353,11 +354,12 @@ func (s *KongIdentityDirectories) ListKongDirectories(ctx context.Context, page 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ListKongDirectoriesServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := url.JoinPath(baseURL, "/v2/directories")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -609,11 +611,12 @@ func (s *KongIdentityDirectories) UpdateDirectory(ctx context.Context, directory
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.UpdateDirectoryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -910,11 +913,12 @@ func (s *KongIdentityDirectories) ReplaceDirectory(ctx context.Context, director
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.ReplaceDirectoryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1209,11 +1213,12 @@ func (s *KongIdentityDirectories) GetDirectory(ctx context.Context, directoryID 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.GetDirectoryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1482,11 +1487,12 @@ func (s *KongIdentityDirectories) DeleteDirectory(ctx context.Context, directory
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(operations.DeleteDirectoryServerList[0], map[string]string{})
-	if o.ServerURL != nil {
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
 		baseURL = *o.ServerURL
 	}
-
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/directories/{directoryId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)

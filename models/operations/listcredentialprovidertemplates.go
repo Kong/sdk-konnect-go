@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var ListCredentialProviderTemplatesServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 type ListCredentialProviderTemplatesRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`

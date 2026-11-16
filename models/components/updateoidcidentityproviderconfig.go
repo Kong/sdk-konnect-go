@@ -22,6 +22,8 @@ type UpdateOIDCIdentityProviderConfig struct {
 	// authentication. Only the provided mappings are updated and provided values cannot be empty.
 	//
 	ClaimMappings *UpdateOIDCIdentityProviderClaimMappings `json:"claim_mappings,omitempty"`
+	// The back-channel logout settings to update. Only the provided properties are updated.
+	BackchannelLogout *UpdateOIDCIdentityProviderBackChannelLogout `json:"backchannel_logout,omitempty"`
 }
 
 func (u UpdateOIDCIdentityProviderConfig) MarshalJSON() ([]byte, error) {
@@ -68,4 +70,11 @@ func (u *UpdateOIDCIdentityProviderConfig) GetClaimMappings() *UpdateOIDCIdentit
 		return nil
 	}
 	return u.ClaimMappings
+}
+
+func (u *UpdateOIDCIdentityProviderConfig) GetBackchannelLogout() *UpdateOIDCIdentityProviderBackChannelLogout {
+	if u == nil {
+		return nil
+	}
+	return u.BackchannelLogout
 }

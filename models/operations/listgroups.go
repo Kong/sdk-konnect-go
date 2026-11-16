@@ -8,10 +8,6 @@ import (
 	"net/http"
 )
 
-var ListGroupsServerList = []string{
-	"https://us.api.konghq.com/",
-}
-
 // Type - Filter using **one** of the following operators: `eq`, `oeq`
 type Type struct {
 	// The field exactly matches the provided value.
