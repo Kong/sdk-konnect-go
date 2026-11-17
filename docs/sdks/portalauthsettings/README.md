@@ -1123,11 +1123,11 @@ func main() {
     res, err := s.PortalAuthSettings.CreatePortalIdentityProvider(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PortalCreateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        Config: sdkkonnectgo.Pointer(components.CreatePortalCreateIdentityProviderConfigPortalOIDCIdentityProviderConfigInput(
-            components.PortalOIDCIdentityProviderConfigInput{
+        Config: sdkkonnectgo.Pointer(components.CreatePortalCreateIdentityProviderConfigCreateOIDCIdentityProviderConfig(
+            components.CreateOIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "0oaqhb43ckTZ02j1F357",
-                ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
+                ClientSecret: "BbqwI8xP9E4evOK",
                 Scopes: []string{
                     "openid",
                     "email",
