@@ -72,7 +72,7 @@ type CustomFormSingleSelectFieldInput struct {
 	Description *string                              `json:"description,omitempty"`
 	Required    *bool                                `json:"required,omitempty"`
 	// Available choices presented to the developer.
-	Options []CustomFormSelectOption `json:"options"`
+	Options []CustomFormSelectOptionInput `json:"options"`
 }
 
 func (c CustomFormSingleSelectFieldInput) MarshalJSON() ([]byte, error) {
@@ -135,9 +135,9 @@ func (c *CustomFormSingleSelectFieldInput) GetRequired() *bool {
 	return c.Required
 }
 
-func (c *CustomFormSingleSelectFieldInput) GetOptions() []CustomFormSelectOption {
+func (c *CustomFormSingleSelectFieldInput) GetOptions() []CustomFormSelectOptionInput {
 	if c == nil {
-		return []CustomFormSelectOption{}
+		return []CustomFormSelectOptionInput{}
 	}
 	return c.Options
 }
