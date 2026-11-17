@@ -48,7 +48,9 @@ type CustomFormEmailField struct {
 	// Marks a field that comes with the form by default.
 	//
 	// Built-in fields can't be removed, retyped, or relabeled, but their
-	// `placeholder`, `description`, and `required` settings can still be changed.
+	// Built-in fields can't be removed, retyped, or relabeled, and built-in
+	// inputs are always `required`. Their `placeholder` and `description`
+	// settings can still be changed.
 	//
 	// This flag is read-only — it's returned by the API but can't be set when
 	// creating or updating a form.
