@@ -56,7 +56,7 @@ func (e *APIKeyCredentialListItemStatus) IsExact() bool {
 	return false
 }
 
-// APIKeyCredentialListItem - API key credential returned when listing credentials.
+// APIKeyCredentialListItem - API key credential returned when listing or importing credentials.
 type APIKeyCredentialListItem struct {
 	Type APIKeyCredentialListItemType `json:"type"`
 	// Contains a unique identifier used for this resource.
