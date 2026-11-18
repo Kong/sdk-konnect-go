@@ -1,5 +1,7 @@
 # PortalIdentityProviderConfig
 
+The configuration data for the authentication integration.
+
 
 ## Supported Types
 
