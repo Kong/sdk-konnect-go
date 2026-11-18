@@ -1,12 +1,14 @@
 # PortalCreateIdentityProviderConfig
 
+The configuration data for creating an authentication integration.
+
 
 ## Supported Types
 
-### PortalOIDCIdentityProviderConfigInput
+### CreateOIDCIdentityProviderConfig
 
 ```go
-portalCreateIdentityProviderConfig := components.CreatePortalCreateIdentityProviderConfigPortalOIDCIdentityProviderConfigInput(components.PortalOIDCIdentityProviderConfigInput{/* values here */})
+portalCreateIdentityProviderConfig := components.CreatePortalCreateIdentityProviderConfigCreateOIDCIdentityProviderConfig(components.CreateOIDCIdentityProviderConfig{/* values here */})
 ```
 
 ### PortalSAMLIdentityProviderConfigInput
@@ -21,8 +23,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch portalCreateIdentityProviderConfig.Type {
-	case components.PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput:
-		// portalCreateIdentityProviderConfig.PortalOIDCIdentityProviderConfigInput is populated
+	case components.PortalCreateIdentityProviderConfigTypeCreateOIDCIdentityProviderConfig:
+		// portalCreateIdentityProviderConfig.CreateOIDCIdentityProviderConfig is populated
 	case components.PortalCreateIdentityProviderConfigTypePortalSAMLIdentityProviderConfigInput:
 		// portalCreateIdentityProviderConfig.PortalSAMLIdentityProviderConfigInput is populated
 }
