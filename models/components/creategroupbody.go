@@ -3,29 +3,6 @@
 
 package components
 
-// CreateGroupBodyType - Type of the group. Immutable after creation.
-type CreateGroupBodyType string
-
-const (
-	CreateGroupBodyTypeGroup CreateGroupBodyType = "group"
-	CreateGroupBodyTypeTeam  CreateGroupBodyType = "team"
-)
-
-func (e CreateGroupBodyType) ToPointer() *CreateGroupBodyType {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *CreateGroupBodyType) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "group", "team":
-			return true
-		}
-	}
-	return false
-}
-
 // CreateGroupBody - Group to be created
 type CreateGroupBody struct {
 	// Human-readable name of the group. Must start and end with a letter or a digit. Letters, digits, and hyphens are allowed in between.
@@ -36,7 +13,7 @@ type CreateGroupBody struct {
 	Description *string `json:"description,omitempty"`
 	// Type of the group. Immutable after creation.
 	//
-	Type *CreateGroupBodyType `json:"type,omitempty"`
+	Type *CreateGroupType `json:"type,omitempty"`
 	// A map of metadata key-value pairs associated with this entity. This metadata is passed to the data plane to enrich the execution context. During authentication, metadata is inherited and overridden in a hierarchical manner: Directory metadata is inherited by Principals, which is then inherited and overridden by Credentials.
 	Metadata map[string]KongIdentityMetadata `json:"metadata,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -67,7 +44,7 @@ func (c *CreateGroupBody) GetDescription() *string {
 	return c.Description
 }
 
-func (c *CreateGroupBody) GetType() *CreateGroupBodyType {
+func (c *CreateGroupBody) GetType() *CreateGroupType {
 	if c == nil {
 		return nil
 	}
