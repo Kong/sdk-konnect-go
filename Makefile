@@ -80,8 +80,14 @@ _generate.omitempty:
 	# An empty identity_realms list must reach Konnect to disable its default
 	# identity realm, but speakeasy emits omitempty for the field. The config is
 	# generated inline in the key-auth request and response models.
-	@files=$$(grep -l 'json:"identity_realms,omitempty"' models/components/*keyauth*.go) && \
-		$(SED) -i 's#json:"identity_realms,omitempty"#json:"identity_realms,omitzero"#g' $$files
+	# Speakeasy persistentEdits may already carry the patch forward, so only sed
+	# when needed, but always verify the omitzero tag is present.
+	@files=$$(grep -l 'json:"identity_realms,omitempty"' models/components/*keyauth*.go || true); \
+		if [ -n "$$files" ]; then \
+			$(SED) -i 's#json:"identity_realms,omitempty"#json:"identity_realms,omitzero"#g' $$files; \
+		fi; \
+		grep -q 'json:"identity_realms,omitzero"' models/components/*keyauth*.go || \
+			{ echo 'identity_realms omitzero tag not found in models/components/*keyauth*.go'; exit 1; }
 
 .PHONY: generate.deepcopy
 generate.deepcopy: controller-gen
