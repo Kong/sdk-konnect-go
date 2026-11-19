@@ -1,6 +1,6 @@
 # DestinationWithSecret
 
-A single http destination with its new signing secret.
+A single destination with its new signing secret.
 
 
 ## Supported Types
