@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormTextFieldInputType string
-
-const (
-	CustomFormTextFieldInputTypeText CustomFormTextFieldInputType = "text"
-)
-
-func (e CustomFormTextFieldInputType) ToPointer() *CustomFormTextFieldInputType {
-	return &e
-}
-func (e *CustomFormTextFieldInputType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "text":
-		*e = CustomFormTextFieldInputType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormTextFieldInputType: %v", v)
-	}
-}
 
 // CustomFormTextFieldInput - A single-line text field.
 type CustomFormTextFieldInput struct {
@@ -39,10 +14,11 @@ type CustomFormTextFieldInput struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name        *string                      `json:"name,omitempty"`
-	Type        CustomFormTextFieldInputType `json:"type"`
-	Label       string                       `json:"label"`
-	Placeholder *string                      `json:"placeholder,omitempty"`
+	Name *string `json:"name,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_       string  `const:"text" json:"type"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
 	// Help text displayed with the field. Supports Markdown formatting.
 	Description *string `json:"description,omitempty"`
 	Required    *bool   `json:"required,omitempty"`
@@ -66,11 +42,8 @@ func (c *CustomFormTextFieldInput) GetName() *string {
 	return c.Name
 }
 
-func (c *CustomFormTextFieldInput) GetType() CustomFormTextFieldInputType {
-	if c == nil {
-		return CustomFormTextFieldInputType("")
-	}
-	return c.Type
+func (c *CustomFormTextFieldInput) GetType() string {
+	return "text"
 }
 
 func (c *CustomFormTextFieldInput) GetLabel() string {

@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormTextareaFieldType string
-
-const (
-	CustomFormTextareaFieldTypeTextarea CustomFormTextareaFieldType = "textarea"
-)
-
-func (e CustomFormTextareaFieldType) ToPointer() *CustomFormTextareaFieldType {
-	return &e
-}
-func (e *CustomFormTextareaFieldType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "textarea":
-		*e = CustomFormTextareaFieldType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormTextareaFieldType: %v", v)
-	}
-}
 
 // CustomFormTextareaField - A multi-line text field.
 type CustomFormTextareaField struct {
@@ -39,12 +14,13 @@ type CustomFormTextareaField struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name        string                      `json:"name"`
-	Type        CustomFormTextareaFieldType `json:"type"`
-	Label       string                      `json:"label"`
-	Placeholder *string                     `json:"placeholder,omitempty"`
-	Description *string                     `json:"description,omitempty"`
-	Required    *bool                       `default:"false" json:"required"`
+	Name string `json:"name"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_       string  `const:"textarea" json:"type"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Required    *bool   `default:"false" json:"required"`
 	// Marks a field that comes with the form by default.
 	//
 	// Built-in fields can't be removed, retyped, or relabeled, but their
@@ -76,11 +52,8 @@ func (c *CustomFormTextareaField) GetName() string {
 	return c.Name
 }
 
-func (c *CustomFormTextareaField) GetType() CustomFormTextareaFieldType {
-	if c == nil {
-		return CustomFormTextareaFieldType("")
-	}
-	return c.Type
+func (c *CustomFormTextareaField) GetType() string {
+	return "textarea"
 }
 
 func (c *CustomFormTextareaField) GetLabel() string {

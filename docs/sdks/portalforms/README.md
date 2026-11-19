@@ -47,13 +47,11 @@ func main() {
 
     res, err := s.PortalForms.CreatePortalForm(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateCreatePortalFormRequestAPIRegistration(
         components.CreateAPIRegistrationFormRequest{
-            Type: components.CreateAPIRegistrationFormRequestTypeAPIRegistration,
             Name: "flights-api-registration",
             Fields: []components.CustomFormFieldInput{
                 components.CreateCustomFormFieldInputSubmit(
                     components.CustomFormSubmitFieldInput{
                         Name: components.CustomFormSubmitFieldInputNameSubmit,
-                        Type: components.CustomFormSubmitFieldInputTypeSubmit,
                         Value: "Create account",
                     },
                 ),
@@ -256,7 +254,6 @@ func main() {
         FormID: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7",
         UpdatePortalFormRequest: components.CreateUpdatePortalFormRequestAPIRegistration(
             components.UpdateAPIRegistrationFormRequest{
-                Type: components.UpdateAPIRegistrationFormRequestTypeAPIRegistration,
                 Fields: []components.CustomFormFieldInput{},
             },
         ),
