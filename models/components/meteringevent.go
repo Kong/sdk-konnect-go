@@ -10,28 +10,28 @@ import (
 	"time"
 )
 
-// Datacontenttype - Content type of the CloudEvents data value. Only the value "application/json" is
+// MeteringEventDatacontenttype - Content type of the CloudEvents data value. Only the value "application/json" is
 // allowed over HTTP.
-type Datacontenttype string
+type MeteringEventDatacontenttype string
 
 const (
-	DatacontenttypeApplicationJSON Datacontenttype = "application/json"
+	MeteringEventDatacontenttypeApplicationJSON MeteringEventDatacontenttype = "application/json"
 )
 
-func (e Datacontenttype) ToPointer() *Datacontenttype {
+func (e MeteringEventDatacontenttype) ToPointer() *MeteringEventDatacontenttype {
 	return &e
 }
-func (e *Datacontenttype) UnmarshalJSON(data []byte) error {
+func (e *MeteringEventDatacontenttype) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "application/json":
-		*e = Datacontenttype(v)
+		*e = MeteringEventDatacontenttype(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Datacontenttype: %v", v)
+		return fmt.Errorf("invalid value for MeteringEventDatacontenttype: %v", v)
 	}
 }
 
@@ -48,7 +48,7 @@ type MeteringEvent struct {
 	Type string `json:"type"`
 	// Content type of the CloudEvents data value. Only the value "application/json" is
 	// allowed over HTTP.
-	Datacontenttype *Datacontenttype `json:"datacontenttype,omitempty"`
+	Datacontenttype *MeteringEventDatacontenttype `json:"datacontenttype,omitempty"`
 	// Identifies the schema that data adheres to.
 	Dataschema *string `json:"dataschema,omitempty"`
 	// Describes the subject of the event in the context of the event producer
@@ -99,7 +99,7 @@ func (m *MeteringEvent) GetType() string {
 	return m.Type
 }
 
-func (m *MeteringEvent) GetDatacontenttype() *Datacontenttype {
+func (m *MeteringEvent) GetDatacontenttype() *MeteringEventDatacontenttype {
 	if m == nil {
 		return nil
 	}

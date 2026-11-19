@@ -8,20 +8,20 @@ import (
 	"time"
 )
 
-// Type - The type of the agent.
-type Type string
+// AIGatewayAgentType - The type of the agent.
+type AIGatewayAgentType string
 
 const (
-	TypeA2a  Type = "a2a"
-	TypeHTTP Type = "http"
+	AIGatewayAgentTypeA2a  AIGatewayAgentType = "a2a"
+	AIGatewayAgentTypeHTTP AIGatewayAgentType = "http"
 )
 
-func (e Type) ToPointer() *Type {
+func (e AIGatewayAgentType) ToPointer() *AIGatewayAgentType {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Type) IsExact() bool {
+func (e *AIGatewayAgentType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "a2a", "http":
@@ -178,7 +178,7 @@ type AIGatewayAgent struct {
 	// Whether the Agent is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The type of the agent.
-	Type Type `json:"type"`
+	Type AIGatewayAgentType `json:"type"`
 	// List of policy references.
 	Policies []string `json:"policies,omitempty"`
 	// Access control configuration for an agent.
@@ -239,9 +239,9 @@ func (a *AIGatewayAgent) GetEnabled() *bool {
 	return a.Enabled
 }
 
-func (a *AIGatewayAgent) GetType() Type {
+func (a *AIGatewayAgent) GetType() AIGatewayAgentType {
 	if a == nil {
-		return Type("")
+		return AIGatewayAgentType("")
 	}
 	return a.Type
 }

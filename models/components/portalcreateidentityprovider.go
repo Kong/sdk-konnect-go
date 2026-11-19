@@ -3,82 +3,6 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
-type PortalCreateIdentityProviderConfigType string
-
-const (
-	PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput PortalCreateIdentityProviderConfigType = "PortalOIDCIdentityProviderConfig_input"
-	PortalCreateIdentityProviderConfigTypePortalSAMLIdentityProviderConfigInput PortalCreateIdentityProviderConfigType = "PortalSAMLIdentityProviderConfig_input"
-)
-
-type PortalCreateIdentityProviderConfig struct {
-	PortalOIDCIdentityProviderConfigInput *PortalOIDCIdentityProviderConfigInput `queryParam:"inline" union:"member"`
-	PortalSAMLIdentityProviderConfigInput *PortalSAMLIdentityProviderConfigInput `queryParam:"inline" union:"member"`
-
-	Type PortalCreateIdentityProviderConfigType
-}
-
-func CreatePortalCreateIdentityProviderConfigPortalOIDCIdentityProviderConfigInput(portalOIDCIdentityProviderConfigInput PortalOIDCIdentityProviderConfigInput) PortalCreateIdentityProviderConfig {
-	typ := PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput
-
-	return PortalCreateIdentityProviderConfig{
-		PortalOIDCIdentityProviderConfigInput: &portalOIDCIdentityProviderConfigInput,
-		Type:                                  typ,
-	}
-}
-
-func CreatePortalCreateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(portalSAMLIdentityProviderConfigInput PortalSAMLIdentityProviderConfigInput) PortalCreateIdentityProviderConfig {
-	typ := PortalCreateIdentityProviderConfigTypePortalSAMLIdentityProviderConfigInput
-
-	return PortalCreateIdentityProviderConfig{
-		PortalSAMLIdentityProviderConfigInput: &portalSAMLIdentityProviderConfigInput,
-		Type:                                  typ,
-	}
-}
-
-func (u *PortalCreateIdentityProviderConfig) UnmarshalJSON(data []byte) (err error) {
-	previous := *u
-	*u = PortalCreateIdentityProviderConfig{}
-	defer func() {
-		if err != nil {
-			*u = previous
-		}
-	}()
-
-	var portalOIDCIdentityProviderConfigInput PortalOIDCIdentityProviderConfigInput = PortalOIDCIdentityProviderConfigInput{}
-	if err := utils.UnmarshalJSON(data, &portalOIDCIdentityProviderConfigInput, "", true, nil); err == nil {
-		u.PortalOIDCIdentityProviderConfigInput = &portalOIDCIdentityProviderConfigInput
-		u.Type = PortalCreateIdentityProviderConfigTypePortalOIDCIdentityProviderConfigInput
-		return nil
-	}
-
-	var portalSAMLIdentityProviderConfigInput PortalSAMLIdentityProviderConfigInput = PortalSAMLIdentityProviderConfigInput{}
-	if err := utils.UnmarshalJSON(data, &portalSAMLIdentityProviderConfigInput, "", true, nil); err == nil {
-		u.PortalSAMLIdentityProviderConfigInput = &portalSAMLIdentityProviderConfigInput
-		u.Type = PortalCreateIdentityProviderConfigTypePortalSAMLIdentityProviderConfigInput
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PortalCreateIdentityProviderConfig", string(data))
-}
-
-func (u PortalCreateIdentityProviderConfig) MarshalJSON() ([]byte, error) {
-	if u.PortalOIDCIdentityProviderConfigInput != nil {
-		return utils.MarshalJSON(u.PortalOIDCIdentityProviderConfigInput, "", true)
-	}
-
-	if u.PortalSAMLIdentityProviderConfigInput != nil {
-		return utils.MarshalJSON(u.PortalSAMLIdentityProviderConfigInput, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type PortalCreateIdentityProviderConfig: all fields are null")
-}
-
 // PortalCreateIdentityProvider - The identity provider that contains configuration data for creating an authentication integration.
 type PortalCreateIdentityProvider struct {
 	// Indicates whether the identity provider is enabled.
@@ -86,7 +10,8 @@ type PortalCreateIdentityProvider struct {
 	//
 	Enabled *bool `json:"enabled,omitempty"`
 	// Specifies the type of identity provider.
-	Type   *IdentityProviderType               `json:"type,omitempty"`
+	Type *IdentityProviderType `json:"type,omitempty"`
+	// The configuration data for creating an authentication integration.
 	Config *PortalCreateIdentityProviderConfig `json:"config,omitempty"`
 }
 

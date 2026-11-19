@@ -1,5 +1,7 @@
 # Kind
 
+Always `test` for a channel test.
+
 ## Example Usage
 
 ```go
@@ -7,12 +9,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.KindStatic
+value := components.KindTest
 ```
 
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `KindStatic` | static       |
+| Name       | Value      |
+| ---------- | ---------- |
+| `KindTest` | test       |

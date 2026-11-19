@@ -1,0 +1,9 @@
+# Sort
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Field`                                                                                                        | `string`                                                                                                       | :heavy_check_mark:                                                                                             | The measure or requested dimension to sort by. A measure sorts the groups by their total over the whole range. |
+| `Direction`                                                                                                    | [*operations.Direction](../../models/operations/direction.md)                                                  | :heavy_minus_sign:                                                                                             | `asc` for ascending or `desc` for descending order. Defaults to `asc`.                                         |

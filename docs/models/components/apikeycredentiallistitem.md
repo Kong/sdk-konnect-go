@@ -1,6 +1,6 @@
 # APIKeyCredentialListItem
 
-API key credential returned when listing credentials.
+API key credential returned when listing or importing credentials.
 
 
 ## Fields

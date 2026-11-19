@@ -1,0 +1,9 @@
+# UpsertCostNotificationRuleRequest
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `BudgetID`                                                                                                           | `string`                                                                                                             | :heavy_check_mark:                                                                                                   | The `id` of the budget.                                                                                              |
+| `RequestBody`                                                                                                        | [operations.UpsertCostNotificationRuleRequestBody](../../models/operations/upsertcostnotificationrulerequestbody.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

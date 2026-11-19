@@ -3,8 +3,8 @@
 
 package components
 
-// Version - Omission matches all versions, including future versions.
-type Version struct {
+// CreateCreditGrantPlanFilterVersion - Omission matches all versions, including future versions.
+type CreateCreditGrantPlanFilterVersion struct {
 	// Match this exact version.
 	Eq *int `json:"eq,omitempty"`
 	// Match one of these versions.
@@ -15,32 +15,32 @@ type Version struct {
 	Lte *int `json:"lte,omitempty"`
 }
 
-func (v *Version) GetEq() *int {
-	if v == nil {
+func (c *CreateCreditGrantPlanFilterVersion) GetEq() *int {
+	if c == nil {
 		return nil
 	}
-	return v.Eq
+	return c.Eq
 }
 
-func (v *Version) GetOeq() []int {
-	if v == nil {
+func (c *CreateCreditGrantPlanFilterVersion) GetOeq() []int {
+	if c == nil {
 		return nil
 	}
-	return v.Oeq
+	return c.Oeq
 }
 
-func (v *Version) GetGte() *int {
-	if v == nil {
+func (c *CreateCreditGrantPlanFilterVersion) GetGte() *int {
+	if c == nil {
 		return nil
 	}
-	return v.Gte
+	return c.Gte
 }
 
-func (v *Version) GetLte() *int {
-	if v == nil {
+func (c *CreateCreditGrantPlanFilterVersion) GetLte() *int {
+	if c == nil {
 		return nil
 	}
-	return v.Lte
+	return c.Lte
 }
 
 // CreateCreditGrantPlanFilter - A plan key and an optional version constraint for matching credit grants.
@@ -48,7 +48,7 @@ type CreateCreditGrantPlanFilter struct {
 	// The plan key in the customer's namespace.
 	Key string `json:"key"`
 	// Omission matches all versions, including future versions.
-	Version *Version `json:"version,omitempty"`
+	Version *CreateCreditGrantPlanFilterVersion `json:"version,omitempty"`
 }
 
 func (c *CreateCreditGrantPlanFilter) GetKey() string {
@@ -58,7 +58,7 @@ func (c *CreateCreditGrantPlanFilter) GetKey() string {
 	return c.Key
 }
 
-func (c *CreateCreditGrantPlanFilter) GetVersion() *Version {
+func (c *CreateCreditGrantPlanFilter) GetVersion() *CreateCreditGrantPlanFilterVersion {
 	if c == nil {
 		return nil
 	}

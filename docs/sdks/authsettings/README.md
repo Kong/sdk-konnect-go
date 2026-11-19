@@ -1184,8 +1184,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1224,8 +1224,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1264,8 +1264,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Team Leads",
@@ -1305,8 +1305,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1345,8 +1345,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1385,8 +1385,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1425,8 +1425,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1465,8 +1465,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1505,8 +1505,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1545,8 +1545,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1585,8 +1585,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1625,8 +1625,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1665,8 +1665,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1705,8 +1705,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1745,8 +1745,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
@@ -1785,8 +1785,8 @@ func main() {
     )
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
-        Data: []components.Data{
-            components.Data{
+        Data: []components.PatchTeamGroupMappingsData{
+            components.PatchTeamGroupMappingsData{
                 TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developers",
