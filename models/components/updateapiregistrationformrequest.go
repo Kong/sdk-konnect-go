@@ -4,34 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// UpdateAPIRegistrationFormRequestType - The form's type. Must match the existing value — it can't be changed.
-type UpdateAPIRegistrationFormRequestType string
-
-const (
-	UpdateAPIRegistrationFormRequestTypeAPIRegistration UpdateAPIRegistrationFormRequestType = "api_registration"
-)
-
-func (e UpdateAPIRegistrationFormRequestType) ToPointer() *UpdateAPIRegistrationFormRequestType {
-	return &e
-}
-func (e *UpdateAPIRegistrationFormRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api_registration":
-		*e = UpdateAPIRegistrationFormRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateAPIRegistrationFormRequestType: %v", v)
-	}
-}
 
 type UpdateAPIRegistrationFormRequestStatus string
 
@@ -57,7 +31,8 @@ func (e *UpdateAPIRegistrationFormRequestStatus) IsExact() bool {
 
 type UpdateAPIRegistrationFormRequest struct {
 	// The form's type. Must match the existing value — it can't be changed.
-	Type UpdateAPIRegistrationFormRequestType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"api_registration" json:"type"`
 	// The form's name. You can rename `api_registration` forms; if the new name is already used by another form in the portal, the request fails with a 409 error.
 	//
 	Name   *string                                 `json:"name,omitempty"`
@@ -78,11 +53,8 @@ func (u *UpdateAPIRegistrationFormRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (u *UpdateAPIRegistrationFormRequest) GetType() UpdateAPIRegistrationFormRequestType {
-	if u == nil {
-		return UpdateAPIRegistrationFormRequestType("")
-	}
-	return u.Type
+func (u *UpdateAPIRegistrationFormRequest) GetType() string {
+	return "api_registration"
 }
 
 func (u *UpdateAPIRegistrationFormRequest) GetName() *string {

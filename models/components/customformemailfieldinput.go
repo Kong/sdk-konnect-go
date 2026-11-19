@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormEmailFieldInputType string
-
-const (
-	CustomFormEmailFieldInputTypeEmail CustomFormEmailFieldInputType = "email"
-)
-
-func (e CustomFormEmailFieldInputType) ToPointer() *CustomFormEmailFieldInputType {
-	return &e
-}
-func (e *CustomFormEmailFieldInputType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "email":
-		*e = CustomFormEmailFieldInputType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormEmailFieldInputType: %v", v)
-	}
-}
 
 // CustomFormEmailFieldInput - An email address field. Rejects values that aren't a valid email format.
 type CustomFormEmailFieldInput struct {
@@ -39,12 +14,13 @@ type CustomFormEmailFieldInput struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name        *string                       `json:"name,omitempty"`
-	Type        CustomFormEmailFieldInputType `json:"type"`
-	Label       string                        `json:"label"`
-	Placeholder *string                       `json:"placeholder,omitempty"`
-	Description *string                       `json:"description,omitempty"`
-	Required    *bool                         `json:"required,omitempty"`
+	Name *string `json:"name,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_       string  `const:"email" json:"type"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Required    *bool   `json:"required,omitempty"`
 }
 
 func (c CustomFormEmailFieldInput) MarshalJSON() ([]byte, error) {
@@ -65,11 +41,8 @@ func (c *CustomFormEmailFieldInput) GetName() *string {
 	return c.Name
 }
 
-func (c *CustomFormEmailFieldInput) GetType() CustomFormEmailFieldInputType {
-	if c == nil {
-		return CustomFormEmailFieldInputType("")
-	}
-	return c.Type
+func (c *CustomFormEmailFieldInput) GetType() string {
+	return "email"
 }
 
 func (c *CustomFormEmailFieldInput) GetLabel() string {

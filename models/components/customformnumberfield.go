@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormNumberFieldType string
-
-const (
-	CustomFormNumberFieldTypeNumber CustomFormNumberFieldType = "number"
-)
-
-func (e CustomFormNumberFieldType) ToPointer() *CustomFormNumberFieldType {
-	return &e
-}
-func (e *CustomFormNumberFieldType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "number":
-		*e = CustomFormNumberFieldType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormNumberFieldType: %v", v)
-	}
-}
 
 // CustomFormNumberField - A numeric field.
 type CustomFormNumberField struct {
@@ -39,12 +14,13 @@ type CustomFormNumberField struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name        string                    `json:"name"`
-	Type        CustomFormNumberFieldType `json:"type"`
-	Label       string                    `json:"label"`
-	Placeholder *string                   `json:"placeholder,omitempty"`
-	Description *string                   `json:"description,omitempty"`
-	Required    *bool                     `default:"false" json:"required"`
+	Name string `json:"name"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_       string  `const:"number" json:"type"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Required    *bool   `default:"false" json:"required"`
 	// Marks a field that comes with the form by default.
 	//
 	// Built-in fields can't be removed, retyped, or relabeled, but their
@@ -76,11 +52,8 @@ func (c *CustomFormNumberField) GetName() string {
 	return c.Name
 }
 
-func (c *CustomFormNumberField) GetType() CustomFormNumberFieldType {
-	if c == nil {
-		return CustomFormNumberFieldType("")
-	}
-	return c.Type
+func (c *CustomFormNumberField) GetType() string {
+	return "number"
 }
 
 func (c *CustomFormNumberField) GetLabel() string {

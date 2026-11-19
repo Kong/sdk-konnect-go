@@ -4,57 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormMultiSelectFieldType string
-
-const (
-	CustomFormMultiSelectFieldTypeSelect CustomFormMultiSelectFieldType = "select"
-)
-
-func (e CustomFormMultiSelectFieldType) ToPointer() *CustomFormMultiSelectFieldType {
-	return &e
-}
-func (e *CustomFormMultiSelectFieldType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "select":
-		*e = CustomFormMultiSelectFieldType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormMultiSelectFieldType: %v", v)
-	}
-}
-
-// CustomFormMultiSelectFieldMode - Multiple selection — the developer can choose more than one option.
-type CustomFormMultiSelectFieldMode string
-
-const (
-	CustomFormMultiSelectFieldModeMultiSelect CustomFormMultiSelectFieldMode = "multi_select"
-)
-
-func (e CustomFormMultiSelectFieldMode) ToPointer() *CustomFormMultiSelectFieldMode {
-	return &e
-}
-func (e *CustomFormMultiSelectFieldMode) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "multi_select":
-		*e = CustomFormMultiSelectFieldMode(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormMultiSelectFieldMode: %v", v)
-	}
-}
 
 // CustomFormMultiSelectField - A dropdown field where the developer can choose multiple options. Requires at least 2 options.
 type CustomFormMultiSelectField struct {
@@ -63,14 +14,16 @@ type CustomFormMultiSelectField struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name string                         `json:"name"`
-	Type CustomFormMultiSelectFieldType `json:"type"`
+	Name string `json:"name"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"select" json:"type"`
 	// Multiple selection — the developer can choose more than one option.
-	Mode        CustomFormMultiSelectFieldMode `json:"mode"`
-	Label       string                         `json:"label"`
-	Placeholder *string                        `json:"placeholder,omitempty"`
-	Description *string                        `json:"description,omitempty"`
-	Required    *bool                          `default:"false" json:"required"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	mode        string  `const:"multi_select" json:"mode"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Required    *bool   `default:"false" json:"required"`
 	// Marks a field that comes with the form by default.
 	//
 	// Built-in fields can't be removed, retyped, or relabeled, but their
@@ -104,18 +57,12 @@ func (c *CustomFormMultiSelectField) GetName() string {
 	return c.Name
 }
 
-func (c *CustomFormMultiSelectField) GetType() CustomFormMultiSelectFieldType {
-	if c == nil {
-		return CustomFormMultiSelectFieldType("")
-	}
-	return c.Type
+func (c *CustomFormMultiSelectField) GetType() string {
+	return "select"
 }
 
-func (c *CustomFormMultiSelectField) GetMode() CustomFormMultiSelectFieldMode {
-	if c == nil {
-		return CustomFormMultiSelectFieldMode("")
-	}
-	return c.Mode
+func (c *CustomFormMultiSelectField) GetMode() string {
+	return "multi_select"
 }
 
 func (c *CustomFormMultiSelectField) GetLabel() string {

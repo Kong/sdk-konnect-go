@@ -4,34 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// UpdateDeveloperRegistrationFormRequestType - The form's type. Must match the existing value — it can't be changed.
-type UpdateDeveloperRegistrationFormRequestType string
-
-const (
-	UpdateDeveloperRegistrationFormRequestTypeDeveloperRegistration UpdateDeveloperRegistrationFormRequestType = "developer_registration"
-)
-
-func (e UpdateDeveloperRegistrationFormRequestType) ToPointer() *UpdateDeveloperRegistrationFormRequestType {
-	return &e
-}
-func (e *UpdateDeveloperRegistrationFormRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "developer_registration":
-		*e = UpdateDeveloperRegistrationFormRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDeveloperRegistrationFormRequestType: %v", v)
-	}
-}
 
 type UpdateDeveloperRegistrationFormRequestStatus string
 
@@ -57,7 +31,8 @@ func (e *UpdateDeveloperRegistrationFormRequestStatus) IsExact() bool {
 
 type UpdateDeveloperRegistrationFormRequest struct {
 	// The form's type. Must match the existing value — it can't be changed.
-	Type   UpdateDeveloperRegistrationFormRequestType    `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                                        `const:"developer_registration" json:"type"`
 	Status *UpdateDeveloperRegistrationFormRequestStatus `json:"status,omitempty"`
 	// The form's complete set of fields — this replaces the existing array, so any field left out is removed. Must include the built-in `full_name` (type `text`) and `email` (type `email`) fields, plus exactly one `submit` field.
 	//
@@ -75,11 +50,8 @@ func (u *UpdateDeveloperRegistrationFormRequest) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (u *UpdateDeveloperRegistrationFormRequest) GetType() UpdateDeveloperRegistrationFormRequestType {
-	if u == nil {
-		return UpdateDeveloperRegistrationFormRequestType("")
-	}
-	return u.Type
+func (u *UpdateDeveloperRegistrationFormRequest) GetType() string {
+	return "developer_registration"
 }
 
 func (u *UpdateDeveloperRegistrationFormRequest) GetStatus() *UpdateDeveloperRegistrationFormRequestStatus {

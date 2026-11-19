@@ -4,57 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormSingleSelectFieldType string
-
-const (
-	CustomFormSingleSelectFieldTypeSelect CustomFormSingleSelectFieldType = "select"
-)
-
-func (e CustomFormSingleSelectFieldType) ToPointer() *CustomFormSingleSelectFieldType {
-	return &e
-}
-func (e *CustomFormSingleSelectFieldType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "select":
-		*e = CustomFormSingleSelectFieldType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormSingleSelectFieldType: %v", v)
-	}
-}
-
-// CustomFormSingleSelectFieldMode - Single selection — the developer chooses exactly one option.
-type CustomFormSingleSelectFieldMode string
-
-const (
-	CustomFormSingleSelectFieldModeSingleSelect CustomFormSingleSelectFieldMode = "single_select"
-)
-
-func (e CustomFormSingleSelectFieldMode) ToPointer() *CustomFormSingleSelectFieldMode {
-	return &e
-}
-func (e *CustomFormSingleSelectFieldMode) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "single_select":
-		*e = CustomFormSingleSelectFieldMode(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormSingleSelectFieldMode: %v", v)
-	}
-}
 
 // CustomFormSingleSelectField - A dropdown field where the developer chooses exactly one option. Requires at least 1 option.
 type CustomFormSingleSelectField struct {
@@ -63,14 +14,16 @@ type CustomFormSingleSelectField struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name string                          `json:"name"`
-	Type CustomFormSingleSelectFieldType `json:"type"`
+	Name string `json:"name"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"select" json:"type"`
 	// Single selection — the developer chooses exactly one option.
-	Mode        CustomFormSingleSelectFieldMode `json:"mode"`
-	Label       string                          `json:"label"`
-	Placeholder *string                         `json:"placeholder,omitempty"`
-	Description *string                         `json:"description,omitempty"`
-	Required    *bool                           `default:"false" json:"required"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	mode        string  `const:"single_select" json:"mode"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Required    *bool   `default:"false" json:"required"`
 	// Marks a field that comes with the form by default.
 	//
 	// Built-in fields can't be removed, retyped, or relabeled, but their
@@ -104,18 +57,12 @@ func (c *CustomFormSingleSelectField) GetName() string {
 	return c.Name
 }
 
-func (c *CustomFormSingleSelectField) GetType() CustomFormSingleSelectFieldType {
-	if c == nil {
-		return CustomFormSingleSelectFieldType("")
-	}
-	return c.Type
+func (c *CustomFormSingleSelectField) GetType() string {
+	return "select"
 }
 
-func (c *CustomFormSingleSelectField) GetMode() CustomFormSingleSelectFieldMode {
-	if c == nil {
-		return CustomFormSingleSelectFieldMode("")
-	}
-	return c.Mode
+func (c *CustomFormSingleSelectField) GetMode() string {
+	return "single_select"
 }
 
 func (c *CustomFormSingleSelectField) GetLabel() string {
