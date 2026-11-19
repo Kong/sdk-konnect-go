@@ -12667,8 +12667,8 @@ paths:
       operationId: create-destination
       summary: Create a destination
       description: |-
-        Creates an HTTP destination for organization event notifications. You can create up to 50 destinations for an organization.
-        The response includes the signing secret. Save it when you create the destination; later responses do not include it.
+        Creates a destination for organization event notifications. You can create up to 50 destinations for an organization.
+        For an HTTP destination, the response includes the signing secret. Save it when you create the destination; later responses do not include it.
       requestBody:
         $ref: '#/components/requestBodies/DestinationCreateRequest'
       responses:
@@ -34761,7 +34761,7 @@ components:
       name: destinationId
       in: path
       required: true
-      description: 'ID of the http destination, a UUID v7.'
+      description: 'ID of the destination, a UUID v7.'
       schema:
         type: string
         format: uuid
@@ -42582,7 +42582,7 @@ components:
       type: object
       properties:
         destination_ids:
-          description: IDs of 1 to 50 HTTP destinations that receive this event. Each ID must be unique.
+          description: IDs of 1 to 50 destinations that receive this event. Each ID must be unique.
           type: array
           items:
             type: string
@@ -42619,7 +42619,7 @@ components:
       type: object
       properties:
         destination_ids:
-          description: IDs of 1 to 50 HTTP destinations that receive this event. Each ID must be unique. This list replaces the current destinations.
+          description: IDs of 1 to 50 destinations that receive this event. Each ID must be unique. This list replaces the current destinations.
           type: array
           items:
             type: string
@@ -42660,7 +42660,7 @@ components:
           description: Event type sent by this subscription.
           type: string
         destination_ids:
-          description: IDs of the HTTP destinations that receive this event. Deleting a destination removes its ID from this list. The subscription is deleted if no destinations remain.
+          description: IDs of the destinations that receive this event. Deleting a destination removes its ID from this list. The subscription is deleted if no destinations remain.
           type: array
           items:
             type: string
@@ -129190,7 +129190,7 @@ components:
           schema:
             $ref: '#/components/schemas/Destination'
     DestinationWithSecretResponse:
-      description: A single http destination with its new signing secret.
+      description: A single destination with its new signing secret.
       content:
         application/json:
           schema:
@@ -133065,9 +133065,9 @@ tags:
   - name: Notifications
     description: Operations related to notifications
   - name: Org Configurations
-    description: 'Operations related to org scoped notifications and their org subscriptions. The http channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when http destinations are enabled.'
+    description: 'Operations related to org scoped notifications and their org subscriptions. The webhook channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when webhook destinations are enabled.'
   - name: Destinations
-    description: Operations related to http destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when http destinations are enabled.
+    description: Operations related to webhook destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when webhook destinations are enabled.
   - name: DCR Providers
     description: |
       Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
@@ -133579,7 +133579,7 @@ x-input-schemas:
     version: 1.6.0
     path: src/konnect/definitions/metering-and-billing/v3/openapi.yaml
   - title: Konnect Notification Hub
-    version: 1.1.2
+    version: 1.2.0
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
     version: 3.21.2
