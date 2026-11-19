@@ -44088,7 +44088,7 @@ components:
       type: object
       properties:
         enabled:
-          $ref: '#/components/schemas/SecretEnabled'
+          $ref: '#/components/schemas/UpdateSecretEnabled'
     ClientSecretList:
       type: object
       properties:
@@ -44251,6 +44251,14 @@ components:
         - client_secret_post
         - none
       x-speakeasy-unknown-values: allow
+    UpdateTokenEndpointAuthMethod:
+      description: Requested authentication method for OAuth 2.0 endpoints.
+      type: string
+      enum:
+        - private_key_jwt
+        - client_secret_post
+        - none
+      x-speakeasy-unknown-values: allow
     TrustedOrigins:
       description: A list or trusted origins to apply the CORS header on for the auth server
       type: array
@@ -44399,6 +44407,9 @@ components:
       description: 'Specifies whether the secret is enabled. If the secret is not enabled, it will not be usable during authentication phase.'
       type: boolean
       default: true
+    UpdateSecretEnabled:
+      description: 'Specifies whether the secret is enabled. If the secret is not enabled, it will not be usable during authentication phase.'
+      type: boolean
     Claim:
       type: object
       properties:
@@ -44741,11 +44752,24 @@ components:
       items:
         type: string
         format: uuid
-        uniqueItems: true
-        minItems: 0
-        maxItems: 32
       default: []
+      maxItems: 32
+      minItems: 0
       nullable: false
+      uniqueItems: true
+    UpdateDirectoryAllowedControlPlanes:
+      description: |
+        List of control plane IDs authorized to make authentication requests to this directory.
+        Maximum of 32 control planes can be specified. Use allow_all_control_planes for unrestricted access.
+        The patch keeps the stored list when the request omits this field. This schema carries no default, so the validator does not add one.
+      type: array
+      items:
+        type: string
+        format: uuid
+      maxItems: 32
+      minItems: 0
+      nullable: false
+      uniqueItems: true
     KongIdentityAllowAllControlPlanes:
       description: |
         When set to true, all control planes within the organization can make authentication requests to this directory.
@@ -44825,7 +44849,7 @@ components:
         name:
           $ref: '#/components/schemas/DirectoryName'
         allowed_control_planes:
-          $ref: '#/components/schemas/KongIdentityAllowedControlPlanes'
+          $ref: '#/components/schemas/UpdateDirectoryAllowedControlPlanes'
         allow_all_control_planes:
           description: |
             When set to true, all control planes within the organization can make authentication requests to this directory.
@@ -44833,9 +44857,9 @@ components:
           type: boolean
           nullable: false
         ttl_secs:
-          $ref: '#/components/schemas/DirectoryTTLSecs'
+          $ref: '#/components/schemas/UpdateDirectoryTTLSecs'
         negative_ttl_secs:
-          $ref: '#/components/schemas/DirectoryNegativeTTLSecs'
+          $ref: '#/components/schemas/UpdateDirectoryNegativeTTLSecs'
         labels:
           $ref: '#/components/schemas/Labels'
         vault_enabled:
@@ -45002,6 +45026,8 @@ components:
           x-sensitive: true
         expires_at:
           $ref: '#/components/schemas/ExpiresAtWritable'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
       additionalProperties: false
       required:
         - type
@@ -45374,6 +45400,25 @@ components:
       default: 600
       maximum: 86400
       minimum: 300
+    UpdateDirectoryTTLSecs:
+      description: |
+        The time in seconds that a principal will be cached in memory on a running Gateway if it is
+        successfully authenticated from this directory. Maximum is 86400 seconds (24 hours).
+        The patch keeps the stored value when the request omits this field. This schema carries no default, so the validator does not add one.
+      type: integer
+      maximum: 86400
+      minimum: 300
+    UpdateDirectoryNegativeTTLSecs:
+      description: |
+        If a running Gateway triggers a lookup for a principal that cannot be authenticated in this directory,
+        a `negative_ttl_secs` is set. The Gateway will not try to look up the principal in Konnect for `negative_ttl_secs` seconds.
+
+        A principal will be cached for `negative_ttl_secs` if it does not exist in the directory, or if the provided credentials are invalid.
+        Maximum is 86400 seconds (24 hours).
+        The patch keeps the stored value when the request omits this field. This schema carries no default, so the validator does not add one.
+      type: integer
+      maximum: 86400
+      minimum: 300
     KongDirectory:
       description: |
         A directory represents an organizational boundary for grouping principals and managing their identities.
@@ -45464,6 +45509,7 @@ components:
                 - created
                 - updated
                 - unchanged
+                - adopted
                 - inactive
             teams:
               type: object
@@ -122733,7 +122779,7 @@ components:
               allow_scopes:
                 $ref: '#/components/schemas/ClientAllowScopes'
               token_endpoint_auth_method:
-                $ref: '#/components/schemas/TokenEndpointAuthMethod'
+                $ref: '#/components/schemas/UpdateTokenEndpointAuthMethod'
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
     ReplaceClient:
@@ -133521,7 +133567,7 @@ x-input-schemas:
     version: 3.12.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.30.1
+    version: 1.30.2
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
@@ -133542,5 +133588,5 @@ x-input-schemas:
     version: 1.3.4
     path: src/konnect/definitions/service-catalog/v1/openapi.yaml
   - title: Konnect Sliver
-    version: 1.9.5
+    version: 1.9.6
     path: src/konnect/definitions/sliver/v1/openapi.yaml
