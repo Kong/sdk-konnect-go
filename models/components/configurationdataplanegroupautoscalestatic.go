@@ -9,26 +9,26 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Kind string
+type ConfigurationDataPlaneGroupAutoscaleStaticKind string
 
 const (
-	KindStatic Kind = "static"
+	ConfigurationDataPlaneGroupAutoscaleStaticKindStatic ConfigurationDataPlaneGroupAutoscaleStaticKind = "static"
 )
 
-func (e Kind) ToPointer() *Kind {
+func (e ConfigurationDataPlaneGroupAutoscaleStaticKind) ToPointer() *ConfigurationDataPlaneGroupAutoscaleStaticKind {
 	return &e
 }
-func (e *Kind) UnmarshalJSON(data []byte) error {
+func (e *ConfigurationDataPlaneGroupAutoscaleStaticKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "static":
-		*e = Kind(v)
+		*e = ConfigurationDataPlaneGroupAutoscaleStaticKind(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Kind: %v", v)
+		return fmt.Errorf("invalid value for ConfigurationDataPlaneGroupAutoscaleStaticKind: %v", v)
 	}
 }
 
@@ -36,7 +36,7 @@ func (e *Kind) UnmarshalJSON(data []byte) error {
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type ConfigurationDataPlaneGroupAutoscaleStatic struct {
-	Kind Kind `json:"kind"`
+	Kind ConfigurationDataPlaneGroupAutoscaleStaticKind `json:"kind"`
 	// Instance type name to indicate capacity.
 	InstanceType InstanceTypeName `json:"instance_type"`
 	// Number of data-planes the deployment target will contain.
@@ -54,9 +54,9 @@ func (c *ConfigurationDataPlaneGroupAutoscaleStatic) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (c *ConfigurationDataPlaneGroupAutoscaleStatic) GetKind() Kind {
+func (c *ConfigurationDataPlaneGroupAutoscaleStatic) GetKind() ConfigurationDataPlaneGroupAutoscaleStaticKind {
 	if c == nil {
-		return Kind("")
+		return ConfigurationDataPlaneGroupAutoscaleStaticKind("")
 	}
 	return c.Kind
 }

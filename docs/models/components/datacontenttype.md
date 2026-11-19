@@ -1,7 +1,6 @@
 # Datacontenttype
 
-Content type of the CloudEvents data value. Only the value "application/json" is
-allowed over HTTP.
+The media type of `data`. Always `application/json`. The event list doesn't return it.
 
 ## Example Usage
 

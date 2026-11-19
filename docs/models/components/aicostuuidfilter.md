@@ -1,0 +1,20 @@
+# AICostUUIDFilter
+
+Filters a UUID field. The filter object carries exactly one operator:
+
+- `eq`, `neq`, `in`, `nin`: compare UUIDs, ignoring case.
+- `exists`: tests whether the field has a value.
+- `and`, `or`: combine nested UUID filters.
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `Eq`                                                                                                     | `*string`                                                                                                | :heavy_minus_sign:                                                                                       | Matches a value equal to this UUID. The comparison ignores case.                                         |
+| `Neq`                                                                                                    | `*string`                                                                                                | :heavy_minus_sign:                                                                                       | Matches a value other than this UUID, or no value. The comparison ignores case.                          |
+| `In`                                                                                                     | []`string`                                                                                               | :heavy_minus_sign:                                                                                       | Matches a value equal to any of these UUIDs. The comparison ignores case.<br/><br/>1 to 100 UUIDs.       |
+| `Nin`                                                                                                    | []`string`                                                                                               | :heavy_minus_sign:                                                                                       | Matches a value equal to none of these UUIDs, or no value. The comparison ignores case.<br/><br/>1 to 100 UUIDs. |
+| `Exists`                                                                                                 | `*bool`                                                                                                  | :heavy_minus_sign:                                                                                       | `true` matches a field that has a value, and `false` matches a field without one.                        |
+| `And`                                                                                                    | [][components.AICostUUIDFilter](../../models/components/aicostuuidfilter.md)                             | :heavy_minus_sign:                                                                                       | Matches when every nested filter matches.<br/><br/>1 to 10 filters.                                      |
+| `Or`                                                                                                     | [][components.AICostUUIDFilter](../../models/components/aicostuuidfilter.md)                             | :heavy_minus_sign:                                                                                       | Matches when at least one nested filter matches.<br/><br/>1 to 10 filters.                               |

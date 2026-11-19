@@ -71,4 +71,3 @@ go:
   sdkPackageName: ""
   unionGenerics: false
   unionStrategy: left-to-right
-# Touched to re-trigger SDK generation on PR #468.

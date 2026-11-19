@@ -12,14 +12,14 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `GetCostManagementTags` function may return the following errors:
+For example, the `GetCostAttributionPlugin` function may return the following errors:
 
-| Error Type                     | Status Code | Content Type             |
-| ------------------------------ | ----------- | ------------------------ |
-| sdkerrors.UnauthorizedError    | 401         | application/problem+json |
-| sdkerrors.ForbiddenError       | 403         | application/problem+json |
-| sdkerrors.TooManyRequestsError | 429         | application/problem+json |
-| sdkerrors.SDKError             | 4XX, 5XX    | \*/\*                    |
+| Error Type                  | Status Code | Content Type             |
+| --------------------------- | ----------- | ------------------------ |
+| sdkerrors.UnauthorizedError | 401         | application/problem+json |
+| sdkerrors.ForbiddenError    | 403         | application/problem+json |
+| sdkerrors.NotFoundError     | 404         | application/problem+json |
+| sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
 
 ### Example
 
@@ -44,7 +44,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84")
 	if err != nil {
 
 		var e *sdkerrors.UnauthorizedError
@@ -59,7 +59,7 @@ func main() {
 			log.Fatal(e.Error())
 		}
 
-		var e *sdkerrors.TooManyRequestsError
+		var e *sdkerrors.NotFoundError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -112,11 +112,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84")
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.CostManagementTags != nil {
+	if res.AICostAttributionPlugin != nil {
 		// handle response
 	}
 }
@@ -146,11 +146,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84")
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.CostManagementTags != nil {
+	if res.AICostAttributionPlugin != nil {
 		// handle response
 	}
 }
@@ -279,11 +279,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84")
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.CostManagementTags != nil {
+	if res.AICostAttributionPlugin != nil {
 		// handle response
 	}
 }
@@ -309,6 +309,7 @@ For more information about the API: [Documentation for Kong Gateway and its APIs
   * [Authentication](#authentication)
   * [Pagination](#pagination)
   * [Retries](#retries)
+  * [Special Types](#special-types)
 
 <!-- End Table of Contents [toc] -->
 
@@ -394,7 +395,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx, operations.WithRetries(
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84", operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -408,7 +409,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.CostManagementTags != nil {
+	if res.AICostAttributionPlugin != nil {
 		// handle response
 	}
 }
@@ -447,17 +448,43 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84")
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.CostManagementTags != nil {
+	if res.AICostAttributionPlugin != nil {
 		// handle response
 	}
 }
 
 ```
 <!-- End Retries [retries] -->
+
+<!-- Start Special Types [types] -->
+## Special Types
+
+This SDK defines the following custom types to assist with marshalling and unmarshalling data.
+
+### Date
+
+`types.Date` is a wrapper around time.Time that allows for JSON marshaling a date string formatted as "2006-01-02".
+
+#### Usage
+
+```go
+d1 := types.NewDate(time.Now()) // returns *types.Date
+
+d2 := types.DateFromTime(time.Now()) // returns types.Date
+
+d3, err := types.NewDateFromString("2019-01-01") // returns *types.Date, error
+
+d4, err := types.DateFromString("2019-01-01") // returns types.Date, error
+
+d5 := types.MustNewDateFromString("2019-01-01") // returns *types.Date and panics on error
+
+d6 := types.MustDateFromString("2019-01-01") // returns types.Date and panics on error
+```
+<!-- End Special Types [types] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

@@ -1,5 +1,7 @@
 # PortalUpdateIdentityProviderConfig
 
+The configuration data to update for the authentication integration.
+
 
 ## Supported Types
 

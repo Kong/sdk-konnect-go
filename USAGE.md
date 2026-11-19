@@ -18,11 +18,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
+	res, err := s.AttributionPlugins.GetCostAttributionPlugin(ctx, "527bc328-6950-4662-a473-78dd7a5beb84")
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.CostManagementTags != nil {
+	if res.AICostAttributionPlugin != nil {
 		// handle response
 	}
 }

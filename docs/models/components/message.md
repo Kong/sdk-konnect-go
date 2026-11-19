@@ -1,0 +1,11 @@
+# Message
+
+The wording of the rule's alerts, or `null` when the rule uses the built-in wording.
+
+
+## Fields
+
+| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Subject`                                                                                                                              | `string`                                                                                                                               | :heavy_check_mark:                                                                                                                     | The subject line of the rule's alerts, as plain text that can contain placeholders such as `{{budget.name}}`.                          |
+| `Body`                                                                                                                                 | `string`                                                                                                                               | :heavy_check_mark:                                                                                                                     | The text of the rule's alerts, as plain text that can contain placeholders such as `{{budget.name}}`. Blank lines separate paragraphs. |
