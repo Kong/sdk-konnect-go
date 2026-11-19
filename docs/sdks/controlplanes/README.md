@@ -44,7 +44,7 @@ func main() {
             CloudGateway: sdkkonnectgo.Pointer(true),
         },
         FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
-        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Sort: components.ControlPlaneSortQueryCreatedAtDesc.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

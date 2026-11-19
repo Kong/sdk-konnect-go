@@ -14,10 +14,10 @@ incoming requests.
 aiGatewayMCPServerRouteWithMatcher := components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(components.AIGatewayMCPServerRouteWithMatcher1{/* values here */})
 ```
 
-### Two
+### AIGatewayMCPServerRouteWithMatcher2
 
 ```go
-aiGatewayMCPServerRouteWithMatcher := components.CreateAIGatewayMCPServerRouteWithMatcherTwo(components.Two{/* values here */})
+aiGatewayMCPServerRouteWithMatcher := components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher2(components.AIGatewayMCPServerRouteWithMatcher2{/* values here */})
 ```
 
 ### Three
@@ -40,8 +40,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 switch aiGatewayMCPServerRouteWithMatcher.Type {
 	case components.AIGatewayMCPServerRouteWithMatcherTypeAIGatewayMCPServerRouteWithMatcher1:
 		// aiGatewayMCPServerRouteWithMatcher.AIGatewayMCPServerRouteWithMatcher1 is populated
-	case components.AIGatewayMCPServerRouteWithMatcherTypeTwo:
-		// aiGatewayMCPServerRouteWithMatcher.Two is populated
+	case components.AIGatewayMCPServerRouteWithMatcherTypeAIGatewayMCPServerRouteWithMatcher2:
+		// aiGatewayMCPServerRouteWithMatcher.AIGatewayMCPServerRouteWithMatcher2 is populated
 	case components.AIGatewayMCPServerRouteWithMatcherTypeThree:
 		// aiGatewayMCPServerRouteWithMatcher.Three is populated
 	case components.AIGatewayMCPServerRouteWithMatcherTypeFour:

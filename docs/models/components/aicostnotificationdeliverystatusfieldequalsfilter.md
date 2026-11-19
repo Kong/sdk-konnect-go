@@ -1,0 +1,10 @@
+# AICostNotificationDeliveryStatusFieldEqualsFilter
+
+Matches a value equal to the given one.
+
+
+## Fields
+
+| Field                                                                                                                                            | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Eq`                                                                                                                                             | [components.AICostNotificationDeliveryStatusFieldEqualsFilterEq](../../models/components/aicostnotificationdeliverystatusfieldequalsfiltereq.md) | :heavy_check_mark:                                                                                                                               | The value to match.                                                                                                                              |

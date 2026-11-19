@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.20.0 and generator version 2.961.1
+// Generated from OpenAPI doc version 3.21.1 and generator version 2.961.1
 
 import (
 	"context"
@@ -57,8 +57,16 @@ func Pointer[T any](v T) *T { return &v }
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	SDKVersion string
-	// Configure which request headers are captured as cost tags on AI usage events. The configuration applies to the organization in the region the request is sent to.
-	AIGatewayCostManagementTags *AIGatewayCostManagementTags
+	// The attribution plugin turns request headers and identity claims into cost tags on an AI Gateway. These operations install, update, and remove it per AI Gateway, and list the installations.
+	AttributionPlugins *AttributionPlugins
+	// Budgets set spending limits, or exemptions from them, for parts of the organization's usage. These operations manage budgets and their notification rules, and read balances, firings, and notification events.
+	Budgets *Budgets
+	// Usage events record each call to an AI model. These operations report and list the events, total them, forecast the month's spend, and list the values seen in each field.
+	UsageEvents *UsageEvents
+	// Exports copy the organization's cost and usage data into files to download. These operations manage one-time exports and export schedules, and download the files.
+	Exports *Exports
+	// Notification channels are the email recipient lists and Slack incoming webhooks that budget alerts go to. These operations manage the channels and send test messages.
+	NotificationChannels *NotificationChannels
 	// API related to the management of Konnect AI Gateway resources.
 	AIGateways *AIGateways
 	// AI Agents registered with the AI Gateway.
@@ -607,12 +615,12 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.88.0",
+		SDKVersion: "0.89.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.88.0 2.961.1 3.20.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.88.0",
+			UserAgent:         "speakeasy-sdk/go 0.89.0 2.961.1 3.21.1 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.89.0",
 			GenVersion:        "2.961.1",
-			OpenAPIDocVersion: "3.20.0",
+			OpenAPIDocVersion: "3.21.1",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
@@ -633,7 +641,11 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.AIGatewayCostManagementTags = newAIGatewayCostManagementTags(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AttributionPlugins = newAttributionPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Budgets = newBudgets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.UsageEvents = newUsageEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Exports = newExports(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.NotificationChannels = newNotificationChannels(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGateways = newAIGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayAgents = newAIGatewayAgents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayAuthStrategies = newAIGatewayAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)

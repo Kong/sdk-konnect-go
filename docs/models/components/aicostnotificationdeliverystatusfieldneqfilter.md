@@ -1,0 +1,10 @@
+# AICostNotificationDeliveryStatusFieldNEQFilter
+
+Matches a value other than the given one.
+
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Neq`                                                                                                                                        | [components.AICostNotificationDeliveryStatusFieldNEQFilterNEQ](../../models/components/aicostnotificationdeliverystatusfieldneqfilterneq.md) | :heavy_check_mark:                                                                                                                           | The value to exclude.                                                                                                                        |
