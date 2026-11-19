@@ -8,21 +8,21 @@ import (
 	"time"
 )
 
-// Status - The current validation status of the skill. `pending` means the content has not yet been read and validated.
-type Status string
+// SkillStatus - The current validation status of the skill. `pending` means the content has not yet been read and validated.
+type SkillStatus string
 
 const (
-	StatusPending Status = "pending"
-	StatusValid   Status = "valid"
-	StatusInvalid Status = "invalid"
+	SkillStatusPending SkillStatus = "pending"
+	SkillStatusValid   SkillStatus = "valid"
+	SkillStatusInvalid SkillStatus = "invalid"
 )
 
-func (e Status) ToPointer() *Status {
+func (e SkillStatus) ToPointer() *SkillStatus {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Status) IsExact() bool {
+func (e *SkillStatus) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "pending", "valid", "invalid":
@@ -32,21 +32,21 @@ func (e *Status) IsExact() bool {
 	return false
 }
 
-// SkillStatus - The state of the most recent synchronization attempt.
-type SkillStatus string
+// SkillSyncStatusStatus - The state of the most recent synchronization attempt.
+type SkillSyncStatusStatus string
 
 const (
-	SkillStatusPending SkillStatus = "pending"
-	SkillStatusSuccess SkillStatus = "success"
-	SkillStatusFailed  SkillStatus = "failed"
+	SkillSyncStatusStatusPending SkillSyncStatusStatus = "pending"
+	SkillSyncStatusStatusSuccess SkillSyncStatusStatus = "success"
+	SkillSyncStatusStatusFailed  SkillSyncStatusStatus = "failed"
 )
 
-func (e SkillStatus) ToPointer() *SkillStatus {
+func (e SkillSyncStatusStatus) ToPointer() *SkillSyncStatusStatus {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *SkillStatus) IsExact() bool {
+func (e *SkillSyncStatusStatus) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "pending", "success", "failed":
@@ -59,7 +59,7 @@ func (e *SkillStatus) IsExact() bool {
 // SyncStatus - The outcome of the most recent attempt to fetch the skill's content from its source. `null` for sources whose content is supplied inline.
 type SyncStatus struct {
 	// The state of the most recent synchronization attempt.
-	Status SkillStatus `json:"status"`
+	Status SkillSyncStatusStatus `json:"status"`
 	// The time the synchronization reached this state.
 	Timestamp time.Time `json:"timestamp"`
 	// The reason the synchronization failed. `null` unless `status` is `failed`.
@@ -77,9 +77,9 @@ func (s *SyncStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (s *SyncStatus) GetStatus() SkillStatus {
+func (s *SyncStatus) GetStatus() SkillSyncStatusStatus {
 	if s == nil {
-		return SkillStatus("")
+		return SkillSyncStatusStatus("")
 	}
 	return s.Status
 }
@@ -118,7 +118,7 @@ type Skill struct {
 	// Where the skill's content comes from, as returned by the API. Never includes the content itself — read it through the skill contents endpoint.
 	Source SkillSource `json:"source"`
 	// The current validation status of the skill. `pending` means the content has not yet been read and validated.
-	Status Status `json:"status"`
+	Status SkillStatus `json:"status"`
 	// The outcome of the most recent attempt to fetch the skill's content from its source. `null` for sources whose content is supplied inline.
 	SyncStatus *SyncStatus `json:"sync_status"`
 	// The reason the skill failed validation. `null` unless `status` is `invalid`.
@@ -200,9 +200,9 @@ func (s *Skill) GetSourceRaw() *RawSkillSource {
 	return s.GetSource().RawSkillSource
 }
 
-func (s *Skill) GetStatus() Status {
+func (s *Skill) GetStatus() SkillStatus {
 	if s == nil {
-		return Status("")
+		return SkillStatus("")
 	}
 	return s.Status
 }

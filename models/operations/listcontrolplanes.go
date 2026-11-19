@@ -20,7 +20,7 @@ type ListControlPlanesRequest struct {
 	// Sorts a collection of control-planes. Supported sort attributes are:
 	//   - created_at
 	//
-	Sort *string `queryParam:"style=form,explode=true,name=sort"`
+	Sort *components.ControlPlaneSortQuery `queryParam:"style=form,explode=true,name=sort"`
 }
 
 func (l *ListControlPlanesRequest) GetPageSize() *int64 {
@@ -51,7 +51,7 @@ func (l *ListControlPlanesRequest) GetFilterLabels() *string {
 	return l.FilterLabels
 }
 
-func (l *ListControlPlanesRequest) GetSort() *string {
+func (l *ListControlPlanesRequest) GetSort() *components.ControlPlaneSortQuery {
 	if l == nil {
 		return nil
 	}

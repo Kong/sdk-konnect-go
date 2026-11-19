@@ -1,11 +1,20 @@
 # Type
 
-Filter using **one** of the following operators: `eq`, `oeq`
+The CloudEvents type of the event. Always `ai.usage.v1`: the event records one billable call to an AI model (an invocation).
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/operations"
+)
+
+value := operations.TypeAiUsageV1
+```
 
 
-## Fields
+## Values
 
-| Field                                         | Type                                          | Required                                      | Description                                   |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| `Eq`                                          | `*string`                                     | :heavy_minus_sign:                            | The field exactly matches the provided value. |
-| `Oeq`                                         | `*string`                                     | :heavy_minus_sign:                            | The field matches any of the provided values. |
+| Name            | Value           |
+| --------------- | --------------- |
+| `TypeAiUsageV1` | ai.usage.v1     |

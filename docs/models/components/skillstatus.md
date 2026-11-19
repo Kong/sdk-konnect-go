@@ -1,6 +1,6 @@
 # SkillStatus
 
-The state of the most recent synchronization attempt.
+The current validation status of the skill. `pending` means the content has not yet been read and validated.
 
 ## Example Usage
 
@@ -21,5 +21,5 @@ custom := components.SkillStatus("custom_value")
 | Name                 | Value                |
 | -------------------- | -------------------- |
 | `SkillStatusPending` | pending              |
-| `SkillStatusSuccess` | success              |
-| `SkillStatusFailed`  | failed               |
+| `SkillStatusValid`   | valid                |
+| `SkillStatusInvalid` | invalid              |

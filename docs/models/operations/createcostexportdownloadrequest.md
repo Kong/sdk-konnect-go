@@ -1,0 +1,9 @@
+# CreateCostExportDownloadRequest
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ExportID`                                                                                                       | `string`                                                                                                         | :heavy_check_mark:                                                                                               | The `id` of the export.                                                                                          |
+| `RequestBody`                                                                                                    | [operations.CreateCostExportDownloadRequestBody](../../models/operations/createcostexportdownloadrequestbody.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

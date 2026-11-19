@@ -1,0 +1,9 @@
+# UpsertCostBudgetRequest
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `BudgetID`                                                                                       | `string`                                                                                         | :heavy_check_mark:                                                                               | The `id` of the budget.                                                                          |
+| `RequestBody`                                                                                    | [operations.UpsertCostBudgetRequestBody](../../models/operations/upsertcostbudgetrequestbody.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
