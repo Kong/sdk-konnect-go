@@ -44916,6 +44916,19 @@ components:
           $ref: '#/components/schemas/ManagedByUpdate'
         active:
           $ref: '#/components/schemas/KongPrincipalActive'
+    CreateGroupType:
+      description: |-
+        Classifies the kind of group to create. There are three group types
+        (`group`, `team`, `project`), but only `group` and `project` are
+        mutable through this API; teams come from the organization import.
+        When omitted or null, the group is a `group`.
+      type: string
+      enum:
+        - group
+      nullable: true
+      x-enum-varnames:
+        - CreateGroupTypeGroup
+        - CreateGroupTypeProject
     CreateGroupBody:
       type: object
       properties:
@@ -44927,7 +44940,7 @@ components:
           description: |
             Type of the group. Immutable after creation.
           allOf:
-            - $ref: '#/components/schemas/KongGroupType'
+            - $ref: '#/components/schemas/CreateGroupType'
         metadata:
           $ref: '#/components/schemas/KongIdentityMetadata'
         labels:
@@ -44945,7 +44958,9 @@ components:
           $ref: '#/components/schemas/KongGroupDescription'
         type:
           description: |
-            Type of the group. Immutable after creation.
+            Type of the group. Immutable after creation. Teams come from the
+            organization import; only `group` and `project` are mutable
+            through this API.
           allOf:
             - $ref: '#/components/schemas/KongGroupType'
         metadata:
@@ -45758,6 +45773,8 @@ components:
         Teams (`team`) are nodes of the organization chart whose members are
         principals of type `user` and other `team` groups; they may carry an
         `team_manager` custom identity referencing a principal of type `user`.
+        Projects (`project`) group `user` and `agent` principals; projects
+        cannot contain groups or be members of groups.
       type: object
       properties:
         id:
@@ -46836,12 +46853,17 @@ components:
       x-speakeasy-unknown-values: allow
     KongGroupType:
       description: |-
-        Classifies the kind of group. `group` is the default policy-attachment
-        point for access across principals. `team` is a node of the
-        organization chart: its members are principals of type `user` and other
-        `team` groups, and it may carry an `owner` custom identity
-        referencing a principal of type `user`. When omitted or null, the
-        group is a `group`.
+        Classifies the kind of group. There are three group types: `group`,
+        `team`, and `project`. `group` is the default policy-attachment point
+        for access across principals. `team` is a node of the organization
+        chart: its members are principals of type `user` and other `team`
+        groups, and it may carry an `owner` custom identity referencing a
+        principal of type `user`. `project` groups `user` and `agent`
+        principals; projects cannot contain groups or be members of groups.
+        When omitted or null, the group is a `group`.
+
+        Teams come from the organization import; of the three group types,
+        only `group` and `project` are mutable through this API.
       type: string
       enum:
         - group
@@ -133567,7 +133589,7 @@ x-input-schemas:
     version: 3.12.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.30.2
+    version: 1.31.0
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
