@@ -9,7 +9,7 @@ import (
 )
 
 type TestDestinationRequest struct {
-	// ID of the http destination, a UUID v7.
+	// ID of the destination, a UUID v7.
 	DestinationID string `pathParam:"style=simple,explode=false,name=destinationId"`
 }
 

@@ -3,25 +3,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateSecretPayload - Secret to be updated
 type UpdateSecretPayload struct {
 	// Specifies whether the secret is enabled. If the secret is not enabled, it will not be usable during authentication phase.
-	Enabled *bool `default:"true" json:"enabled"`
-}
-
-func (u UpdateSecretPayload) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateSecretPayload) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 func (u *UpdateSecretPayload) GetEnabled() *bool {

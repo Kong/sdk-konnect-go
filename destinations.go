@@ -18,7 +18,7 @@ import (
 	"net/url"
 )
 
-// Destinations - Operations related to http destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when http destinations are enabled.
+// Destinations - Operations related to webhook destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when webhook destinations are enabled.
 type Destinations struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration
@@ -578,8 +578,8 @@ func (s *Destinations) ListDestinations(ctx context.Context, request operations.
 }
 
 // CreateDestination - Create a destination
-// Creates an HTTP destination for organization event notifications. You can create up to 50 destinations for an organization.
-// The response includes the signing secret. Save it when you create the destination; later responses do not include it.
+// Creates a destination for organization event notifications. You can create up to 50 destinations for an organization.
+// For an HTTP destination, the response includes the signing secret. Save it when you create the destination; later responses do not include it.
 func (s *Destinations) CreateDestination(ctx context.Context, request components.DestinationCreatePayload, opts ...operations.Option) (*operations.CreateDestinationResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{

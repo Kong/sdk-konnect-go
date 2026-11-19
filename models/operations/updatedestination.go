@@ -9,7 +9,7 @@ import (
 )
 
 type UpdateDestinationRequest struct {
-	// ID of the http destination, a UUID v7.
+	// ID of the destination, a UUID v7.
 	DestinationID string `pathParam:"style=simple,explode=false,name=destinationId"`
 	// Request body schema for updating a destination.
 	DestinationUpdatePayload components.DestinationUpdatePayload `request:"mediaType=application/json"`

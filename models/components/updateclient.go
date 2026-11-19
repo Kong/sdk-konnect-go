@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateClient - Client to be updated
 type UpdateClient struct {
 	// The name of the client
@@ -33,7 +29,7 @@ type UpdateClient struct {
 	// Specifies the scopes IDs that the client is allowed to request
 	AllowScopes []string `json:"allow_scopes,omitempty"`
 	// Requested authentication method for OAuth 2.0 endpoints.
-	TokenEndpointAuthMethod *TokenEndpointAuthMethod `default:"client_secret_post" json:"token_endpoint_auth_method"`
+	TokenEndpointAuthMethod *UpdateTokenEndpointAuthMethod `json:"token_endpoint_auth_method,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.
@@ -41,17 +37,6 @@ type UpdateClient struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]*string `json:"labels,omitempty"`
-}
-
-func (u UpdateClient) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateClient) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateClient) GetName() *string {
@@ -124,7 +109,7 @@ func (u *UpdateClient) GetAllowScopes() []string {
 	return u.AllowScopes
 }
 
-func (u *UpdateClient) GetTokenEndpointAuthMethod() *TokenEndpointAuthMethod {
+func (u *UpdateClient) GetTokenEndpointAuthMethod() *UpdateTokenEndpointAuthMethod {
 	if u == nil {
 		return nil
 	}

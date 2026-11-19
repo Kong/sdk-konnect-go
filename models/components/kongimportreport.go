@@ -11,7 +11,7 @@ type Users struct {
 	// Number of matched user principals that required no change.
 	Unchanged int64 `json:"unchanged"`
 	// Number of existing principals adopted by email instead of created.
-	Adopted *int64 `json:"adopted,omitempty"`
+	Adopted int64 `json:"adopted"`
 	// Number of previously imported principals made inactive because the file no longer carries them.
 	Inactive int64 `json:"inactive"`
 }
@@ -37,9 +37,9 @@ func (u *Users) GetUnchanged() int64 {
 	return u.Unchanged
 }
 
-func (u *Users) GetAdopted() *int64 {
+func (u *Users) GetAdopted() int64 {
 	if u == nil {
-		return nil
+		return 0
 	}
 	return u.Adopted
 }

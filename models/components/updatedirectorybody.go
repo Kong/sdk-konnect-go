@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateDirectoryBody - Request body for partially updating a directory
 type UpdateDirectoryBody struct {
 	// Human-readable name of the directory, used to identify the organizational boundary.
@@ -15,6 +11,7 @@ type UpdateDirectoryBody struct {
 	Name *string `json:"name,omitempty"`
 	// List of control plane IDs authorized to make authentication requests to this directory.
 	// Maximum of 32 control planes can be specified. Use allow_all_control_planes for unrestricted access.
+	// The patch keeps the stored list when the request omits this field. This schema carries no default, so the validator does not add one.
 	//
 	AllowedControlPlanes []string `json:"allowed_control_planes,omitempty"`
 	// When set to true, all control planes within the organization can make authentication requests to this directory.
@@ -23,15 +20,17 @@ type UpdateDirectoryBody struct {
 	AllowAllControlPlanes *bool `json:"allow_all_control_planes,omitempty"`
 	// The time in seconds that a principal will be cached in memory on a running Gateway if it is
 	// successfully authenticated from this directory. Maximum is 86400 seconds (24 hours).
+	// The patch keeps the stored value when the request omits this field. This schema carries no default, so the validator does not add one.
 	//
-	TTLSecs *int64 `default:"600" json:"ttl_secs"`
+	TTLSecs *int64 `json:"ttl_secs,omitempty"`
 	// If a running Gateway triggers a lookup for a principal that cannot be authenticated in this directory,
 	// a `negative_ttl_secs` is set. The Gateway will not try to look up the principal in Konnect for `negative_ttl_secs` seconds.
 	//
 	// A principal will be cached for `negative_ttl_secs` if it does not exist in the directory, or if the provided credentials are invalid.
 	// Maximum is 86400 seconds (24 hours).
+	// The patch keeps the stored value when the request omits this field. This schema carries no default, so the validator does not add one.
 	//
-	NegativeTTLSecs *int64 `default:"600" json:"negative_ttl_secs"`
+	NegativeTTLSecs *int64 `json:"negative_ttl_secs,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -41,17 +40,6 @@ type UpdateDirectoryBody struct {
 	// Defaults to disabled when omitted.
 	//
 	VaultEnabled *bool `json:"vault_enabled,omitempty"`
-}
-
-func (u UpdateDirectoryBody) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateDirectoryBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateDirectoryBody) GetName() *string {

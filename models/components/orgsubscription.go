@@ -16,7 +16,7 @@ type OrgSubscription struct {
 	Name string `json:"name"`
 	// Event type sent by this subscription.
 	EventType string `json:"event_type"`
-	// IDs of the HTTP destinations that receive this event. Deleting a destination removes its ID from this list. The subscription is deleted if no destinations remain.
+	// IDs of the destinations that receive this event. Deleting a destination removes its ID from this list. The subscription is deleted if no destinations remain.
 	DestinationIds []string `json:"destination_ids"`
 	// Regions for which this subscription sends notifications. `*` represents all regions.
 	Regions []NotificationRegion `json:"regions"`

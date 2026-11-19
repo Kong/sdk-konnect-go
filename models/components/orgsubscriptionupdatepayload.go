@@ -5,7 +5,7 @@ package components
 
 // OrgSubscriptionUpdatePayload - Properties of an org subscription to update. Include only the properties that you want to change. A property that you do not include keeps its current value. A property that you include replaces the current value.
 type OrgSubscriptionUpdatePayload struct {
-	// IDs of 1 to 50 HTTP destinations that receive this event. Each ID must be unique. This list replaces the current destinations.
+	// IDs of 1 to 50 destinations that receive this event. Each ID must be unique. This list replaces the current destinations.
 	DestinationIds []string `json:"destination_ids,omitempty"`
 	// Regions for which notifications are sent. Use `*` for all regions. This replaces the current regions.
 	Regions []NotificationRegion `json:"regions,omitempty"`
