@@ -5,6 +5,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -12,9 +13,9 @@ import (
 type UpdatePrincipalKeyBody struct {
 	// Human-readable name of the API key. `null` if the key has no name.
 	//
-	Name *string `json:"name,omitempty"`
+	Name optionalnullable.OptionalNullable[string] `json:"name,omitempty"`
 	// An ISO-8601 timestamp representation of entity expiration date.
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Set a key's value to `null` to remove it.
@@ -37,14 +38,14 @@ func (u *UpdatePrincipalKeyBody) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (u *UpdatePrincipalKeyBody) GetName() *string {
+func (u *UpdatePrincipalKeyBody) GetName() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}
 	return u.Name
 }
 
-func (u *UpdatePrincipalKeyBody) GetExpiresAt() *time.Time {
+func (u *UpdatePrincipalKeyBody) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
 	if u == nil {
 		return nil
 	}

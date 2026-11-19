@@ -5,6 +5,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -3138,7 +3139,7 @@ type AIGatewayAuthStrategyOpenIDConnectResponseConfig struct {
 	// Where to redirect the client when unexpected errors happen with the requests.
 	UnexpectedRedirectURI []string `json:"unexpected_redirect_uri,omitempty"`
 	// The upstream access token header.
-	UpstreamAccessTokenHeader *string `default:"authorization:bearer" json:"upstream_access_token_header"`
+	UpstreamAccessTokenHeader optionalnullable.OptionalNullable[string] `json:"upstream_access_token_header,omitempty"`
 	// The upstream access token JWK header.
 	UpstreamAccessTokenJwkHeader *string `json:"upstream_access_token_jwk_header,omitempty"`
 	// The upstream claim to header mappings.
@@ -4636,7 +4637,8 @@ func (a *AIGatewayAuthStrategyOpenIDConnectResponseConfig) GetUpstreamAccessToke
 	if a == nil {
 		return nil
 	}
-	return a.UpstreamAccessTokenHeader
+	value, _ := a.UpstreamAccessTokenHeader.Get()
+	return value
 }
 
 func (a *AIGatewayAuthStrategyOpenIDConnectResponseConfig) GetUpstreamAccessTokenJwkHeader() *string {

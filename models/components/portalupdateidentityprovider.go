@@ -7,7 +7,6 @@ package components
 type PortalUpdateIdentityProvider struct {
 	// Indicates whether the identity provider is enabled.
 	// Only one identity provider can be active at a time, such as SAML or OIDC.
-	// When omitted, the current value is left unchanged.
 	//
 	Enabled *bool `json:"enabled,omitempty"`
 	// The configuration data to update for the authentication integration.
