@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AIGatewayIdentityProviderOpenIDConnectResponseConsumerByID
+value := components.AIGatewayIdentityProviderOpenIDConnectResponseConsumerByCustomID
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.AIGatewayIdentityProviderOpenIDConnectResponseConsumerBy("custom_value")
@@ -18,6 +18,6 @@ custom := components.AIGatewayIdentityProviderOpenIDConnectResponseConsumerBy("c
 
 | Name                                                               | Value                                                              |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `AIGatewayIdentityProviderOpenIDConnectResponseConsumerByCustomID` | custom_id                                                          |
 | `AIGatewayIdentityProviderOpenIDConnectResponseConsumerByID`       | id                                                                 |
 | `AIGatewayIdentityProviderOpenIDConnectResponseConsumerByUsername` | username                                                           |
-| `AIGatewayIdentityProviderOpenIDConnectResponseConsumerByCustomID` | custom_id                                                          |
