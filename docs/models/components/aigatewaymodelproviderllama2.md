@@ -1,7 +1,14 @@
-# AIGatewayModelProviderLlama2
+# ~~AIGatewayModelProviderLlama2~~
 
-Configuration for an upstream model provider.
+Configuration for an upstream `llama2` model provider.
 
+Deprecated: the `llama2` provider is deprecated and will be removed in 3.0. Migrate each
+target by its `format` value: `ollama` maps to the `ollama` provider, `openai` maps to the
+`openai` provider with `upstream_url` set on the target, or to the `vllm` provider; `raw`
+has no replacement provider.
+
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 
 ## Fields
