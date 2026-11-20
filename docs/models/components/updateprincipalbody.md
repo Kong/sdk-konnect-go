@@ -1,6 +1,6 @@
 # UpdatePrincipalBody
 
-Principal to be updated
+Request body for updating a principal. When updating `metadata`, a present map replaces the stored map, and an absent or explicit `null` field keeps the stored map.
 
 
 ## Fields

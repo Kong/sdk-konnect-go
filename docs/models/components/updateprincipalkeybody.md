@@ -1,6 +1,6 @@
 # UpdatePrincipalKeyBody
 
-Request body for updating an API key's metadata
+Request body for updating an API key. When updating `metadata`, a present map replaces the stored map, and an absent or explicit `null` field keeps the stored map.
 
 
 ## Fields
