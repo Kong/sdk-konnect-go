@@ -19,9 +19,9 @@ custom := components.AIGatewayIdentityProviderOpenIDConnectClientAuth("custom_va
 | Name                                                                      | Value                                                                     |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `AIGatewayIdentityProviderOpenIDConnectClientAuthClientSecretBasic`       | client_secret_basic                                                       |
-| `AIGatewayIdentityProviderOpenIDConnectClientAuthClientSecretPost`        | client_secret_post                                                        |
 | `AIGatewayIdentityProviderOpenIDConnectClientAuthClientSecretJwt`         | client_secret_jwt                                                         |
-| `AIGatewayIdentityProviderOpenIDConnectClientAuthPrivateKeyJwt`           | private_key_jwt                                                           |
-| `AIGatewayIdentityProviderOpenIDConnectClientAuthTLSClientAuth`           | tls_client_auth                                                           |
-| `AIGatewayIdentityProviderOpenIDConnectClientAuthSelfSignedTLSClientAuth` | self_signed_tls_client_auth                                               |
+| `AIGatewayIdentityProviderOpenIDConnectClientAuthClientSecretPost`        | client_secret_post                                                        |
 | `AIGatewayIdentityProviderOpenIDConnectClientAuthNone`                    | none                                                                      |
+| `AIGatewayIdentityProviderOpenIDConnectClientAuthPrivateKeyJwt`           | private_key_jwt                                                           |
+| `AIGatewayIdentityProviderOpenIDConnectClientAuthSelfSignedTLSClientAuth` | self_signed_tls_client_auth                                               |
+| `AIGatewayIdentityProviderOpenIDConnectClientAuthTLSClientAuth`           | tls_client_auth                                                           |
