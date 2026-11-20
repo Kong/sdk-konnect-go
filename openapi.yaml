@@ -90660,7 +90660,12 @@ components:
       required:
         - type
     AIGatewayTargetLlama2Config:
-      description: Llama2-specific configuration for a model.
+      description: |
+        Llama2-specific configuration for a model.
+
+        Deprecated: the `llama2` provider is deprecated and will be removed in 3.0. Migrate by the
+        `format` value: `ollama` maps to the `ollama` provider, `openai` maps to the `openai` provider
+        with `upstream_url` set, or to the `vllm` provider; `raw` has no replacement provider.
       type: object
       properties:
         embeddings_dimensions:
@@ -90764,6 +90769,7 @@ components:
             - openai
             - raw
           x-speakeasy-unknown-values: allow
+      deprecated: true
       required:
         - type
         - format
@@ -102806,7 +102812,12 @@ components:
         - config
     AIGatewayModelProviderLlama2:
       description: |
-        Configuration for an upstream model provider.
+        Configuration for an upstream `llama2` model provider.
+
+        Deprecated: the `llama2` provider is deprecated and will be removed in 3.0. Migrate each
+        target by its `format` value: `ollama` maps to the `ollama` provider, `openai` maps to the
+        `openai` provider with `upstream_url` set on the target, or to the `vllm` provider; `raw`
+        has no replacement provider.
       type: object
       properties:
         type:
@@ -102840,6 +102851,7 @@ components:
               $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
           required:
             - auth
+      deprecated: true
       required:
         - type
         - display_name
@@ -137190,7 +137202,7 @@ x-input-schemas:
     version: 0.10.0
     path: src/konnect/definitions/ai-cost-management/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.26
+    version: 2.3.27
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
