@@ -87648,10 +87648,13 @@ components:
             - deny
           x-speakeasy-unknown-values: allow
         max_request_body_size:
-          description: Maximum size of request body to parse. Set to 0 for unlimited.
+          description: |
+            The maximum size, in bytes, of a request body that the gateway reads and sends to the model.
+            A request with a larger body fails. Set to 0 for no limit.        
+            If you do not set a value, the gateway uses the request size limit that the model's providers publish, 
+            with defaults to 8 MB.
+            If the targets use more than one provider, the gateway uses the highest of these limits.
           type: integer
-          default: 8388608
-          maximum: 2147483646
           minimum: 0
         model:
           type: object
@@ -87687,10 +87690,13 @@ components:
             - deny
           x-speakeasy-unknown-values: allow
         max_request_body_size:
-          description: Maximum size of request body to parse. Set to 0 for unlimited.
+          description: |
+            The maximum size, in bytes, of a request body that the gateway reads and sends to the model.
+            A request with a larger body fails. Set to 0 for no limit.        
+            If you do not set a value, the gateway uses the request size limit that the model's providers publish, 
+            with defaults to 8 MB.
+            If the targets use more than one provider, the gateway uses the highest of these limits.
           type: integer
-          default: 8388608
-          maximum: 2147483646
           minimum: 0
         balancer:
           $ref: '#/components/schemas/AIGatewayModelBalancerConfig'
@@ -137202,7 +137208,7 @@ x-input-schemas:
     version: 0.10.0
     path: src/konnect/definitions/ai-cost-management/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.27
+    version: 2.3.28
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
