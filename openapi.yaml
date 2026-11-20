@@ -137261,5 +137261,5 @@ x-input-schemas:
     version: 1.3.4
     path: src/konnect/definitions/service-catalog/v1/openapi.yaml
   - title: Konnect Sliver
-    version: 1.9.6
+    version: 1.9.7
     path: src/konnect/definitions/sliver/v1/openapi.yaml
