@@ -5,6 +5,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
@@ -27,7 +28,10 @@ var _ error = &KonnectCPLegacyUnauthorizedError{}
 
 func (e *KonnectCPLegacyUnauthorizedError) Error() string {
 	if e != nil {
-		if e.Message != nil {
+		if e.Message != nil && *e.Message != "" {
+			if e.Code != nil {
+				return fmt.Sprintf("%v: %s", *e.Code, *e.Message)
+			}
 			return *e.Message
 		}
 	}
