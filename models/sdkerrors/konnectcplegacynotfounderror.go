@@ -5,7 +5,6 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
@@ -27,15 +26,6 @@ type KonnectCPLegacyNotFoundError struct {
 var _ error = &KonnectCPLegacyNotFoundError{}
 
 func (e *KonnectCPLegacyNotFoundError) Error() string {
-	if e != nil {
-		if e.Message != nil && *e.Message != "" {
-			if e.Code != nil {
-				return fmt.Sprintf("%v: %s", *e.Code, *e.Message)
-			}
-			return *e.Message
-		}
-	}
-
 	data, _ := json.Marshal(e)
 	return string(data)
 }
