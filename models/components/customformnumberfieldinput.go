@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormNumberFieldInputType string
-
-const (
-	CustomFormNumberFieldInputTypeNumber CustomFormNumberFieldInputType = "number"
-)
-
-func (e CustomFormNumberFieldInputType) ToPointer() *CustomFormNumberFieldInputType {
-	return &e
-}
-func (e *CustomFormNumberFieldInputType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "number":
-		*e = CustomFormNumberFieldInputType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormNumberFieldInputType: %v", v)
-	}
-}
 
 // CustomFormNumberFieldInput - A numeric field.
 type CustomFormNumberFieldInput struct {
@@ -39,10 +14,11 @@ type CustomFormNumberFieldInput struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name        *string                        `json:"name,omitempty"`
-	Type        CustomFormNumberFieldInputType `json:"type"`
-	Label       string                         `json:"label"`
-	Placeholder *string                        `json:"placeholder,omitempty"`
+	Name *string `json:"name,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_       string  `const:"number" json:"type"`
+	Label       string  `json:"label"`
+	Placeholder *string `json:"placeholder,omitempty"`
 	// Must be a positive number.
 	Description *string `json:"description,omitempty"`
 	Required    *bool   `json:"required,omitempty"`
@@ -66,11 +42,8 @@ func (c *CustomFormNumberFieldInput) GetName() *string {
 	return c.Name
 }
 
-func (c *CustomFormNumberFieldInput) GetType() CustomFormNumberFieldInputType {
-	if c == nil {
-		return CustomFormNumberFieldInputType("")
-	}
-	return c.Type
+func (c *CustomFormNumberFieldInput) GetType() string {
+	return "number"
 }
 
 func (c *CustomFormNumberFieldInput) GetLabel() string {

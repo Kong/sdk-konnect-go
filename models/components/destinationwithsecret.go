@@ -16,7 +16,7 @@ const (
 	DestinationWithSecretTypeHTTP DestinationWithSecretType = "http"
 )
 
-// DestinationWithSecret - A single http destination with its new signing secret.
+// DestinationWithSecret - A single destination with its new signing secret.
 type DestinationWithSecret struct {
 	HTTPDestinationWithSecret *HTTPDestinationWithSecret `queryParam:"inline" union:"member"`
 

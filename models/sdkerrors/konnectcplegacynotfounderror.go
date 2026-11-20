@@ -26,12 +26,6 @@ type KonnectCPLegacyNotFoundError struct {
 var _ error = &KonnectCPLegacyNotFoundError{}
 
 func (e *KonnectCPLegacyNotFoundError) Error() string {
-	if e != nil {
-		if e.Message != nil {
-			return *e.Message
-		}
-	}
-
 	data, _ := json.Marshal(e)
 	return string(data)
 }

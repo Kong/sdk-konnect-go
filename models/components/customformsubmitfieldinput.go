@@ -32,33 +32,11 @@ func (e *CustomFormSubmitFieldInputName) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CustomFormSubmitFieldInputType string
-
-const (
-	CustomFormSubmitFieldInputTypeSubmit CustomFormSubmitFieldInputType = "submit"
-)
-
-func (e CustomFormSubmitFieldInputType) ToPointer() *CustomFormSubmitFieldInputType {
-	return &e
-}
-func (e *CustomFormSubmitFieldInputType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "submit":
-		*e = CustomFormSubmitFieldInputType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormSubmitFieldInputType: %v", v)
-	}
-}
-
 // CustomFormSubmitFieldInput - The form's submit button. Every form must include exactly one. Its `name` is always `submit`.
 type CustomFormSubmitFieldInput struct {
 	Name CustomFormSubmitFieldInputName `json:"name"`
-	Type CustomFormSubmitFieldInputType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"submit" json:"type"`
 	// The text displayed on the button.
 	Value string `json:"value"`
 }
@@ -81,11 +59,8 @@ func (c *CustomFormSubmitFieldInput) GetName() CustomFormSubmitFieldInputName {
 	return c.Name
 }
 
-func (c *CustomFormSubmitFieldInput) GetType() CustomFormSubmitFieldInputType {
-	if c == nil {
-		return CustomFormSubmitFieldInputType("")
-	}
-	return c.Type
+func (c *CustomFormSubmitFieldInput) GetType() string {
+	return "submit"
 }
 
 func (c *CustomFormSubmitFieldInput) GetValue() string {

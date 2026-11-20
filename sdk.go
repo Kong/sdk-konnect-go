@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.21.1 and generator version 2.961.1
+// Generated from OpenAPI doc version 3.21.2 and generator version 2.954.8
 
 import (
 	"context"
@@ -273,9 +273,9 @@ type SDK struct {
 	Mesh               *Mesh
 	// Operations related to notifications
 	Notifications *Notifications
-	// Operations related to org scoped notifications and their org subscriptions. The http channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when http destinations are enabled.
+	// Operations related to org scoped notifications and their org subscriptions. The webhook channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when webhook destinations are enabled.
 	OrgConfigurations *OrgConfigurations
-	// Operations related to http destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when http destinations are enabled.
+	// Operations related to webhook destinations and their deliveries. Only an org admin can use these operations. The destination routes exist only when webhook destinations are enabled.
 	Destinations *Destinations
 	// Resource mappings represent the link between a resource and a service.
 	// Once a resource is mapped to a service, a rich view of the resource will be presented on the service page.
@@ -617,10 +617,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.89.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.89.0 2.961.1 3.21.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.89.0 2.954.8 3.21.2 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.89.0",
-			GenVersion:        "2.961.1",
-			OpenAPIDocVersion: "3.21.1",
+			GenVersion:        "2.954.8",
+			OpenAPIDocVersion: "3.21.2",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),

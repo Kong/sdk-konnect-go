@@ -18,8 +18,8 @@ type DestinationsSDK interface {
 	// Returns the organization's destinations, with the newest destinations first. Use the event type filter to list destinations with an enabled subscription for a specific event type.
 	ListDestinations(ctx context.Context, request operations.ListDestinationsRequest, opts ...operations.Option) (*operations.ListDestinationsResponse, error)
 	// CreateDestination - Create a destination
-	// Creates an HTTP destination for organization event notifications. You can create up to 50 destinations for an organization.
-	// The response includes the signing secret. Save it when you create the destination; later responses do not include it.
+	// Creates a destination for organization event notifications. You can create up to 50 destinations for an organization.
+	// For an HTTP destination, the response includes the signing secret. Save it when you create the destination; later responses do not include it.
 	CreateDestination(ctx context.Context, request components.DestinationCreatePayload, opts ...operations.Option) (*operations.CreateDestinationResponse, error)
 	// GetDestination - Get a destination
 	// Show a destination's details. Does not return sensitive keys such as signing secret.

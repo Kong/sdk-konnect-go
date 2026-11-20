@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormContentFieldType string
-
-const (
-	CustomFormContentFieldTypeContent CustomFormContentFieldType = "content"
-)
-
-func (e CustomFormContentFieldType) ToPointer() *CustomFormContentFieldType {
-	return &e
-}
-func (e *CustomFormContentFieldType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "content":
-		*e = CustomFormContentFieldType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormContentFieldType: %v", v)
-	}
-}
 
 // CustomFormContentField - A block of Markdown content, displayed between or above the form's input fields.
 type CustomFormContentField struct {
@@ -39,8 +14,9 @@ type CustomFormContentField struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name string                     `json:"name"`
-	Type CustomFormContentFieldType `json:"type"`
+	Name string `json:"name"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"content" json:"type"`
 	// The Markdown content to display.
 	Value string `json:"value"`
 	// Marks a field that comes with the form by default.
@@ -74,11 +50,8 @@ func (c *CustomFormContentField) GetName() string {
 	return c.Name
 }
 
-func (c *CustomFormContentField) GetType() CustomFormContentFieldType {
-	if c == nil {
-		return CustomFormContentFieldType("")
-	}
-	return c.Type
+func (c *CustomFormContentField) GetType() string {
+	return "content"
 }
 
 func (c *CustomFormContentField) GetValue() string {

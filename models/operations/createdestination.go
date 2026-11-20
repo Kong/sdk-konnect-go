@@ -15,7 +15,7 @@ type CreateDestinationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A single http destination with its new signing secret.
+	// A single destination with its new signing secret.
 	DestinationWithSecret *components.DestinationWithSecret
 }
 

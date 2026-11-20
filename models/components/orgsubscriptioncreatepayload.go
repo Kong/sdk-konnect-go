@@ -5,7 +5,7 @@ package components
 
 // OrgSubscriptionCreatePayload - Defines which destinations receive an event and the regions and entities for which notifications are sent.
 type OrgSubscriptionCreatePayload struct {
-	// IDs of 1 to 50 HTTP destinations that receive this event. Each ID must be unique.
+	// IDs of 1 to 50 destinations that receive this event. Each ID must be unique.
 	DestinationIds []string `json:"destination_ids"`
 	// Regions for which notifications are sent. Use `*` for all regions.
 	Regions []NotificationRegion `json:"regions"`

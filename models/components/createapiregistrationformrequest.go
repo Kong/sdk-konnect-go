@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CreateAPIRegistrationFormRequestType string
-
-const (
-	CreateAPIRegistrationFormRequestTypeAPIRegistration CreateAPIRegistrationFormRequestType = "api_registration"
-)
-
-func (e CreateAPIRegistrationFormRequestType) ToPointer() *CreateAPIRegistrationFormRequestType {
-	return &e
-}
-func (e *CreateAPIRegistrationFormRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api_registration":
-		*e = CreateAPIRegistrationFormRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateAPIRegistrationFormRequestType: %v", v)
-	}
-}
 
 type CreateAPIRegistrationFormRequestStatus string
 
@@ -55,7 +30,8 @@ func (e *CreateAPIRegistrationFormRequestStatus) IsExact() bool {
 }
 
 type CreateAPIRegistrationFormRequest struct {
-	Type CreateAPIRegistrationFormRequestType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"api_registration" json:"type"`
 	// A unique name for the form that you choose (lowercase letters, digits, and hyphens).
 	Name   string                                  `json:"name"`
 	Status *CreateAPIRegistrationFormRequestStatus `default:"unpublished" json:"status"`
@@ -75,11 +51,8 @@ func (c *CreateAPIRegistrationFormRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CreateAPIRegistrationFormRequest) GetType() CreateAPIRegistrationFormRequestType {
-	if c == nil {
-		return CreateAPIRegistrationFormRequestType("")
-	}
-	return c.Type
+func (c *CreateAPIRegistrationFormRequest) GetType() string {
+	return "api_registration"
 }
 
 func (c *CreateAPIRegistrationFormRequest) GetName() string {

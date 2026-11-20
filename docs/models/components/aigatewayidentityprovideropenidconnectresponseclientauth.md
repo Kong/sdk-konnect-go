@@ -19,9 +19,9 @@ custom := components.AIGatewayIdentityProviderOpenIDConnectResponseClientAuth("c
 | Name                                                                              | Value                                                                             |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthClientSecretBasic`       | client_secret_basic                                                               |
-| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthClientSecretPost`        | client_secret_post                                                                |
 | `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthClientSecretJwt`         | client_secret_jwt                                                                 |
-| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthPrivateKeyJwt`           | private_key_jwt                                                                   |
-| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthTLSClientAuth`           | tls_client_auth                                                                   |
-| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthSelfSignedTLSClientAuth` | self_signed_tls_client_auth                                                       |
+| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthClientSecretPost`        | client_secret_post                                                                |
 | `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthNone`                    | none                                                                              |
+| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthPrivateKeyJwt`           | private_key_jwt                                                                   |
+| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthSelfSignedTLSClientAuth` | self_signed_tls_client_auth                                                       |
+| `AIGatewayIdentityProviderOpenIDConnectResponseClientAuthTLSClientAuth`           | tls_client_auth                                                                   |

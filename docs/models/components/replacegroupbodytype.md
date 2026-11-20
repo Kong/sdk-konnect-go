@@ -1,6 +1,8 @@
 # ReplaceGroupBodyType
 
-Type of the group. Immutable after creation.
+Type of the group. Immutable after creation. Teams come from the
+organization import; only `group` and `project` are mutable
+through this API.
 
 
 ## Example Usage

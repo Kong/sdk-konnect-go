@@ -1,5 +1,8 @@
 # KongPrincipalKey
 
+An API key associated with a principal. `metadata` is always returned in key responses; it is never required on requests.
+
+
 
 ## Fields
 
