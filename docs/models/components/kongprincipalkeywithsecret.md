@@ -1,6 +1,7 @@
 # KongPrincipalKeyWithSecret
 
-A Kong Principal Key
+An API key associated with a principal, returned at creation with its secret. `metadata` is always returned in key responses; it is never required on requests.
+
 
 
 ## Fields
