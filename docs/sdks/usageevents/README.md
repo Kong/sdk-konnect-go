@@ -152,7 +152,7 @@ Returns a page of the distinct values seen so far in one field of the organizati
 
 Subjects come back as subject references, such as `principal/{uuid}`, which the usage filters accept as they are. For `field=tags`, a request without `key` lists the tag keys, and a request with `key` lists the values of that tag.
 
-For a caller with access to the whole organization, a value stays in the list after the events that carried it leave retention or are deleted. For a caller whose access covers only particular principals or groups, the `subject` list holds only the subjects of the events of those principals and groups, so a subject leaves the list with its events. Such a caller's `groups` and `teams` lists hold only the groups the caller's access names. Every other field lists the organization's values, the same as for a caller with access to the whole organization.
+For a caller with access to the whole organization, a value stays in the list after the events that carried it leave retention or are deleted. For a caller whose access covers only particular principals or groups, the `subject` and `cost_center` lists hold only the subjects and cost centers of the events of those principals and groups, so a value leaves the list with its events. Such a caller's `groups` and `teams` lists hold only the groups the caller's access names. Every other field lists the organization's values, the same as for a caller with access to the whole organization.
 
 The service may return fewer values than requested when the page reaches its byte budget. Follow the page links to continue.
 

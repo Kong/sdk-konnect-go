@@ -127,7 +127,7 @@ func (a *AICostLimitBudgetInputWindow) GetAnchoredAt() string {
 	return a.AnchoredAt
 }
 
-// AICostLimitBudgetInputPosture - How the budget responds when spend reaches its limit. With `advisory`, the default, requests continue past the limit.
+// AICostLimitBudgetInputPosture - What the budget does when spend reaches its limit. `advisory`, the default, changes nothing at the limit. `enforce` belongs to budget blocking, which is in development: a request that sets it fails with `400` unless the organization has budget blocking turned on or a replacement keeps a budget's stored `enforce`. No request is refused because of `posture`.
 type AICostLimitBudgetInputPosture string
 
 const (
@@ -178,7 +178,7 @@ type AICostLimitBudgetInput struct {
 	//
 	// A replacement can change it, which can move the current window's start and end.
 	Window AICostLimitBudgetInputWindow `json:"window"`
-	// How the budget responds when spend reaches its limit. With `advisory`, the default, requests continue past the limit.
+	// What the budget does when spend reaches its limit. `advisory`, the default, changes nothing at the limit. `enforce` belongs to budget blocking, which is in development: a request that sets it fails with `400` unless the organization has budget blocking turned on or a replacement keeps a budget's stored `enforce`. No request is refused because of `posture`.
 	Posture *AICostLimitBudgetInputPosture `default:"advisory" json:"posture"`
 }
 

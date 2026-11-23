@@ -4,7 +4,6 @@
 package components
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -90,23 +89,22 @@ type AICostExportInput2SchemaVersion int64
 
 const (
 	AICostExportInput2SchemaVersionOne AICostExportInput2SchemaVersion = 1
+	AICostExportInput2SchemaVersionTwo AICostExportInput2SchemaVersion = 2
 )
 
 func (e AICostExportInput2SchemaVersion) ToPointer() *AICostExportInput2SchemaVersion {
 	return &e
 }
-func (e *AICostExportInput2SchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportInput2SchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
-	switch v {
-	case 1:
-		*e = AICostExportInput2SchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AICostExportInput2SchemaVersion: %v", v)
-	}
+	return false
 }
 
 type AICostExportInput2 struct {
@@ -142,7 +140,7 @@ type AICostExportInput2 struct {
 	//
 	// An IANA time zone name as the time zone database spells it, such as `Europe/Budapest`. Offsets such as `+02:00` aren't accepted. Defaults to `UTC`.
 	TimeZone *string `default:"UTC" json:"time_zone"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`
@@ -312,23 +310,22 @@ type AICostExportInputSchemaVersion int64
 
 const (
 	AICostExportInputSchemaVersionOne AICostExportInputSchemaVersion = 1
+	AICostExportInputSchemaVersionTwo AICostExportInputSchemaVersion = 2
 )
 
 func (e AICostExportInputSchemaVersion) ToPointer() *AICostExportInputSchemaVersion {
 	return &e
 }
-func (e *AICostExportInputSchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportInputSchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
-	switch v {
-	case 1:
-		*e = AICostExportInputSchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AICostExportInputSchemaVersion: %v", v)
-	}
+	return false
 }
 
 type AICostExportInput1 struct {
@@ -364,7 +361,7 @@ type AICostExportInput1 struct {
 	//
 	// An IANA time zone name as the time zone database spells it, such as `Europe/Budapest`. Offsets such as `+02:00` aren't accepted. Defaults to `UTC`.
 	TimeZone *string `default:"UTC" json:"time_zone"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`

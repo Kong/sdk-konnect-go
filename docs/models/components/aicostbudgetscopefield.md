@@ -10,6 +10,7 @@ A usage field that a budget scope can filter on, and that `each` can split a bud
 - `model`: the model that the provider reports as served.
 - `provider`: the provider that served the invocation.
 - `request_mode`: how the invocation was served: `stream`, `oneshot`, or `realtime`.
+- `cost_center`: the person's Kong Identity cost center at the time of the request, as the gateway reported it. It isn't the ledger of a funded budget. Usage has at most one, so `neq` and `nin` match only usage with a cost center, and the budgets that `each` derives from it don't overlap.
 
 A scope can also use `tags.<key>` for the value of one tag.
 
@@ -39,3 +40,4 @@ custom := components.AICostBudgetScopeField("custom_value")
 | `AICostBudgetScopeFieldModel`       | model                               |
 | `AICostBudgetScopeFieldProvider`    | provider                            |
 | `AICostBudgetScopeFieldRequestMode` | request_mode                        |
+| `AICostBudgetScopeFieldCostCenter`  | cost_center                         |
