@@ -529,7 +529,7 @@ func (p *Provenance) GetAdditionalProperties() map[string]string {
 	return p.AdditionalProperties
 }
 
-// Data - The usage the event reports: `quantities`, `reported_cost`, `reported_cache_cost`, `context`, and `optimization`, plus the `provenance`, `tags`, `groups`, and `teams` that attribute it.
+// Data - The usage the event reports: `quantities`, `reported_cost`, `reported_cache_cost`, `context`, and `optimization`, plus the `provenance`, `tags`, `groups`, `teams`, and `cost_center` that attribute it.
 type Data struct {
 	// The quantities the invocation used, keyed by kind. Each value is a count in the kind's unit, such as tokens or milliseconds.
 	//
@@ -567,6 +567,10 @@ type Data struct {
 	//
 	// At most 200 references, each listed once. A UUID is lowercase. The service sorts the references lexicographically.
 	Teams []string `json:"teams,omitempty"`
+	// The person's Kong Identity cost center at the time of the request, as the producer supplies it. The service doesn't verify it, and it keeps the value of the request after the person's cost center changes. A `cost-center` tag is an ordinary tag and doesn't fill `cost_center`.
+	//
+	// Every caller who can read the usage reads the value, whatever their Kong Identity permissions. It has 1 to 256 characters, none of them a control character, and keeps its text and case. An omitted value means the usage has no cost center.
+	CostCenter *string `json:"cost_center,omitempty"`
 }
 
 func (d *Data) GetQuantities() Quantities {
@@ -632,6 +636,13 @@ func (d *Data) GetTeams() []string {
 	return d.Teams
 }
 
+func (d *Data) GetCostCenter() *string {
+	if d == nil {
+		return nil
+	}
+	return d.CostCenter
+}
+
 type AICostUsageEvent struct {
 	// The CloudEvents version that the event follows. Always `1.0`.
 	Specversion Specversion `json:"specversion"`
@@ -665,7 +676,7 @@ type AICostUsageEvent struct {
 	Traceparent *string `json:"traceparent,omitempty"`
 	// The W3C Trace Context `tracestate` that goes with `traceparent`.
 	Tracestate *string `json:"tracestate,omitempty"`
-	// The usage the event reports: `quantities`, `reported_cost`, `reported_cache_cost`, `context`, and `optimization`, plus the `provenance`, `tags`, `groups`, and `teams` that attribute it.
+	// The usage the event reports: `quantities`, `reported_cost`, `reported_cache_cost`, `context`, and `optimization`, plus the `provenance`, `tags`, `groups`, `teams`, and `cost_center` that attribute it.
 	Data Data `json:"data"`
 }
 

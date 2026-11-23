@@ -5,7 +5,7 @@ The field whose values to list:
 - `subject`: subject references, such as `principal/{uuid}` or `oidc/{sub}`.
 - `tags`: the tag keys, or with `key`, the values of that tag.
 - `groups`, `teams`, `consumer_group_ids`: the individual group references, team references, or consumer group IDs from the events' lists.
-- `source`, `provider`, `model`, `model_id`, `region`, `client`, `service_id`, `route_id`, `consumer_id`, `application_id`: the field's values.
+- `source`, `provider`, `model`, `model_id`, `region`, `client`, `cost_center`, `service_id`, `route_id`, `consumer_id`, `application_id`: the field's values.
 
 ## Example Usage
 
@@ -33,6 +33,7 @@ custom := operations.Field("custom_value")
 | `FieldModelID`          | model_id                |
 | `FieldRegion`           | region                  |
 | `FieldClient`           | client                  |
+| `FieldCostCenter`       | cost_center             |
 | `FieldGroups`           | groups                  |
 | `FieldTeams`            | teams                   |
 | `FieldServiceID`        | service_id              |

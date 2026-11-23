@@ -1,8 +1,6 @@
 # SchemaVersion
 
-The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
-
-Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
+The schema version of each export's data files within the dataset, which fixes their columns and values.
 
 ## Example Usage
 
@@ -12,6 +10,9 @@ import (
 )
 
 value := components.SchemaVersionOne
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.SchemaVersion(999)
 ```
 
 
@@ -20,3 +21,4 @@ value := components.SchemaVersionOne
 | Name               | Value              |
 | ------------------ | ------------------ |
 | `SchemaVersionOne` | 1                  |
+| `SchemaVersionTwo` | 2                  |

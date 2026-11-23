@@ -1,9 +1,6 @@
 # AICostExportSchemaVersion
 
-A version of an export's data files within its dataset: their columns and the values those columns hold. A change to either ships as a new schema version, so the files of a schema version never change. Each dataset counts its schema versions from `1` on its own. For `focus`, a schema version applies within the chosen FOCUS version. Each dataset offers these schema versions:
-
-- `usage_events`: `1`.
-- `focus`: `1`.
+The schema version of the data files within the dataset, which fixes their columns and values.
 
 ## Example Usage
 
@@ -13,6 +10,9 @@ import (
 )
 
 value := components.AICostExportSchemaVersionOne
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.AICostExportSchemaVersion(999)
 ```
 
 
@@ -21,3 +21,4 @@ value := components.AICostExportSchemaVersionOne
 | Name                           | Value                          |
 | ------------------------------ | ------------------------------ |
 | `AICostExportSchemaVersionOne` | 1                              |
+| `AICostExportSchemaVersionTwo` | 2                              |

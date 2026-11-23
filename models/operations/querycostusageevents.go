@@ -99,6 +99,8 @@ func (e *Measures) IsExact() bool {
 // A key of the form `tags.<key>` filters on the value of that tag, and each value it compares has at most 256 characters, none of them a control character. Group filters compare complete group references, `principal/{uuid}`, `consumer_group/{uuid}`, or `oidc/{group}`, and an OIDC group must match in text and case. Team filters compare complete team references, `principal/{uuid}`. `eq`, `neq`, `in`, and `nin` compare strings case-sensitively, and `contains` and `ncontains` ignore case. Gateway IDs compare case-insensitively.
 //
 // `time`, `reported_cost`, and `tokens` can't be filtered here, and `starts_at` and `ends_at` set the time range instead. A key that names one of them, or an unknown field, isn't accepted.
+//
+// `and` and `or` nest at most 100 levels deep, counting the field's filter object as the first level. Each compared value or list of values binds one statement parameter, and a tag filter can bind one more for its key. Filters that need more than 1,000 statement parameters, counting the few that the query binds itself, aren't accepted.
 type Filters struct {
 	// Filters on the event's `source`, which identifies the producer: a gateway's control plane, as `//control-planes/{uuid}`, or the principal that reported the event, as `//principals/{uuid}`.
 	Source *components.AICostStringFilter `json:"source,omitempty"`
@@ -120,6 +122,8 @@ type Filters struct {
 	Region *components.AICostStringFilter `json:"region,omitempty"`
 	// Filters on the tool that made the call, as a normalized identifier such as `claude_code`.
 	Client *components.AICostStringFilter `json:"client,omitempty"`
+	// Filters on the person's Kong Identity cost center at the time of the request, as the producer supplied it. Usage without a cost center has none, so `{ "exists": false }` selects it.
+	CostCenter *components.AICostStringFilter `json:"cost_center,omitempty"`
 	// Filters on the gateway service's ID.
 	ServiceID *components.AICostUUIDFilter `json:"service_id,omitempty"`
 	// Filters on the gateway route's ID.
@@ -218,6 +222,13 @@ func (f *Filters) GetClient() *components.AICostStringFilter {
 		return nil
 	}
 	return f.Client
+}
+
+func (f *Filters) GetCostCenter() *components.AICostStringFilter {
+	if f == nil {
+		return nil
+	}
+	return f.CostCenter
 }
 
 func (f *Filters) GetServiceID() *components.AICostUUIDFilter {
@@ -404,7 +415,7 @@ type QueryCostUsageEventsRequestBody struct {
 	TimeZone *string `json:"time_zone,omitempty"`
 	// The dimensions to group the events by. Each group gets its own totals. An event without a value for a dimension goes into that dimension's `null` group, so unattributed usage is the `null` group of `subject`. With `group` or `team`, an event counts fully under each of its groups or teams, so their totals can add up to more than the events' overall total. Without `dimensions`, the response has a single group.
 	//
-	// At most 2 dimensions, each named once, from `subject`, `subject_id`, `subject_type`, `provider`, `model`, `model_id`, `request_mode`, `region`, `client`, `source`, `group`, `team`, `service_id`, `route_id`, `consumer_id`, `application_id`, `tags.<key>`. `tags.<key>` groups by the value of one tag.
+	// At most 2 dimensions, each named once, from `subject`, `subject_id`, `subject_type`, `provider`, `model`, `model_id`, `request_mode`, `region`, `client`, `cost_center`, `source`, `group`, `team`, `service_id`, `route_id`, `consumer_id`, `application_id`, `tags.<key>`. `tags.<key>` groups by the value of one tag.
 	Dimensions []string `json:"dimensions,omitempty"`
 	// The totals to compute for each group and bucket.
 	//
@@ -421,6 +432,8 @@ type QueryCostUsageEventsRequestBody struct {
 	// A key of the form `tags.<key>` filters on the value of that tag, and each value it compares has at most 256 characters, none of them a control character. Group filters compare complete group references, `principal/{uuid}`, `consumer_group/{uuid}`, or `oidc/{group}`, and an OIDC group must match in text and case. Team filters compare complete team references, `principal/{uuid}`. `eq`, `neq`, `in`, and `nin` compare strings case-sensitively, and `contains` and `ncontains` ignore case. Gateway IDs compare case-insensitively.
 	//
 	// `time`, `reported_cost`, and `tokens` can't be filtered here, and `starts_at` and `ends_at` set the time range instead. A key that names one of them, or an unknown field, isn't accepted.
+	//
+	// `and` and `or` nest at most 100 levels deep, counting the field's filter object as the first level. Each compared value or list of values binds one statement parameter, and a tag filter can bind one more for its key. Filters that need more than 1,000 statement parameters, counting the few that the query binds itself, aren't accepted.
 	Filters *Filters `json:"filters,omitempty"`
 	// The order of the groups, as sort keys in priority order. A key names a measure, which sorts the groups by their total over the whole range, or a requested dimension. The service adds the requested dimensions, ascending, as tiebreakers so the order is unique, and `null` dimension values sort last.
 	//

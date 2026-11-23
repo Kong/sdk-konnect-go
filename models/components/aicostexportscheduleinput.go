@@ -4,7 +4,6 @@
 package components
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -133,30 +132,29 @@ func (e *AICostExportScheduleInput2Dataset) IsExact() bool {
 	return false
 }
 
-// AICostExportScheduleInputSchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
+// AICostExportScheduleInput2SchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 //
 // Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-type AICostExportScheduleInputSchemaVersion int64
+type AICostExportScheduleInput2SchemaVersion int64
 
 const (
-	AICostExportScheduleInputSchemaVersionOne AICostExportScheduleInputSchemaVersion = 1
+	AICostExportScheduleInput2SchemaVersionOne AICostExportScheduleInput2SchemaVersion = 1
+	AICostExportScheduleInput2SchemaVersionTwo AICostExportScheduleInput2SchemaVersion = 2
 )
 
-func (e AICostExportScheduleInputSchemaVersion) ToPointer() *AICostExportScheduleInputSchemaVersion {
+func (e AICostExportScheduleInput2SchemaVersion) ToPointer() *AICostExportScheduleInput2SchemaVersion {
 	return &e
 }
-func (e *AICostExportScheduleInputSchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportScheduleInput2SchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
-	switch v {
-	case 1:
-		*e = AICostExportScheduleInputSchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AICostExportScheduleInputSchemaVersion: %v", v)
-	}
+	return false
 }
 
 type AICostExportScheduleInput2 struct {
@@ -187,12 +185,12 @@ type AICostExportScheduleInput2 struct {
 	// The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 	//
 	// Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-	SchemaVersion *AICostExportScheduleInputSchemaVersion `default:"1" json:"schema_version"`
+	SchemaVersion *AICostExportScheduleInput2SchemaVersion `default:"1" json:"schema_version"`
 	// The FOCUS options of each export.
 	//
 	// Required when `dataset` is `focus`, and isn't accepted for any other dataset.
 	Focus *AICostFocusOptionsInput `json:"focus,omitempty"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`
@@ -261,7 +259,7 @@ func (a *AICostExportScheduleInput2) GetDataset() AICostExportScheduleInput2Data
 	return a.Dataset
 }
 
-func (a *AICostExportScheduleInput2) GetSchemaVersion() *AICostExportScheduleInputSchemaVersion {
+func (a *AICostExportScheduleInput2) GetSchemaVersion() *AICostExportScheduleInput2SchemaVersion {
 	if a == nil {
 		return nil
 	}
@@ -422,30 +420,29 @@ func (e *AICostExportScheduleInputDataset) IsExact() bool {
 	return false
 }
 
-// SchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
+// AICostExportScheduleInputSchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 //
 // Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-type SchemaVersion int64
+type AICostExportScheduleInputSchemaVersion int64
 
 const (
-	SchemaVersionOne SchemaVersion = 1
+	AICostExportScheduleInputSchemaVersionOne AICostExportScheduleInputSchemaVersion = 1
+	AICostExportScheduleInputSchemaVersionTwo AICostExportScheduleInputSchemaVersion = 2
 )
 
-func (e SchemaVersion) ToPointer() *SchemaVersion {
+func (e AICostExportScheduleInputSchemaVersion) ToPointer() *AICostExportScheduleInputSchemaVersion {
 	return &e
 }
-func (e *SchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportScheduleInputSchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
-	switch v {
-	case 1:
-		*e = SchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SchemaVersion: %v", v)
-	}
+	return false
 }
 
 type AICostExportScheduleInput1 struct {
@@ -476,12 +473,12 @@ type AICostExportScheduleInput1 struct {
 	// The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 	//
 	// Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-	SchemaVersion *SchemaVersion `default:"1" json:"schema_version"`
+	SchemaVersion *AICostExportScheduleInputSchemaVersion `default:"1" json:"schema_version"`
 	// The FOCUS options of each export.
 	//
 	// Required when `dataset` is `focus`, and isn't accepted for any other dataset.
 	Focus *AICostFocusOptionsInput `json:"focus,omitempty"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`
@@ -550,7 +547,7 @@ func (a *AICostExportScheduleInput1) GetDataset() AICostExportScheduleInputDatas
 	return a.Dataset
 }
 
-func (a *AICostExportScheduleInput1) GetSchemaVersion() *SchemaVersion {
+func (a *AICostExportScheduleInput1) GetSchemaVersion() *AICostExportScheduleInputSchemaVersion {
 	if a == nil {
 		return nil
 	}

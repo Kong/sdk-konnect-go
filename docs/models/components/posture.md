@@ -1,6 +1,6 @@
 # Posture
 
-How the budget responds when spend reaches its limit.
+What the budget does when spend reaches its limit.
 
 ## Example Usage
 

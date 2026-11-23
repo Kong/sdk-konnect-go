@@ -16,6 +16,12 @@ type GatewayUnauthorizedError struct {
 var _ error = &GatewayUnauthorizedError{}
 
 func (e *GatewayUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
