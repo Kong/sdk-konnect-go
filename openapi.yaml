@@ -18,7 +18,7 @@ info:
     A feature whose `x-min-runtime-version` is greater than
     `info.x-latest-public-runtime-version` is not generally available yet and
     will be excluded from publicly available deliverables, exactly as if it were
-    marked `x-internal` and `x-unstable`.
+    marked `x-internal`.
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
@@ -137213,7 +137213,7 @@ x-input-schemas:
     version: 0.10.0
     path: src/konnect/definitions/ai-cost-management/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.31
+    version: 2.3.32
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -137234,7 +137234,7 @@ x-input-schemas:
     version: 2.1.5
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.17
+    version: 1.3.18
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.12.0
