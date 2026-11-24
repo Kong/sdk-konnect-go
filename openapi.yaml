@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.21.5
+  version: 3.21.6
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -137327,7 +137327,7 @@ x-input-schemas:
     version: 1.2.0
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.21.5
+    version: 3.21.6
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.4
