@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.21.4
+  version: 3.21.5
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -127641,6 +127641,11 @@ components:
                 description: ID of the audit log destination.
                 type: string
                 format: uuid
+              include_principal_name:
+                description: Whether to include the principal name in the audit log entries sent to the webhook.
+                type: boolean
+                example: true
+                default: false
     PortalUpdateTeam:
       description: Update a team in a portal.
       content:
@@ -134595,6 +134600,11 @@ components:
                 description: ID of the audit log destination.
                 type: string
                 format: uuid
+              include_principal_name:
+                description: Whether to include the principal name in the audit log entries sent to the webhook.
+                type: boolean
+                example: true
+                default: false
     PortalAuditLogWebhookStatus:
       description: Get response for portal audit log webhook status
       content:
@@ -137317,7 +137327,7 @@ x-input-schemas:
     version: 1.2.0
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.21.4
+    version: 3.21.5
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.4
