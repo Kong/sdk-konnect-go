@@ -7,72 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelBalancerLowestUsageConfigFailoverCriteria - **`http_400` requires a minimum runtime version of `2.3`**.
-//
-// **`http_401` requires a minimum runtime version of `2.3`**.
-//
-// **`http_402` requires a minimum runtime version of `2.3`**.
-//
-// **`http_405` requires a minimum runtime version of `2.3`**.
-//
-// **`http_408` requires a minimum runtime version of `2.3`**.
-//
-// **`http_409` requires a minimum runtime version of `2.3`**.
-//
-// **`http_413` requires a minimum runtime version of `2.3`**.
-//
-// **`http_415` requires a minimum runtime version of `2.3`**.
-//
-// **`http_422` requires a minimum runtime version of `2.3`**.
-//
-// **`http_522` requires a minimum runtime version of `2.3`**.
-//
-// **`http_529` requires a minimum runtime version of `2.3`**.
-//
-// **`http_5xx` requires a minimum runtime version of `2.3`**.
-type AIGatewayModelBalancerLowestUsageConfigFailoverCriteria string
-
-const (
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaError         AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "error"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp400       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_400"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp401       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_401"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp402       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_402"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp403       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_403"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp404       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_404"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp405       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_405"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp408       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_408"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp409       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_409"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp413       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_413"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp415       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_415"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp422       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_422"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp429       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_429"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp500       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_500"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp502       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_502"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp503       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_503"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp504       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_504"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp522       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_522"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp529       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_529"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaHttp5xx       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "http_5xx"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaInvalidHeader AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "invalid_header"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaNonIdempotent AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "non_idempotent"
-	AIGatewayModelBalancerLowestUsageConfigFailoverCriteriaTimeout       AIGatewayModelBalancerLowestUsageConfigFailoverCriteria = "timeout"
-)
-
-func (e AIGatewayModelBalancerLowestUsageConfigFailoverCriteria) ToPointer() *AIGatewayModelBalancerLowestUsageConfigFailoverCriteria {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AIGatewayModelBalancerLowestUsageConfigFailoverCriteria) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "error", "http_400", "http_401", "http_402", "http_403", "http_404", "http_405", "http_408", "http_409", "http_413", "http_415", "http_422", "http_429", "http_500", "http_502", "http_503", "http_504", "http_522", "http_529", "http_5xx", "invalid_header", "non_idempotent", "timeout":
-			return true
-		}
-	}
-	return false
-}
-
 // TokensCountStrategy - Methodology to use for token usage calculation.
 type TokensCountStrategy string
 
@@ -104,7 +38,7 @@ type AIGatewayModelBalancerLowestUsageConfig struct {
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
 	FailTimeout *int64 `default:"10000" json:"fail_timeout"`
 	// Specifies in which cases an upstream response should be failover to the next target. Each option in the array is equivalent to the function of https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream
-	FailoverCriteria []AIGatewayModelBalancerLowestUsageConfigFailoverCriteria `json:"failover_criteria,omitempty"`
+	FailoverCriteria []AIGatewayFailoverCriteria `json:"failover_criteria,omitempty"`
 	// Number of unsuccessful attempts to communicate with a target that should occur in the duration defined by `fail_timeout` before the target is considered unavailable. The zero value disables the circuit breaker. What is considered an unsuccessful attempt is defined by `failover_criteria`. Note the cases of `error`, `timeout` and `invalid_header` are always considered unsuccessful attempts, while the cases of `http_403` and `http_404` are never considered unsuccessful attempts.
 	MaxFails    *int64 `default:"0" json:"max_fails"`
 	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
@@ -144,7 +78,7 @@ func (a *AIGatewayModelBalancerLowestUsageConfig) GetFailTimeout() *int64 {
 	return a.FailTimeout
 }
 
-func (a *AIGatewayModelBalancerLowestUsageConfig) GetFailoverCriteria() []AIGatewayModelBalancerLowestUsageConfigFailoverCriteria {
+func (a *AIGatewayModelBalancerLowestUsageConfig) GetFailoverCriteria() []AIGatewayFailoverCriteria {
 	if a == nil {
 		return nil
 	}
