@@ -99864,7 +99864,21 @@ components:
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
         datastores:
-          $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
+          description: |-
+            The Datastores this auth strategy references. At most one datastore of each supported type
+            can be specified (`token-vault` or `redis-ee`). A `token-vault` Datastore holds the credential
+            storage and is required when `token_vault` is set.
+
+            **Requires a minimum runtime version of `2.3`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayDatastoreRef'
+          example:
+            - name: vault-konnect-prod
+            - name: shared-redis
+          maxItems: 2
+          minItems: 1
+          x-min-runtime-version: '2.3'
         type:
           type: string
           const: key-auth
@@ -99973,7 +99987,21 @@ components:
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
         datastores:
-          $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
+          description: |-
+            The Datastores this auth strategy references. At most one datastore of each supported type
+            can be specified (`token-vault` or `redis-ee`). A `token-vault` Datastore holds the credential
+            storage and is required when `token_vault` is set.
+
+            **Requires a minimum runtime version of `2.3`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayDatastoreRef'
+          example:
+            - name: vault-konnect-prod
+            - name: shared-redis
+          maxItems: 2
+          minItems: 1
+          x-min-runtime-version: '2.3'
         type:
           type: string
           const: openid-connect
@@ -105916,7 +105944,21 @@ components:
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
         datastores:
-          $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
+          description: |-
+            The Datastores this auth strategy references. At most one datastore of each supported type
+            can be specified (`token-vault` or `redis-ee`). A `token-vault` Datastore holds the credential
+            storage and is required when `token_vault` is set.
+
+            **Requires a minimum runtime version of `2.3`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayDatastoreRef'
+          example:
+            - name: vault-konnect-prod
+            - name: shared-redis
+          maxItems: 2
+          minItems: 1
+          x-min-runtime-version: '2.3'
         type:
           type: string
           const: key-auth
@@ -106034,7 +106076,21 @@ components:
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
         datastores:
-          $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
+          description: |-
+            The Datastores this auth strategy references. At most one datastore of each supported type
+            can be specified (`token-vault` or `redis-ee`). A `token-vault` Datastore holds the credential
+            storage and is required when `token_vault` is set.
+
+            **Requires a minimum runtime version of `2.3`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayDatastoreRef'
+          example:
+            - name: vault-konnect-prod
+            - name: shared-redis
+          maxItems: 2
+          minItems: 1
+          x-min-runtime-version: '2.3'
         type:
           type: string
           const: openid-connect
@@ -136886,7 +136942,7 @@ x-input-schemas:
     version: 0.11.0
     path: src/konnect/definitions/ai-cost-management/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.4.5
+    version: 2.4.6
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
