@@ -25,6 +25,24 @@ func (e EmailTemplateVariableName) ToPointer() *EmailTemplateVariableName {
 	return &e
 }
 
+// EmailTemplateVariableNameValues returns every known EmailTemplateVariableName value in schema order.
+func EmailTemplateVariableNameValues() []EmailTemplateVariableName {
+	return []EmailTemplateVariableName{
+		EmailTemplateVariableNamePortalDisplayName,
+		EmailTemplateVariableNamePortalDomain,
+		EmailTemplateVariableNameDeveloperEmail,
+		EmailTemplateVariableNameDeveloperFullname,
+		EmailTemplateVariableNameDevPortalReplyTo,
+		EmailTemplateVariableNameDeveloperStatus,
+		EmailTemplateVariableNameAPIDocumentationURL,
+		EmailTemplateVariableNameAPIName,
+		EmailTemplateVariableNameAPIVersion,
+		EmailTemplateVariableNameApplicationName,
+		EmailTemplateVariableNameCredentialName,
+		EmailTemplateVariableNameCredentialExpiresAt,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EmailTemplateVariableName) IsExact() bool {
 	if e != nil {

@@ -16,6 +16,15 @@ func (e AppType) ToPointer() *AppType {
 	return &e
 }
 
+// AppTypeValues returns every known AppType value in schema order.
+func AppTypeValues() []AppType {
+	return []AppType{
+		AppTypeSandbox,
+		AppTypeStripe,
+		AppTypeExternalInvoicing,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AppType) IsExact() bool {
 	if e != nil {

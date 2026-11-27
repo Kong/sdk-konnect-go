@@ -19,6 +19,14 @@ func (e ControlPlaneAddOnOwnerType) ToPointer() *ControlPlaneAddOnOwnerType {
 	return &e
 }
 
+// ControlPlaneAddOnOwnerTypeValues returns every known ControlPlaneAddOnOwnerType value in schema order.
+func ControlPlaneAddOnOwnerTypeValues() []ControlPlaneAddOnOwnerType {
+	return []ControlPlaneAddOnOwnerType{
+		ControlPlaneAddOnOwnerTypeAPI,
+		ControlPlaneAddOnOwnerTypeAi,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ControlPlaneAddOnOwnerType) IsExact() bool {
 	if e != nil {

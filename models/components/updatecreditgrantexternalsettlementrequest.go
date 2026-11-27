@@ -16,6 +16,15 @@ func (e CreditPurchasePaymentSettlementStatus) ToPointer() *CreditPurchasePaymen
 	return &e
 }
 
+// CreditPurchasePaymentSettlementStatusValues returns every known CreditPurchasePaymentSettlementStatus value in schema order.
+func CreditPurchasePaymentSettlementStatusValues() []CreditPurchasePaymentSettlementStatus {
+	return []CreditPurchasePaymentSettlementStatus{
+		CreditPurchasePaymentSettlementStatusPending,
+		CreditPurchasePaymentSettlementStatusAuthorized,
+		CreditPurchasePaymentSettlementStatusSettled,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreditPurchasePaymentSettlementStatus) IsExact() bool {
 	if e != nil {

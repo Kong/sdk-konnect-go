@@ -15,6 +15,14 @@ func (e CreateApplicationRegistrationRequestStatus) ToPointer() *CreateApplicati
 	return &e
 }
 
+// CreateApplicationRegistrationRequestStatusValues returns every known CreateApplicationRegistrationRequestStatus value in schema order.
+func CreateApplicationRegistrationRequestStatusValues() []CreateApplicationRegistrationRequestStatus {
+	return []CreateApplicationRegistrationRequestStatus{
+		CreateApplicationRegistrationRequestStatusApproved,
+		CreateApplicationRegistrationRequestStatusPending,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateApplicationRegistrationRequestStatus) IsExact() bool {
 	if e != nil {

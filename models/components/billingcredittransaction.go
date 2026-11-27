@@ -22,6 +22,16 @@ func (e BillingCreditTransactionType) ToPointer() *BillingCreditTransactionType 
 	return &e
 }
 
+// BillingCreditTransactionTypeValues returns every known BillingCreditTransactionType value in schema order.
+func BillingCreditTransactionTypeValues() []BillingCreditTransactionType {
+	return []BillingCreditTransactionType{
+		BillingCreditTransactionTypeFunded,
+		BillingCreditTransactionTypeConsumed,
+		BillingCreditTransactionTypeExpired,
+		BillingCreditTransactionTypeVoided,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingCreditTransactionType) IsExact() bool {
 	if e != nil {

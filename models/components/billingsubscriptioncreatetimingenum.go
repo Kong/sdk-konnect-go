@@ -20,6 +20,13 @@ const (
 func (e BillingSubscriptionCreateTimingEnum) ToPointer() *BillingSubscriptionCreateTimingEnum {
 	return &e
 }
+
+// BillingSubscriptionCreateTimingEnumValues returns every known BillingSubscriptionCreateTimingEnum value in schema order.
+func BillingSubscriptionCreateTimingEnumValues() []BillingSubscriptionCreateTimingEnum {
+	return []BillingSubscriptionCreateTimingEnum{
+		BillingSubscriptionCreateTimingEnumImmediate,
+	}
+}
 func (e *BillingSubscriptionCreateTimingEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

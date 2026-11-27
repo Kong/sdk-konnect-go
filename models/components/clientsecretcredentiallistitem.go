@@ -19,6 +19,13 @@ const (
 func (e ClientSecretCredentialListItemType) ToPointer() *ClientSecretCredentialListItemType {
 	return &e
 }
+
+// ClientSecretCredentialListItemTypeValues returns every known ClientSecretCredentialListItemType value in schema order.
+func ClientSecretCredentialListItemTypeValues() []ClientSecretCredentialListItemType {
+	return []ClientSecretCredentialListItemType{
+		ClientSecretCredentialListItemTypeClientSecret,
+	}
+}
 func (e *ClientSecretCredentialListItemType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

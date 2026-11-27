@@ -20,6 +20,13 @@ const (
 func (e MetricsProviderRegionFilterByField2Field) ToPointer() *MetricsProviderRegionFilterByField2Field {
 	return &e
 }
+
+// MetricsProviderRegionFilterByField2FieldValues returns every known MetricsProviderRegionFilterByField2Field value in schema order.
+func MetricsProviderRegionFilterByField2FieldValues() []MetricsProviderRegionFilterByField2Field {
+	return []MetricsProviderRegionFilterByField2Field{
+		MetricsProviderRegionFilterByField2FieldProviderRegion,
+	}
+}
 func (e *MetricsProviderRegionFilterByField2Field) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -75,6 +82,13 @@ const (
 
 func (e MetricsProviderRegionFilterByFieldField) ToPointer() *MetricsProviderRegionFilterByFieldField {
 	return &e
+}
+
+// MetricsProviderRegionFilterByFieldFieldValues returns every known MetricsProviderRegionFilterByFieldField value in schema order.
+func MetricsProviderRegionFilterByFieldFieldValues() []MetricsProviderRegionFilterByFieldField {
+	return []MetricsProviderRegionFilterByFieldField{
+		MetricsProviderRegionFilterByFieldFieldProviderRegion,
+	}
 }
 func (e *MetricsProviderRegionFilterByFieldField) UnmarshalJSON(data []byte) error {
 	var v string

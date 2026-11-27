@@ -21,6 +21,14 @@ const (
 func (e DeletePortalQueryParamForce) ToPointer() *DeletePortalQueryParamForce {
 	return &e
 }
+
+// DeletePortalQueryParamForceValues returns every known DeletePortalQueryParamForce value in schema order.
+func DeletePortalQueryParamForceValues() []DeletePortalQueryParamForce {
+	return []DeletePortalQueryParamForce{
+		DeletePortalQueryParamForceTrue,
+		DeletePortalQueryParamForceFalse,
+	}
+}
 func (e *DeletePortalQueryParamForce) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

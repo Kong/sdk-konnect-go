@@ -21,6 +21,13 @@ const (
 func (e CreateChargeUsageBasedRequestType) ToPointer() *CreateChargeUsageBasedRequestType {
 	return &e
 }
+
+// CreateChargeUsageBasedRequestTypeValues returns every known CreateChargeUsageBasedRequestType value in schema order.
+func CreateChargeUsageBasedRequestTypeValues() []CreateChargeUsageBasedRequestType {
+	return []CreateChargeUsageBasedRequestType{
+		CreateChargeUsageBasedRequestTypeUsageBased,
+	}
+}
 func (e *CreateChargeUsageBasedRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -207,6 +214,14 @@ func (e CreateChargeUsageBasedRequestSettlementMode) ToPointer() *CreateChargeUs
 	return &e
 }
 
+// CreateChargeUsageBasedRequestSettlementModeValues returns every known CreateChargeUsageBasedRequestSettlementMode value in schema order.
+func CreateChargeUsageBasedRequestSettlementModeValues() []CreateChargeUsageBasedRequestSettlementMode {
+	return []CreateChargeUsageBasedRequestSettlementMode{
+		CreateChargeUsageBasedRequestSettlementModeCreditThenInvoice,
+		CreateChargeUsageBasedRequestSettlementModeCreditOnly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateChargeUsageBasedRequestSettlementMode) IsExact() bool {
 	if e != nil {
@@ -231,6 +246,14 @@ const (
 
 func (e CreateChargeUsageBasedRequestTaxBehavior) ToPointer() *CreateChargeUsageBasedRequestTaxBehavior {
 	return &e
+}
+
+// CreateChargeUsageBasedRequestTaxBehaviorValues returns every known CreateChargeUsageBasedRequestTaxBehavior value in schema order.
+func CreateChargeUsageBasedRequestTaxBehaviorValues() []CreateChargeUsageBasedRequestTaxBehavior {
+	return []CreateChargeUsageBasedRequestTaxBehavior{
+		CreateChargeUsageBasedRequestTaxBehaviorInclusive,
+		CreateChargeUsageBasedRequestTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -600,6 +623,14 @@ func (e CreateChargeUsageBasedRequestConversionOperation) ToPointer() *CreateCha
 	return &e
 }
 
+// CreateChargeUsageBasedRequestConversionOperationValues returns every known CreateChargeUsageBasedRequestConversionOperation value in schema order.
+func CreateChargeUsageBasedRequestConversionOperationValues() []CreateChargeUsageBasedRequestConversionOperation {
+	return []CreateChargeUsageBasedRequestConversionOperation{
+		CreateChargeUsageBasedRequestConversionOperationDivide,
+		CreateChargeUsageBasedRequestConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateChargeUsageBasedRequestConversionOperation) IsExact() bool {
 	if e != nil {
@@ -626,6 +657,16 @@ const (
 
 func (e CreateChargeUsageBasedRequestRoundingMode) ToPointer() *CreateChargeUsageBasedRequestRoundingMode {
 	return &e
+}
+
+// CreateChargeUsageBasedRequestRoundingModeValues returns every known CreateChargeUsageBasedRequestRoundingMode value in schema order.
+func CreateChargeUsageBasedRequestRoundingModeValues() []CreateChargeUsageBasedRequestRoundingMode {
+	return []CreateChargeUsageBasedRequestRoundingMode{
+		CreateChargeUsageBasedRequestRoundingModeCeiling,
+		CreateChargeUsageBasedRequestRoundingModeFloor,
+		CreateChargeUsageBasedRequestRoundingModeHalfUp,
+		CreateChargeUsageBasedRequestRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

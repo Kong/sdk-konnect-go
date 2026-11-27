@@ -19,6 +19,14 @@ func (e Type) ToPointer() *Type {
 	return &e
 }
 
+// TypeValues returns every known Type value in schema order.
+func TypeValues() []Type {
+	return []Type{
+		TypeEmail,
+		TypeSlack,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Type) IsExact() bool {
 	if e != nil {

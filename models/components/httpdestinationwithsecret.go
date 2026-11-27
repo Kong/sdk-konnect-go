@@ -19,6 +19,13 @@ const (
 func (e HTTPDestinationWithSecretType) ToPointer() *HTTPDestinationWithSecretType {
 	return &e
 }
+
+// HTTPDestinationWithSecretTypeValues returns every known HTTPDestinationWithSecretType value in schema order.
+func HTTPDestinationWithSecretTypeValues() []HTTPDestinationWithSecretType {
+	return []HTTPDestinationWithSecretType{
+		HTTPDestinationWithSecretTypeHTTP,
+	}
+}
 func (e *HTTPDestinationWithSecretType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

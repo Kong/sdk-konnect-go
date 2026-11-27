@@ -45,6 +45,13 @@ const (
 func (e PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType) ToPointer() *PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType {
 	return &e
 }
+
+// PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentTypeValues returns every known PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType value in schema order.
+func PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentTypeValues() []PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType {
+	return []PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType{
+		PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentTypeAwsResourceEndpointAttachment,
+	}
+}
 func (e *PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

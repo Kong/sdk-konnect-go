@@ -17,6 +17,14 @@ func (e BillingSubscriptionEditTimingEnum) ToPointer() *BillingSubscriptionEditT
 	return &e
 }
 
+// BillingSubscriptionEditTimingEnumValues returns every known BillingSubscriptionEditTimingEnum value in schema order.
+func BillingSubscriptionEditTimingEnumValues() []BillingSubscriptionEditTimingEnum {
+	return []BillingSubscriptionEditTimingEnum{
+		BillingSubscriptionEditTimingEnumImmediate,
+		BillingSubscriptionEditTimingEnumNextBillingCycle,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionEditTimingEnum) IsExact() bool {
 	if e != nil {

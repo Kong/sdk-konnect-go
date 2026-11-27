@@ -20,6 +20,15 @@ func (e CreateAIGatewayRequestDeploymentType) ToPointer() *CreateAIGatewayReques
 	return &e
 }
 
+// CreateAIGatewayRequestDeploymentTypeValues returns every known CreateAIGatewayRequestDeploymentType value in schema order.
+func CreateAIGatewayRequestDeploymentTypeValues() []CreateAIGatewayRequestDeploymentType {
+	return []CreateAIGatewayRequestDeploymentType{
+		CreateAIGatewayRequestDeploymentTypeHybrid,
+		CreateAIGatewayRequestDeploymentTypeManaged,
+		CreateAIGatewayRequestDeploymentTypeServerless,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateAIGatewayRequestDeploymentType) IsExact() bool {
 	if e != nil {

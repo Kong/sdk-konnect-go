@@ -27,6 +27,19 @@ func (e PrivateDNSState) ToPointer() *PrivateDNSState {
 	return &e
 }
 
+// PrivateDNSStateValues returns every known PrivateDNSState value in schema order.
+func PrivateDNSStateValues() []PrivateDNSState {
+	return []PrivateDNSState{
+		PrivateDNSStateCreated,
+		PrivateDNSStateInitializing,
+		PrivateDNSStatePendingAssociation,
+		PrivateDNSStateReady,
+		PrivateDNSStateError,
+		PrivateDNSStateTerminating,
+		PrivateDNSStateTerminated,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PrivateDNSState) IsExact() bool {
 	if e != nil {

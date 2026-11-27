@@ -20,6 +20,13 @@ const (
 func (e BillingChargeRealizationDetailedLineUsageBasedType) ToPointer() *BillingChargeRealizationDetailedLineUsageBasedType {
 	return &e
 }
+
+// BillingChargeRealizationDetailedLineUsageBasedTypeValues returns every known BillingChargeRealizationDetailedLineUsageBasedType value in schema order.
+func BillingChargeRealizationDetailedLineUsageBasedTypeValues() []BillingChargeRealizationDetailedLineUsageBasedType {
+	return []BillingChargeRealizationDetailedLineUsageBasedType{
+		BillingChargeRealizationDetailedLineUsageBasedTypeUsageBased,
+	}
+}
 func (e *BillingChargeRealizationDetailedLineUsageBasedType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -168,6 +175,14 @@ const (
 
 func (e BillingChargeRealizationDetailedLineUsageBasedCategory) ToPointer() *BillingChargeRealizationDetailedLineUsageBasedCategory {
 	return &e
+}
+
+// BillingChargeRealizationDetailedLineUsageBasedCategoryValues returns every known BillingChargeRealizationDetailedLineUsageBasedCategory value in schema order.
+func BillingChargeRealizationDetailedLineUsageBasedCategoryValues() []BillingChargeRealizationDetailedLineUsageBasedCategory {
+	return []BillingChargeRealizationDetailedLineUsageBasedCategory{
+		BillingChargeRealizationDetailedLineUsageBasedCategoryRegular,
+		BillingChargeRealizationDetailedLineUsageBasedCategoryCommitment,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

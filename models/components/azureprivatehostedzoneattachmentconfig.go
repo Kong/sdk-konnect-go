@@ -18,6 +18,13 @@ const (
 func (e AzurePrivateHostedZoneType) ToPointer() *AzurePrivateHostedZoneType {
 	return &e
 }
+
+// AzurePrivateHostedZoneTypeValues returns every known AzurePrivateHostedZoneType value in schema order.
+func AzurePrivateHostedZoneTypeValues() []AzurePrivateHostedZoneType {
+	return []AzurePrivateHostedZoneType{
+		AzurePrivateHostedZoneTypeAzurePrivateHostedZoneAttachment,
+	}
+}
 func (e *AzurePrivateHostedZoneType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

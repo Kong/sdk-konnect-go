@@ -19,6 +19,13 @@ const (
 func (e CreateOAuthCredentialGrantType) ToPointer() *CreateOAuthCredentialGrantType {
 	return &e
 }
+
+// CreateOAuthCredentialGrantTypeValues returns every known CreateOAuthCredentialGrantType value in schema order.
+func CreateOAuthCredentialGrantTypeValues() []CreateOAuthCredentialGrantType {
+	return []CreateOAuthCredentialGrantType{
+		CreateOAuthCredentialGrantTypeAuthorizationCode,
+	}
+}
 func (e *CreateOAuthCredentialGrantType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

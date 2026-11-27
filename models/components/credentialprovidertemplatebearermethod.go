@@ -15,6 +15,14 @@ func (e CredentialProviderTemplateBearerMethod) ToPointer() *CredentialProviderT
 	return &e
 }
 
+// CredentialProviderTemplateBearerMethodValues returns every known CredentialProviderTemplateBearerMethod value in schema order.
+func CredentialProviderTemplateBearerMethodValues() []CredentialProviderTemplateBearerMethod {
+	return []CredentialProviderTemplateBearerMethod{
+		CredentialProviderTemplateBearerMethodHeader,
+		CredentialProviderTemplateBearerMethodForm,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CredentialProviderTemplateBearerMethod) IsExact() bool {
 	if e != nil {

@@ -20,6 +20,14 @@ func (e ControlPlaneType) ToPointer() *ControlPlaneType {
 	return &e
 }
 
+// ControlPlaneTypeValues returns every known ControlPlaneType value in schema order.
+func ControlPlaneTypeValues() []ControlPlaneType {
+	return []ControlPlaneType{
+		ControlPlaneTypeAPIGateway,
+		ControlPlaneTypeAiGateway,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ControlPlaneType) IsExact() bool {
 	if e != nil {

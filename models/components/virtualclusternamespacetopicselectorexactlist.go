@@ -21,6 +21,14 @@ func (e VirtualClusterNamespaceTopicSelectorExactListConflict) ToPointer() *Virt
 	return &e
 }
 
+// VirtualClusterNamespaceTopicSelectorExactListConflictValues returns every known VirtualClusterNamespaceTopicSelectorExactListConflict value in schema order.
+func VirtualClusterNamespaceTopicSelectorExactListConflictValues() []VirtualClusterNamespaceTopicSelectorExactListConflict {
+	return []VirtualClusterNamespaceTopicSelectorExactListConflict{
+		VirtualClusterNamespaceTopicSelectorExactListConflictWarn,
+		VirtualClusterNamespaceTopicSelectorExactListConflictIgnore,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VirtualClusterNamespaceTopicSelectorExactListConflict) IsExact() bool {
 	if e != nil {

@@ -25,6 +25,18 @@ func (e FormResponseEntryType) ToPointer() *FormResponseEntryType {
 	return &e
 }
 
+// FormResponseEntryTypeValues returns every known FormResponseEntryType value in schema order.
+func FormResponseEntryTypeValues() []FormResponseEntryType {
+	return []FormResponseEntryType{
+		FormResponseEntryTypeText,
+		FormResponseEntryTypeEmail,
+		FormResponseEntryTypeNumber,
+		FormResponseEntryTypeTextarea,
+		FormResponseEntryTypeSelect,
+		FormResponseEntryTypeCheckbox,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *FormResponseEntryType) IsExact() bool {
 	if e != nil {

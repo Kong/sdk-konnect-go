@@ -53,6 +53,52 @@ func (e RoleName) ToPointer() *RoleName {
 	return &e
 }
 
+// RoleNameValues returns every known RoleName value in schema order.
+func RoleNameValues() []RoleName {
+	return []RoleName{
+		RoleNameAdmin,
+		RoleNameAppearanceMaintainer,
+		RoleNameApplicationRegistration,
+		RoleNameCertificateAdmin,
+		RoleNameCloudGatewayClusterAdmin,
+		RoleNameCloudGatewayClusterViewer,
+		RoleNameConsumerAdmin,
+		RoleNameConnector,
+		RoleNameCreator,
+		RoleNameDebugSessionCreator,
+		RoleNameDeployer,
+		RoleNameDiscoveryAdmin,
+		RoleNameDiscoveryViewer,
+		RoleNameEditor,
+		RoleNameGatewayServiceAdmin,
+		RoleNameIntegrationAdmin,
+		RoleNameIntegrationViewer,
+		RoleNameKeyAdmin,
+		RoleNameMaintainer,
+		RoleNameNetworkAdmin,
+		RoleNameNetworkCreator,
+		RoleNameNetworkViewer,
+		RoleNamePluginAdmin,
+		RoleNamePluginsAdmin,
+		RoleNameProductPublisher,
+		RoleNamePublisher,
+		RoleNameRouteAdmin,
+		RoleNameSniAdmin,
+		RoleNameScorecardAdmin,
+		RoleNameScorecardViewer,
+		RoleNameServiceAdmin,
+		RoleNameServiceCreator,
+		RoleNameServiceViewer,
+		RoleNameUpstreamAdmin,
+		RoleNameVaultAdmin,
+		RoleNameViewer,
+		RoleNameRegistrationApprover,
+		RoleNameContentEditor,
+		RoleNameAddOnAdmin,
+		RoleNameAddOnViewer,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *RoleName) IsExact() bool {
 	if e != nil {
@@ -88,6 +134,26 @@ func (e EntityTypeName) ToPointer() *EntityTypeName {
 	return &e
 }
 
+// EntityTypeNameValues returns every known EntityTypeName value in schema order.
+func EntityTypeNameValues() []EntityTypeName {
+	return []EntityTypeName{
+		EntityTypeNameAddOns,
+		EntityTypeNameApIs,
+		EntityTypeNameAPIProducts,
+		EntityTypeNameApplicationAuthStrategies,
+		EntityTypeNameAuditLogs,
+		EntityTypeNameControlPlanes,
+		EntityTypeNameDashboards,
+		EntityTypeNameDcrProviders,
+		EntityTypeNameMeshControlPlanes,
+		EntityTypeNameNetworks,
+		EntityTypeNamePortals,
+		EntityTypeNameReports,
+		EntityTypeNameServiceHub,
+		EntityTypeNameAuthServers,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EntityTypeName) IsExact() bool {
 	if e != nil {
@@ -114,6 +180,19 @@ const (
 
 func (e AssignRoleEntityRegion) ToPointer() *AssignRoleEntityRegion {
 	return &e
+}
+
+// AssignRoleEntityRegionValues returns every known AssignRoleEntityRegion value in schema order.
+func AssignRoleEntityRegionValues() []AssignRoleEntityRegion {
+	return []AssignRoleEntityRegion{
+		AssignRoleEntityRegionUs,
+		AssignRoleEntityRegionEu,
+		AssignRoleEntityRegionAu,
+		AssignRoleEntityRegionMe,
+		AssignRoleEntityRegionIn,
+		AssignRoleEntityRegionSg,
+		AssignRoleEntityRegionWildcard,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

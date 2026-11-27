@@ -19,6 +19,13 @@ const (
 func (e CreateChargeCostBasisDynamicType) ToPointer() *CreateChargeCostBasisDynamicType {
 	return &e
 }
+
+// CreateChargeCostBasisDynamicTypeValues returns every known CreateChargeCostBasisDynamicType value in schema order.
+func CreateChargeCostBasisDynamicTypeValues() []CreateChargeCostBasisDynamicType {
+	return []CreateChargeCostBasisDynamicType{
+		CreateChargeCostBasisDynamicTypeDynamic,
+	}
+}
 func (e *CreateChargeCostBasisDynamicType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

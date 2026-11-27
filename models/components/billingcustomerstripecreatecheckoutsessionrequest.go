@@ -22,6 +22,14 @@ func (e BillingAddressCollection) ToPointer() *BillingAddressCollection {
 	return &e
 }
 
+// BillingAddressCollectionValues returns every known BillingAddressCollection value in schema order.
+func BillingAddressCollectionValues() []BillingAddressCollection {
+	return []BillingAddressCollection{
+		BillingAddressCollectionAuto,
+		BillingAddressCollectionRequired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingAddressCollection) IsExact() bool {
 	if e != nil {
@@ -45,6 +53,14 @@ const (
 
 func (e Address) ToPointer() *Address {
 	return &e
+}
+
+// AddressValues returns every known Address value in schema order.
+func AddressValues() []Address {
+	return []Address{
+		AddressAuto,
+		AddressNever,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -72,6 +88,14 @@ func (e BillingCustomerStripeCreateCheckoutSessionRequestName) ToPointer() *Bill
 	return &e
 }
 
+// BillingCustomerStripeCreateCheckoutSessionRequestNameValues returns every known BillingCustomerStripeCreateCheckoutSessionRequestName value in schema order.
+func BillingCustomerStripeCreateCheckoutSessionRequestNameValues() []BillingCustomerStripeCreateCheckoutSessionRequestName {
+	return []BillingCustomerStripeCreateCheckoutSessionRequestName{
+		BillingCustomerStripeCreateCheckoutSessionRequestNameAuto,
+		BillingCustomerStripeCreateCheckoutSessionRequestNameNever,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingCustomerStripeCreateCheckoutSessionRequestName) IsExact() bool {
 	if e != nil {
@@ -95,6 +119,14 @@ const (
 
 func (e Shipping) ToPointer() *Shipping {
 	return &e
+}
+
+// ShippingValues returns every known Shipping value in schema order.
+func ShippingValues() []Shipping {
+	return []Shipping{
+		ShippingAuto,
+		ShippingNever,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -168,6 +200,14 @@ func (e BillingCustomerStripeCreateCheckoutSessionRequestPosition) ToPointer() *
 	return &e
 }
 
+// BillingCustomerStripeCreateCheckoutSessionRequestPositionValues returns every known BillingCustomerStripeCreateCheckoutSessionRequestPosition value in schema order.
+func BillingCustomerStripeCreateCheckoutSessionRequestPositionValues() []BillingCustomerStripeCreateCheckoutSessionRequestPosition {
+	return []BillingCustomerStripeCreateCheckoutSessionRequestPosition{
+		BillingCustomerStripeCreateCheckoutSessionRequestPositionAuto,
+		BillingCustomerStripeCreateCheckoutSessionRequestPositionHidden,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingCustomerStripeCreateCheckoutSessionRequestPosition) IsExact() bool {
 	if e != nil {
@@ -207,6 +247,14 @@ func (e Promotions) ToPointer() *Promotions {
 	return &e
 }
 
+// PromotionsValues returns every known Promotions value in schema order.
+func PromotionsValues() []Promotions {
+	return []Promotions{
+		PromotionsAuto,
+		PromotionsNone,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Promotions) IsExact() bool {
 	if e != nil {
@@ -230,6 +278,14 @@ const (
 
 func (e TermsOfService) ToPointer() *TermsOfService {
 	return &e
+}
+
+// TermsOfServiceValues returns every known TermsOfService value in schema order.
+func TermsOfServiceValues() []TermsOfService {
+	return []TermsOfService{
+		TermsOfServiceNone,
+		TermsOfServiceRequired,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -386,6 +442,14 @@ func (e UIMode) ToPointer() *UIMode {
 	return &e
 }
 
+// UIModeValues returns every known UIMode value in schema order.
+func UIModeValues() []UIMode {
+	return []UIMode{
+		UIModeEmbedded,
+		UIModeHosted,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UIMode) IsExact() bool {
 	if e != nil {
@@ -413,6 +477,15 @@ func (e RedirectOnCompletion) ToPointer() *RedirectOnCompletion {
 	return &e
 }
 
+// RedirectOnCompletionValues returns every known RedirectOnCompletion value in schema order.
+func RedirectOnCompletionValues() []RedirectOnCompletion {
+	return []RedirectOnCompletion{
+		RedirectOnCompletionAlways,
+		RedirectOnCompletionIfRequired,
+		RedirectOnCompletionNever,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *RedirectOnCompletion) IsExact() bool {
 	if e != nil {
@@ -436,6 +509,14 @@ const (
 
 func (e Required) ToPointer() *Required {
 	return &e
+}
+
+// RequiredValues returns every known Required value in schema order.
+func RequiredValues() []Required {
+	return []Required{
+		RequiredIfSupported,
+		RequiredNever,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

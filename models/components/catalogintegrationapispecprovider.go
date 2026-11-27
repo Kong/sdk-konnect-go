@@ -17,6 +17,13 @@ const (
 func (e CatalogIntegrationAPISpecProviderType) ToPointer() *CatalogIntegrationAPISpecProviderType {
 	return &e
 }
+
+// CatalogIntegrationAPISpecProviderTypeValues returns every known CatalogIntegrationAPISpecProviderType value in schema order.
+func CatalogIntegrationAPISpecProviderTypeValues() []CatalogIntegrationAPISpecProviderType {
+	return []CatalogIntegrationAPISpecProviderType{
+		CatalogIntegrationAPISpecProviderTypeSimple,
+	}
+}
 func (e *CatalogIntegrationAPISpecProviderType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -41,6 +48,15 @@ const (
 
 func (e CatalogIntegrationAPISpecProviderDefinition) ToPointer() *CatalogIntegrationAPISpecProviderDefinition {
 	return &e
+}
+
+// CatalogIntegrationAPISpecProviderDefinitionValues returns every known CatalogIntegrationAPISpecProviderDefinition value in schema order.
+func CatalogIntegrationAPISpecProviderDefinitionValues() []CatalogIntegrationAPISpecProviderDefinition {
+	return []CatalogIntegrationAPISpecProviderDefinition{
+		CatalogIntegrationAPISpecProviderDefinitionString,
+		CatalogIntegrationAPISpecProviderDefinitionNumber,
+		CatalogIntegrationAPISpecProviderDefinitionBoolean,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

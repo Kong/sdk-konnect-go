@@ -20,6 +20,15 @@ func (e Format) ToPointer() *Format {
 	return &e
 }
 
+// FormatValues returns every known Format value in schema order.
+func FormatValues() []Format {
+	return []Format{
+		FormatOllama,
+		FormatOpenai,
+		FormatRaw,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Format) IsExact() bool {
 	if e != nil {

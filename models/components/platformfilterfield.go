@@ -25,6 +25,24 @@ func (e PlatformFilterField) ToPointer() *PlatformFilterField {
 	return &e
 }
 
+// PlatformFilterFieldValues returns every known PlatformFilterField value in schema order.
+func PlatformFilterFieldValues() []PlatformFilterField {
+	return []PlatformFilterField{
+		PlatformFilterFieldControlPlane,
+		PlatformFilterFieldDataPlaneNodeVersion,
+		PlatformFilterFieldEnv,
+		PlatformFilterFieldGatewayService,
+		PlatformFilterFieldHostname,
+		PlatformFilterFieldPlugin,
+		PlatformFilterFieldPluginName,
+		PlatformFilterFieldPluginScope,
+		PlatformFilterFieldRealm,
+		PlatformFilterFieldRegion,
+		PlatformFilterFieldRoute,
+		PlatformFilterFieldTeam,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PlatformFilterField) IsExact() bool {
 	if e != nil {

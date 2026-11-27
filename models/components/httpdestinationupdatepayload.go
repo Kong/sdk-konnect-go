@@ -19,6 +19,13 @@ const (
 func (e HTTPDestinationUpdatePayloadType) ToPointer() *HTTPDestinationUpdatePayloadType {
 	return &e
 }
+
+// HTTPDestinationUpdatePayloadTypeValues returns every known HTTPDestinationUpdatePayloadType value in schema order.
+func HTTPDestinationUpdatePayloadTypeValues() []HTTPDestinationUpdatePayloadType {
+	return []HTTPDestinationUpdatePayloadType{
+		HTTPDestinationUpdatePayloadTypeHTTP,
+	}
+}
 func (e *HTTPDestinationUpdatePayloadType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -43,6 +50,14 @@ const (
 
 func (e HTTPDestinationUpdatePayloadState) ToPointer() *HTTPDestinationUpdatePayloadState {
 	return &e
+}
+
+// HTTPDestinationUpdatePayloadStateValues returns every known HTTPDestinationUpdatePayloadState value in schema order.
+func HTTPDestinationUpdatePayloadStateValues() []HTTPDestinationUpdatePayloadState {
+	return []HTTPDestinationUpdatePayloadState{
+		HTTPDestinationUpdatePayloadStateEnabled,
+		HTTPDestinationUpdatePayloadStateDisabled,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

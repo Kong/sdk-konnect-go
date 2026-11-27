@@ -20,6 +20,15 @@ func (e MCPResourceRemoteMCPServerPayloadType) ToPointer() *MCPResourceRemoteMCP
 	return &e
 }
 
+// MCPResourceRemoteMCPServerPayloadTypeValues returns every known MCPResourceRemoteMCPServerPayloadType value in schema order.
+func MCPResourceRemoteMCPServerPayloadTypeValues() []MCPResourceRemoteMCPServerPayloadType {
+	return []MCPResourceRemoteMCPServerPayloadType{
+		MCPResourceRemoteMCPServerPayloadTypeAPICatalog,
+		MCPResourceRemoteMCPServerPayloadTypeRaw,
+		MCPResourceRemoteMCPServerPayloadTypeRemoteMcpServer,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPResourceRemoteMCPServerPayloadType) IsExact() bool {
 	if e != nil {

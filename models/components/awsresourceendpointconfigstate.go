@@ -23,6 +23,17 @@ func (e AwsResourceEndpointConfigState) ToPointer() *AwsResourceEndpointConfigSt
 	return &e
 }
 
+// AwsResourceEndpointConfigStateValues returns every known AwsResourceEndpointConfigState value in schema order.
+func AwsResourceEndpointConfigStateValues() []AwsResourceEndpointConfigState {
+	return []AwsResourceEndpointConfigState{
+		AwsResourceEndpointConfigStateInitializing,
+		AwsResourceEndpointConfigStateMissing,
+		AwsResourceEndpointConfigStateReady,
+		AwsResourceEndpointConfigStateError,
+		AwsResourceEndpointConfigStateTerminating,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AwsResourceEndpointConfigState) IsExact() bool {
 	if e != nil {

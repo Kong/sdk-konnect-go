@@ -18,6 +18,13 @@ const (
 func (e HTTPDestinationCreatePayloadType) ToPointer() *HTTPDestinationCreatePayloadType {
 	return &e
 }
+
+// HTTPDestinationCreatePayloadTypeValues returns every known HTTPDestinationCreatePayloadType value in schema order.
+func HTTPDestinationCreatePayloadTypeValues() []HTTPDestinationCreatePayloadType {
+	return []HTTPDestinationCreatePayloadType{
+		HTTPDestinationCreatePayloadTypeHTTP,
+	}
+}
 func (e *HTTPDestinationCreatePayloadType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

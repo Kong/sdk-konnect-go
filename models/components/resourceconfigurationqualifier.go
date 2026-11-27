@@ -18,6 +18,13 @@ const (
 func (e ResourceConfigurationQualifier) ToPointer() *ResourceConfigurationQualifier {
 	return &e
 }
+
+// ResourceConfigurationQualifierValues returns every known ResourceConfigurationQualifier value in schema order.
+func ResourceConfigurationQualifierValues() []ResourceConfigurationQualifier {
+	return []ResourceConfigurationQualifier{
+		ResourceConfigurationQualifierDataPlaneGroupIdleTimeoutMinutes,
+	}
+}
 func (e *ResourceConfigurationQualifier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

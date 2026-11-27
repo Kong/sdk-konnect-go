@@ -19,6 +19,13 @@ const (
 func (e BillingPriceFreeType) ToPointer() *BillingPriceFreeType {
 	return &e
 }
+
+// BillingPriceFreeTypeValues returns every known BillingPriceFreeType value in schema order.
+func BillingPriceFreeTypeValues() []BillingPriceFreeType {
+	return []BillingPriceFreeType{
+		BillingPriceFreeTypeFree,
+	}
+}
 func (e *BillingPriceFreeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

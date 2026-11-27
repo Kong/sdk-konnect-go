@@ -15,6 +15,15 @@ func (e PortalCustomDomainVerificationStatus) ToPointer() *PortalCustomDomainVer
 	return &e
 }
 
+// PortalCustomDomainVerificationStatusValues returns every known PortalCustomDomainVerificationStatus value in schema order.
+func PortalCustomDomainVerificationStatusValues() []PortalCustomDomainVerificationStatus {
+	return []PortalCustomDomainVerificationStatus{
+		PortalCustomDomainVerificationStatusVerified,
+		PortalCustomDomainVerificationStatusPending,
+		PortalCustomDomainVerificationStatusError,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PortalCustomDomainVerificationStatus) IsExact() bool {
 	if e != nil {

@@ -21,6 +21,14 @@ const (
 func (e DeleteDirectoryQueryParamForce) ToPointer() *DeleteDirectoryQueryParamForce {
 	return &e
 }
+
+// DeleteDirectoryQueryParamForceValues returns every known DeleteDirectoryQueryParamForce value in schema order.
+func DeleteDirectoryQueryParamForceValues() []DeleteDirectoryQueryParamForce {
+	return []DeleteDirectoryQueryParamForce{
+		DeleteDirectoryQueryParamForceTrue,
+		DeleteDirectoryQueryParamForceFalse,
+	}
+}
 func (e *DeleteDirectoryQueryParamForce) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

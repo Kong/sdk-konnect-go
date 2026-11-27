@@ -19,6 +19,13 @@ const (
 func (e CreateNotificationChannelRequestType) ToPointer() *CreateNotificationChannelRequestType {
 	return &e
 }
+
+// CreateNotificationChannelRequestTypeValues returns every known CreateNotificationChannelRequestType value in schema order.
+func CreateNotificationChannelRequestTypeValues() []CreateNotificationChannelRequestType {
+	return []CreateNotificationChannelRequestType{
+		CreateNotificationChannelRequestTypeWebhook,
+	}
+}
 func (e *CreateNotificationChannelRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

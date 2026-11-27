@@ -21,6 +21,15 @@ func (e DeploymentType) ToPointer() *DeploymentType {
 	return &e
 }
 
+// DeploymentTypeValues returns every known DeploymentType value in schema order.
+func DeploymentTypeValues() []DeploymentType {
+	return []DeploymentType{
+		DeploymentTypeHybrid,
+		DeploymentTypeManaged,
+		DeploymentTypeServerless,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DeploymentType) IsExact() bool {
 	if e != nil {

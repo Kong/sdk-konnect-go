@@ -26,6 +26,22 @@ func (e Name) ToPointer() *Name {
 	return &e
 }
 
+// NameValues returns every known Name value in schema order.
+func NameValues() []Name {
+	return []Name{
+		NameAll,
+		NameAlter,
+		NameAlterConfigs,
+		NameCreate,
+		NameDelete,
+		NameDescribe,
+		NameDescribeConfigs,
+		NameIdempotentWrite,
+		NameRead,
+		NameWrite,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Name) IsExact() bool {
 	if e != nil {

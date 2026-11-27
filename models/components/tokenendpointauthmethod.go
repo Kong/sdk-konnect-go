@@ -16,6 +16,15 @@ func (e TokenEndpointAuthMethod) ToPointer() *TokenEndpointAuthMethod {
 	return &e
 }
 
+// TokenEndpointAuthMethodValues returns every known TokenEndpointAuthMethod value in schema order.
+func TokenEndpointAuthMethodValues() []TokenEndpointAuthMethod {
+	return []TokenEndpointAuthMethod{
+		TokenEndpointAuthMethodPrivateKeyJwt,
+		TokenEndpointAuthMethodClientSecretPost,
+		TokenEndpointAuthMethodNone,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TokenEndpointAuthMethod) IsExact() bool {
 	if e != nil {

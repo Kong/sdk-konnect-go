@@ -21,6 +21,15 @@ func (e APIVersionResponseAPISpecType) ToPointer() *APIVersionResponseAPISpecTyp
 	return &e
 }
 
+// APIVersionResponseAPISpecTypeValues returns every known APIVersionResponseAPISpecType value in schema order.
+func APIVersionResponseAPISpecTypeValues() []APIVersionResponseAPISpecType {
+	return []APIVersionResponseAPISpecType{
+		APIVersionResponseAPISpecTypeOas2,
+		APIVersionResponseAPISpecTypeOas3,
+		APIVersionResponseAPISpecTypeAsyncapi,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIVersionResponseAPISpecType) IsExact() bool {
 	if e != nil {

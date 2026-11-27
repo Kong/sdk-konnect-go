@@ -158,6 +158,13 @@ const (
 func (e BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType) ToPointer() *BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType {
 	return &e
 }
+
+// BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestTypeValues returns every known BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType value in schema order.
+func BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestTypeValues() []BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType {
+	return []BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType{
+		BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestTypeAnchored,
+	}
+}
 func (e *BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -248,6 +255,13 @@ const (
 
 func (e BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType) ToPointer() *BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType {
 	return &e
+}
+
+// BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeValues returns every known BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType value in schema order.
+func BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeValues() []BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType {
+	return []BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType{
+		BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeSubscription,
+	}
 }
 func (e *BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -444,6 +458,14 @@ func (e UpsertBillingProfileRequestSubscriptionEndProrationMode) ToPointer() *Up
 	return &e
 }
 
+// UpsertBillingProfileRequestSubscriptionEndProrationModeValues returns every known UpsertBillingProfileRequestSubscriptionEndProrationMode value in schema order.
+func UpsertBillingProfileRequestSubscriptionEndProrationModeValues() []UpsertBillingProfileRequestSubscriptionEndProrationMode {
+	return []UpsertBillingProfileRequestSubscriptionEndProrationMode{
+		UpsertBillingProfileRequestSubscriptionEndProrationModeBillFullPeriod,
+		UpsertBillingProfileRequestSubscriptionEndProrationModeBillActualPeriod,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpsertBillingProfileRequestSubscriptionEndProrationMode) IsExact() bool {
 	if e != nil {
@@ -612,6 +634,14 @@ const (
 
 func (e UpsertBillingProfileRequestTaxBehavior) ToPointer() *UpsertBillingProfileRequestTaxBehavior {
 	return &e
+}
+
+// UpsertBillingProfileRequestTaxBehaviorValues returns every known UpsertBillingProfileRequestTaxBehavior value in schema order.
+func UpsertBillingProfileRequestTaxBehaviorValues() []UpsertBillingProfileRequestTaxBehavior {
+	return []UpsertBillingProfileRequestTaxBehavior{
+		UpsertBillingProfileRequestTaxBehaviorInclusive,
+		UpsertBillingProfileRequestTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

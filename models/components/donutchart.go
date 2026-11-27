@@ -18,6 +18,13 @@ const (
 func (e DonutChartType) ToPointer() *DonutChartType {
 	return &e
 }
+
+// DonutChartTypeValues returns every known DonutChartType value in schema order.
+func DonutChartTypeValues() []DonutChartType {
+	return []DonutChartType{
+		DonutChartTypeDonut,
+	}
+}
 func (e *DonutChartType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

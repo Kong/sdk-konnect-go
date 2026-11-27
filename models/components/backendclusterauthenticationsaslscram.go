@@ -19,6 +19,14 @@ func (e BackendClusterAuthenticationSaslScramAlgorithm) ToPointer() *BackendClus
 	return &e
 }
 
+// BackendClusterAuthenticationSaslScramAlgorithmValues returns every known BackendClusterAuthenticationSaslScramAlgorithm value in schema order.
+func BackendClusterAuthenticationSaslScramAlgorithmValues() []BackendClusterAuthenticationSaslScramAlgorithm {
+	return []BackendClusterAuthenticationSaslScramAlgorithm{
+		BackendClusterAuthenticationSaslScramAlgorithmSha256,
+		BackendClusterAuthenticationSaslScramAlgorithmSha512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BackendClusterAuthenticationSaslScramAlgorithm) IsExact() bool {
 	if e != nil {

@@ -34,6 +34,28 @@ func (e AICostNotificationDeliveryErrorReason1) ToPointer() *AICostNotificationD
 	return &e
 }
 
+// AICostNotificationDeliveryErrorReason1Values returns every known AICostNotificationDeliveryErrorReason1 value in schema order.
+func AICostNotificationDeliveryErrorReason1Values() []AICostNotificationDeliveryErrorReason1 {
+	return []AICostNotificationDeliveryErrorReason1{
+		AICostNotificationDeliveryErrorReason1SlackNoService,
+		AICostNotificationDeliveryErrorReason1SlackChannelNotFound,
+		AICostNotificationDeliveryErrorReason1SlackChannelIsArchived,
+		AICostNotificationDeliveryErrorReason1SlackActionProhibited,
+		AICostNotificationDeliveryErrorReason1SlackInvalidPayload,
+		AICostNotificationDeliveryErrorReason1SlackUserNotFound,
+		AICostNotificationDeliveryErrorReason1SlackTeamDisabled,
+		AICostNotificationDeliveryErrorReason1SlackInvalidToken,
+		AICostNotificationDeliveryErrorReason1SlackRedirected,
+		AICostNotificationDeliveryErrorReason1SlackInvalidTarget,
+		AICostNotificationDeliveryErrorReason1EmailInvalidTarget,
+		AICostNotificationDeliveryErrorReason1MailboxPublishFailed,
+		AICostNotificationDeliveryErrorReason1EmailRenderFailed,
+		AICostNotificationDeliveryErrorReason1TransportError,
+		AICostNotificationDeliveryErrorReason1AttemptsExhausted,
+		AICostNotificationDeliveryErrorReason1WindowEnded,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostNotificationDeliveryErrorReason1) IsExact() bool {
 	if e != nil {

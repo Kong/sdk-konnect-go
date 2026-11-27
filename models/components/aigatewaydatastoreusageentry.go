@@ -26,6 +26,17 @@ func (e AIGatewayDatastoreUsageEntryType) ToPointer() *AIGatewayDatastoreUsageEn
 	return &e
 }
 
+// AIGatewayDatastoreUsageEntryTypeValues returns every known AIGatewayDatastoreUsageEntryType value in schema order.
+func AIGatewayDatastoreUsageEntryTypeValues() []AIGatewayDatastoreUsageEntryType {
+	return []AIGatewayDatastoreUsageEntryType{
+		AIGatewayDatastoreUsageEntryTypePolicy,
+		AIGatewayDatastoreUsageEntryTypeModel,
+		AIGatewayDatastoreUsageEntryTypeMcpServer,
+		AIGatewayDatastoreUsageEntryTypeModelProvider,
+		AIGatewayDatastoreUsageEntryTypeAuthStrategy,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayDatastoreUsageEntryType) IsExact() bool {
 	if e != nil {

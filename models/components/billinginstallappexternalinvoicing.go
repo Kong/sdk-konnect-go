@@ -19,6 +19,13 @@ const (
 func (e BillingInstallAppExternalInvoicingType) ToPointer() *BillingInstallAppExternalInvoicingType {
 	return &e
 }
+
+// BillingInstallAppExternalInvoicingTypeValues returns every known BillingInstallAppExternalInvoicingType value in schema order.
+func BillingInstallAppExternalInvoicingTypeValues() []BillingInstallAppExternalInvoicingType {
+	return []BillingInstallAppExternalInvoicingType{
+		BillingInstallAppExternalInvoicingTypeExternalInvoicing,
+	}
+}
 func (e *BillingInstallAppExternalInvoicingType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

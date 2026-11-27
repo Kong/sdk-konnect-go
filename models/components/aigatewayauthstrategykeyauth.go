@@ -18,6 +18,14 @@ func (e AIGatewayAuthStrategyKeyAuthScope) ToPointer() *AIGatewayAuthStrategyKey
 	return &e
 }
 
+// AIGatewayAuthStrategyKeyAuthScopeValues returns every known AIGatewayAuthStrategyKeyAuthScope value in schema order.
+func AIGatewayAuthStrategyKeyAuthScopeValues() []AIGatewayAuthStrategyKeyAuthScope {
+	return []AIGatewayAuthStrategyKeyAuthScope{
+		AIGatewayAuthStrategyKeyAuthScopeCp,
+		AIGatewayAuthStrategyKeyAuthScopeRealm,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayAuthStrategyKeyAuthScope) IsExact() bool {
 	if e != nil {

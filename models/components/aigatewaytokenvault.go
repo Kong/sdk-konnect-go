@@ -22,6 +22,14 @@ func (e SubjectTokenType) ToPointer() *SubjectTokenType {
 	return &e
 }
 
+// SubjectTokenTypeValues returns every known SubjectTokenType value in schema order.
+func SubjectTokenTypeValues() []SubjectTokenType {
+	return []SubjectTokenType{
+		SubjectTokenTypeAccessToken,
+		SubjectTokenTypeAPIKey,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SubjectTokenType) IsExact() bool {
 	if e != nil {

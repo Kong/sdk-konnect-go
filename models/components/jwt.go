@@ -39,6 +39,35 @@ func (e JWTAlgorithm) ToPointer() *JWTAlgorithm {
 	return &e
 }
 
+// JWTAlgorithmValues returns every known JWTAlgorithm value in schema order.
+func JWTAlgorithmValues() []JWTAlgorithm {
+	return []JWTAlgorithm{
+		JWTAlgorithmEs256,
+		JWTAlgorithmEs256K,
+		JWTAlgorithmEs384,
+		JWTAlgorithmEs512,
+		JWTAlgorithmEsb256,
+		JWTAlgorithmEsb320,
+		JWTAlgorithmEsb384,
+		JWTAlgorithmEsb512,
+		JWTAlgorithmEsp256,
+		JWTAlgorithmEsp384,
+		JWTAlgorithmEsp512,
+		JWTAlgorithmEd25519,
+		JWTAlgorithmEd448,
+		JWTAlgorithmEdDsa,
+		JWTAlgorithmHs256,
+		JWTAlgorithmHs384,
+		JWTAlgorithmHs512,
+		JWTAlgorithmPs256,
+		JWTAlgorithmPs384,
+		JWTAlgorithmPs512,
+		JWTAlgorithmRs256,
+		JWTAlgorithmRs384,
+		JWTAlgorithmRs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *JWTAlgorithm) IsExact() bool {
 	if e != nil {

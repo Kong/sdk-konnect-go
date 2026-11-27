@@ -18,6 +18,13 @@ const (
 func (e GoogleAnalytics4IntegrationType) ToPointer() *GoogleAnalytics4IntegrationType {
 	return &e
 }
+
+// GoogleAnalytics4IntegrationTypeValues returns every known GoogleAnalytics4IntegrationType value in schema order.
+func GoogleAnalytics4IntegrationTypeValues() []GoogleAnalytics4IntegrationType {
+	return []GoogleAnalytics4IntegrationType{
+		GoogleAnalytics4IntegrationTypeAnalytics,
+	}
+}
 func (e *GoogleAnalytics4IntegrationType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

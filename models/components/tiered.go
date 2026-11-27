@@ -39,6 +39,23 @@ func (e Tier) ToPointer() *Tier {
 	return &e
 }
 
+// TierValues returns every known Tier value in schema order.
+func TierValues() []Tier {
+	return []Tier{
+		TierMicro,
+		TierSmall,
+		TierMedium,
+		TierLarge,
+		TierXlarge,
+		TierTwoxlarge,
+		TierFourxlarge,
+		TierEightxlarge,
+		TierTwelvexlarge,
+		TierSixteenxlarge,
+		TierTwentyFourxlarge,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Tier) IsExact() bool {
 	if e != nil {

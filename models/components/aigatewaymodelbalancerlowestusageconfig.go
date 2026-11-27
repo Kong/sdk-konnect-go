@@ -22,6 +22,17 @@ func (e TokensCountStrategy) ToPointer() *TokensCountStrategy {
 	return &e
 }
 
+// TokensCountStrategyValues returns every known TokensCountStrategy value in schema order.
+func TokensCountStrategyValues() []TokensCountStrategy {
+	return []TokensCountStrategy{
+		TokensCountStrategyCompletionTokens,
+		TokensCountStrategyCost,
+		TokensCountStrategyLlmAccuracy,
+		TokensCountStrategyPromptTokens,
+		TokensCountStrategyTotalTokens,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TokensCountStrategy) IsExact() bool {
 	if e != nil {

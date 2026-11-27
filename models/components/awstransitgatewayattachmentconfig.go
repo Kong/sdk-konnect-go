@@ -18,6 +18,13 @@ const (
 func (e AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType) ToPointer() *AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType {
 	return &e
 }
+
+// AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeValues returns every known AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType value in schema order.
+func AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeValues() []AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType {
+	return []AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType{
+		AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+	}
+}
 func (e *AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

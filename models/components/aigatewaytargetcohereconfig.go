@@ -20,6 +20,14 @@ func (e APIVersion) ToPointer() *APIVersion {
 	return &e
 }
 
+// APIVersionValues returns every known APIVersion value in schema order.
+func APIVersionValues() []APIVersion {
+	return []APIVersion{
+		APIVersionV1,
+		APIVersionV2,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIVersion) IsExact() bool {
 	if e != nil {
@@ -44,6 +52,17 @@ const (
 
 func (e EmbeddingInputType) ToPointer() *EmbeddingInputType {
 	return &e
+}
+
+// EmbeddingInputTypeValues returns every known EmbeddingInputType value in schema order.
+func EmbeddingInputTypeValues() []EmbeddingInputType {
+	return []EmbeddingInputType{
+		EmbeddingInputTypeClassification,
+		EmbeddingInputTypeClustering,
+		EmbeddingInputTypeImage,
+		EmbeddingInputTypeSearchDocument,
+		EmbeddingInputTypeSearchQuery,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

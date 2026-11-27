@@ -19,6 +19,15 @@ func (e PortalCustomizationMode) ToPointer() *PortalCustomizationMode {
 	return &e
 }
 
+// PortalCustomizationModeValues returns every known PortalCustomizationMode value in schema order.
+func PortalCustomizationModeValues() []PortalCustomizationMode {
+	return []PortalCustomizationMode{
+		PortalCustomizationModeLight,
+		PortalCustomizationModeDark,
+		PortalCustomizationModeSystem,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PortalCustomizationMode) IsExact() bool {
 	if e != nil {
@@ -53,6 +62,15 @@ const (
 
 func (e BorderRadius) ToPointer() *BorderRadius {
 	return &e
+}
+
+// BorderRadiusValues returns every known BorderRadius value in schema order.
+func BorderRadiusValues() []BorderRadius {
+	return []BorderRadius{
+		BorderRadiusSoft,
+		BorderRadiusSharp,
+		BorderRadiusRound,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -159,6 +177,15 @@ const (
 
 func (e PortalCustomizationTryItUIAudience) ToPointer() *PortalCustomizationTryItUIAudience {
 	return &e
+}
+
+// PortalCustomizationTryItUIAudienceValues returns every known PortalCustomizationTryItUIAudience value in schema order.
+func PortalCustomizationTryItUIAudienceValues() []PortalCustomizationTryItUIAudience {
+	return []PortalCustomizationTryItUIAudience{
+		PortalCustomizationTryItUIAudienceAll,
+		PortalCustomizationTryItUIAudienceAuthenticated,
+		PortalCustomizationTryItUIAudienceRegistered,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

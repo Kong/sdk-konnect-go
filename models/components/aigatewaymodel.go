@@ -33,6 +33,24 @@ func (e AIGatewayModelModelAIGatewayModelCapabilities) ToPointer() *AIGatewayMod
 	return &e
 }
 
+// AIGatewayModelModelAIGatewayModelCapabilitiesValues returns every known AIGatewayModelModelAIGatewayModelCapabilities value in schema order.
+func AIGatewayModelModelAIGatewayModelCapabilitiesValues() []AIGatewayModelModelAIGatewayModelCapabilities {
+	return []AIGatewayModelModelAIGatewayModelCapabilities{
+		AIGatewayModelModelAIGatewayModelCapabilitiesWildcard,
+		AIGatewayModelModelAIGatewayModelCapabilitiesGenerate,
+		AIGatewayModelModelAIGatewayModelCapabilitiesAgentic,
+		AIGatewayModelModelAIGatewayModelCapabilitiesRealtime,
+		AIGatewayModelModelAIGatewayModelCapabilitiesEmbeddings,
+		AIGatewayModelModelAIGatewayModelCapabilitiesImage,
+		AIGatewayModelModelAIGatewayModelCapabilitiesAudioSpeech,
+		AIGatewayModelModelAIGatewayModelCapabilitiesAudioTranscription,
+		AIGatewayModelModelAIGatewayModelCapabilitiesAudioTranslation,
+		AIGatewayModelModelAIGatewayModelCapabilitiesVideo,
+		AIGatewayModelModelAIGatewayModelCapabilitiesRerank,
+		AIGatewayModelModelAIGatewayModelCapabilitiesDecisions,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayModelModelAIGatewayModelCapabilities) IsExact() bool {
 	if e != nil {
@@ -227,6 +245,16 @@ const (
 
 func (e AIGatewayModelAPICapabilities) ToPointer() *AIGatewayModelAPICapabilities {
 	return &e
+}
+
+// AIGatewayModelAPICapabilitiesValues returns every known AIGatewayModelAPICapabilities value in schema order.
+func AIGatewayModelAPICapabilitiesValues() []AIGatewayModelAPICapabilities {
+	return []AIGatewayModelAPICapabilities{
+		AIGatewayModelAPICapabilitiesWildcard,
+		AIGatewayModelAPICapabilitiesBatches,
+		AIGatewayModelAPICapabilitiesFiles,
+		AIGatewayModelAPICapabilitiesSkills,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

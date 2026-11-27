@@ -17,6 +17,14 @@ func (e KongPrincipalType) ToPointer() *KongPrincipalType {
 	return &e
 }
 
+// KongPrincipalTypeValues returns every known KongPrincipalType value in schema order.
+func KongPrincipalTypeValues() []KongPrincipalType {
+	return []KongPrincipalType{
+		KongPrincipalTypeAgent,
+		KongPrincipalTypeUser,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *KongPrincipalType) IsExact() bool {
 	if e != nil {

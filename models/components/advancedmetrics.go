@@ -42,6 +42,42 @@ func (e AdvancedMetrics) ToPointer() *AdvancedMetrics {
 	return &e
 }
 
+// AdvancedMetricsValues returns every known AdvancedMetrics value in schema order.
+func AdvancedMetricsValues() []AdvancedMetrics {
+	return []AdvancedMetrics{
+		AdvancedMetricsCacheHitRate,
+		AdvancedMetricsErrorRate,
+		AdvancedMetricsKongInternalLatencyAverage,
+		AdvancedMetricsKongInternalLatencyP50,
+		AdvancedMetricsKongInternalLatencyP95,
+		AdvancedMetricsKongInternalLatencyP99,
+		AdvancedMetricsKongLatencyAverage,
+		AdvancedMetricsKongLatencyP50,
+		AdvancedMetricsKongLatencyP95,
+		AdvancedMetricsKongLatencyP99,
+		AdvancedMetricsRequestCount,
+		AdvancedMetricsRequestPerMinute,
+		AdvancedMetricsRequestSizeAverage,
+		AdvancedMetricsRequestSizeP50,
+		AdvancedMetricsRequestSizeP95,
+		AdvancedMetricsRequestSizeP99,
+		AdvancedMetricsRequestSizeSum,
+		AdvancedMetricsResponseLatencyAverage,
+		AdvancedMetricsResponseLatencyP50,
+		AdvancedMetricsResponseLatencyP95,
+		AdvancedMetricsResponseLatencyP99,
+		AdvancedMetricsResponseSizeAverage,
+		AdvancedMetricsResponseSizeP50,
+		AdvancedMetricsResponseSizeP95,
+		AdvancedMetricsResponseSizeP99,
+		AdvancedMetricsResponseSizeSum,
+		AdvancedMetricsUpstreamLatencyAverage,
+		AdvancedMetricsUpstreamLatencyP50,
+		AdvancedMetricsUpstreamLatencyP95,
+		AdvancedMetricsUpstreamLatencyP99,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AdvancedMetrics) IsExact() bool {
 	if e != nil {

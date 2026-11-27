@@ -18,6 +18,17 @@ func (e EntitlementFeatureAccessCode) ToPointer() *EntitlementFeatureAccessCode 
 	return &e
 }
 
+// EntitlementFeatureAccessCodeValues returns every known EntitlementFeatureAccessCode value in schema order.
+func EntitlementFeatureAccessCodeValues() []EntitlementFeatureAccessCode {
+	return []EntitlementFeatureAccessCode{
+		EntitlementFeatureAccessCodeUnknown,
+		EntitlementFeatureAccessCodeUsageLimitReached,
+		EntitlementFeatureAccessCodeFeatureUnavailable,
+		EntitlementFeatureAccessCodeFeatureNotFound,
+		EntitlementFeatureAccessCodeNoCreditAvailable,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EntitlementFeatureAccessCode) IsExact() bool {
 	if e != nil {

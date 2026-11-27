@@ -19,6 +19,13 @@ const (
 func (e BillingSubscriptionEditStretchPhaseType) ToPointer() *BillingSubscriptionEditStretchPhaseType {
 	return &e
 }
+
+// BillingSubscriptionEditStretchPhaseTypeValues returns every known BillingSubscriptionEditStretchPhaseType value in schema order.
+func BillingSubscriptionEditStretchPhaseTypeValues() []BillingSubscriptionEditStretchPhaseType {
+	return []BillingSubscriptionEditStretchPhaseType{
+		BillingSubscriptionEditStretchPhaseTypeStretchPhase,
+	}
+}
 func (e *BillingSubscriptionEditStretchPhaseType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

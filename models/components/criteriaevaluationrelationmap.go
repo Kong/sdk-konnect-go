@@ -19,6 +19,13 @@ const (
 func (e Instance) ToPointer() *Instance {
 	return &e
 }
+
+// InstanceValues returns every known Instance value in schema order.
+func InstanceValues() []Instance {
+	return []Instance{
+		InstanceCriteriaResultRelationMap,
+	}
+}
 func (e *Instance) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

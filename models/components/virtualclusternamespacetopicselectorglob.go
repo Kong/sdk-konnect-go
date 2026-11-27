@@ -21,6 +21,14 @@ func (e Conflict) ToPointer() *Conflict {
 	return &e
 }
 
+// ConflictValues returns every known Conflict value in schema order.
+func ConflictValues() []Conflict {
+	return []Conflict{
+		ConflictWarn,
+		ConflictIgnore,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Conflict) IsExact() bool {
 	if e != nil {

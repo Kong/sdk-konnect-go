@@ -24,6 +24,18 @@ func (e DeliveryDetailFailureReason) ToPointer() *DeliveryDetailFailureReason {
 	return &e
 }
 
+// DeliveryDetailFailureReasonValues returns every known DeliveryDetailFailureReason value in schema order.
+func DeliveryDetailFailureReasonValues() []DeliveryDetailFailureReason {
+	return []DeliveryDetailFailureReason{
+		DeliveryDetailFailureReasonRenderFailed,
+		DeliveryDetailFailureReasonHTTPError,
+		DeliveryDetailFailureReasonRetriesExhausted,
+		DeliveryDetailFailureReasonDestinationInactive,
+		DeliveryDetailFailureReasonClientError,
+		DeliveryDetailFailureReasonExpired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DeliveryDetailFailureReason) IsExact() bool {
 	if e != nil {

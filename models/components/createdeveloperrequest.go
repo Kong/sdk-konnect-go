@@ -21,6 +21,16 @@ func (e CreateDeveloperRequestDeveloperStatus) ToPointer() *CreateDeveloperReque
 	return &e
 }
 
+// CreateDeveloperRequestDeveloperStatusValues returns every known CreateDeveloperRequestDeveloperStatus value in schema order.
+func CreateDeveloperRequestDeveloperStatusValues() []CreateDeveloperRequestDeveloperStatus {
+	return []CreateDeveloperRequestDeveloperStatus{
+		CreateDeveloperRequestDeveloperStatusApproved,
+		CreateDeveloperRequestDeveloperStatusPending,
+		CreateDeveloperRequestDeveloperStatusRevoked,
+		CreateDeveloperRequestDeveloperStatusRejected,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateDeveloperRequestDeveloperStatus) IsExact() bool {
 	if e != nil {

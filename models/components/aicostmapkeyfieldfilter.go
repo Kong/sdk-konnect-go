@@ -18,6 +18,13 @@ const (
 func (e Exists) ToPointer() *Exists {
 	return &e
 }
+
+// ExistsValues returns every known Exists value in schema order.
+func ExistsValues() []Exists {
+	return []Exists{
+		ExistsUnknown,
+	}
+}
 func (e *Exists) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -41,6 +48,13 @@ const (
 
 func (e Nexists) ToPointer() *Nexists {
 	return &e
+}
+
+// NexistsValues returns every known Nexists value in schema order.
+func NexistsValues() []Nexists {
+	return []Nexists{
+		NexistsUnknown,
+	}
 }
 func (e *Nexists) UnmarshalJSON(data []byte) error {
 	var v string

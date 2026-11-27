@@ -24,6 +24,19 @@ func (e Rule) ToPointer() *Rule {
 	return &e
 }
 
+// RuleValues returns every known Rule value in schema order.
+func RuleValues() []Rule {
+	return []Rule{
+		RuleMinLength,
+		RuleMinDigits,
+		RuleMinLowercase,
+		RuleMinUppercase,
+		RuleMinSymbols,
+		RuleMinItems,
+		RuleMin,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Rule) IsExact() bool {
 	if e != nil {

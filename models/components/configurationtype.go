@@ -19,6 +19,14 @@ func (e ConfigurationType) ToPointer() *ConfigurationType {
 	return &e
 }
 
+// ConfigurationTypeValues returns every known ConfigurationType value in schema order.
+func ConfigurationTypeValues() []ConfigurationType {
+	return []ConfigurationType{
+		ConfigurationTypeAPI,
+		ConfigurationTypeAi,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ConfigurationType) IsExact() bool {
 	if e != nil {

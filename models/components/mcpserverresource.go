@@ -20,6 +20,13 @@ const (
 func (e McpServerResourceType) ToPointer() *McpServerResourceType {
 	return &e
 }
+
+// McpServerResourceTypeValues returns every known McpServerResourceType value in schema order.
+func McpServerResourceTypeValues() []McpServerResourceType {
+	return []McpServerResourceType{
+		McpServerResourceTypeMcpServer,
+	}
+}
 func (e *McpServerResourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

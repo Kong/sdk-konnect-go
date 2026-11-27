@@ -19,6 +19,15 @@ func (e AIGatewayModelModelConfigResponseStreaming) ToPointer() *AIGatewayModelM
 	return &e
 }
 
+// AIGatewayModelModelConfigResponseStreamingValues returns every known AIGatewayModelModelConfigResponseStreaming value in schema order.
+func AIGatewayModelModelConfigResponseStreamingValues() []AIGatewayModelModelConfigResponseStreaming {
+	return []AIGatewayModelModelConfigResponseStreaming{
+		AIGatewayModelModelConfigResponseStreamingAllow,
+		AIGatewayModelModelConfigResponseStreamingAlways,
+		AIGatewayModelModelConfigResponseStreamingDeny,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayModelModelConfigResponseStreaming) IsExact() bool {
 	if e != nil {

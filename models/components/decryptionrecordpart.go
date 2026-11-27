@@ -16,6 +16,14 @@ func (e DecryptionRecordPart) ToPointer() *DecryptionRecordPart {
 	return &e
 }
 
+// DecryptionRecordPartValues returns every known DecryptionRecordPart value in schema order.
+func DecryptionRecordPartValues() []DecryptionRecordPart {
+	return []DecryptionRecordPart{
+		DecryptionRecordPartKey,
+		DecryptionRecordPartValue,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DecryptionRecordPart) IsExact() bool {
 	if e != nil {

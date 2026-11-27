@@ -19,6 +19,14 @@ func (e HashiCorpVaultAppRoleConfigKv) ToPointer() *HashiCorpVaultAppRoleConfigK
 	return &e
 }
 
+// HashiCorpVaultAppRoleConfigKvValues returns every known HashiCorpVaultAppRoleConfigKv value in schema order.
+func HashiCorpVaultAppRoleConfigKvValues() []HashiCorpVaultAppRoleConfigKv {
+	return []HashiCorpVaultAppRoleConfigKv{
+		HashiCorpVaultAppRoleConfigKvV1,
+		HashiCorpVaultAppRoleConfigKvV2,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *HashiCorpVaultAppRoleConfigKv) IsExact() bool {
 	if e != nil {
@@ -40,6 +48,14 @@ const (
 
 func (e HashiCorpVaultAppRoleConfigProtocol) ToPointer() *HashiCorpVaultAppRoleConfigProtocol {
 	return &e
+}
+
+// HashiCorpVaultAppRoleConfigProtocolValues returns every known HashiCorpVaultAppRoleConfigProtocol value in schema order.
+func HashiCorpVaultAppRoleConfigProtocolValues() []HashiCorpVaultAppRoleConfigProtocol {
+	return []HashiCorpVaultAppRoleConfigProtocol{
+		HashiCorpVaultAppRoleConfigProtocolHTTP,
+		HashiCorpVaultAppRoleConfigProtocolHTTPS,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

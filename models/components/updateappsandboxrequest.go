@@ -19,6 +19,13 @@ const (
 func (e UpdateAppSandboxRequestType) ToPointer() *UpdateAppSandboxRequestType {
 	return &e
 }
+
+// UpdateAppSandboxRequestTypeValues returns every known UpdateAppSandboxRequestType value in schema order.
+func UpdateAppSandboxRequestTypeValues() []UpdateAppSandboxRequestType {
+	return []UpdateAppSandboxRequestType{
+		UpdateAppSandboxRequestTypeSandbox,
+	}
+}
 func (e *UpdateAppSandboxRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

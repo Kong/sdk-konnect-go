@@ -22,6 +22,17 @@ func (e AIGatewayMCPConversionToolMethod) ToPointer() *AIGatewayMCPConversionToo
 	return &e
 }
 
+// AIGatewayMCPConversionToolMethodValues returns every known AIGatewayMCPConversionToolMethod value in schema order.
+func AIGatewayMCPConversionToolMethodValues() []AIGatewayMCPConversionToolMethod {
+	return []AIGatewayMCPConversionToolMethod{
+		AIGatewayMCPConversionToolMethodDelete,
+		AIGatewayMCPConversionToolMethodGet,
+		AIGatewayMCPConversionToolMethodPatch,
+		AIGatewayMCPConversionToolMethodPost,
+		AIGatewayMCPConversionToolMethodPut,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayMCPConversionToolMethod) IsExact() bool {
 	if e != nil {
@@ -43,6 +54,14 @@ const (
 
 func (e Scheme) ToPointer() *Scheme {
 	return &e
+}
+
+// SchemeValues returns every known Scheme value in schema order.
+func SchemeValues() []Scheme {
+	return []Scheme{
+		SchemeHTTP,
+		SchemeHTTPS,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -209,6 +209,14 @@ func (e SubscriptionAddonRateCardConversionOperation) ToPointer() *SubscriptionA
 	return &e
 }
 
+// SubscriptionAddonRateCardConversionOperationValues returns every known SubscriptionAddonRateCardConversionOperation value in schema order.
+func SubscriptionAddonRateCardConversionOperationValues() []SubscriptionAddonRateCardConversionOperation {
+	return []SubscriptionAddonRateCardConversionOperation{
+		SubscriptionAddonRateCardConversionOperationDivide,
+		SubscriptionAddonRateCardConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SubscriptionAddonRateCardConversionOperation) IsExact() bool {
 	if e != nil {
@@ -235,6 +243,16 @@ const (
 
 func (e SubscriptionAddonRateCardRoundingMode) ToPointer() *SubscriptionAddonRateCardRoundingMode {
 	return &e
+}
+
+// SubscriptionAddonRateCardRoundingModeValues returns every known SubscriptionAddonRateCardRoundingMode value in schema order.
+func SubscriptionAddonRateCardRoundingModeValues() []SubscriptionAddonRateCardRoundingMode {
+	return []SubscriptionAddonRateCardRoundingMode{
+		SubscriptionAddonRateCardRoundingModeCeiling,
+		SubscriptionAddonRateCardRoundingModeFloor,
+		SubscriptionAddonRateCardRoundingModeHalfUp,
+		SubscriptionAddonRateCardRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -342,6 +360,14 @@ func (e SubscriptionAddonRateCardPaymentTerm) ToPointer() *SubscriptionAddonRate
 	return &e
 }
 
+// SubscriptionAddonRateCardPaymentTermValues returns every known SubscriptionAddonRateCardPaymentTerm value in schema order.
+func SubscriptionAddonRateCardPaymentTermValues() []SubscriptionAddonRateCardPaymentTerm {
+	return []SubscriptionAddonRateCardPaymentTerm{
+		SubscriptionAddonRateCardPaymentTermInAdvance,
+		SubscriptionAddonRateCardPaymentTermInArrears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SubscriptionAddonRateCardPaymentTerm) IsExact() bool {
 	if e != nil {
@@ -415,6 +441,14 @@ const (
 
 func (e SubscriptionAddonRateCardTaxBehavior) ToPointer() *SubscriptionAddonRateCardTaxBehavior {
 	return &e
+}
+
+// SubscriptionAddonRateCardTaxBehaviorValues returns every known SubscriptionAddonRateCardTaxBehavior value in schema order.
+func SubscriptionAddonRateCardTaxBehaviorValues() []SubscriptionAddonRateCardTaxBehavior {
+	return []SubscriptionAddonRateCardTaxBehavior{
+		SubscriptionAddonRateCardTaxBehaviorInclusive,
+		SubscriptionAddonRateCardTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

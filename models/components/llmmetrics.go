@@ -27,6 +27,27 @@ func (e LLMMetrics) ToPointer() *LLMMetrics {
 	return &e
 }
 
+// LLMMetricsValues returns every known LLMMetrics value in schema order.
+func LLMMetricsValues() []LLMMetrics {
+	return []LLMMetrics{
+		LLMMetricsTotalTokens,
+		LLMMetricsTotalTokensPerMinute,
+		LLMMetricsPromptTokens,
+		LLMMetricsCompletionTokens,
+		LLMMetricsCachedTokens,
+		LLMMetricsAiRequestCount,
+		LLMMetricsCost,
+		LLMMetricsErrorRate,
+		LLMMetricsLlmCacheEmbeddingsLatencyAverage,
+		LLMMetricsLlmCacheFetchLatencyAverage,
+		LLMMetricsLlmLatencyAverage,
+		LLMMetricsLlmEmbeddingsTokens,
+		LLMMetricsLlmEmbeddingsCost,
+		LLMMetricsTimeToFirstTokenAverage,
+		LLMMetricsTimePerTokenAverage,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *LLMMetrics) IsExact() bool {
 	if e != nil {

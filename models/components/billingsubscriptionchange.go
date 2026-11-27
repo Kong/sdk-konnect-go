@@ -28,6 +28,14 @@ func (e BillingSubscriptionChangeSettlementMode) ToPointer() *BillingSubscriptio
 	return &e
 }
 
+// BillingSubscriptionChangeSettlementModeValues returns every known BillingSubscriptionChangeSettlementMode value in schema order.
+func BillingSubscriptionChangeSettlementModeValues() []BillingSubscriptionChangeSettlementMode {
+	return []BillingSubscriptionChangeSettlementMode{
+		BillingSubscriptionChangeSettlementModeCreditThenInvoice,
+		BillingSubscriptionChangeSettlementModeCreditOnly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionChangeSettlementMode) IsExact() bool {
 	if e != nil {
@@ -210,6 +218,14 @@ const (
 
 func (e BillingSubscriptionChangeCostBasisMode) ToPointer() *BillingSubscriptionChangeCostBasisMode {
 	return &e
+}
+
+// BillingSubscriptionChangeCostBasisModeValues returns every known BillingSubscriptionChangeCostBasisMode value in schema order.
+func BillingSubscriptionChangeCostBasisModeValues() []BillingSubscriptionChangeCostBasisMode {
+	return []BillingSubscriptionChangeCostBasisMode{
+		BillingSubscriptionChangeCostBasisModeDynamic,
+		BillingSubscriptionChangeCostBasisModePinned,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -22,6 +22,17 @@ func (e BillingAppCapabilityType1) ToPointer() *BillingAppCapabilityType1 {
 	return &e
 }
 
+// BillingAppCapabilityType1Values returns every known BillingAppCapabilityType1 value in schema order.
+func BillingAppCapabilityType1Values() []BillingAppCapabilityType1 {
+	return []BillingAppCapabilityType1{
+		BillingAppCapabilityType1ReportUsage,
+		BillingAppCapabilityType1ReportEvents,
+		BillingAppCapabilityType1CalculateTax,
+		BillingAppCapabilityType1InvoiceCustomers,
+		BillingAppCapabilityType1CollectPayments,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingAppCapabilityType1) IsExact() bool {
 	if e != nil {

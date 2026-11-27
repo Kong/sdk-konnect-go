@@ -21,6 +21,13 @@ const (
 func (e BillingInvoiceStandardLineType) ToPointer() *BillingInvoiceStandardLineType {
 	return &e
 }
+
+// BillingInvoiceStandardLineTypeValues returns every known BillingInvoiceStandardLineType value in schema order.
+func BillingInvoiceStandardLineTypeValues() []BillingInvoiceStandardLineType {
+	return []BillingInvoiceStandardLineType{
+		BillingInvoiceStandardLineTypeStandardLine,
+	}
+}
 func (e *BillingInvoiceStandardLineType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -46,6 +53,14 @@ const (
 
 func (e LifecycleController) ToPointer() *LifecycleController {
 	return &e
+}
+
+// LifecycleControllerValues returns every known LifecycleController value in schema order.
+func LifecycleControllerValues() []LifecycleController {
+	return []LifecycleController{
+		LifecycleControllerSystem,
+		LifecycleControllerManual,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -537,6 +552,14 @@ func (e BillingInvoiceStandardLineTaxBehavior) ToPointer() *BillingInvoiceStanda
 	return &e
 }
 
+// BillingInvoiceStandardLineTaxBehaviorValues returns every known BillingInvoiceStandardLineTaxBehavior value in schema order.
+func BillingInvoiceStandardLineTaxBehaviorValues() []BillingInvoiceStandardLineTaxBehavior {
+	return []BillingInvoiceStandardLineTaxBehavior{
+		BillingInvoiceStandardLineTaxBehaviorInclusive,
+		BillingInvoiceStandardLineTaxBehaviorExclusive,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingInvoiceStandardLineTaxBehavior) IsExact() bool {
 	if e != nil {
@@ -657,6 +680,14 @@ func (e BillingInvoiceStandardLineConversionOperation) ToPointer() *BillingInvoi
 	return &e
 }
 
+// BillingInvoiceStandardLineConversionOperationValues returns every known BillingInvoiceStandardLineConversionOperation value in schema order.
+func BillingInvoiceStandardLineConversionOperationValues() []BillingInvoiceStandardLineConversionOperation {
+	return []BillingInvoiceStandardLineConversionOperation{
+		BillingInvoiceStandardLineConversionOperationDivide,
+		BillingInvoiceStandardLineConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingInvoiceStandardLineConversionOperation) IsExact() bool {
 	if e != nil {
@@ -683,6 +714,16 @@ const (
 
 func (e BillingInvoiceStandardLineRoundingMode) ToPointer() *BillingInvoiceStandardLineRoundingMode {
 	return &e
+}
+
+// BillingInvoiceStandardLineRoundingModeValues returns every known BillingInvoiceStandardLineRoundingMode value in schema order.
+func BillingInvoiceStandardLineRoundingModeValues() []BillingInvoiceStandardLineRoundingMode {
+	return []BillingInvoiceStandardLineRoundingMode{
+		BillingInvoiceStandardLineRoundingModeCeiling,
+		BillingInvoiceStandardLineRoundingModeFloor,
+		BillingInvoiceStandardLineRoundingModeHalfUp,
+		BillingInvoiceStandardLineRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

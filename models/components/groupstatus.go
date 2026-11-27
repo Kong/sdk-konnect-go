@@ -21,6 +21,15 @@ func (e GroupStatusState) ToPointer() *GroupStatusState {
 	return &e
 }
 
+// GroupStatusStateValues returns every known GroupStatusState value in schema order.
+func GroupStatusStateValues() []GroupStatusState {
+	return []GroupStatusState{
+		GroupStatusStateOk,
+		GroupStatusStateConflict,
+		GroupStatusStateUnknown,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *GroupStatusState) IsExact() bool {
 	if e != nil {

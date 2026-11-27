@@ -15,6 +15,14 @@ func (e VaultKeyAlgorithm) ToPointer() *VaultKeyAlgorithm {
 	return &e
 }
 
+// VaultKeyAlgorithmValues returns every known VaultKeyAlgorithm value in schema order.
+func VaultKeyAlgorithmValues() []VaultKeyAlgorithm {
+	return []VaultKeyAlgorithm{
+		VaultKeyAlgorithmRsa,
+		VaultKeyAlgorithmEc,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VaultKeyAlgorithm) IsExact() bool {
 	if e != nil {

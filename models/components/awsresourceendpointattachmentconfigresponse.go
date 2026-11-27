@@ -18,6 +18,13 @@ const (
 func (e AWSResourceEndpointAttachmentType) ToPointer() *AWSResourceEndpointAttachmentType {
 	return &e
 }
+
+// AWSResourceEndpointAttachmentTypeValues returns every known AWSResourceEndpointAttachmentType value in schema order.
+func AWSResourceEndpointAttachmentTypeValues() []AWSResourceEndpointAttachmentType {
+	return []AWSResourceEndpointAttachmentType{
+		AWSResourceEndpointAttachmentTypeAwsResourceEndpointAttachment,
+	}
+}
 func (e *AWSResourceEndpointAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

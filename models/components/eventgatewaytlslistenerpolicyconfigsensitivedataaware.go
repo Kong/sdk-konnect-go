@@ -20,6 +20,14 @@ func (e EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode) ToPointer() *
 	return &e
 }
 
+// EventGatewayTLSListenerPolicyConfigSensitiveDataAwareModeValues returns every known EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode value in schema order.
+func EventGatewayTLSListenerPolicyConfigSensitiveDataAwareModeValues() []EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode {
+	return []EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode{
+		EventGatewayTLSListenerPolicyConfigSensitiveDataAwareModeRequired,
+		EventGatewayTLSListenerPolicyConfigSensitiveDataAwareModeRequested,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode) IsExact() bool {
 	if e != nil {

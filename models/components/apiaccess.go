@@ -23,6 +23,15 @@ func (e APIAccess) ToPointer() *APIAccess {
 	return &e
 }
 
+// APIAccessValues returns every known APIAccess value in schema order.
+func APIAccessValues() []APIAccess {
+	return []APIAccess{
+		APIAccessPrivate,
+		APIAccessPublic,
+		APIAccessPrivatePlusPublic,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIAccess) IsExact() bool {
 	if e != nil {

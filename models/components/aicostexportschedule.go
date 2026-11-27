@@ -22,6 +22,14 @@ func (e AICostExportScheduleFormat) ToPointer() *AICostExportScheduleFormat {
 	return &e
 }
 
+// AICostExportScheduleFormatValues returns every known AICostExportScheduleFormat value in schema order.
+func AICostExportScheduleFormatValues() []AICostExportScheduleFormat {
+	return []AICostExportScheduleFormat{
+		AICostExportScheduleFormatParquet,
+		AICostExportScheduleFormatCsv,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleFormat) IsExact() bool {
 	if e != nil {
@@ -44,6 +52,15 @@ const (
 
 func (e AICostExportSchedule2Compression) ToPointer() *AICostExportSchedule2Compression {
 	return &e
+}
+
+// AICostExportSchedule2CompressionValues returns every known AICostExportSchedule2Compression value in schema order.
+func AICostExportSchedule2CompressionValues() []AICostExportSchedule2Compression {
+	return []AICostExportSchedule2Compression{
+		AICostExportSchedule2CompressionNone,
+		AICostExportSchedule2CompressionGzip,
+		AICostExportSchedule2CompressionZstd,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -72,6 +89,15 @@ func (e AICostExportScheduleCadence) ToPointer() *AICostExportScheduleCadence {
 	return &e
 }
 
+// AICostExportScheduleCadenceValues returns every known AICostExportScheduleCadence value in schema order.
+func AICostExportScheduleCadenceValues() []AICostExportScheduleCadence {
+	return []AICostExportScheduleCadence{
+		AICostExportScheduleCadenceDaily,
+		AICostExportScheduleCadenceWeekly,
+		AICostExportScheduleCadenceMonthly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleCadence) IsExact() bool {
 	if e != nil {
@@ -93,6 +119,14 @@ const (
 
 func (e AICostExportSchedule2Status) ToPointer() *AICostExportSchedule2Status {
 	return &e
+}
+
+// AICostExportSchedule2StatusValues returns every known AICostExportSchedule2Status value in schema order.
+func AICostExportSchedule2StatusValues() []AICostExportSchedule2Status {
+	return []AICostExportSchedule2Status{
+		AICostExportSchedule2StatusActive,
+		AICostExportSchedule2StatusPaused,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -118,6 +152,14 @@ func (e AICostExportScheduleDataset) ToPointer() *AICostExportScheduleDataset {
 	return &e
 }
 
+// AICostExportScheduleDatasetValues returns every known AICostExportScheduleDataset value in schema order.
+func AICostExportScheduleDatasetValues() []AICostExportScheduleDataset {
+	return []AICostExportScheduleDataset{
+		AICostExportScheduleDatasetUsageEvents,
+		AICostExportScheduleDatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleDataset) IsExact() bool {
 	if e != nil {
@@ -139,6 +181,14 @@ const (
 
 func (e AICostExportScheduleSchemaVersion) ToPointer() *AICostExportScheduleSchemaVersion {
 	return &e
+}
+
+// AICostExportScheduleSchemaVersionValues returns every known AICostExportScheduleSchemaVersion value in schema order.
+func AICostExportScheduleSchemaVersionValues() []AICostExportScheduleSchemaVersion {
+	return []AICostExportScheduleSchemaVersion{
+		AICostExportScheduleSchemaVersionOne,
+		AICostExportScheduleSchemaVersionTwo,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -332,6 +382,14 @@ func (e AICostExportSchedule1Format) ToPointer() *AICostExportSchedule1Format {
 	return &e
 }
 
+// AICostExportSchedule1FormatValues returns every known AICostExportSchedule1Format value in schema order.
+func AICostExportSchedule1FormatValues() []AICostExportSchedule1Format {
+	return []AICostExportSchedule1Format{
+		AICostExportSchedule1FormatParquet,
+		AICostExportSchedule1FormatCsv,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportSchedule1Format) IsExact() bool {
 	if e != nil {
@@ -354,6 +412,15 @@ const (
 
 func (e AICostExportScheduleCompression) ToPointer() *AICostExportScheduleCompression {
 	return &e
+}
+
+// AICostExportScheduleCompressionValues returns every known AICostExportScheduleCompression value in schema order.
+func AICostExportScheduleCompressionValues() []AICostExportScheduleCompression {
+	return []AICostExportScheduleCompression{
+		AICostExportScheduleCompressionNone,
+		AICostExportScheduleCompressionGzip,
+		AICostExportScheduleCompressionZstd,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -382,6 +449,15 @@ func (e Cadence) ToPointer() *Cadence {
 	return &e
 }
 
+// CadenceValues returns every known Cadence value in schema order.
+func CadenceValues() []Cadence {
+	return []Cadence{
+		CadenceDaily,
+		CadenceWeekly,
+		CadenceMonthly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Cadence) IsExact() bool {
 	if e != nil {
@@ -403,6 +479,14 @@ const (
 
 func (e AICostExportScheduleStatus) ToPointer() *AICostExportScheduleStatus {
 	return &e
+}
+
+// AICostExportScheduleStatusValues returns every known AICostExportScheduleStatus value in schema order.
+func AICostExportScheduleStatusValues() []AICostExportScheduleStatus {
+	return []AICostExportScheduleStatus{
+		AICostExportScheduleStatusActive,
+		AICostExportScheduleStatusPaused,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -428,6 +512,14 @@ func (e Dataset) ToPointer() *Dataset {
 	return &e
 }
 
+// DatasetValues returns every known Dataset value in schema order.
+func DatasetValues() []Dataset {
+	return []Dataset{
+		DatasetUsageEvents,
+		DatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Dataset) IsExact() bool {
 	if e != nil {
@@ -449,6 +541,14 @@ const (
 
 func (e SchemaVersion) ToPointer() *SchemaVersion {
 	return &e
+}
+
+// SchemaVersionValues returns every known SchemaVersion value in schema order.
+func SchemaVersionValues() []SchemaVersion {
+	return []SchemaVersion{
+		SchemaVersionOne,
+		SchemaVersionTwo,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

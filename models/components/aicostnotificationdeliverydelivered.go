@@ -20,6 +20,13 @@ const (
 func (e AICostNotificationDeliveryDeliveredStatus) ToPointer() *AICostNotificationDeliveryDeliveredStatus {
 	return &e
 }
+
+// AICostNotificationDeliveryDeliveredStatusValues returns every known AICostNotificationDeliveryDeliveredStatus value in schema order.
+func AICostNotificationDeliveryDeliveredStatusValues() []AICostNotificationDeliveryDeliveredStatus {
+	return []AICostNotificationDeliveryDeliveredStatus{
+		AICostNotificationDeliveryDeliveredStatusDelivered,
+	}
+}
 func (e *AICostNotificationDeliveryDeliveredStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

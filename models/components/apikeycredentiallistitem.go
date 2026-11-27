@@ -19,6 +19,13 @@ const (
 func (e APIKeyCredentialListItemType) ToPointer() *APIKeyCredentialListItemType {
 	return &e
 }
+
+// APIKeyCredentialListItemTypeValues returns every known APIKeyCredentialListItemType value in schema order.
+func APIKeyCredentialListItemTypeValues() []APIKeyCredentialListItemType {
+	return []APIKeyCredentialListItemType{
+		APIKeyCredentialListItemTypeAPIKey,
+	}
+}
 func (e *APIKeyCredentialListItemType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -43,6 +50,15 @@ const (
 
 func (e APIKeyCredentialListItemStatus) ToPointer() *APIKeyCredentialListItemStatus {
 	return &e
+}
+
+// APIKeyCredentialListItemStatusValues returns every known APIKeyCredentialListItemStatus value in schema order.
+func APIKeyCredentialListItemStatusValues() []APIKeyCredentialListItemStatus {
+	return []APIKeyCredentialListItemStatus{
+		APIKeyCredentialListItemStatusActive,
+		APIKeyCredentialListItemStatusExpired,
+		APIKeyCredentialListItemStatusRevoked,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

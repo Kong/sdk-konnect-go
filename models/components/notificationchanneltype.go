@@ -15,6 +15,14 @@ func (e NotificationChannelType) ToPointer() *NotificationChannelType {
 	return &e
 }
 
+// NotificationChannelTypeValues returns every known NotificationChannelType value in schema order.
+func NotificationChannelTypeValues() []NotificationChannelType {
+	return []NotificationChannelType{
+		NotificationChannelTypeEmail,
+		NotificationChannelTypeInApp,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NotificationChannelType) IsExact() bool {
 	if e != nil {

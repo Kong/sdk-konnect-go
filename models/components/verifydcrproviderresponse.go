@@ -14,6 +14,14 @@ func (e VerifyDcrProviderResponseStatus) ToPointer() *VerifyDcrProviderResponseS
 	return &e
 }
 
+// VerifyDcrProviderResponseStatusValues returns every known VerifyDcrProviderResponseStatus value in schema order.
+func VerifyDcrProviderResponseStatusValues() []VerifyDcrProviderResponseStatus {
+	return []VerifyDcrProviderResponseStatus{
+		VerifyDcrProviderResponseStatusSuccess,
+		VerifyDcrProviderResponseStatusFailed,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VerifyDcrProviderResponseStatus) IsExact() bool {
 	if e != nil {

@@ -21,6 +21,14 @@ const (
 func (e QueryParamForce) ToPointer() *QueryParamForce {
 	return &e
 }
+
+// QueryParamForceValues returns every known QueryParamForce value in schema order.
+func QueryParamForceValues() []QueryParamForce {
+	return []QueryParamForce{
+		QueryParamForceTrue,
+		QueryParamForceFalse,
+	}
+}
 func (e *QueryParamForce) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

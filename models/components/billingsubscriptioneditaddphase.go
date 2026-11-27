@@ -19,6 +19,13 @@ const (
 func (e BillingSubscriptionEditAddPhaseType) ToPointer() *BillingSubscriptionEditAddPhaseType {
 	return &e
 }
+
+// BillingSubscriptionEditAddPhaseTypeValues returns every known BillingSubscriptionEditAddPhaseType value in schema order.
+func BillingSubscriptionEditAddPhaseTypeValues() []BillingSubscriptionEditAddPhaseType {
+	return []BillingSubscriptionEditAddPhaseType{
+		BillingSubscriptionEditAddPhaseTypeAddPhase,
+	}
+}
 func (e *BillingSubscriptionEditAddPhaseType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

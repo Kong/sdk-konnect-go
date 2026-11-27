@@ -16,6 +16,14 @@ func (e BillingCurrencyType) ToPointer() *BillingCurrencyType {
 	return &e
 }
 
+// BillingCurrencyTypeValues returns every known BillingCurrencyType value in schema order.
+func BillingCurrencyTypeValues() []BillingCurrencyType {
+	return []BillingCurrencyType{
+		BillingCurrencyTypeFiat,
+		BillingCurrencyTypeCustom,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingCurrencyType) IsExact() bool {
 	if e != nil {

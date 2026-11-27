@@ -15,6 +15,14 @@ func (e CustomFormStatus) ToPointer() *CustomFormStatus {
 	return &e
 }
 
+// CustomFormStatusValues returns every known CustomFormStatus value in schema order.
+func CustomFormStatusValues() []CustomFormStatus {
+	return []CustomFormStatus{
+		CustomFormStatusPublished,
+		CustomFormStatusUnpublished,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CustomFormStatus) IsExact() bool {
 	if e != nil {

@@ -19,6 +19,13 @@ const (
 func (e UpdatePriceFlatType) ToPointer() *UpdatePriceFlatType {
 	return &e
 }
+
+// UpdatePriceFlatTypeValues returns every known UpdatePriceFlatType value in schema order.
+func UpdatePriceFlatTypeValues() []UpdatePriceFlatType {
+	return []UpdatePriceFlatType{
+		UpdatePriceFlatTypeFlat,
+	}
+}
 func (e *UpdatePriceFlatType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

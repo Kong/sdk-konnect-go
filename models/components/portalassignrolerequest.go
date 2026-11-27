@@ -20,6 +20,19 @@ func (e PortalAssignRoleRequestEntityRegion) ToPointer() *PortalAssignRoleReques
 	return &e
 }
 
+// PortalAssignRoleRequestEntityRegionValues returns every known PortalAssignRoleRequestEntityRegion value in schema order.
+func PortalAssignRoleRequestEntityRegionValues() []PortalAssignRoleRequestEntityRegion {
+	return []PortalAssignRoleRequestEntityRegion{
+		PortalAssignRoleRequestEntityRegionUs,
+		PortalAssignRoleRequestEntityRegionEu,
+		PortalAssignRoleRequestEntityRegionAu,
+		PortalAssignRoleRequestEntityRegionMe,
+		PortalAssignRoleRequestEntityRegionIn,
+		PortalAssignRoleRequestEntityRegionSg,
+		PortalAssignRoleRequestEntityRegionWildcard,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PortalAssignRoleRequestEntityRegion) IsExact() bool {
 	if e != nil {

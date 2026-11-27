@@ -21,6 +21,16 @@ func (e MCPKeyValueInputFormat) ToPointer() *MCPKeyValueInputFormat {
 	return &e
 }
 
+// MCPKeyValueInputFormatValues returns every known MCPKeyValueInputFormat value in schema order.
+func MCPKeyValueInputFormatValues() []MCPKeyValueInputFormat {
+	return []MCPKeyValueInputFormat{
+		MCPKeyValueInputFormatString,
+		MCPKeyValueInputFormatNumber,
+		MCPKeyValueInputFormatBoolean,
+		MCPKeyValueInputFormatFilepath,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPKeyValueInputFormat) IsExact() bool {
 	if e != nil {

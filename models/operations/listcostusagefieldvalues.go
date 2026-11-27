@@ -40,6 +40,28 @@ func (e Field) ToPointer() *Field {
 	return &e
 }
 
+// FieldValues returns every known Field value in schema order.
+func FieldValues() []Field {
+	return []Field{
+		FieldSubject,
+		FieldTags,
+		FieldSource,
+		FieldProvider,
+		FieldModel,
+		FieldModelID,
+		FieldRegion,
+		FieldClient,
+		FieldCostCenter,
+		FieldGroups,
+		FieldTeams,
+		FieldServiceID,
+		FieldRouteID,
+		FieldConsumerID,
+		FieldApplicationID,
+		FieldConsumerGroupIds,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Field) IsExact() bool {
 	if e != nil {

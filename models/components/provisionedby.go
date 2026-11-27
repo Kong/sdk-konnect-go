@@ -16,6 +16,15 @@ func (e ProvisionedBy) ToPointer() *ProvisionedBy {
 	return &e
 }
 
+// ProvisionedByValues returns every known ProvisionedBy value in schema order.
+func ProvisionedByValues() []ProvisionedBy {
+	return []ProvisionedBy{
+		ProvisionedByKonnectUser,
+		ProvisionedByDeveloperPortal,
+		ProvisionedByTrustedIdp,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ProvisionedBy) IsExact() bool {
 	if e != nil {

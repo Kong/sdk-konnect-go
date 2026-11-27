@@ -18,6 +18,13 @@ const (
 func (e MetricsRelativeTimeRangeDtoV2Type) ToPointer() *MetricsRelativeTimeRangeDtoV2Type {
 	return &e
 }
+
+// MetricsRelativeTimeRangeDtoV2TypeValues returns every known MetricsRelativeTimeRangeDtoV2Type value in schema order.
+func MetricsRelativeTimeRangeDtoV2TypeValues() []MetricsRelativeTimeRangeDtoV2Type {
+	return []MetricsRelativeTimeRangeDtoV2Type{
+		MetricsRelativeTimeRangeDtoV2TypeRelative,
+	}
+}
 func (e *MetricsRelativeTimeRangeDtoV2Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -50,6 +57,23 @@ const (
 
 func (e MetricsRelativeTimeRangeDtoV2TimeRange) ToPointer() *MetricsRelativeTimeRangeDtoV2TimeRange {
 	return &e
+}
+
+// MetricsRelativeTimeRangeDtoV2TimeRangeValues returns every known MetricsRelativeTimeRangeDtoV2TimeRange value in schema order.
+func MetricsRelativeTimeRangeDtoV2TimeRangeValues() []MetricsRelativeTimeRangeDtoV2TimeRange {
+	return []MetricsRelativeTimeRangeDtoV2TimeRange{
+		MetricsRelativeTimeRangeDtoV2TimeRangeFifteenm,
+		MetricsRelativeTimeRangeDtoV2TimeRangeOneh,
+		MetricsRelativeTimeRangeDtoV2TimeRangeSixh,
+		MetricsRelativeTimeRangeDtoV2TimeRangeTwelveh,
+		MetricsRelativeTimeRangeDtoV2TimeRangeTwentyFourh,
+		MetricsRelativeTimeRangeDtoV2TimeRangeSevend,
+		MetricsRelativeTimeRangeDtoV2TimeRangeThirtyd,
+		MetricsRelativeTimeRangeDtoV2TimeRangeCurrentWeek,
+		MetricsRelativeTimeRangeDtoV2TimeRangeCurrentMonth,
+		MetricsRelativeTimeRangeDtoV2TimeRangePreviousWeek,
+		MetricsRelativeTimeRangeDtoV2TimeRangePreviousMonth,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

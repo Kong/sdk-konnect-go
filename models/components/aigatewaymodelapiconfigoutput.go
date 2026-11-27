@@ -19,6 +19,15 @@ func (e ResponseStreaming) ToPointer() *ResponseStreaming {
 	return &e
 }
 
+// ResponseStreamingValues returns every known ResponseStreaming value in schema order.
+func ResponseStreamingValues() []ResponseStreaming {
+	return []ResponseStreaming{
+		ResponseStreamingAllow,
+		ResponseStreamingAlways,
+		ResponseStreamingDeny,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ResponseStreaming) IsExact() bool {
 	if e != nil {

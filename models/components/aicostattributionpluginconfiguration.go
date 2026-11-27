@@ -20,6 +20,19 @@ func (e AICostAttributionPluginConfigurationIntegrations) ToPointer() *AICostAtt
 	return &e
 }
 
+// AICostAttributionPluginConfigurationIntegrationsValues returns every known AICostAttributionPluginConfigurationIntegrations value in schema order.
+func AICostAttributionPluginConfigurationIntegrationsValues() []AICostAttributionPluginConfigurationIntegrations {
+	return []AICostAttributionPluginConfigurationIntegrations{
+		AICostAttributionPluginConfigurationIntegrationsClaudeCode,
+		AICostAttributionPluginConfigurationIntegrationsCodex,
+		AICostAttributionPluginConfigurationIntegrationsOpencode,
+		AICostAttributionPluginConfigurationIntegrationsCopilot,
+		AICostAttributionPluginConfigurationIntegrationsHelicone,
+		AICostAttributionPluginConfigurationIntegrationsPortkey,
+		AICostAttributionPluginConfigurationIntegrationsCloudflareAiGateway,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostAttributionPluginConfigurationIntegrations) IsExact() bool {
 	if e != nil {

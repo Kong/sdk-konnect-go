@@ -19,6 +19,13 @@ const (
 func (e BillingPriceFlatType) ToPointer() *BillingPriceFlatType {
 	return &e
 }
+
+// BillingPriceFlatTypeValues returns every known BillingPriceFlatType value in schema order.
+func BillingPriceFlatTypeValues() []BillingPriceFlatType {
+	return []BillingPriceFlatType{
+		BillingPriceFlatTypeFlat,
+	}
+}
 func (e *BillingPriceFlatType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

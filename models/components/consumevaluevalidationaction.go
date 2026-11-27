@@ -22,6 +22,14 @@ func (e ConsumeValueValidationAction) ToPointer() *ConsumeValueValidationAction 
 	return &e
 }
 
+// ConsumeValueValidationActionValues returns every known ConsumeValueValidationAction value in schema order.
+func ConsumeValueValidationActionValues() []ConsumeValueValidationAction {
+	return []ConsumeValueValidationAction{
+		ConsumeValueValidationActionMark,
+		ConsumeValueValidationActionSkip,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ConsumeValueValidationAction) IsExact() bool {
 	if e != nil {

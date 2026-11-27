@@ -19,6 +19,13 @@ const (
 func (e BillingInstallAppSandboxType) ToPointer() *BillingInstallAppSandboxType {
 	return &e
 }
+
+// BillingInstallAppSandboxTypeValues returns every known BillingInstallAppSandboxType value in schema order.
+func BillingInstallAppSandboxTypeValues() []BillingInstallAppSandboxType {
+	return []BillingInstallAppSandboxType{
+		BillingInstallAppSandboxTypeSandbox,
+	}
+}
 func (e *BillingInstallAppSandboxType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -20,6 +20,15 @@ func (e Reason) ToPointer() *Reason {
 	return &e
 }
 
+// ReasonValues returns every known Reason value in schema order.
+func ReasonValues() []Reason {
+	return []Reason{
+		ReasonMaximumSpend,
+		ReasonRatecardPercentage,
+		ReasonRatecardUsage,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Reason) IsExact() bool {
 	if e != nil {

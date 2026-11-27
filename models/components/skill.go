@@ -21,6 +21,15 @@ func (e SkillStatus) ToPointer() *SkillStatus {
 	return &e
 }
 
+// SkillStatusValues returns every known SkillStatus value in schema order.
+func SkillStatusValues() []SkillStatus {
+	return []SkillStatus{
+		SkillStatusPending,
+		SkillStatusValid,
+		SkillStatusInvalid,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SkillStatus) IsExact() bool {
 	if e != nil {
@@ -43,6 +52,15 @@ const (
 
 func (e SkillSyncStatusStatus) ToPointer() *SkillSyncStatusStatus {
 	return &e
+}
+
+// SkillSyncStatusStatusValues returns every known SkillSyncStatusStatus value in schema order.
+func SkillSyncStatusStatusValues() []SkillSyncStatusStatus {
+	return []SkillSyncStatusStatus{
+		SkillSyncStatusStatusPending,
+		SkillSyncStatusStatusSuccess,
+		SkillSyncStatusStatusFailed,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

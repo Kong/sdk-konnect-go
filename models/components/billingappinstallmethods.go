@@ -16,6 +16,15 @@ func (e BillingAppInstallMethods) ToPointer() *BillingAppInstallMethods {
 	return &e
 }
 
+// BillingAppInstallMethodsValues returns every known BillingAppInstallMethods value in schema order.
+func BillingAppInstallMethodsValues() []BillingAppInstallMethods {
+	return []BillingAppInstallMethods{
+		BillingAppInstallMethodsWithOauth2,
+		BillingAppInstallMethodsWithAPIKey,
+		BillingAppInstallMethodsNoCredentialsRequired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingAppInstallMethods) IsExact() bool {
 	if e != nil {

@@ -43,6 +43,23 @@ func (e Granularity) ToPointer() *Granularity {
 	return &e
 }
 
+// GranularityValues returns every known Granularity value in schema order.
+func GranularityValues() []Granularity {
+	return []Granularity{
+		GranularityTenSecondly,
+		GranularityThirtySecondly,
+		GranularityMinutely,
+		GranularityFiveMinutely,
+		GranularityTenMinutely,
+		GranularityThirtyMinutely,
+		GranularityHourly,
+		GranularityTwoHourly,
+		GranularityTwelveHourly,
+		GranularityDaily,
+		GranularityWeekly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Granularity) IsExact() bool {
 	if e != nil {

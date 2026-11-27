@@ -19,6 +19,13 @@ const (
 func (e BillingFeatureLLMUnitCostType) ToPointer() *BillingFeatureLLMUnitCostType {
 	return &e
 }
+
+// BillingFeatureLLMUnitCostTypeValues returns every known BillingFeatureLLMUnitCostType value in schema order.
+func BillingFeatureLLMUnitCostTypeValues() []BillingFeatureLLMUnitCostType {
+	return []BillingFeatureLLMUnitCostType{
+		BillingFeatureLLMUnitCostTypeLlm,
+	}
+}
 func (e *BillingFeatureLLMUnitCostType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -50,6 +57,19 @@ const (
 
 func (e TokenType) ToPointer() *TokenType {
 	return &e
+}
+
+// TokenTypeValues returns every known TokenType value in schema order.
+func TokenTypeValues() []TokenType {
+	return []TokenType{
+		TokenTypeInput,
+		TokenTypeOutput,
+		TokenTypeCacheRead,
+		TokenTypeCacheWrite,
+		TokenTypeReasoning,
+		TokenTypeRequest,
+		TokenTypeResponse,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

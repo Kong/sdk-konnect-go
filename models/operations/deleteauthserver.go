@@ -21,6 +21,14 @@ const (
 func (e Force) ToPointer() *Force {
 	return &e
 }
+
+// ForceValues returns every known Force value in schema order.
+func ForceValues() []Force {
+	return []Force{
+		ForceTrue,
+		ForceFalse,
+	}
+}
 func (e *Force) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

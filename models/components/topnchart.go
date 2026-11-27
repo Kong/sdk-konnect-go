@@ -18,6 +18,13 @@ const (
 func (e TopNChartType) ToPointer() *TopNChartType {
 	return &e
 }
+
+// TopNChartTypeValues returns every known TopNChartType value in schema order.
+func TopNChartTypeValues() []TopNChartType {
+	return []TopNChartType{
+		TopNChartTypeTopN,
+	}
+}
 func (e *TopNChartType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

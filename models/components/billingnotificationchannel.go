@@ -20,6 +20,13 @@ const (
 func (e BillingNotificationChannelType) ToPointer() *BillingNotificationChannelType {
 	return &e
 }
+
+// BillingNotificationChannelTypeValues returns every known BillingNotificationChannelType value in schema order.
+func BillingNotificationChannelTypeValues() []BillingNotificationChannelType {
+	return []BillingNotificationChannelType{
+		BillingNotificationChannelTypeWebhook,
+	}
+}
 func (e *BillingNotificationChannelType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -21,6 +21,15 @@ func (e PersonalAccessTokenCreateResponseState) ToPointer() *PersonalAccessToken
 	return &e
 }
 
+// PersonalAccessTokenCreateResponseStateValues returns every known PersonalAccessTokenCreateResponseState value in schema order.
+func PersonalAccessTokenCreateResponseStateValues() []PersonalAccessTokenCreateResponseState {
+	return []PersonalAccessTokenCreateResponseState{
+		PersonalAccessTokenCreateResponseStateActive,
+		PersonalAccessTokenCreateResponseStateRevoked,
+		PersonalAccessTokenCreateResponseStateExpired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PersonalAccessTokenCreateResponseState) IsExact() bool {
 	if e != nil {

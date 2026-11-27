@@ -15,6 +15,14 @@ func (e CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple) ToPoi
 	return &e
 }
 
+// CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleValues returns every known CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple value in schema order.
+func CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleValues() []CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple {
+	return []CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple{
+		CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleSingle,
+		CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleMultiple,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple) IsExact() bool {
 	if e != nil {

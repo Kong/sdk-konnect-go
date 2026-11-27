@@ -18,6 +18,13 @@ const (
 func (e AWSVPCPeeringAttachmentConfig) ToPointer() *AWSVPCPeeringAttachmentConfig {
 	return &e
 }
+
+// AWSVPCPeeringAttachmentConfigValues returns every known AWSVPCPeeringAttachmentConfig value in schema order.
+func AWSVPCPeeringAttachmentConfigValues() []AWSVPCPeeringAttachmentConfig {
+	return []AWSVPCPeeringAttachmentConfig{
+		AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+	}
+}
 func (e *AWSVPCPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

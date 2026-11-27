@@ -19,6 +19,13 @@ const (
 func (e InvalidParameterDependentItemRule) ToPointer() *InvalidParameterDependentItemRule {
 	return &e
 }
+
+// InvalidParameterDependentItemRuleValues returns every known InvalidParameterDependentItemRule value in schema order.
+func InvalidParameterDependentItemRuleValues() []InvalidParameterDependentItemRule {
+	return []InvalidParameterDependentItemRule{
+		InvalidParameterDependentItemRuleDependentFields,
+	}
+}
 func (e *InvalidParameterDependentItemRule) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

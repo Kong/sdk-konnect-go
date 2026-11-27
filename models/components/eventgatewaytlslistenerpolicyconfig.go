@@ -20,6 +20,14 @@ func (e EventGatewayTLSListenerPolicyConfigMode) ToPointer() *EventGatewayTLSLis
 	return &e
 }
 
+// EventGatewayTLSListenerPolicyConfigModeValues returns every known EventGatewayTLSListenerPolicyConfigMode value in schema order.
+func EventGatewayTLSListenerPolicyConfigModeValues() []EventGatewayTLSListenerPolicyConfigMode {
+	return []EventGatewayTLSListenerPolicyConfigMode{
+		EventGatewayTLSListenerPolicyConfigModeRequired,
+		EventGatewayTLSListenerPolicyConfigModeRequested,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EventGatewayTLSListenerPolicyConfigMode) IsExact() bool {
 	if e != nil {

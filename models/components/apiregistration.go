@@ -16,6 +16,16 @@ func (e APIRegistrationStatus) ToPointer() *APIRegistrationStatus {
 	return &e
 }
 
+// APIRegistrationStatusValues returns every known APIRegistrationStatus value in schema order.
+func APIRegistrationStatusValues() []APIRegistrationStatus {
+	return []APIRegistrationStatus{
+		APIRegistrationStatusApproved,
+		APIRegistrationStatusPending,
+		APIRegistrationStatusRejected,
+		APIRegistrationStatusRevoked,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIRegistrationStatus) IsExact() bool {
 	if e != nil {

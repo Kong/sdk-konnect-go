@@ -211,6 +211,13 @@ const (
 func (e AICostNotificationThresholdEventKind) ToPointer() *AICostNotificationThresholdEventKind {
 	return &e
 }
+
+// AICostNotificationThresholdEventKindValues returns every known AICostNotificationThresholdEventKind value in schema order.
+func AICostNotificationThresholdEventKindValues() []AICostNotificationThresholdEventKind {
+	return []AICostNotificationThresholdEventKind{
+		AICostNotificationThresholdEventKindThreshold,
+	}
+}
 func (e *AICostNotificationThresholdEventKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

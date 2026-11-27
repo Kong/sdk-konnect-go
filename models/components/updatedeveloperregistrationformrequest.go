@@ -18,6 +18,14 @@ func (e UpdateDeveloperRegistrationFormRequestStatus) ToPointer() *UpdateDevelop
 	return &e
 }
 
+// UpdateDeveloperRegistrationFormRequestStatusValues returns every known UpdateDeveloperRegistrationFormRequestStatus value in schema order.
+func UpdateDeveloperRegistrationFormRequestStatusValues() []UpdateDeveloperRegistrationFormRequestStatus {
+	return []UpdateDeveloperRegistrationFormRequestStatus{
+		UpdateDeveloperRegistrationFormRequestStatusPublished,
+		UpdateDeveloperRegistrationFormRequestStatusUnpublished,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateDeveloperRegistrationFormRequestStatus) IsExact() bool {
 	if e != nil {

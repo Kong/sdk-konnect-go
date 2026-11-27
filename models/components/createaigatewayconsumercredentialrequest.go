@@ -18,6 +18,13 @@ const (
 func (e CreateAIGatewayConsumerCredentialRequestType) ToPointer() *CreateAIGatewayConsumerCredentialRequestType {
 	return &e
 }
+
+// CreateAIGatewayConsumerCredentialRequestTypeValues returns every known CreateAIGatewayConsumerCredentialRequestType value in schema order.
+func CreateAIGatewayConsumerCredentialRequestTypeValues() []CreateAIGatewayConsumerCredentialRequestType {
+	return []CreateAIGatewayConsumerCredentialRequestType{
+		CreateAIGatewayConsumerCredentialRequestTypeAPIKey,
+	}
+}
 func (e *CreateAIGatewayConsumerCredentialRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

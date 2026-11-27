@@ -18,6 +18,16 @@ func (e CreateScorecardScorecardTemplate) ToPointer() *CreateScorecardScorecardT
 	return &e
 }
 
+// CreateScorecardScorecardTemplateValues returns every known CreateScorecardScorecardTemplate value in schema order.
+func CreateScorecardScorecardTemplateValues() []CreateScorecardScorecardTemplate {
+	return []CreateScorecardScorecardTemplate{
+		CreateScorecardScorecardTemplateKongBestPractices,
+		CreateScorecardScorecardTemplateServiceDocumentation,
+		CreateScorecardScorecardTemplateServiceMaturity,
+		CreateScorecardScorecardTemplateSecurityAndCompliance,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateScorecardScorecardTemplate) IsExact() bool {
 	if e != nil {

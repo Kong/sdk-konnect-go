@@ -25,6 +25,18 @@ func (e CustomDomainState) ToPointer() *CustomDomainState {
 	return &e
 }
 
+// CustomDomainStateValues returns every known CustomDomainState value in schema order.
+func CustomDomainStateValues() []CustomDomainState {
+	return []CustomDomainState{
+		CustomDomainStateCreated,
+		CustomDomainStateInitializing,
+		CustomDomainStateReady,
+		CustomDomainStateTerminating,
+		CustomDomainStateTerminated,
+		CustomDomainStateError,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CustomDomainState) IsExact() bool {
 	if e != nil {

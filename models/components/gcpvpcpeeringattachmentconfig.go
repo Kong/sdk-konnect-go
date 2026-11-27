@@ -18,6 +18,13 @@ const (
 func (e GCPVPCPeeringAttachmentType) ToPointer() *GCPVPCPeeringAttachmentType {
 	return &e
 }
+
+// GCPVPCPeeringAttachmentTypeValues returns every known GCPVPCPeeringAttachmentType value in schema order.
+func GCPVPCPeeringAttachmentTypeValues() []GCPVPCPeeringAttachmentType {
+	return []GCPVPCPeeringAttachmentType{
+		GCPVPCPeeringAttachmentTypeGcpVpcPeeringAttachment,
+	}
+}
 func (e *GCPVPCPeeringAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

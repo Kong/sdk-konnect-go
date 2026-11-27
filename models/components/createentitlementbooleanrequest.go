@@ -20,6 +20,13 @@ const (
 func (e CreateEntitlementBooleanRequestType) ToPointer() *CreateEntitlementBooleanRequestType {
 	return &e
 }
+
+// CreateEntitlementBooleanRequestTypeValues returns every known CreateEntitlementBooleanRequestType value in schema order.
+func CreateEntitlementBooleanRequestTypeValues() []CreateEntitlementBooleanRequestType {
+	return []CreateEntitlementBooleanRequestType{
+		CreateEntitlementBooleanRequestTypeBoolean,
+	}
+}
 func (e *CreateEntitlementBooleanRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -20,6 +20,13 @@ const (
 func (e BillingSubscriptionEditAddItemType) ToPointer() *BillingSubscriptionEditAddItemType {
 	return &e
 }
+
+// BillingSubscriptionEditAddItemTypeValues returns every known BillingSubscriptionEditAddItemType value in schema order.
+func BillingSubscriptionEditAddItemTypeValues() []BillingSubscriptionEditAddItemType {
+	return []BillingSubscriptionEditAddItemType{
+		BillingSubscriptionEditAddItemTypeAddItem,
+	}
+}
 func (e *BillingSubscriptionEditAddItemType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -244,6 +251,14 @@ func (e BillingSubscriptionEditAddItemConversionOperation) ToPointer() *BillingS
 	return &e
 }
 
+// BillingSubscriptionEditAddItemConversionOperationValues returns every known BillingSubscriptionEditAddItemConversionOperation value in schema order.
+func BillingSubscriptionEditAddItemConversionOperationValues() []BillingSubscriptionEditAddItemConversionOperation {
+	return []BillingSubscriptionEditAddItemConversionOperation{
+		BillingSubscriptionEditAddItemConversionOperationDivide,
+		BillingSubscriptionEditAddItemConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionEditAddItemConversionOperation) IsExact() bool {
 	if e != nil {
@@ -270,6 +285,16 @@ const (
 
 func (e BillingSubscriptionEditAddItemRoundingMode) ToPointer() *BillingSubscriptionEditAddItemRoundingMode {
 	return &e
+}
+
+// BillingSubscriptionEditAddItemRoundingModeValues returns every known BillingSubscriptionEditAddItemRoundingMode value in schema order.
+func BillingSubscriptionEditAddItemRoundingModeValues() []BillingSubscriptionEditAddItemRoundingMode {
+	return []BillingSubscriptionEditAddItemRoundingMode{
+		BillingSubscriptionEditAddItemRoundingModeCeiling,
+		BillingSubscriptionEditAddItemRoundingModeFloor,
+		BillingSubscriptionEditAddItemRoundingModeHalfUp,
+		BillingSubscriptionEditAddItemRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -377,6 +402,14 @@ func (e BillingSubscriptionEditAddItemPaymentTerm) ToPointer() *BillingSubscript
 	return &e
 }
 
+// BillingSubscriptionEditAddItemPaymentTermValues returns every known BillingSubscriptionEditAddItemPaymentTerm value in schema order.
+func BillingSubscriptionEditAddItemPaymentTermValues() []BillingSubscriptionEditAddItemPaymentTerm {
+	return []BillingSubscriptionEditAddItemPaymentTerm{
+		BillingSubscriptionEditAddItemPaymentTermInAdvance,
+		BillingSubscriptionEditAddItemPaymentTermInArrears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionEditAddItemPaymentTerm) IsExact() bool {
 	if e != nil {
@@ -472,6 +505,14 @@ const (
 
 func (e BillingSubscriptionEditAddItemTaxBehavior) ToPointer() *BillingSubscriptionEditAddItemTaxBehavior {
 	return &e
+}
+
+// BillingSubscriptionEditAddItemTaxBehaviorValues returns every known BillingSubscriptionEditAddItemTaxBehavior value in schema order.
+func BillingSubscriptionEditAddItemTaxBehaviorValues() []BillingSubscriptionEditAddItemTaxBehavior {
+	return []BillingSubscriptionEditAddItemTaxBehavior{
+		BillingSubscriptionEditAddItemTaxBehaviorInclusive,
+		BillingSubscriptionEditAddItemTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

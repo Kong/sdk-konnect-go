@@ -19,6 +19,15 @@ func (e AppAuthStrategyConfigKeyAuthUnit) ToPointer() *AppAuthStrategyConfigKeyA
 	return &e
 }
 
+// AppAuthStrategyConfigKeyAuthUnitValues returns every known AppAuthStrategyConfigKeyAuthUnit value in schema order.
+func AppAuthStrategyConfigKeyAuthUnitValues() []AppAuthStrategyConfigKeyAuthUnit {
+	return []AppAuthStrategyConfigKeyAuthUnit{
+		AppAuthStrategyConfigKeyAuthUnitDays,
+		AppAuthStrategyConfigKeyAuthUnitWeeks,
+		AppAuthStrategyConfigKeyAuthUnitYears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AppAuthStrategyConfigKeyAuthUnit) IsExact() bool {
 	if e != nil {

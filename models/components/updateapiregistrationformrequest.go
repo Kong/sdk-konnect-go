@@ -18,6 +18,14 @@ func (e UpdateAPIRegistrationFormRequestStatus) ToPointer() *UpdateAPIRegistrati
 	return &e
 }
 
+// UpdateAPIRegistrationFormRequestStatusValues returns every known UpdateAPIRegistrationFormRequestStatus value in schema order.
+func UpdateAPIRegistrationFormRequestStatusValues() []UpdateAPIRegistrationFormRequestStatus {
+	return []UpdateAPIRegistrationFormRequestStatus{
+		UpdateAPIRegistrationFormRequestStatusPublished,
+		UpdateAPIRegistrationFormRequestStatusUnpublished,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateAPIRegistrationFormRequestStatus) IsExact() bool {
 	if e != nil {

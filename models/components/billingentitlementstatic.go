@@ -20,6 +20,13 @@ const (
 func (e BillingEntitlementStaticType) ToPointer() *BillingEntitlementStaticType {
 	return &e
 }
+
+// BillingEntitlementStaticTypeValues returns every known BillingEntitlementStaticType value in schema order.
+func BillingEntitlementStaticTypeValues() []BillingEntitlementStaticType {
+	return []BillingEntitlementStaticType{
+		BillingEntitlementStaticTypeStatic,
+	}
+}
 func (e *BillingEntitlementStaticType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

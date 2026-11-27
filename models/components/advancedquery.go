@@ -18,6 +18,13 @@ const (
 func (e Datasource) ToPointer() *Datasource {
 	return &e
 }
+
+// DatasourceValues returns every known Datasource value in schema order.
+func DatasourceValues() []Datasource {
+	return []Datasource{
+		DatasourceAPIUsage,
+	}
+}
 func (e *Datasource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -68,6 +75,41 @@ const (
 
 func (e Dimensions) ToPointer() *Dimensions {
 	return &e
+}
+
+// DimensionsValues returns every known Dimensions value in schema order.
+func DimensionsValues() []Dimensions {
+	return []Dimensions{
+		DimensionsAiGateway,
+		DimensionsAiGatewayConsumer,
+		DimensionsAiGatewayConsumerGroup,
+		DimensionsAiGatewayDataPlaneNode,
+		DimensionsAPI,
+		DimensionsAPIPackage,
+		DimensionsAPIProduct,
+		DimensionsAPIProductVersion,
+		DimensionsApplication,
+		DimensionsCacheStatus,
+		DimensionsConsumer,
+		DimensionsConsumerGroup,
+		DimensionsControlPlane,
+		DimensionsControlPlaneGroup,
+		DimensionsCountryCode,
+		DimensionsDataPlaneNode,
+		DimensionsDataPlaneNodeVersion,
+		DimensionsGatewayService,
+		DimensionsOidcCredential,
+		DimensionsPortal,
+		DimensionsPrincipal,
+		DimensionsRealm,
+		DimensionsResponseSource,
+		DimensionsRoute,
+		DimensionsStatusCode,
+		DimensionsStatusCodeGrouped,
+		DimensionsTime,
+		DimensionsUpstreamStatusCode,
+		DimensionsUpstreamStatusCodeGrouped,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

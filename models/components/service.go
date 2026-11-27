@@ -39,6 +39,22 @@ func (e ServiceProtocol) ToPointer() *ServiceProtocol {
 	return &e
 }
 
+// ServiceProtocolValues returns every known ServiceProtocol value in schema order.
+func ServiceProtocolValues() []ServiceProtocol {
+	return []ServiceProtocol{
+		ServiceProtocolGrpc,
+		ServiceProtocolGrpcs,
+		ServiceProtocolHTTP,
+		ServiceProtocolHTTPS,
+		ServiceProtocolTCP,
+		ServiceProtocolTLS,
+		ServiceProtocolTLSPassthrough,
+		ServiceProtocolUDP,
+		ServiceProtocolWs,
+		ServiceProtocolWss,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ServiceProtocol) IsExact() bool {
 	if e != nil {

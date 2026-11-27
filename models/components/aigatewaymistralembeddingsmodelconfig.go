@@ -18,6 +18,13 @@ const (
 func (e AIGatewayMistralEmbeddingsModelConfigType) ToPointer() *AIGatewayMistralEmbeddingsModelConfigType {
 	return &e
 }
+
+// AIGatewayMistralEmbeddingsModelConfigTypeValues returns every known AIGatewayMistralEmbeddingsModelConfigType value in schema order.
+func AIGatewayMistralEmbeddingsModelConfigTypeValues() []AIGatewayMistralEmbeddingsModelConfigType {
+	return []AIGatewayMistralEmbeddingsModelConfigType{
+		AIGatewayMistralEmbeddingsModelConfigTypeMistral,
+	}
+}
 func (e *AIGatewayMistralEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

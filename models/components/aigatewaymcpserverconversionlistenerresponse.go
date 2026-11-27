@@ -52,6 +52,16 @@ func (e AllowedVersions) ToPointer() *AllowedVersions {
 	return &e
 }
 
+// AllowedVersionsValues returns every known AllowedVersions value in schema order.
+func AllowedVersionsValues() []AllowedVersions {
+	return []AllowedVersions{
+		AllowedVersionsTwoThousandAndTwentySixMinus07Minus28,
+		AllowedVersionsTwoThousandAndTwentyFiveMinus11Minus25,
+		AllowedVersionsTwoThousandAndTwentyFiveMinus06Minus18,
+		AllowedVersionsTwoThousandAndTwentyFiveMinus03Minus26,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AllowedVersions) IsExact() bool {
 	if e != nil {

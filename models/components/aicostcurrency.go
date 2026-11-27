@@ -18,6 +18,13 @@ const (
 func (e AICostCurrency) ToPointer() *AICostCurrency {
 	return &e
 }
+
+// AICostCurrencyValues returns every known AICostCurrency value in schema order.
+func AICostCurrencyValues() []AICostCurrency {
+	return []AICostCurrency{
+		AICostCurrencyUsd,
+	}
+}
 func (e *AICostCurrency) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

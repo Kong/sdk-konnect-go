@@ -18,6 +18,17 @@ func (e EmailVerificationStatus) ToPointer() *EmailVerificationStatus {
 	return &e
 }
 
+// EmailVerificationStatusValues returns every known EmailVerificationStatus value in schema order.
+func EmailVerificationStatusValues() []EmailVerificationStatus {
+	return []EmailVerificationStatus{
+		EmailVerificationStatusPending,
+		EmailVerificationStatusSuccess,
+		EmailVerificationStatusFailed,
+		EmailVerificationStatusTemporaryFailure,
+		EmailVerificationStatusNotStarted,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EmailVerificationStatus) IsExact() bool {
 	if e != nil {

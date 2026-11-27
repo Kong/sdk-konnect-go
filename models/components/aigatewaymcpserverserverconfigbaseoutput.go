@@ -45,6 +45,14 @@ func (e Strategy) ToPointer() *Strategy {
 	return &e
 }
 
+// StrategyValues returns every known Strategy value in schema order.
+func StrategyValues() []Strategy {
+	return []Strategy{
+		StrategyClient,
+		StrategyRedis,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Strategy) IsExact() bool {
 	if e != nil {

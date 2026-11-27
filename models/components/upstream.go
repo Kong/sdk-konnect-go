@@ -22,6 +22,17 @@ func (e UpstreamAlgorithm) ToPointer() *UpstreamAlgorithm {
 	return &e
 }
 
+// UpstreamAlgorithmValues returns every known UpstreamAlgorithm value in schema order.
+func UpstreamAlgorithmValues() []UpstreamAlgorithm {
+	return []UpstreamAlgorithm{
+		UpstreamAlgorithmConsistentHashing,
+		UpstreamAlgorithmLatency,
+		UpstreamAlgorithmLeastConnections,
+		UpstreamAlgorithmRoundRobin,
+		UpstreamAlgorithmStickySessions,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpstreamAlgorithm) IsExact() bool {
 	if e != nil {
@@ -63,6 +74,20 @@ func (e HashFallback) ToPointer() *HashFallback {
 	return &e
 }
 
+// HashFallbackValues returns every known HashFallback value in schema order.
+func HashFallbackValues() []HashFallback {
+	return []HashFallback{
+		HashFallbackConsumer,
+		HashFallbackCookie,
+		HashFallbackHeader,
+		HashFallbackIP,
+		HashFallbackNone,
+		HashFallbackPath,
+		HashFallbackQueryArg,
+		HashFallbackURICapture,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *HashFallback) IsExact() bool {
 	if e != nil {
@@ -90,6 +115,20 @@ const (
 
 func (e HashOn) ToPointer() *HashOn {
 	return &e
+}
+
+// HashOnValues returns every known HashOn value in schema order.
+func HashOnValues() []HashOn {
+	return []HashOn{
+		HashOnConsumer,
+		HashOnCookie,
+		HashOnHeader,
+		HashOnIP,
+		HashOnNone,
+		HashOnPath,
+		HashOnQueryArg,
+		HashOnURICapture,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -153,6 +192,17 @@ const (
 
 func (e UpstreamType) ToPointer() *UpstreamType {
 	return &e
+}
+
+// UpstreamTypeValues returns every known UpstreamType value in schema order.
+func UpstreamTypeValues() []UpstreamType {
+	return []UpstreamType{
+		UpstreamTypeGrpc,
+		UpstreamTypeGrpcs,
+		UpstreamTypeHTTP,
+		UpstreamTypeHTTPS,
+		UpstreamTypeTCP,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -351,6 +401,17 @@ const (
 
 func (e UpstreamHealthchecksType) ToPointer() *UpstreamHealthchecksType {
 	return &e
+}
+
+// UpstreamHealthchecksTypeValues returns every known UpstreamHealthchecksType value in schema order.
+func UpstreamHealthchecksTypeValues() []UpstreamHealthchecksType {
+	return []UpstreamHealthchecksType{
+		UpstreamHealthchecksTypeGrpc,
+		UpstreamHealthchecksTypeGrpcs,
+		UpstreamHealthchecksTypeHTTP,
+		UpstreamHealthchecksTypeHTTPS,
+		UpstreamHealthchecksTypeTCP,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

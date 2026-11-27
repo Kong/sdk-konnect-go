@@ -20,6 +20,13 @@ const (
 func (e BillingInstalledAppExternalInvoicingType) ToPointer() *BillingInstalledAppExternalInvoicingType {
 	return &e
 }
+
+// BillingInstalledAppExternalInvoicingTypeValues returns every known BillingInstalledAppExternalInvoicingType value in schema order.
+func BillingInstalledAppExternalInvoicingTypeValues() []BillingInstalledAppExternalInvoicingType {
+	return []BillingInstalledAppExternalInvoicingType{
+		BillingInstalledAppExternalInvoicingTypeExternalInvoicing,
+	}
+}
 func (e *BillingInstalledAppExternalInvoicingType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -45,6 +52,15 @@ const (
 
 func (e BillingInstalledAppExternalInvoicingDefinitionType) ToPointer() *BillingInstalledAppExternalInvoicingDefinitionType {
 	return &e
+}
+
+// BillingInstalledAppExternalInvoicingDefinitionTypeValues returns every known BillingInstalledAppExternalInvoicingDefinitionType value in schema order.
+func BillingInstalledAppExternalInvoicingDefinitionTypeValues() []BillingInstalledAppExternalInvoicingDefinitionType {
+	return []BillingInstalledAppExternalInvoicingDefinitionType{
+		BillingInstalledAppExternalInvoicingDefinitionTypeSandbox,
+		BillingInstalledAppExternalInvoicingDefinitionTypeStripe,
+		BillingInstalledAppExternalInvoicingDefinitionTypeExternalInvoicing,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -128,6 +144,14 @@ const (
 
 func (e BillingInstalledAppExternalInvoicingStatus) ToPointer() *BillingInstalledAppExternalInvoicingStatus {
 	return &e
+}
+
+// BillingInstalledAppExternalInvoicingStatusValues returns every known BillingInstalledAppExternalInvoicingStatus value in schema order.
+func BillingInstalledAppExternalInvoicingStatusValues() []BillingInstalledAppExternalInvoicingStatus {
+	return []BillingInstalledAppExternalInvoicingStatus{
+		BillingInstalledAppExternalInvoicingStatusReady,
+		BillingInstalledAppExternalInvoicingStatusUnauthorized,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

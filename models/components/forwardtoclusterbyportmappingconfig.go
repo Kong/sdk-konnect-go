@@ -25,6 +25,14 @@ func (e BootstrapPort) ToPointer() *BootstrapPort {
 	return &e
 }
 
+// BootstrapPortValues returns every known BootstrapPort value in schema order.
+func BootstrapPortValues() []BootstrapPort {
+	return []BootstrapPort{
+		BootstrapPortNone,
+		BootstrapPortAtStart,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BootstrapPort) IsExact() bool {
 	if e != nil {
