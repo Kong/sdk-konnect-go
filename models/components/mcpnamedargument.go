@@ -21,6 +21,16 @@ func (e MCPNamedArgumentFormat) ToPointer() *MCPNamedArgumentFormat {
 	return &e
 }
 
+// MCPNamedArgumentFormatValues returns every known MCPNamedArgumentFormat value in schema order.
+func MCPNamedArgumentFormatValues() []MCPNamedArgumentFormat {
+	return []MCPNamedArgumentFormat{
+		MCPNamedArgumentFormatString,
+		MCPNamedArgumentFormatNumber,
+		MCPNamedArgumentFormatBoolean,
+		MCPNamedArgumentFormatFilepath,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPNamedArgumentFormat) IsExact() bool {
 	if e != nil {

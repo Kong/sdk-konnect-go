@@ -19,6 +19,13 @@ const (
 func (e BillingSubscriptionEditUnscheduleEditType) ToPointer() *BillingSubscriptionEditUnscheduleEditType {
 	return &e
 }
+
+// BillingSubscriptionEditUnscheduleEditTypeValues returns every known BillingSubscriptionEditUnscheduleEditType value in schema order.
+func BillingSubscriptionEditUnscheduleEditTypeValues() []BillingSubscriptionEditUnscheduleEditType {
+	return []BillingSubscriptionEditUnscheduleEditType{
+		BillingSubscriptionEditUnscheduleEditTypeUnscheduleEdit,
+	}
+}
 func (e *BillingSubscriptionEditUnscheduleEditType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

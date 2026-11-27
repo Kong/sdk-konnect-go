@@ -18,6 +18,14 @@ func (e CustomDomainKind) ToPointer() *CustomDomainKind {
 	return &e
 }
 
+// CustomDomainKindValues returns every known CustomDomainKind value in schema order.
+func CustomDomainKindValues() []CustomDomainKind {
+	return []CustomDomainKind{
+		CustomDomainKindDedicatedV0,
+		CustomDomainKindServerlessV1,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CustomDomainKind) IsExact() bool {
 	if e != nil {

@@ -16,6 +16,15 @@ func (e ProviderName) ToPointer() *ProviderName {
 	return &e
 }
 
+// ProviderNameValues returns every known ProviderName value in schema order.
+func ProviderNameValues() []ProviderName {
+	return []ProviderName{
+		ProviderNameAws,
+		ProviderNameAzure,
+		ProviderNameGcp,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ProviderName) IsExact() bool {
 	if e != nil {

@@ -58,6 +58,35 @@ func (e AIGatewayFailoverCriteria) ToPointer() *AIGatewayFailoverCriteria {
 	return &e
 }
 
+// AIGatewayFailoverCriteriaValues returns every known AIGatewayFailoverCriteria value in schema order.
+func AIGatewayFailoverCriteriaValues() []AIGatewayFailoverCriteria {
+	return []AIGatewayFailoverCriteria{
+		AIGatewayFailoverCriteriaError,
+		AIGatewayFailoverCriteriaHttp400,
+		AIGatewayFailoverCriteriaHttp401,
+		AIGatewayFailoverCriteriaHttp402,
+		AIGatewayFailoverCriteriaHttp403,
+		AIGatewayFailoverCriteriaHttp404,
+		AIGatewayFailoverCriteriaHttp405,
+		AIGatewayFailoverCriteriaHttp408,
+		AIGatewayFailoverCriteriaHttp409,
+		AIGatewayFailoverCriteriaHttp413,
+		AIGatewayFailoverCriteriaHttp415,
+		AIGatewayFailoverCriteriaHttp422,
+		AIGatewayFailoverCriteriaHttp429,
+		AIGatewayFailoverCriteriaHttp500,
+		AIGatewayFailoverCriteriaHttp502,
+		AIGatewayFailoverCriteriaHttp503,
+		AIGatewayFailoverCriteriaHttp504,
+		AIGatewayFailoverCriteriaHttp522,
+		AIGatewayFailoverCriteriaHttp529,
+		AIGatewayFailoverCriteriaHttp5xx,
+		AIGatewayFailoverCriteriaInvalidHeader,
+		AIGatewayFailoverCriteriaNonIdempotent,
+		AIGatewayFailoverCriteriaTimeout,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayFailoverCriteria) IsExact() bool {
 	if e != nil {

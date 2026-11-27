@@ -16,6 +16,14 @@ func (e SnippetVisibilityStatus) ToPointer() *SnippetVisibilityStatus {
 	return &e
 }
 
+// SnippetVisibilityStatusValues returns every known SnippetVisibilityStatus value in schema order.
+func SnippetVisibilityStatusValues() []SnippetVisibilityStatus {
+	return []SnippetVisibilityStatus{
+		SnippetVisibilityStatusPublic,
+		SnippetVisibilityStatusPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SnippetVisibilityStatus) IsExact() bool {
 	if e != nil {

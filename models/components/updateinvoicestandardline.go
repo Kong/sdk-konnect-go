@@ -21,6 +21,13 @@ const (
 func (e UpdateInvoiceStandardLineType) ToPointer() *UpdateInvoiceStandardLineType {
 	return &e
 }
+
+// UpdateInvoiceStandardLineTypeValues returns every known UpdateInvoiceStandardLineType value in schema order.
+func UpdateInvoiceStandardLineTypeValues() []UpdateInvoiceStandardLineType {
+	return []UpdateInvoiceStandardLineType{
+		UpdateInvoiceStandardLineTypeStandardLine,
+	}
+}
 func (e *UpdateInvoiceStandardLineType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -265,6 +272,14 @@ const (
 
 func (e UpdateInvoiceStandardLineTaxBehavior) ToPointer() *UpdateInvoiceStandardLineTaxBehavior {
 	return &e
+}
+
+// UpdateInvoiceStandardLineTaxBehaviorValues returns every known UpdateInvoiceStandardLineTaxBehavior value in schema order.
+func UpdateInvoiceStandardLineTaxBehaviorValues() []UpdateInvoiceStandardLineTaxBehavior {
+	return []UpdateInvoiceStandardLineTaxBehavior{
+		UpdateInvoiceStandardLineTaxBehaviorInclusive,
+		UpdateInvoiceStandardLineTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

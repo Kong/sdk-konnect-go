@@ -20,6 +20,13 @@ const (
 func (e BillingCurrencyCustomType) ToPointer() *BillingCurrencyCustomType {
 	return &e
 }
+
+// BillingCurrencyCustomTypeValues returns every known BillingCurrencyCustomType value in schema order.
+func BillingCurrencyCustomTypeValues() []BillingCurrencyCustomType {
+	return []BillingCurrencyCustomType{
+		BillingCurrencyCustomTypeCustom,
+	}
+}
 func (e *BillingCurrencyCustomType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

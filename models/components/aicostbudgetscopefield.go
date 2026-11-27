@@ -34,6 +34,21 @@ func (e AICostBudgetScopeField) ToPointer() *AICostBudgetScopeField {
 	return &e
 }
 
+// AICostBudgetScopeFieldValues returns every known AICostBudgetScopeField value in schema order.
+func AICostBudgetScopeFieldValues() []AICostBudgetScopeField {
+	return []AICostBudgetScopeField{
+		AICostBudgetScopeFieldSubjectType,
+		AICostBudgetScopeFieldSubject,
+		AICostBudgetScopeFieldSubjectID,
+		AICostBudgetScopeFieldGroup,
+		AICostBudgetScopeFieldTeam,
+		AICostBudgetScopeFieldModel,
+		AICostBudgetScopeFieldProvider,
+		AICostBudgetScopeFieldRequestMode,
+		AICostBudgetScopeFieldCostCenter,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostBudgetScopeField) IsExact() bool {
 	if e != nil {

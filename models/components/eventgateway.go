@@ -17,6 +17,13 @@ const (
 func (e RolesControlPlanesRolesSniAdminDescription) ToPointer() *RolesControlPlanesRolesSniAdminDescription {
 	return &e
 }
+
+// RolesControlPlanesRolesSniAdminDescriptionValues returns every known RolesControlPlanesRolesSniAdminDescription value in schema order.
+func RolesControlPlanesRolesSniAdminDescriptionValues() []RolesControlPlanesRolesSniAdminDescription {
+	return []RolesControlPlanesRolesSniAdminDescription{
+		RolesControlPlanesRolesSniAdminDescriptionThisRoleGrantsFullWriteAccessToAdministerSnIs,
+	}
+}
 func (e *RolesControlPlanesRolesSniAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -68,6 +75,13 @@ const (
 func (e RolesControlPlanesRolesUpstreamAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesUpstreamAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesUpstreamAdminControlPlaneIDValues returns every known RolesControlPlanesRolesUpstreamAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesUpstreamAdminControlPlaneIDValues() []RolesControlPlanesRolesUpstreamAdminControlPlaneID {
+	return []RolesControlPlanesRolesUpstreamAdminControlPlaneID{
+		RolesControlPlanesRolesUpstreamAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesUpstreamAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -102,6 +116,13 @@ const (
 func (e RolesControlPlanesRolesUpstreamAdminName) ToPointer() *RolesControlPlanesRolesUpstreamAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesUpstreamAdminNameValues returns every known RolesControlPlanesRolesUpstreamAdminName value in schema order.
+func RolesControlPlanesRolesUpstreamAdminNameValues() []RolesControlPlanesRolesUpstreamAdminName {
+	return []RolesControlPlanesRolesUpstreamAdminName{
+		RolesControlPlanesRolesUpstreamAdminNameUpstreamAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesUpstreamAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -124,6 +145,13 @@ const (
 
 func (e RolesControlPlanesRolesUpstreamAdminDescription) ToPointer() *RolesControlPlanesRolesUpstreamAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesUpstreamAdminDescriptionValues returns every known RolesControlPlanesRolesUpstreamAdminDescription value in schema order.
+func RolesControlPlanesRolesUpstreamAdminDescriptionValues() []RolesControlPlanesRolesUpstreamAdminDescription {
+	return []RolesControlPlanesRolesUpstreamAdminDescription{
+		RolesControlPlanesRolesUpstreamAdminDescriptionThisRoleGrantsFullWriteAccessToAdministerUpstreams,
+	}
 }
 func (e *RolesControlPlanesRolesUpstreamAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -176,6 +204,13 @@ const (
 func (e RolesControlPlanesRolesVaultAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesVaultAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesVaultAdminControlPlaneIDValues returns every known RolesControlPlanesRolesVaultAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesVaultAdminControlPlaneIDValues() []RolesControlPlanesRolesVaultAdminControlPlaneID {
+	return []RolesControlPlanesRolesVaultAdminControlPlaneID{
+		RolesControlPlanesRolesVaultAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesVaultAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -210,6 +245,13 @@ const (
 func (e RolesControlPlanesRolesVaultAdminName) ToPointer() *RolesControlPlanesRolesVaultAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesVaultAdminNameValues returns every known RolesControlPlanesRolesVaultAdminName value in schema order.
+func RolesControlPlanesRolesVaultAdminNameValues() []RolesControlPlanesRolesVaultAdminName {
+	return []RolesControlPlanesRolesVaultAdminName{
+		RolesControlPlanesRolesVaultAdminNameVaultAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesVaultAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -232,6 +274,13 @@ const (
 
 func (e RolesControlPlanesRolesVaultAdminDescription) ToPointer() *RolesControlPlanesRolesVaultAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesVaultAdminDescriptionValues returns every known RolesControlPlanesRolesVaultAdminDescription value in schema order.
+func RolesControlPlanesRolesVaultAdminDescriptionValues() []RolesControlPlanesRolesVaultAdminDescription {
+	return []RolesControlPlanesRolesVaultAdminDescription{
+		RolesControlPlanesRolesVaultAdminDescriptionFullWriteAccessToAdministerVaults,
+	}
 }
 func (e *RolesControlPlanesRolesVaultAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -284,6 +333,13 @@ const (
 func (e RolesControlPlanesRolesViewerControlPlaneID) ToPointer() *RolesControlPlanesRolesViewerControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesViewerControlPlaneIDValues returns every known RolesControlPlanesRolesViewerControlPlaneID value in schema order.
+func RolesControlPlanesRolesViewerControlPlaneIDValues() []RolesControlPlanesRolesViewerControlPlaneID {
+	return []RolesControlPlanesRolesViewerControlPlaneID{
+		RolesControlPlanesRolesViewerControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesViewerControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -318,6 +374,13 @@ const (
 func (e RolesControlPlanesRolesViewerName) ToPointer() *RolesControlPlanesRolesViewerName {
 	return &e
 }
+
+// RolesControlPlanesRolesViewerNameValues returns every known RolesControlPlanesRolesViewerName value in schema order.
+func RolesControlPlanesRolesViewerNameValues() []RolesControlPlanesRolesViewerName {
+	return []RolesControlPlanesRolesViewerName{
+		RolesControlPlanesRolesViewerNameViewer,
+	}
+}
 func (e *RolesControlPlanesRolesViewerName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -340,6 +403,13 @@ const (
 
 func (e RolesControlPlanesRolesViewerDescription) ToPointer() *RolesControlPlanesRolesViewerDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesViewerDescriptionValues returns every known RolesControlPlanesRolesViewerDescription value in schema order.
+func RolesControlPlanesRolesViewerDescriptionValues() []RolesControlPlanesRolesViewerDescription {
+	return []RolesControlPlanesRolesViewerDescription{
+		RolesControlPlanesRolesViewerDescriptionThisRoleGrantsReadOnlyAccessToAllEntitiesWithinAControlPlane,
+	}
 }
 func (e *RolesControlPlanesRolesViewerDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -392,6 +462,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -414,6 +491,13 @@ const (
 
 func (e WorkspaceID) ToPointer() *WorkspaceID {
 	return &e
+}
+
+// WorkspaceIDValues returns every known WorkspaceID value in schema order.
+func WorkspaceIDValues() []WorkspaceID {
+	return []WorkspaceID{
+		WorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *WorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -457,6 +541,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceAdminNameValues returns every known RolesControlPlanesRolesWorkspaceAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceAdminNameValues() []RolesControlPlanesRolesWorkspaceAdminName {
+	return []RolesControlPlanesRolesWorkspaceAdminName{
+		RolesControlPlanesRolesWorkspaceAdminNameWorkspaceAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -479,6 +570,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceAdminDescription{
+		RolesControlPlanesRolesWorkspaceAdminDescriptionFullWriteAccessToAdministerWorkspaces,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -531,6 +629,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceCertificateAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -553,6 +658,13 @@ const (
 
 func (e RolesWorkspaceID) ToPointer() *RolesWorkspaceID {
 	return &e
+}
+
+// RolesWorkspaceIDValues returns every known RolesWorkspaceID value in schema order.
+func RolesWorkspaceIDValues() []RolesWorkspaceID {
+	return []RolesWorkspaceID{
+		RolesWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -596,6 +708,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceCertificateAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceCertificateAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceCertificateAdminNameValues returns every known RolesControlPlanesRolesWorkspaceCertificateAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceCertificateAdminNameValues() []RolesControlPlanesRolesWorkspaceCertificateAdminName {
+	return []RolesControlPlanesRolesWorkspaceCertificateAdminName{
+		RolesControlPlanesRolesWorkspaceCertificateAdminNameWorkspaceCertificateAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceCertificateAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -618,6 +737,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceCertificateAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceCertificateAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceCertificateAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceCertificateAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceCertificateAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceCertificateAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceCertificateAdminDescription{
+		RolesControlPlanesRolesWorkspaceCertificateAdminDescriptionFullWriteAccessToAdministerKongGatewayCertificateObjectsInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceCertificateAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -670,6 +796,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceConsumerAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -692,6 +825,13 @@ const (
 
 func (e RolesControlPlanesWorkspaceID) ToPointer() *RolesControlPlanesWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesWorkspaceIDValues returns every known RolesControlPlanesWorkspaceID value in schema order.
+func RolesControlPlanesWorkspaceIDValues() []RolesControlPlanesWorkspaceID {
+	return []RolesControlPlanesWorkspaceID{
+		RolesControlPlanesWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -735,6 +875,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceConsumerAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceConsumerAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceConsumerAdminNameValues returns every known RolesControlPlanesRolesWorkspaceConsumerAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceConsumerAdminNameValues() []RolesControlPlanesRolesWorkspaceConsumerAdminName {
+	return []RolesControlPlanesRolesWorkspaceConsumerAdminName{
+		RolesControlPlanesRolesWorkspaceConsumerAdminNameWorkspaceConsumerAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceConsumerAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -757,6 +904,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceConsumerAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceConsumerAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceConsumerAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceConsumerAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceConsumerAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceConsumerAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceConsumerAdminDescription{
+		RolesControlPlanesRolesWorkspaceConsumerAdminDescriptionFullWriteAccessToAdministerConsumersInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceConsumerAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -809,6 +963,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceCreatorControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceCreatorControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceCreatorControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceCreatorControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceCreatorControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceCreatorControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceCreatorControlPlaneID{
+		RolesControlPlanesRolesWorkspaceCreatorControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceCreatorControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -843,6 +1004,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceCreatorName) ToPointer() *RolesControlPlanesRolesWorkspaceCreatorName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceCreatorNameValues returns every known RolesControlPlanesRolesWorkspaceCreatorName value in schema order.
+func RolesControlPlanesRolesWorkspaceCreatorNameValues() []RolesControlPlanesRolesWorkspaceCreatorName {
+	return []RolesControlPlanesRolesWorkspaceCreatorName{
+		RolesControlPlanesRolesWorkspaceCreatorNameWorkspaceCreator,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceCreatorName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -865,6 +1033,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceCreatorDescription) ToPointer() *RolesControlPlanesRolesWorkspaceCreatorDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceCreatorDescriptionValues returns every known RolesControlPlanesRolesWorkspaceCreatorDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceCreatorDescriptionValues() []RolesControlPlanesRolesWorkspaceCreatorDescription {
+	return []RolesControlPlanesRolesWorkspaceCreatorDescription{
+		RolesControlPlanesRolesWorkspaceCreatorDescriptionAccessToManageTheLifecycleOfWorkspacesInAControlPlane,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceCreatorDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -917,6 +1092,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceDeployerControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceDeployerControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceDeployerControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceDeployerControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceDeployerControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceDeployerControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceDeployerControlPlaneID{
+		RolesControlPlanesRolesWorkspaceDeployerControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceDeployerControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -939,6 +1121,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceID{
+		RolesControlPlanesRolesWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -982,6 +1171,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceDeployerName) ToPointer() *RolesControlPlanesRolesWorkspaceDeployerName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceDeployerNameValues returns every known RolesControlPlanesRolesWorkspaceDeployerName value in schema order.
+func RolesControlPlanesRolesWorkspaceDeployerNameValues() []RolesControlPlanesRolesWorkspaceDeployerName {
+	return []RolesControlPlanesRolesWorkspaceDeployerName{
+		RolesControlPlanesRolesWorkspaceDeployerNameWorkspaceDeployer,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceDeployerName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1004,6 +1200,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceDeployerDescription) ToPointer() *RolesControlPlanesRolesWorkspaceDeployerDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceDeployerDescriptionValues returns every known RolesControlPlanesRolesWorkspaceDeployerDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceDeployerDescriptionValues() []RolesControlPlanesRolesWorkspaceDeployerDescription {
+	return []RolesControlPlanesRolesWorkspaceDeployerDescription{
+		RolesControlPlanesRolesWorkspaceDeployerDescriptionAccessToDeployServicesRoutesAndPluginsInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceDeployerDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1056,6 +1259,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceGatewayServiceAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1078,6 +1288,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceGatewayServiceAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1121,6 +1338,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceGatewayServiceAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceGatewayServiceAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceGatewayServiceAdminNameValues returns every known RolesControlPlanesRolesWorkspaceGatewayServiceAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceGatewayServiceAdminNameValues() []RolesControlPlanesRolesWorkspaceGatewayServiceAdminName {
+	return []RolesControlPlanesRolesWorkspaceGatewayServiceAdminName{
+		RolesControlPlanesRolesWorkspaceGatewayServiceAdminNameWorkspaceGatewayServiceAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceGatewayServiceAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1143,6 +1367,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescription{
+		RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescriptionFullWriteAccessToAdministerGatewayServicesInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceGatewayServiceAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1195,6 +1426,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceKeyAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1217,6 +1455,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceKeyAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1260,6 +1505,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceKeyAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceKeyAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceKeyAdminNameValues returns every known RolesControlPlanesRolesWorkspaceKeyAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceKeyAdminNameValues() []RolesControlPlanesRolesWorkspaceKeyAdminName {
+	return []RolesControlPlanesRolesWorkspaceKeyAdminName{
+		RolesControlPlanesRolesWorkspaceKeyAdminNameWorkspaceKeyAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceKeyAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1282,6 +1534,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceKeyAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceKeyAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceKeyAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceKeyAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceKeyAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceKeyAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceKeyAdminDescription{
+		RolesControlPlanesRolesWorkspaceKeyAdminDescriptionFullWriteAccessToAdministerKeysInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceKeyAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1334,6 +1593,13 @@ const (
 func (e RolesControlPlanesRolesWorkspacePluginAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspacePluginAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspacePluginAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspacePluginAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspacePluginAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspacePluginAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspacePluginAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspacePluginAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspacePluginAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1356,6 +1622,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspacePluginAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspacePluginAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspacePluginAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspacePluginAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspacePluginAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspacePluginAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspacePluginAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspacePluginAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspacePluginAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1399,6 +1672,13 @@ const (
 func (e RolesControlPlanesRolesWorkspacePluginAdminName) ToPointer() *RolesControlPlanesRolesWorkspacePluginAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspacePluginAdminNameValues returns every known RolesControlPlanesRolesWorkspacePluginAdminName value in schema order.
+func RolesControlPlanesRolesWorkspacePluginAdminNameValues() []RolesControlPlanesRolesWorkspacePluginAdminName {
+	return []RolesControlPlanesRolesWorkspacePluginAdminName{
+		RolesControlPlanesRolesWorkspacePluginAdminNameWorkspacePluginAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspacePluginAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1421,6 +1701,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspacePluginAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspacePluginAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspacePluginAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspacePluginAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspacePluginAdminDescriptionValues() []RolesControlPlanesRolesWorkspacePluginAdminDescription {
+	return []RolesControlPlanesRolesWorkspacePluginAdminDescription{
+		RolesControlPlanesRolesWorkspacePluginAdminDescriptionFullWriteAccessToAdministerPluginsInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspacePluginAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1473,6 +1760,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceRouteAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1495,6 +1789,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceRouteAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1538,6 +1839,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceRouteAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceRouteAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceRouteAdminNameValues returns every known RolesControlPlanesRolesWorkspaceRouteAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceRouteAdminNameValues() []RolesControlPlanesRolesWorkspaceRouteAdminName {
+	return []RolesControlPlanesRolesWorkspaceRouteAdminName{
+		RolesControlPlanesRolesWorkspaceRouteAdminNameWorkspaceRouteAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceRouteAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1560,6 +1868,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceRouteAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceRouteAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceRouteAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceRouteAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceRouteAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceRouteAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceRouteAdminDescription{
+		RolesControlPlanesRolesWorkspaceRouteAdminDescriptionWriteAccessToAdministerRoutesInAWorkspacePluginsCanBeConfiguredOnOwnRoutesOnlyNoGlobalPluginsAndNoPartials,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceRouteAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1612,6 +1927,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceSniAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceSniAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceSniAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceSniAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceSniAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceSniAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceSniAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceSniAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceSniAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1634,6 +1956,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceSniAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceSniAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceSniAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceSniAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceSniAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceSniAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceSniAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspaceSniAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceSniAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1677,6 +2006,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceSniAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceSniAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceSniAdminNameValues returns every known RolesControlPlanesRolesWorkspaceSniAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceSniAdminNameValues() []RolesControlPlanesRolesWorkspaceSniAdminName {
+	return []RolesControlPlanesRolesWorkspaceSniAdminName{
+		RolesControlPlanesRolesWorkspaceSniAdminNameWorkspaceSniAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceSniAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1699,6 +2035,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceSniAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceSniAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceSniAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceSniAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceSniAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceSniAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceSniAdminDescription{
+		RolesControlPlanesRolesWorkspaceSniAdminDescriptionFullWriteAccessToAdministerSnIsInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceSniAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1751,6 +2094,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceUpstreamAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1773,6 +2123,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceUpstreamAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1816,6 +2173,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceUpstreamAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceUpstreamAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceUpstreamAdminNameValues returns every known RolesControlPlanesRolesWorkspaceUpstreamAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceUpstreamAdminNameValues() []RolesControlPlanesRolesWorkspaceUpstreamAdminName {
+	return []RolesControlPlanesRolesWorkspaceUpstreamAdminName{
+		RolesControlPlanesRolesWorkspaceUpstreamAdminNameWorkspaceUpstreamAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceUpstreamAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1838,6 +2202,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceUpstreamAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceUpstreamAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceUpstreamAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceUpstreamAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceUpstreamAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceUpstreamAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceUpstreamAdminDescription{
+		RolesControlPlanesRolesWorkspaceUpstreamAdminDescriptionFullWriteAccessToAdministerUpstreamsInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceUpstreamAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1890,6 +2261,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneID{
+		RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceVaultAdminControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1912,6 +2290,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceID{
+		RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceVaultAdminWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1955,6 +2340,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceVaultAdminName) ToPointer() *RolesControlPlanesRolesWorkspaceVaultAdminName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceVaultAdminNameValues returns every known RolesControlPlanesRolesWorkspaceVaultAdminName value in schema order.
+func RolesControlPlanesRolesWorkspaceVaultAdminNameValues() []RolesControlPlanesRolesWorkspaceVaultAdminName {
+	return []RolesControlPlanesRolesWorkspaceVaultAdminName{
+		RolesControlPlanesRolesWorkspaceVaultAdminNameWorkspaceVaultAdmin,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceVaultAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1977,6 +2369,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceVaultAdminDescription) ToPointer() *RolesControlPlanesRolesWorkspaceVaultAdminDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceVaultAdminDescriptionValues returns every known RolesControlPlanesRolesWorkspaceVaultAdminDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceVaultAdminDescriptionValues() []RolesControlPlanesRolesWorkspaceVaultAdminDescription {
+	return []RolesControlPlanesRolesWorkspaceVaultAdminDescription{
+		RolesControlPlanesRolesWorkspaceVaultAdminDescriptionFullWriteAccessToAdministerVaultsInAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceVaultAdminDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2029,6 +2428,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceViewerControlPlaneID) ToPointer() *RolesControlPlanesRolesWorkspaceViewerControlPlaneID {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceViewerControlPlaneIDValues returns every known RolesControlPlanesRolesWorkspaceViewerControlPlaneID value in schema order.
+func RolesControlPlanesRolesWorkspaceViewerControlPlaneIDValues() []RolesControlPlanesRolesWorkspaceViewerControlPlaneID {
+	return []RolesControlPlanesRolesWorkspaceViewerControlPlaneID{
+		RolesControlPlanesRolesWorkspaceViewerControlPlaneIDTheControlPlaneID,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceViewerControlPlaneID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2051,6 +2457,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceViewerWorkspaceID) ToPointer() *RolesControlPlanesRolesWorkspaceViewerWorkspaceID {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceViewerWorkspaceIDValues returns every known RolesControlPlanesRolesWorkspaceViewerWorkspaceID value in schema order.
+func RolesControlPlanesRolesWorkspaceViewerWorkspaceIDValues() []RolesControlPlanesRolesWorkspaceViewerWorkspaceID {
+	return []RolesControlPlanesRolesWorkspaceViewerWorkspaceID{
+		RolesControlPlanesRolesWorkspaceViewerWorkspaceIDTheWorkspaceID,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceViewerWorkspaceID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2094,6 +2507,13 @@ const (
 func (e RolesControlPlanesRolesWorkspaceViewerName) ToPointer() *RolesControlPlanesRolesWorkspaceViewerName {
 	return &e
 }
+
+// RolesControlPlanesRolesWorkspaceViewerNameValues returns every known RolesControlPlanesRolesWorkspaceViewerName value in schema order.
+func RolesControlPlanesRolesWorkspaceViewerNameValues() []RolesControlPlanesRolesWorkspaceViewerName {
+	return []RolesControlPlanesRolesWorkspaceViewerName{
+		RolesControlPlanesRolesWorkspaceViewerNameWorkspaceViewer,
+	}
+}
 func (e *RolesControlPlanesRolesWorkspaceViewerName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2116,6 +2536,13 @@ const (
 
 func (e RolesControlPlanesRolesWorkspaceViewerDescription) ToPointer() *RolesControlPlanesRolesWorkspaceViewerDescription {
 	return &e
+}
+
+// RolesControlPlanesRolesWorkspaceViewerDescriptionValues returns every known RolesControlPlanesRolesWorkspaceViewerDescription value in schema order.
+func RolesControlPlanesRolesWorkspaceViewerDescriptionValues() []RolesControlPlanesRolesWorkspaceViewerDescription {
+	return []RolesControlPlanesRolesWorkspaceViewerDescription{
+		RolesControlPlanesRolesWorkspaceViewerDescriptionReadOnlyAccessToAllTheConfigurationsOfAWorkspace,
+	}
 }
 func (e *RolesControlPlanesRolesWorkspaceViewerDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2462,6 +2889,13 @@ const (
 func (e RolesDashboardsName) ToPointer() *RolesDashboardsName {
 	return &e
 }
+
+// RolesDashboardsNameValues returns every known RolesDashboardsName value in schema order.
+func RolesDashboardsNameValues() []RolesDashboardsName {
+	return []RolesDashboardsName{
+		RolesDashboardsNameDashboards,
+	}
+}
 func (e *RolesDashboardsName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2484,6 +2918,13 @@ const (
 
 func (e DashboardID) ToPointer() *DashboardID {
 	return &e
+}
+
+// DashboardIDValues returns every known DashboardID value in schema order.
+func DashboardIDValues() []DashboardID {
+	return []DashboardID{
+		DashboardIDTheDashboardID,
+	}
 }
 func (e *DashboardID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2519,6 +2960,13 @@ const (
 func (e RolesDashboardsRolesName) ToPointer() *RolesDashboardsRolesName {
 	return &e
 }
+
+// RolesDashboardsRolesNameValues returns every known RolesDashboardsRolesName value in schema order.
+func RolesDashboardsRolesNameValues() []RolesDashboardsRolesName {
+	return []RolesDashboardsRolesName{
+		RolesDashboardsRolesNameAdmin,
+	}
+}
 func (e *RolesDashboardsRolesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2541,6 +2989,13 @@ const (
 
 func (e RolesDashboardsDescription) ToPointer() *RolesDashboardsDescription {
 	return &e
+}
+
+// RolesDashboardsDescriptionValues returns every known RolesDashboardsDescription value in schema order.
+func RolesDashboardsDescriptionValues() []RolesDashboardsDescription {
+	return []RolesDashboardsDescription{
+		RolesDashboardsDescriptionAllowsUsersToEditDeleteAndShareADashboardInKonnectAnalytics,
+	}
 }
 func (e *RolesDashboardsDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2593,6 +3048,13 @@ const (
 func (e RolesDashboardID) ToPointer() *RolesDashboardID {
 	return &e
 }
+
+// RolesDashboardIDValues returns every known RolesDashboardID value in schema order.
+func RolesDashboardIDValues() []RolesDashboardID {
+	return []RolesDashboardID{
+		RolesDashboardIDTheDashboardID,
+	}
+}
 func (e *RolesDashboardID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2627,6 +3089,13 @@ const (
 func (e RolesDashboardsRolesCreatorName) ToPointer() *RolesDashboardsRolesCreatorName {
 	return &e
 }
+
+// RolesDashboardsRolesCreatorNameValues returns every known RolesDashboardsRolesCreatorName value in schema order.
+func RolesDashboardsRolesCreatorNameValues() []RolesDashboardsRolesCreatorName {
+	return []RolesDashboardsRolesCreatorName{
+		RolesDashboardsRolesCreatorNameCreator,
+	}
+}
 func (e *RolesDashboardsRolesCreatorName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2649,6 +3118,13 @@ const (
 
 func (e RolesDashboardsRolesDescription) ToPointer() *RolesDashboardsRolesDescription {
 	return &e
+}
+
+// RolesDashboardsRolesDescriptionValues returns every known RolesDashboardsRolesDescription value in schema order.
+func RolesDashboardsRolesDescriptionValues() []RolesDashboardsRolesDescription {
+	return []RolesDashboardsRolesDescription{
+		RolesDashboardsRolesDescriptionAllowsUsersToCreateANewDashboardInKonnectAnalytics,
+	}
 }
 func (e *RolesDashboardsRolesDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2701,6 +3177,13 @@ const (
 func (e RolesDashboardsDashboardID) ToPointer() *RolesDashboardsDashboardID {
 	return &e
 }
+
+// RolesDashboardsDashboardIDValues returns every known RolesDashboardsDashboardID value in schema order.
+func RolesDashboardsDashboardIDValues() []RolesDashboardsDashboardID {
+	return []RolesDashboardsDashboardID{
+		RolesDashboardsDashboardIDTheDashboardID,
+	}
+}
 func (e *RolesDashboardsDashboardID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2735,6 +3218,13 @@ const (
 func (e RolesDashboardsRolesEditorName) ToPointer() *RolesDashboardsRolesEditorName {
 	return &e
 }
+
+// RolesDashboardsRolesEditorNameValues returns every known RolesDashboardsRolesEditorName value in schema order.
+func RolesDashboardsRolesEditorNameValues() []RolesDashboardsRolesEditorName {
+	return []RolesDashboardsRolesEditorName{
+		RolesDashboardsRolesEditorNameEditor,
+	}
+}
 func (e *RolesDashboardsRolesEditorName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2757,6 +3247,13 @@ const (
 
 func (e RolesDashboardsRolesEditorDescription) ToPointer() *RolesDashboardsRolesEditorDescription {
 	return &e
+}
+
+// RolesDashboardsRolesEditorDescriptionValues returns every known RolesDashboardsRolesEditorDescription value in schema order.
+func RolesDashboardsRolesEditorDescriptionValues() []RolesDashboardsRolesEditorDescription {
+	return []RolesDashboardsRolesEditorDescription{
+		RolesDashboardsRolesEditorDescriptionAllowsUsersToEditADashboardInKonnectAnalytics,
+	}
 }
 func (e *RolesDashboardsRolesEditorDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2809,6 +3306,13 @@ const (
 func (e RolesDashboardsRolesDashboardID) ToPointer() *RolesDashboardsRolesDashboardID {
 	return &e
 }
+
+// RolesDashboardsRolesDashboardIDValues returns every known RolesDashboardsRolesDashboardID value in schema order.
+func RolesDashboardsRolesDashboardIDValues() []RolesDashboardsRolesDashboardID {
+	return []RolesDashboardsRolesDashboardID{
+		RolesDashboardsRolesDashboardIDTheDashboardID,
+	}
+}
 func (e *RolesDashboardsRolesDashboardID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2843,6 +3347,13 @@ const (
 func (e RolesDashboardsRolesViewerName) ToPointer() *RolesDashboardsRolesViewerName {
 	return &e
 }
+
+// RolesDashboardsRolesViewerNameValues returns every known RolesDashboardsRolesViewerName value in schema order.
+func RolesDashboardsRolesViewerNameValues() []RolesDashboardsRolesViewerName {
+	return []RolesDashboardsRolesViewerName{
+		RolesDashboardsRolesViewerNameViewer,
+	}
+}
 func (e *RolesDashboardsRolesViewerName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2865,6 +3376,13 @@ const (
 
 func (e RolesDashboardsRolesViewerDescription) ToPointer() *RolesDashboardsRolesViewerDescription {
 	return &e
+}
+
+// RolesDashboardsRolesViewerDescriptionValues returns every known RolesDashboardsRolesViewerDescription value in schema order.
+func RolesDashboardsRolesViewerDescriptionValues() []RolesDashboardsRolesViewerDescription {
+	return []RolesDashboardsRolesViewerDescription{
+		RolesDashboardsRolesViewerDescriptionAllowsUsersToViewADashboardInKonnectAnalytics,
+	}
 }
 func (e *RolesDashboardsRolesViewerDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2971,6 +3489,13 @@ const (
 func (e RolesDirectoriesName) ToPointer() *RolesDirectoriesName {
 	return &e
 }
+
+// RolesDirectoriesNameValues returns every known RolesDirectoriesName value in schema order.
+func RolesDirectoriesNameValues() []RolesDirectoriesName {
+	return []RolesDirectoriesName{
+		RolesDirectoriesNameDirectories,
+	}
+}
 func (e *RolesDirectoriesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2993,6 +3518,13 @@ const (
 
 func (e DirectoryID) ToPointer() *DirectoryID {
 	return &e
+}
+
+// DirectoryIDValues returns every known DirectoryID value in schema order.
+func DirectoryIDValues() []DirectoryID {
+	return []DirectoryID{
+		DirectoryIDTheDirectoryID,
+	}
 }
 func (e *DirectoryID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3028,6 +3560,13 @@ const (
 func (e RolesDirectoriesRolesName) ToPointer() *RolesDirectoriesRolesName {
 	return &e
 }
+
+// RolesDirectoriesRolesNameValues returns every known RolesDirectoriesRolesName value in schema order.
+func RolesDirectoriesRolesNameValues() []RolesDirectoriesRolesName {
+	return []RolesDirectoriesRolesName{
+		RolesDirectoriesRolesNamePrincipalAdmin,
+	}
+}
 func (e *RolesDirectoriesRolesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3050,6 +3589,13 @@ const (
 
 func (e RolesDirectoriesDescription) ToPointer() *RolesDirectoriesDescription {
 	return &e
+}
+
+// RolesDirectoriesDescriptionValues returns every known RolesDirectoriesDescription value in schema order.
+func RolesDirectoriesDescriptionValues() []RolesDirectoriesDescription {
+	return []RolesDirectoriesDescription{
+		RolesDirectoriesDescriptionAccessToCreateDirectoriesAndAllReadAndWritePermissionsRelatedToPrincipalsInADirectory,
+	}
 }
 func (e *RolesDirectoriesDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3102,6 +3648,13 @@ const (
 func (e RolesDirectoryID) ToPointer() *RolesDirectoryID {
 	return &e
 }
+
+// RolesDirectoryIDValues returns every known RolesDirectoryID value in schema order.
+func RolesDirectoryIDValues() []RolesDirectoryID {
+	return []RolesDirectoryID{
+		RolesDirectoryIDTheDirectoryID,
+	}
+}
 func (e *RolesDirectoryID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3136,6 +3689,13 @@ const (
 func (e RolesDirectoriesRolesPrincipalViewerName) ToPointer() *RolesDirectoriesRolesPrincipalViewerName {
 	return &e
 }
+
+// RolesDirectoriesRolesPrincipalViewerNameValues returns every known RolesDirectoriesRolesPrincipalViewerName value in schema order.
+func RolesDirectoriesRolesPrincipalViewerNameValues() []RolesDirectoriesRolesPrincipalViewerName {
+	return []RolesDirectoriesRolesPrincipalViewerName{
+		RolesDirectoriesRolesPrincipalViewerNamePrincipalViewer,
+	}
+}
 func (e *RolesDirectoriesRolesPrincipalViewerName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3158,6 +3718,13 @@ const (
 
 func (e RolesDirectoriesRolesDescription) ToPointer() *RolesDirectoriesRolesDescription {
 	return &e
+}
+
+// RolesDirectoriesRolesDescriptionValues returns every known RolesDirectoriesRolesDescription value in schema order.
+func RolesDirectoriesRolesDescriptionValues() []RolesDirectoriesRolesDescription {
+	return []RolesDirectoriesRolesDescription{
+		RolesDirectoriesRolesDescriptionAccessToAllReadPermissionsRelatedToPrincipalsInADirectory,
+	}
 }
 func (e *RolesDirectoriesRolesDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3248,6 +3815,13 @@ const (
 func (e RolesEventGatewayName) ToPointer() *RolesEventGatewayName {
 	return &e
 }
+
+// RolesEventGatewayNameValues returns every known RolesEventGatewayName value in schema order.
+func RolesEventGatewayNameValues() []RolesEventGatewayName {
+	return []RolesEventGatewayName{
+		RolesEventGatewayNameEventGateway,
+	}
+}
 func (e *RolesEventGatewayName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3270,6 +3844,13 @@ const (
 
 func (e EventGatewayID) ToPointer() *EventGatewayID {
 	return &e
+}
+
+// EventGatewayIDValues returns every known EventGatewayID value in schema order.
+func EventGatewayIDValues() []EventGatewayID {
+	return []EventGatewayID{
+		EventGatewayIDTheEventGatewayID,
+	}
 }
 func (e *EventGatewayID) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3305,6 +3886,13 @@ const (
 func (e RolesEventGatewayRolesName) ToPointer() *RolesEventGatewayRolesName {
 	return &e
 }
+
+// RolesEventGatewayRolesNameValues returns every known RolesEventGatewayRolesName value in schema order.
+func RolesEventGatewayRolesNameValues() []RolesEventGatewayRolesName {
+	return []RolesEventGatewayRolesName{
+		RolesEventGatewayRolesNameEventGatewaysAdmin,
+	}
+}
 func (e *RolesEventGatewayRolesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3327,6 +3915,13 @@ const (
 
 func (e RolesEventGatewayDescription) ToPointer() *RolesEventGatewayDescription {
 	return &e
+}
+
+// RolesEventGatewayDescriptionValues returns every known RolesEventGatewayDescription value in schema order.
+func RolesEventGatewayDescriptionValues() []RolesEventGatewayDescription {
+	return []RolesEventGatewayDescription{
+		RolesEventGatewayDescriptionOwnerOfAnExistingEventGatewayTheOwnersHaveAllWriteAccessRelatedToAnEventGatewayTheGatewaySRuntimeInstancesAndItsConfiguration,
+	}
 }
 func (e *RolesEventGatewayDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3379,6 +3974,13 @@ const (
 func (e RolesEventGatewayID) ToPointer() *RolesEventGatewayID {
 	return &e
 }
+
+// RolesEventGatewayIDValues returns every known RolesEventGatewayID value in schema order.
+func RolesEventGatewayIDValues() []RolesEventGatewayID {
+	return []RolesEventGatewayID{
+		RolesEventGatewayIDTheEventGatewayID,
+	}
+}
 func (e *RolesEventGatewayID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3413,6 +4015,13 @@ const (
 func (e RolesEventGatewayRolesEventGatewaysCreatorName) ToPointer() *RolesEventGatewayRolesEventGatewaysCreatorName {
 	return &e
 }
+
+// RolesEventGatewayRolesEventGatewaysCreatorNameValues returns every known RolesEventGatewayRolesEventGatewaysCreatorName value in schema order.
+func RolesEventGatewayRolesEventGatewaysCreatorNameValues() []RolesEventGatewayRolesEventGatewaysCreatorName {
+	return []RolesEventGatewayRolesEventGatewaysCreatorName{
+		RolesEventGatewayRolesEventGatewaysCreatorNameEventGatewaysCreator,
+	}
+}
 func (e *RolesEventGatewayRolesEventGatewaysCreatorName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3435,6 +4044,13 @@ const (
 
 func (e RolesEventGatewayRolesDescription) ToPointer() *RolesEventGatewayRolesDescription {
 	return &e
+}
+
+// RolesEventGatewayRolesDescriptionValues returns every known RolesEventGatewayRolesDescription value in schema order.
+func RolesEventGatewayRolesDescriptionValues() []RolesEventGatewayRolesDescription {
+	return []RolesEventGatewayRolesDescription{
+		RolesEventGatewayRolesDescriptionAccessToCreateANewEventGatewayInEventGatewayManagerTheCreatorBecomesTheOwnerOfTheEventGatewayTheyCreateGainingAdminAccessToTheNewEventGatewayThisRoleDoesNotGrantAccessToExistingEventGatewaysTheirRuntimeInstancesOrTheirConfigurations,
+	}
 }
 func (e *RolesEventGatewayRolesDescription) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3487,6 +4103,13 @@ const (
 func (e RolesEventGatewayEventGatewayID) ToPointer() *RolesEventGatewayEventGatewayID {
 	return &e
 }
+
+// RolesEventGatewayEventGatewayIDValues returns every known RolesEventGatewayEventGatewayID value in schema order.
+func RolesEventGatewayEventGatewayIDValues() []RolesEventGatewayEventGatewayID {
+	return []RolesEventGatewayEventGatewayID{
+		RolesEventGatewayEventGatewayIDTheEventGatewayID,
+	}
+}
 func (e *RolesEventGatewayEventGatewayID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3521,6 +4144,13 @@ const (
 func (e RolesEventGatewayRolesEventGatewaysViewerName) ToPointer() *RolesEventGatewayRolesEventGatewaysViewerName {
 	return &e
 }
+
+// RolesEventGatewayRolesEventGatewaysViewerNameValues returns every known RolesEventGatewayRolesEventGatewaysViewerName value in schema order.
+func RolesEventGatewayRolesEventGatewaysViewerNameValues() []RolesEventGatewayRolesEventGatewaysViewerName {
+	return []RolesEventGatewayRolesEventGatewaysViewerName{
+		RolesEventGatewayRolesEventGatewaysViewerNameEventGatewaysViewer,
+	}
+}
 func (e *RolesEventGatewayRolesEventGatewaysViewerName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3543,6 +4173,13 @@ const (
 
 func (e RolesEventGatewayRolesEventGatewaysViewerDescription) ToPointer() *RolesEventGatewayRolesEventGatewaysViewerDescription {
 	return &e
+}
+
+// RolesEventGatewayRolesEventGatewaysViewerDescriptionValues returns every known RolesEventGatewayRolesEventGatewaysViewerDescription value in schema order.
+func RolesEventGatewayRolesEventGatewaysViewerDescriptionValues() []RolesEventGatewayRolesEventGatewaysViewerDescription {
+	return []RolesEventGatewayRolesEventGatewaysViewerDescription{
+		RolesEventGatewayRolesEventGatewaysViewerDescriptionReadOnlyAccessToAllTheConfigurationsOfAnEventGatewayAndItsRuntimeInstances,
+	}
 }
 func (e *RolesEventGatewayRolesEventGatewaysViewerDescription) UnmarshalJSON(data []byte) error {
 	var v string

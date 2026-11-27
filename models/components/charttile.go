@@ -120,6 +120,13 @@ const (
 func (e ChartTileType) ToPointer() *ChartTileType {
 	return &e
 }
+
+// ChartTileTypeValues returns every known ChartTileType value in schema order.
+func ChartTileTypeValues() []ChartTileType {
+	return []ChartTileType{
+		ChartTileTypeChart,
+	}
+}
 func (e *ChartTileType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

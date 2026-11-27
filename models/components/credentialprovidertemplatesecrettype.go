@@ -15,6 +15,14 @@ func (e CredentialProviderTemplateSecretType) ToPointer() *CredentialProviderTem
 	return &e
 }
 
+// CredentialProviderTemplateSecretTypeValues returns every known CredentialProviderTemplateSecretType value in schema order.
+func CredentialProviderTemplateSecretTypeValues() []CredentialProviderTemplateSecretType {
+	return []CredentialProviderTemplateSecretType{
+		CredentialProviderTemplateSecretTypeAuthorizationCode,
+		CredentialProviderTemplateSecretTypeStaticSecret,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CredentialProviderTemplateSecretType) IsExact() bool {
 	if e != nil {

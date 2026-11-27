@@ -15,6 +15,15 @@ func (e HasRelationshipSelectorOperator) ToPointer() *HasRelationshipSelectorOpe
 	return &e
 }
 
+// HasRelationshipSelectorOperatorValues returns every known HasRelationshipSelectorOperator value in schema order.
+func HasRelationshipSelectorOperatorValues() []HasRelationshipSelectorOperator {
+	return []HasRelationshipSelectorOperator{
+		HasRelationshipSelectorOperatorEq,
+		HasRelationshipSelectorOperatorGte,
+		HasRelationshipSelectorOperatorLte,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *HasRelationshipSelectorOperator) IsExact() bool {
 	if e != nil {

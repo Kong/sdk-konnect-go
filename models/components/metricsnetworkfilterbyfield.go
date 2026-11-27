@@ -20,6 +20,13 @@ const (
 func (e MetricsNetworkFilterByField2Field) ToPointer() *MetricsNetworkFilterByField2Field {
 	return &e
 }
+
+// MetricsNetworkFilterByField2FieldValues returns every known MetricsNetworkFilterByField2Field value in schema order.
+func MetricsNetworkFilterByField2FieldValues() []MetricsNetworkFilterByField2Field {
+	return []MetricsNetworkFilterByField2Field{
+		MetricsNetworkFilterByField2FieldNetwork,
+	}
+}
 func (e *MetricsNetworkFilterByField2Field) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -75,6 +82,13 @@ const (
 
 func (e MetricsNetworkFilterByFieldField) ToPointer() *MetricsNetworkFilterByFieldField {
 	return &e
+}
+
+// MetricsNetworkFilterByFieldFieldValues returns every known MetricsNetworkFilterByFieldField value in schema order.
+func MetricsNetworkFilterByFieldFieldValues() []MetricsNetworkFilterByFieldField {
+	return []MetricsNetworkFilterByFieldField{
+		MetricsNetworkFilterByFieldFieldNetwork,
+	}
 }
 func (e *MetricsNetworkFilterByFieldField) UnmarshalJSON(data []byte) error {
 	var v string

@@ -19,6 +19,14 @@ func (e VirtualClusterAuthenticationSaslPlainMediation) ToPointer() *VirtualClus
 	return &e
 }
 
+// VirtualClusterAuthenticationSaslPlainMediationValues returns every known VirtualClusterAuthenticationSaslPlainMediation value in schema order.
+func VirtualClusterAuthenticationSaslPlainMediationValues() []VirtualClusterAuthenticationSaslPlainMediation {
+	return []VirtualClusterAuthenticationSaslPlainMediation{
+		VirtualClusterAuthenticationSaslPlainMediationPassthrough,
+		VirtualClusterAuthenticationSaslPlainMediationTerminate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VirtualClusterAuthenticationSaslPlainMediation) IsExact() bool {
 	if e != nil {

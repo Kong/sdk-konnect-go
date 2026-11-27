@@ -17,6 +17,17 @@ func (e NotificationNamespace) ToPointer() *NotificationNamespace {
 	return &e
 }
 
+// NotificationNamespaceValues returns every known NotificationNamespace value in schema order.
+func NotificationNamespaceValues() []NotificationNamespace {
+	return []NotificationNamespace{
+		NotificationNamespacePlanAndUsage,
+		NotificationNamespaceOrganization,
+		NotificationNamespaceDevPortal,
+		NotificationNamespaceCloudGateways,
+		NotificationNamespaceGatewayManager,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NotificationNamespace) IsExact() bool {
 	if e != nil {

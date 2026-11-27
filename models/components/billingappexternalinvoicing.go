@@ -20,6 +20,13 @@ const (
 func (e BillingAppExternalInvoicingType) ToPointer() *BillingAppExternalInvoicingType {
 	return &e
 }
+
+// BillingAppExternalInvoicingTypeValues returns every known BillingAppExternalInvoicingType value in schema order.
+func BillingAppExternalInvoicingTypeValues() []BillingAppExternalInvoicingType {
+	return []BillingAppExternalInvoicingType{
+		BillingAppExternalInvoicingTypeExternalInvoicing,
+	}
+}
 func (e *BillingAppExternalInvoicingType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -45,6 +52,15 @@ const (
 
 func (e BillingAppExternalInvoicingDefinitionType) ToPointer() *BillingAppExternalInvoicingDefinitionType {
 	return &e
+}
+
+// BillingAppExternalInvoicingDefinitionTypeValues returns every known BillingAppExternalInvoicingDefinitionType value in schema order.
+func BillingAppExternalInvoicingDefinitionTypeValues() []BillingAppExternalInvoicingDefinitionType {
+	return []BillingAppExternalInvoicingDefinitionType{
+		BillingAppExternalInvoicingDefinitionTypeSandbox,
+		BillingAppExternalInvoicingDefinitionTypeStripe,
+		BillingAppExternalInvoicingDefinitionTypeExternalInvoicing,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -128,6 +144,14 @@ const (
 
 func (e BillingAppExternalInvoicingStatus) ToPointer() *BillingAppExternalInvoicingStatus {
 	return &e
+}
+
+// BillingAppExternalInvoicingStatusValues returns every known BillingAppExternalInvoicingStatus value in schema order.
+func BillingAppExternalInvoicingStatusValues() []BillingAppExternalInvoicingStatus {
+	return []BillingAppExternalInvoicingStatus{
+		BillingAppExternalInvoicingStatusReady,
+		BillingAppExternalInvoicingStatusUnauthorized,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

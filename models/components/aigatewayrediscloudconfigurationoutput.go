@@ -336,6 +336,15 @@ func (e AIGatewayRedisCloudConfigurationRole) ToPointer() *AIGatewayRedisCloudCo
 	return &e
 }
 
+// AIGatewayRedisCloudConfigurationRoleValues returns every known AIGatewayRedisCloudConfigurationRole value in schema order.
+func AIGatewayRedisCloudConfigurationRoleValues() []AIGatewayRedisCloudConfigurationRole {
+	return []AIGatewayRedisCloudConfigurationRole{
+		AIGatewayRedisCloudConfigurationRoleAny,
+		AIGatewayRedisCloudConfigurationRoleMaster,
+		AIGatewayRedisCloudConfigurationRoleSlave,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayRedisCloudConfigurationRole) IsExact() bool {
 	if e != nil {

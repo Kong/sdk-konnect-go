@@ -23,6 +23,19 @@ func (e Unit) ToPointer() *Unit {
 	return &e
 }
 
+// UnitValues returns every known Unit value in schema order.
+func UnitValues() []Unit {
+	return []Unit{
+		UnitMilliseconds,
+		UnitSeconds,
+		UnitMinutes,
+		UnitHours,
+		UnitDays,
+		UnitMonths,
+		UnitYears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Unit) IsExact() bool {
 	if e != nil {

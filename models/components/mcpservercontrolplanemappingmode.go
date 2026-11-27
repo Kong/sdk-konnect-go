@@ -15,6 +15,14 @@ func (e MCPServerControlPlaneMappingMode) ToPointer() *MCPServerControlPlaneMapp
 	return &e
 }
 
+// MCPServerControlPlaneMappingModeValues returns every known MCPServerControlPlaneMappingMode value in schema order.
+func MCPServerControlPlaneMappingModeValues() []MCPServerControlPlaneMappingMode {
+	return []MCPServerControlPlaneMappingMode{
+		MCPServerControlPlaneMappingModeBasic,
+		MCPServerControlPlaneMappingModeAdvanced,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPServerControlPlaneMappingMode) IsExact() bool {
 	if e != nil {

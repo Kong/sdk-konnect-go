@@ -18,6 +18,18 @@ func (e PlatformMetrics) ToPointer() *PlatformMetrics {
 	return &e
 }
 
+// PlatformMetricsValues returns every known PlatformMetrics value in schema order.
+func PlatformMetricsValues() []PlatformMetrics {
+	return []PlatformMetrics{
+		PlatformMetricsControlPlaneCount,
+		PlatformMetricsServiceCount,
+		PlatformMetricsRouteCount,
+		PlatformMetricsConsumerCount,
+		PlatformMetricsPluginCount,
+		PlatformMetricsNodeCount,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PlatformMetrics) IsExact() bool {
 	if e != nil {

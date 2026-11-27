@@ -27,6 +27,19 @@ func (e ControlPlaneGeo) ToPointer() *ControlPlaneGeo {
 	return &e
 }
 
+// ControlPlaneGeoValues returns every known ControlPlaneGeo value in schema order.
+func ControlPlaneGeoValues() []ControlPlaneGeo {
+	return []ControlPlaneGeo{
+		ControlPlaneGeoUs,
+		ControlPlaneGeoEu,
+		ControlPlaneGeoAu,
+		ControlPlaneGeoMe,
+		ControlPlaneGeoIn,
+		ControlPlaneGeoSg,
+		ControlPlaneGeoUk,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ControlPlaneGeo) IsExact() bool {
 	if e != nil {

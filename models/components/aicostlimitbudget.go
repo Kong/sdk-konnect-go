@@ -97,6 +97,14 @@ func (e Posture) ToPointer() *Posture {
 	return &e
 }
 
+// PostureValues returns every known Posture value in schema order.
+func PostureValues() []Posture {
+	return []Posture{
+		PostureAdvisory,
+		PostureEnforce,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Posture) IsExact() bool {
 	if e != nil {

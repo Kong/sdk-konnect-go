@@ -32,6 +32,15 @@ func (e PlatformGranularity) ToPointer() *PlatformGranularity {
 	return &e
 }
 
+// PlatformGranularityValues returns every known PlatformGranularity value in schema order.
+func PlatformGranularityValues() []PlatformGranularity {
+	return []PlatformGranularity{
+		PlatformGranularityDaily,
+		PlatformGranularityWeekly,
+		PlatformGranularityMonthly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PlatformGranularity) IsExact() bool {
 	if e != nil {

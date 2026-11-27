@@ -18,6 +18,13 @@ const (
 func (e ImageTypeSchema) ToPointer() *ImageTypeSchema {
 	return &e
 }
+
+// ImageTypeSchemaValues returns every known ImageTypeSchema value in schema order.
+func ImageTypeSchemaValues() []ImageTypeSchema {
+	return []ImageTypeSchema{
+		ImageTypeSchemaIcon,
+	}
+}
 func (e *ImageTypeSchema) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

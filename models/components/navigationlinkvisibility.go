@@ -15,6 +15,14 @@ func (e NavigationLinkVisibility) ToPointer() *NavigationLinkVisibility {
 	return &e
 }
 
+// NavigationLinkVisibilityValues returns every known NavigationLinkVisibility value in schema order.
+func NavigationLinkVisibilityValues() []NavigationLinkVisibility {
+	return []NavigationLinkVisibility{
+		NavigationLinkVisibilityPublic,
+		NavigationLinkVisibilityPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NavigationLinkVisibility) IsExact() bool {
 	if e != nil {

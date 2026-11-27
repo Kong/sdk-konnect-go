@@ -19,6 +19,13 @@ const (
 func (e NotAvailableErrorStatus) ToPointer() *NotAvailableErrorStatus {
 	return &e
 }
+
+// NotAvailableErrorStatusValues returns every known NotAvailableErrorStatus value in schema order.
+func NotAvailableErrorStatusValues() []NotAvailableErrorStatus {
+	return []NotAvailableErrorStatus{
+		NotAvailableErrorStatusFiveHundredAndThree,
+	}
+}
 func (e *NotAvailableErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

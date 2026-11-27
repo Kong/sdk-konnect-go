@@ -16,6 +16,15 @@ func (e CreateAPISpecRequestAPISpecType) ToPointer() *CreateAPISpecRequestAPISpe
 	return &e
 }
 
+// CreateAPISpecRequestAPISpecTypeValues returns every known CreateAPISpecRequestAPISpecType value in schema order.
+func CreateAPISpecRequestAPISpecTypeValues() []CreateAPISpecRequestAPISpecType {
+	return []CreateAPISpecRequestAPISpecType{
+		CreateAPISpecRequestAPISpecTypeOas2,
+		CreateAPISpecRequestAPISpecTypeOas3,
+		CreateAPISpecRequestAPISpecTypeAsyncapi,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateAPISpecRequestAPISpecType) IsExact() bool {
 	if e != nil {

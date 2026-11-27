@@ -20,6 +20,13 @@ const (
 func (e InvalidParameterMaximumTimeRule) ToPointer() *InvalidParameterMaximumTimeRule {
 	return &e
 }
+
+// InvalidParameterMaximumTimeRuleValues returns every known InvalidParameterMaximumTimeRule value in schema order.
+func InvalidParameterMaximumTimeRuleValues() []InvalidParameterMaximumTimeRule {
+	return []InvalidParameterMaximumTimeRule{
+		InvalidParameterMaximumTimeRuleMaxTime,
+	}
+}
 func (e *InvalidParameterMaximumTimeRule) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -21,6 +21,13 @@ const (
 func (e CreateGroupType) ToPointer() *CreateGroupType {
 	return &e
 }
+
+// CreateGroupTypeValues returns every known CreateGroupType value in schema order.
+func CreateGroupTypeValues() []CreateGroupType {
+	return []CreateGroupType{
+		CreateGroupTypeGroup,
+	}
+}
 func (e *CreateGroupType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

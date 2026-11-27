@@ -22,6 +22,15 @@ func (e TryItUIAudience) ToPointer() *TryItUIAudience {
 	return &e
 }
 
+// TryItUIAudienceValues returns every known TryItUIAudience value in schema order.
+func TryItUIAudienceValues() []TryItUIAudience {
+	return []TryItUIAudience{
+		TryItUIAudienceAll,
+		TryItUIAudienceAuthenticated,
+		TryItUIAudienceRegistered,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TryItUIAudience) IsExact() bool {
 	if e != nil {

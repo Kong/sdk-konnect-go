@@ -18,6 +18,14 @@ func (e CredentialType) ToPointer() *CredentialType {
 	return &e
 }
 
+// CredentialTypeValues returns every known CredentialType value in schema order.
+func CredentialTypeValues() []CredentialType {
+	return []CredentialType{
+		CredentialTypeClientCredentials,
+		CredentialTypeSelfManagedClientCredentials,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CredentialType) IsExact() bool {
 	if e != nil {

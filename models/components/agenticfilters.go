@@ -54,6 +54,50 @@ func (e AgenticFiltersField) ToPointer() *AgenticFiltersField {
 	return &e
 }
 
+// AgenticFiltersFieldValues returns every known AgenticFiltersField value in schema order.
+func AgenticFiltersFieldValues() []AgenticFiltersField {
+	return []AgenticFiltersField{
+		AgenticFiltersFieldA2aContextID,
+		AgenticFiltersFieldA2aError,
+		AgenticFiltersFieldA2aMethod,
+		AgenticFiltersFieldA2aTaskID,
+		AgenticFiltersFieldAiGateway,
+		AgenticFiltersFieldAiGatewayAgent,
+		AgenticFiltersFieldAiGatewayConsumer,
+		AgenticFiltersFieldAiGatewayConsumerGroup,
+		AgenticFiltersFieldAiGatewayDataPlaneNode,
+		AgenticFiltersFieldAiGatewayMcpServer,
+		AgenticFiltersFieldAPI,
+		AgenticFiltersFieldAPIPackage,
+		AgenticFiltersFieldAPIProduct,
+		AgenticFiltersFieldAPIProductVersion,
+		AgenticFiltersFieldApplication,
+		AgenticFiltersFieldCacheStatus,
+		AgenticFiltersFieldConsumer,
+		AgenticFiltersFieldConsumerGroup,
+		AgenticFiltersFieldControlPlane,
+		AgenticFiltersFieldControlPlaneGroup,
+		AgenticFiltersFieldCountryCode,
+		AgenticFiltersFieldDataPlaneNode,
+		AgenticFiltersFieldDataPlaneNodeVersion,
+		AgenticFiltersFieldGatewayService,
+		AgenticFiltersFieldMcpError,
+		AgenticFiltersFieldMcpMethod,
+		AgenticFiltersFieldMcpSessionID,
+		AgenticFiltersFieldMcpToolName,
+		AgenticFiltersFieldOidcCredential,
+		AgenticFiltersFieldPortal,
+		AgenticFiltersFieldPrincipal,
+		AgenticFiltersFieldRealm,
+		AgenticFiltersFieldResponseSource,
+		AgenticFiltersFieldRoute,
+		AgenticFiltersFieldStatusCode,
+		AgenticFiltersFieldStatusCodeGrouped,
+		AgenticFiltersFieldUpstreamStatusCode,
+		AgenticFiltersFieldUpstreamStatusCodeGrouped,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AgenticFiltersField) IsExact() bool {
 	if e != nil {
@@ -76,6 +120,16 @@ const (
 
 func (e AgenticFiltersOperator) ToPointer() *AgenticFiltersOperator {
 	return &e
+}
+
+// AgenticFiltersOperatorValues returns every known AgenticFiltersOperator value in schema order.
+func AgenticFiltersOperatorValues() []AgenticFiltersOperator {
+	return []AgenticFiltersOperator{
+		AgenticFiltersOperatorIn,
+		AgenticFiltersOperatorNotIn,
+		AgenticFiltersOperatorEmpty,
+		AgenticFiltersOperatorNotEmpty,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

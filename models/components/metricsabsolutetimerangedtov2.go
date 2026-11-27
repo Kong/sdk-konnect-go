@@ -19,6 +19,13 @@ const (
 func (e MetricsAbsoluteTimeRangeDtoV2Type) ToPointer() *MetricsAbsoluteTimeRangeDtoV2Type {
 	return &e
 }
+
+// MetricsAbsoluteTimeRangeDtoV2TypeValues returns every known MetricsAbsoluteTimeRangeDtoV2Type value in schema order.
+func MetricsAbsoluteTimeRangeDtoV2TypeValues() []MetricsAbsoluteTimeRangeDtoV2Type {
+	return []MetricsAbsoluteTimeRangeDtoV2Type{
+		MetricsAbsoluteTimeRangeDtoV2TypeAbsolute,
+	}
+}
 func (e *MetricsAbsoluteTimeRangeDtoV2Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

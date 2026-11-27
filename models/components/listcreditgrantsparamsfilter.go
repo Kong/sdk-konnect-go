@@ -17,6 +17,16 @@ func (e ListCreditGrantsParamsFilterCreditGrantLifecycleStatus) ToPointer() *Lis
 	return &e
 }
 
+// ListCreditGrantsParamsFilterCreditGrantLifecycleStatusValues returns every known ListCreditGrantsParamsFilterCreditGrantLifecycleStatus value in schema order.
+func ListCreditGrantsParamsFilterCreditGrantLifecycleStatusValues() []ListCreditGrantsParamsFilterCreditGrantLifecycleStatus {
+	return []ListCreditGrantsParamsFilterCreditGrantLifecycleStatus{
+		ListCreditGrantsParamsFilterCreditGrantLifecycleStatusPending,
+		ListCreditGrantsParamsFilterCreditGrantLifecycleStatusActive,
+		ListCreditGrantsParamsFilterCreditGrantLifecycleStatusExpired,
+		ListCreditGrantsParamsFilterCreditGrantLifecycleStatusVoided,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ListCreditGrantsParamsFilterCreditGrantLifecycleStatus) IsExact() bool {
 	if e != nil {

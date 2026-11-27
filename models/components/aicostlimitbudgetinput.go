@@ -139,6 +139,14 @@ func (e AICostLimitBudgetInputPosture) ToPointer() *AICostLimitBudgetInputPostur
 	return &e
 }
 
+// AICostLimitBudgetInputPostureValues returns every known AICostLimitBudgetInputPosture value in schema order.
+func AICostLimitBudgetInputPostureValues() []AICostLimitBudgetInputPosture {
+	return []AICostLimitBudgetInputPosture{
+		AICostLimitBudgetInputPostureAdvisory,
+		AICostLimitBudgetInputPostureEnforce,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostLimitBudgetInputPosture) IsExact() bool {
 	if e != nil {

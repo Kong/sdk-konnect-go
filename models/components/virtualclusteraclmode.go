@@ -19,6 +19,14 @@ func (e VirtualClusterACLMode) ToPointer() *VirtualClusterACLMode {
 	return &e
 }
 
+// VirtualClusterACLModeValues returns every known VirtualClusterACLMode value in schema order.
+func VirtualClusterACLModeValues() []VirtualClusterACLMode {
+	return []VirtualClusterACLMode{
+		VirtualClusterACLModeEnforceOnGateway,
+		VirtualClusterACLModePassthrough,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VirtualClusterACLMode) IsExact() bool {
 	if e != nil {

@@ -20,6 +20,13 @@ const (
 func (e BillingInstalledAppStripeType) ToPointer() *BillingInstalledAppStripeType {
 	return &e
 }
+
+// BillingInstalledAppStripeTypeValues returns every known BillingInstalledAppStripeType value in schema order.
+func BillingInstalledAppStripeTypeValues() []BillingInstalledAppStripeType {
+	return []BillingInstalledAppStripeType{
+		BillingInstalledAppStripeTypeStripe,
+	}
+}
 func (e *BillingInstalledAppStripeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -45,6 +52,15 @@ const (
 
 func (e BillingInstalledAppStripeDefinitionType) ToPointer() *BillingInstalledAppStripeDefinitionType {
 	return &e
+}
+
+// BillingInstalledAppStripeDefinitionTypeValues returns every known BillingInstalledAppStripeDefinitionType value in schema order.
+func BillingInstalledAppStripeDefinitionTypeValues() []BillingInstalledAppStripeDefinitionType {
+	return []BillingInstalledAppStripeDefinitionType{
+		BillingInstalledAppStripeDefinitionTypeSandbox,
+		BillingInstalledAppStripeDefinitionTypeStripe,
+		BillingInstalledAppStripeDefinitionTypeExternalInvoicing,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -128,6 +144,14 @@ const (
 
 func (e BillingInstalledAppStripeStatus) ToPointer() *BillingInstalledAppStripeStatus {
 	return &e
+}
+
+// BillingInstalledAppStripeStatusValues returns every known BillingInstalledAppStripeStatus value in schema order.
+func BillingInstalledAppStripeStatusValues() []BillingInstalledAppStripeStatus {
+	return []BillingInstalledAppStripeStatus{
+		BillingInstalledAppStripeStatusReady,
+		BillingInstalledAppStripeStatusUnauthorized,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

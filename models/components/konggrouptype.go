@@ -25,6 +25,14 @@ func (e KongGroupType) ToPointer() *KongGroupType {
 	return &e
 }
 
+// KongGroupTypeValues returns every known KongGroupType value in schema order.
+func KongGroupTypeValues() []KongGroupType {
+	return []KongGroupType{
+		KongGroupTypeGroup,
+		KongGroupTypeTeam,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *KongGroupType) IsExact() bool {
 	if e != nil {

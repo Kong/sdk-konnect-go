@@ -18,6 +18,13 @@ const (
 func (e AIGatewayModelProviderConfigAuthSagemakerType) ToPointer() *AIGatewayModelProviderConfigAuthSagemakerType {
 	return &e
 }
+
+// AIGatewayModelProviderConfigAuthSagemakerTypeValues returns every known AIGatewayModelProviderConfigAuthSagemakerType value in schema order.
+func AIGatewayModelProviderConfigAuthSagemakerTypeValues() []AIGatewayModelProviderConfigAuthSagemakerType {
+	return []AIGatewayModelProviderConfigAuthSagemakerType{
+		AIGatewayModelProviderConfigAuthSagemakerTypeSagemaker,
+	}
+}
 func (e *AIGatewayModelProviderConfigAuthSagemakerType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

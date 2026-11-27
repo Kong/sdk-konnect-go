@@ -19,6 +19,13 @@ const (
 func (e BillingPriceTierType) ToPointer() *BillingPriceTierType {
 	return &e
 }
+
+// BillingPriceTierTypeValues returns every known BillingPriceTierType value in schema order.
+func BillingPriceTierTypeValues() []BillingPriceTierType {
+	return []BillingPriceTierType{
+		BillingPriceTierTypeFlat,
+	}
+}
 func (e *BillingPriceTierType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -75,6 +82,13 @@ const (
 
 func (e BillingPriceTierUnitPriceType) ToPointer() *BillingPriceTierUnitPriceType {
 	return &e
+}
+
+// BillingPriceTierUnitPriceTypeValues returns every known BillingPriceTierUnitPriceType value in schema order.
+func BillingPriceTierUnitPriceTypeValues() []BillingPriceTierUnitPriceType {
+	return []BillingPriceTierUnitPriceType{
+		BillingPriceTierUnitPriceTypeUnit,
+	}
 }
 func (e *BillingPriceTierUnitPriceType) UnmarshalJSON(data []byte) error {
 	var v string

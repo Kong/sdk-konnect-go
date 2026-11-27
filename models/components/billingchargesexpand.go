@@ -35,6 +35,19 @@ func (e BillingChargesExpand) ToPointer() *BillingChargesExpand {
 	return &e
 }
 
+// BillingChargesExpandValues returns every known BillingChargesExpand value in schema order.
+func BillingChargesExpandValues() []BillingChargesExpand {
+	return []BillingChargesExpand{
+		BillingChargesExpandRealTimeUsage,
+		BillingChargesExpandCustomer,
+		BillingChargesExpandFeature,
+		BillingChargesExpandSubscription,
+		BillingChargesExpandRealizationInvoice,
+		BillingChargesExpandRealizationTotals,
+		BillingChargesExpandRealizationDetailedLines,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingChargesExpand) IsExact() bool {
 	if e != nil {

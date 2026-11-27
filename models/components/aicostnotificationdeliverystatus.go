@@ -20,6 +20,15 @@ func (e AICostNotificationDeliveryStatus) ToPointer() *AICostNotificationDeliver
 	return &e
 }
 
+// AICostNotificationDeliveryStatusValues returns every known AICostNotificationDeliveryStatus value in schema order.
+func AICostNotificationDeliveryStatusValues() []AICostNotificationDeliveryStatus {
+	return []AICostNotificationDeliveryStatus{
+		AICostNotificationDeliveryStatusPending,
+		AICostNotificationDeliveryStatusDelivered,
+		AICostNotificationDeliveryStatusFailed,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostNotificationDeliveryStatus) IsExact() bool {
 	if e != nil {

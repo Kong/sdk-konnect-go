@@ -121,6 +121,22 @@ func (e PluginWithoutParentsProtocols) ToPointer() *PluginWithoutParentsProtocol
 	return &e
 }
 
+// PluginWithoutParentsProtocolsValues returns every known PluginWithoutParentsProtocols value in schema order.
+func PluginWithoutParentsProtocolsValues() []PluginWithoutParentsProtocols {
+	return []PluginWithoutParentsProtocols{
+		PluginWithoutParentsProtocolsGrpc,
+		PluginWithoutParentsProtocolsGrpcs,
+		PluginWithoutParentsProtocolsHTTP,
+		PluginWithoutParentsProtocolsHTTPS,
+		PluginWithoutParentsProtocolsTCP,
+		PluginWithoutParentsProtocolsTLS,
+		PluginWithoutParentsProtocolsTLSPassthrough,
+		PluginWithoutParentsProtocolsUDP,
+		PluginWithoutParentsProtocolsWs,
+		PluginWithoutParentsProtocolsWss,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PluginWithoutParentsProtocols) IsExact() bool {
 	if e != nil {

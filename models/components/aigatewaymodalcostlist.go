@@ -21,6 +21,16 @@ func (e Modal) ToPointer() *Modal {
 	return &e
 }
 
+// ModalValues returns every known Modal value in schema order.
+func ModalValues() []Modal {
+	return []Modal{
+		ModalText,
+		ModalAudio,
+		ModalImage,
+		ModalVideo,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Modal) IsExact() bool {
 	if e != nil {

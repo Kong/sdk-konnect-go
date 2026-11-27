@@ -21,6 +21,14 @@ func (e CacheScope) ToPointer() *CacheScope {
 	return &e
 }
 
+// CacheScopeValues returns every known CacheScope value in schema order.
+func CacheScopeValues() []CacheScope {
+	return []CacheScope{
+		CacheScopePublic,
+		CacheScopePrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CacheScope) IsExact() bool {
 	if e != nil {

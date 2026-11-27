@@ -19,6 +19,13 @@ const (
 func (e BillingRateCardBooleanEntitlementType) ToPointer() *BillingRateCardBooleanEntitlementType {
 	return &e
 }
+
+// BillingRateCardBooleanEntitlementTypeValues returns every known BillingRateCardBooleanEntitlementType value in schema order.
+func BillingRateCardBooleanEntitlementTypeValues() []BillingRateCardBooleanEntitlementType {
+	return []BillingRateCardBooleanEntitlementType{
+		BillingRateCardBooleanEntitlementTypeBoolean,
+	}
+}
 func (e *BillingRateCardBooleanEntitlementType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -21,6 +21,15 @@ func (e One) ToPointer() *One {
 	return &e
 }
 
+// OneValues returns every known One value in schema order.
+func OneValues() []One {
+	return []One{
+		OneAws,
+		OneGcp,
+		OneAzure,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *One) IsExact() bool {
 	if e != nil {

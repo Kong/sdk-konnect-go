@@ -22,6 +22,15 @@ func (e SchemaType) ToPointer() *SchemaType {
 	return &e
 }
 
+// SchemaTypeValues returns every known SchemaType value in schema order.
+func SchemaTypeValues() []SchemaType {
+	return []SchemaType{
+		SchemaTypeAvro,
+		SchemaTypeJSON,
+		SchemaTypeAny,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SchemaType) IsExact() bool {
 	if e != nil {

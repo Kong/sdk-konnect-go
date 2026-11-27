@@ -19,6 +19,13 @@ const (
 func (e BillingPriceVolumeType) ToPointer() *BillingPriceVolumeType {
 	return &e
 }
+
+// BillingPriceVolumeTypeValues returns every known BillingPriceVolumeType value in schema order.
+func BillingPriceVolumeTypeValues() []BillingPriceVolumeType {
+	return []BillingPriceVolumeType{
+		BillingPriceVolumeTypeVolume,
+	}
+}
 func (e *BillingPriceVolumeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

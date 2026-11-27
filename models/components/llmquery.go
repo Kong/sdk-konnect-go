@@ -18,6 +18,13 @@ const (
 func (e LLMQueryDatasource) ToPointer() *LLMQueryDatasource {
 	return &e
 }
+
+// LLMQueryDatasourceValues returns every known LLMQueryDatasource value in schema order.
+func LLMQueryDatasourceValues() []LLMQueryDatasource {
+	return []LLMQueryDatasource{
+		LLMQueryDatasourceLlmUsage,
+	}
+}
 func (e *LLMQueryDatasource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -66,6 +73,39 @@ const (
 
 func (e LLMQueryDimensions) ToPointer() *LLMQueryDimensions {
 	return &e
+}
+
+// LLMQueryDimensionsValues returns every known LLMQueryDimensions value in schema order.
+func LLMQueryDimensionsValues() []LLMQueryDimensions {
+	return []LLMQueryDimensions{
+		LLMQueryDimensionsControlPlane,
+		LLMQueryDimensionsControlPlaneGroup,
+		LLMQueryDimensionsGatewayService,
+		LLMQueryDimensionsConsumer,
+		LLMQueryDimensionsAiGateway,
+		LLMQueryDimensionsAiGatewayConsumer,
+		LLMQueryDimensionsAiGatewayConsumerGroup,
+		LLMQueryDimensionsAiGatewayDataPlaneNode,
+		LLMQueryDimensionsAiGatewayMcpServer,
+		LLMQueryDimensionsAiGatewayModel,
+		LLMQueryDimensionsAiGatewayAgent,
+		LLMQueryDimensionsApplication,
+		LLMQueryDimensionsCacheStatus,
+		LLMQueryDimensionsOidcCredential,
+		LLMQueryDimensionsRoute,
+		LLMQueryDimensionsAiProvider,
+		LLMQueryDimensionsAiResponseModel,
+		LLMQueryDimensionsAiRequestModel,
+		LLMQueryDimensionsLlmCacheStatus,
+		LLMQueryDimensionsLlmEmbeddingsProvider,
+		LLMQueryDimensionsLlmEmbeddingsModel,
+		LLMQueryDimensionsTime,
+		LLMQueryDimensionsPrincipal,
+		LLMQueryDimensionsRealm,
+		LLMQueryDimensionsStatusCode,
+		LLMQueryDimensionsStatusCodeGrouped,
+		LLMQueryDimensionsAiPlugin,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

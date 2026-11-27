@@ -18,6 +18,13 @@ const (
 func (e ConfigurationDataPlaneGroupAutoscaleStaticKind) ToPointer() *ConfigurationDataPlaneGroupAutoscaleStaticKind {
 	return &e
 }
+
+// ConfigurationDataPlaneGroupAutoscaleStaticKindValues returns every known ConfigurationDataPlaneGroupAutoscaleStaticKind value in schema order.
+func ConfigurationDataPlaneGroupAutoscaleStaticKindValues() []ConfigurationDataPlaneGroupAutoscaleStaticKind {
+	return []ConfigurationDataPlaneGroupAutoscaleStaticKind{
+		ConfigurationDataPlaneGroupAutoscaleStaticKindStatic,
+	}
+}
 func (e *ConfigurationDataPlaneGroupAutoscaleStaticKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

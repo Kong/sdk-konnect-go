@@ -20,6 +20,15 @@ func (e InvalidParameterMaximumLengthRule) ToPointer() *InvalidParameterMaximumL
 	return &e
 }
 
+// InvalidParameterMaximumLengthRuleValues returns every known InvalidParameterMaximumLengthRule value in schema order.
+func InvalidParameterMaximumLengthRuleValues() []InvalidParameterMaximumLengthRule {
+	return []InvalidParameterMaximumLengthRule{
+		InvalidParameterMaximumLengthRuleMaxLength,
+		InvalidParameterMaximumLengthRuleMaxItems,
+		InvalidParameterMaximumLengthRuleMax,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *InvalidParameterMaximumLengthRule) IsExact() bool {
 	if e != nil {

@@ -17,6 +17,14 @@ func (e VirtualClusterTopicAliasConflict) ToPointer() *VirtualClusterTopicAliasC
 	return &e
 }
 
+// VirtualClusterTopicAliasConflictValues returns every known VirtualClusterTopicAliasConflict value in schema order.
+func VirtualClusterTopicAliasConflictValues() []VirtualClusterTopicAliasConflict {
+	return []VirtualClusterTopicAliasConflict{
+		VirtualClusterTopicAliasConflictWarn,
+		VirtualClusterTopicAliasConflictIgnore,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VirtualClusterTopicAliasConflict) IsExact() bool {
 	if e != nil {

@@ -24,6 +24,18 @@ func (e FailureReason) ToPointer() *FailureReason {
 	return &e
 }
 
+// FailureReasonValues returns every known FailureReason value in schema order.
+func FailureReasonValues() []FailureReason {
+	return []FailureReason{
+		FailureReasonRenderFailed,
+		FailureReasonHTTPError,
+		FailureReasonRetriesExhausted,
+		FailureReasonDestinationInactive,
+		FailureReasonClientError,
+		FailureReasonExpired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *FailureReason) IsExact() bool {
 	if e != nil {

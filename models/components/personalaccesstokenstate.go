@@ -16,6 +16,15 @@ func (e PersonalAccessTokenState) ToPointer() *PersonalAccessTokenState {
 	return &e
 }
 
+// PersonalAccessTokenStateValues returns every known PersonalAccessTokenState value in schema order.
+func PersonalAccessTokenStateValues() []PersonalAccessTokenState {
+	return []PersonalAccessTokenState{
+		PersonalAccessTokenStateActive,
+		PersonalAccessTokenStateRevoked,
+		PersonalAccessTokenStateExpired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PersonalAccessTokenState) IsExact() bool {
 	if e != nil {

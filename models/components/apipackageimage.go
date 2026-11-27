@@ -24,6 +24,16 @@ func (e APIPackageImageStatus) ToPointer() *APIPackageImageStatus {
 	return &e
 }
 
+// APIPackageImageStatusValues returns every known APIPackageImageStatus value in schema order.
+func APIPackageImageStatusValues() []APIPackageImageStatus {
+	return []APIPackageImageStatus{
+		APIPackageImageStatusUploading,
+		APIPackageImageStatusValidating,
+		APIPackageImageStatusValid,
+		APIPackageImageStatusInvalid,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIPackageImageStatus) IsExact() bool {
 	if e != nil {
@@ -44,6 +54,13 @@ const (
 
 func (e ImageType) ToPointer() *ImageType {
 	return &e
+}
+
+// ImageTypeValues returns every known ImageType value in schema order.
+func ImageTypeValues() []ImageType {
+	return []ImageType{
+		ImageTypeIcon,
+	}
 }
 func (e *ImageType) UnmarshalJSON(data []byte) error {
 	var v string

@@ -19,6 +19,14 @@ func (e LatencyStrategy) ToPointer() *LatencyStrategy {
 	return &e
 }
 
+// LatencyStrategyValues returns every known LatencyStrategy value in schema order.
+func LatencyStrategyValues() []LatencyStrategy {
+	return []LatencyStrategy{
+		LatencyStrategyE2e,
+		LatencyStrategyTpot,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *LatencyStrategy) IsExact() bool {
 	if e != nil {

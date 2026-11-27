@@ -20,6 +20,19 @@ func (e ResourceQuotaQualifier) ToPointer() *ResourceQuotaQualifier {
 	return &e
 }
 
+// ResourceQuotaQualifierValues returns every known ResourceQuotaQualifier value in schema order.
+func ResourceQuotaQualifierValues() []ResourceQuotaQualifier {
+	return []ResourceQuotaQualifier{
+		ResourceQuotaQualifierCountProviderAccountsPerProvider,
+		ResourceQuotaQualifierCountNetworksNotOffline,
+		ResourceQuotaQualifierCountDataPlanesEstimate,
+		ResourceQuotaQualifierCountServerlessDataPlanesEstimate,
+		ResourceQuotaQualifierCountDataPlaneGroupsEstimate,
+		ResourceQuotaQualifierCountManagedCacheInstances,
+		ResourceQuotaQualifierMaxManagedCacheSize,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ResourceQuotaQualifier) IsExact() bool {
 	if e != nil {

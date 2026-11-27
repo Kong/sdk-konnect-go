@@ -19,6 +19,15 @@ func (e PartialAppAuthStrategyConfigKeyAuthUnit) ToPointer() *PartialAppAuthStra
 	return &e
 }
 
+// PartialAppAuthStrategyConfigKeyAuthUnitValues returns every known PartialAppAuthStrategyConfigKeyAuthUnit value in schema order.
+func PartialAppAuthStrategyConfigKeyAuthUnitValues() []PartialAppAuthStrategyConfigKeyAuthUnit {
+	return []PartialAppAuthStrategyConfigKeyAuthUnit{
+		PartialAppAuthStrategyConfigKeyAuthUnitDays,
+		PartialAppAuthStrategyConfigKeyAuthUnitWeeks,
+		PartialAppAuthStrategyConfigKeyAuthUnitYears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialAppAuthStrategyConfigKeyAuthUnit) IsExact() bool {
 	if e != nil {

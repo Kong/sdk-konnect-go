@@ -17,6 +17,14 @@ func (e ReplaceGroupBodyType) ToPointer() *ReplaceGroupBodyType {
 	return &e
 }
 
+// ReplaceGroupBodyTypeValues returns every known ReplaceGroupBodyType value in schema order.
+func ReplaceGroupBodyTypeValues() []ReplaceGroupBodyType {
+	return []ReplaceGroupBodyType{
+		ReplaceGroupBodyTypeGroup,
+		ReplaceGroupBodyTypeTeam,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ReplaceGroupBodyType) IsExact() bool {
 	if e != nil {

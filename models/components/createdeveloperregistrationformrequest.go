@@ -19,6 +19,13 @@ const (
 func (e CreateDeveloperRegistrationFormRequestName) ToPointer() *CreateDeveloperRegistrationFormRequestName {
 	return &e
 }
+
+// CreateDeveloperRegistrationFormRequestNameValues returns every known CreateDeveloperRegistrationFormRequestName value in schema order.
+func CreateDeveloperRegistrationFormRequestNameValues() []CreateDeveloperRegistrationFormRequestName {
+	return []CreateDeveloperRegistrationFormRequestName{
+		CreateDeveloperRegistrationFormRequestNameDeveloperRegistration,
+	}
+}
 func (e *CreateDeveloperRegistrationFormRequestName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -42,6 +49,14 @@ const (
 
 func (e CreateDeveloperRegistrationFormRequestStatus) ToPointer() *CreateDeveloperRegistrationFormRequestStatus {
 	return &e
+}
+
+// CreateDeveloperRegistrationFormRequestStatusValues returns every known CreateDeveloperRegistrationFormRequestStatus value in schema order.
+func CreateDeveloperRegistrationFormRequestStatusValues() []CreateDeveloperRegistrationFormRequestStatus {
+	return []CreateDeveloperRegistrationFormRequestStatus{
+		CreateDeveloperRegistrationFormRequestStatusPublished,
+		CreateDeveloperRegistrationFormRequestStatusUnpublished,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

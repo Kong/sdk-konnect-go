@@ -55,6 +55,22 @@ func (e ServiceRequest2Protocol) ToPointer() *ServiceRequest2Protocol {
 	return &e
 }
 
+// ServiceRequest2ProtocolValues returns every known ServiceRequest2Protocol value in schema order.
+func ServiceRequest2ProtocolValues() []ServiceRequest2Protocol {
+	return []ServiceRequest2Protocol{
+		ServiceRequest2ProtocolGrpc,
+		ServiceRequest2ProtocolGrpcs,
+		ServiceRequest2ProtocolHTTP,
+		ServiceRequest2ProtocolHTTPS,
+		ServiceRequest2ProtocolTCP,
+		ServiceRequest2ProtocolTLS,
+		ServiceRequest2ProtocolTLSPassthrough,
+		ServiceRequest2ProtocolUDP,
+		ServiceRequest2ProtocolWs,
+		ServiceRequest2ProtocolWss,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ServiceRequest2Protocol) IsExact() bool {
 	if e != nil {
@@ -358,6 +374,22 @@ const (
 
 func (e ServiceRequestProtocol) ToPointer() *ServiceRequestProtocol {
 	return &e
+}
+
+// ServiceRequestProtocolValues returns every known ServiceRequestProtocol value in schema order.
+func ServiceRequestProtocolValues() []ServiceRequestProtocol {
+	return []ServiceRequestProtocol{
+		ServiceRequestProtocolGrpc,
+		ServiceRequestProtocolGrpcs,
+		ServiceRequestProtocolHTTP,
+		ServiceRequestProtocolHTTPS,
+		ServiceRequestProtocolTCP,
+		ServiceRequestProtocolTLS,
+		ServiceRequestProtocolTLSPassthrough,
+		ServiceRequestProtocolUDP,
+		ServiceRequestProtocolWs,
+		ServiceRequestProtocolWss,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

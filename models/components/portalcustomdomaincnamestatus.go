@@ -14,6 +14,14 @@ func (e PortalCustomDomainCnameStatus) ToPointer() *PortalCustomDomainCnameStatu
 	return &e
 }
 
+// PortalCustomDomainCnameStatusValues returns every known PortalCustomDomainCnameStatus value in schema order.
+func PortalCustomDomainCnameStatusValues() []PortalCustomDomainCnameStatus {
+	return []PortalCustomDomainCnameStatus{
+		PortalCustomDomainCnameStatusVerified,
+		PortalCustomDomainCnameStatusPending,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PortalCustomDomainCnameStatus) IsExact() bool {
 	if e != nil {

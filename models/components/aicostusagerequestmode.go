@@ -16,6 +16,15 @@ func (e AICostUsageRequestMode) ToPointer() *AICostUsageRequestMode {
 	return &e
 }
 
+// AICostUsageRequestModeValues returns every known AICostUsageRequestMode value in schema order.
+func AICostUsageRequestModeValues() []AICostUsageRequestMode {
+	return []AICostUsageRequestMode{
+		AICostUsageRequestModeStream,
+		AICostUsageRequestModeOneshot,
+		AICostUsageRequestModeRealtime,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostUsageRequestMode) IsExact() bool {
 	if e != nil {

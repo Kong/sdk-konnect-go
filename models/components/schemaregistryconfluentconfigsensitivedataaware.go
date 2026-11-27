@@ -22,6 +22,15 @@ func (e SchemaRegistryConfluentConfigSensitiveDataAwareSchemaType) ToPointer() *
 	return &e
 }
 
+// SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeValues returns every known SchemaRegistryConfluentConfigSensitiveDataAwareSchemaType value in schema order.
+func SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeValues() []SchemaRegistryConfluentConfigSensitiveDataAwareSchemaType {
+	return []SchemaRegistryConfluentConfigSensitiveDataAwareSchemaType{
+		SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeAvro,
+		SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeJSON,
+		SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeAny,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SchemaRegistryConfluentConfigSensitiveDataAwareSchemaType) IsExact() bool {
 	if e != nil {

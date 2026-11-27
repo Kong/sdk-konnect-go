@@ -16,6 +16,15 @@ func (e BillingAppType) ToPointer() *BillingAppType {
 	return &e
 }
 
+// BillingAppTypeValues returns every known BillingAppType value in schema order.
+func BillingAppTypeValues() []BillingAppType {
+	return []BillingAppType{
+		BillingAppTypeSandbox,
+		BillingAppTypeStripe,
+		BillingAppTypeExternalInvoicing,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingAppType) IsExact() bool {
 	if e != nil {

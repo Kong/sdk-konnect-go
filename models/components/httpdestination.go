@@ -19,6 +19,13 @@ const (
 func (e HTTPDestinationType) ToPointer() *HTTPDestinationType {
 	return &e
 }
+
+// HTTPDestinationTypeValues returns every known HTTPDestinationType value in schema order.
+func HTTPDestinationTypeValues() []HTTPDestinationType {
+	return []HTTPDestinationType{
+		HTTPDestinationTypeHTTP,
+	}
+}
 func (e *HTTPDestinationType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

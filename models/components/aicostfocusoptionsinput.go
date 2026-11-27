@@ -19,6 +19,14 @@ func (e AICostFocusOptionsInputVersion) ToPointer() *AICostFocusOptionsInputVers
 	return &e
 }
 
+// AICostFocusOptionsInputVersionValues returns every known AICostFocusOptionsInputVersion value in schema order.
+func AICostFocusOptionsInputVersionValues() []AICostFocusOptionsInputVersion {
+	return []AICostFocusOptionsInputVersion{
+		AICostFocusOptionsInputVersionOneDot3,
+		AICostFocusOptionsInputVersionOneDot4,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostFocusOptionsInputVersion) IsExact() bool {
 	if e != nil {
@@ -42,6 +50,14 @@ const (
 
 func (e AICostFocusOptionsInputChargePeriod) ToPointer() *AICostFocusOptionsInputChargePeriod {
 	return &e
+}
+
+// AICostFocusOptionsInputChargePeriodValues returns every known AICostFocusOptionsInputChargePeriod value in schema order.
+func AICostFocusOptionsInputChargePeriodValues() []AICostFocusOptionsInputChargePeriod {
+	return []AICostFocusOptionsInputChargePeriod{
+		AICostFocusOptionsInputChargePeriodDay,
+		AICostFocusOptionsInputChargePeriodHour,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

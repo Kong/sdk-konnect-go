@@ -25,6 +25,19 @@ func (e MeterAggregation) ToPointer() *MeterAggregation {
 	return &e
 }
 
+// MeterAggregationValues returns every known MeterAggregation value in schema order.
+func MeterAggregationValues() []MeterAggregation {
+	return []MeterAggregation{
+		MeterAggregationSum,
+		MeterAggregationCount,
+		MeterAggregationUniqueCount,
+		MeterAggregationAvg,
+		MeterAggregationMin,
+		MeterAggregationMax,
+		MeterAggregationLatest,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MeterAggregation) IsExact() bool {
 	if e != nil {

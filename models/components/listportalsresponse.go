@@ -20,6 +20,14 @@ func (e ListPortalsResponseDefaultAPIVisibility) ToPointer() *ListPortalsRespons
 	return &e
 }
 
+// ListPortalsResponseDefaultAPIVisibilityValues returns every known ListPortalsResponseDefaultAPIVisibility value in schema order.
+func ListPortalsResponseDefaultAPIVisibilityValues() []ListPortalsResponseDefaultAPIVisibility {
+	return []ListPortalsResponseDefaultAPIVisibility{
+		ListPortalsResponseDefaultAPIVisibilityPublic,
+		ListPortalsResponseDefaultAPIVisibilityPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ListPortalsResponseDefaultAPIVisibility) IsExact() bool {
 	if e != nil {
@@ -41,6 +49,14 @@ const (
 
 func (e ListPortalsResponseDefaultPageVisibility) ToPointer() *ListPortalsResponseDefaultPageVisibility {
 	return &e
+}
+
+// ListPortalsResponseDefaultPageVisibilityValues returns every known ListPortalsResponseDefaultPageVisibility value in schema order.
+func ListPortalsResponseDefaultPageVisibilityValues() []ListPortalsResponseDefaultPageVisibility {
+	return []ListPortalsResponseDefaultPageVisibility{
+		ListPortalsResponseDefaultPageVisibilityPublic,
+		ListPortalsResponseDefaultPageVisibilityPrivate,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -19,6 +19,14 @@ func (e Severity) ToPointer() *Severity {
 	return &e
 }
 
+// SeverityValues returns every known Severity value in schema order.
+func SeverityValues() []Severity {
+	return []Severity{
+		SeverityCritical,
+		SeverityWarning,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Severity) IsExact() bool {
 	if e != nil {

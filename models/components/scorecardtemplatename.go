@@ -17,6 +17,16 @@ func (e ScorecardTemplateName) ToPointer() *ScorecardTemplateName {
 	return &e
 }
 
+// ScorecardTemplateNameValues returns every known ScorecardTemplateName value in schema order.
+func ScorecardTemplateNameValues() []ScorecardTemplateName {
+	return []ScorecardTemplateName{
+		ScorecardTemplateNameKongBestPractices,
+		ScorecardTemplateNameServiceDocumentation,
+		ScorecardTemplateNameServiceMaturity,
+		ScorecardTemplateNameSecurityAndCompliance,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ScorecardTemplateName) IsExact() bool {
 	if e != nil {

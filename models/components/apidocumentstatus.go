@@ -15,6 +15,14 @@ func (e APIDocumentStatus) ToPointer() *APIDocumentStatus {
 	return &e
 }
 
+// APIDocumentStatusValues returns every known APIDocumentStatus value in schema order.
+func APIDocumentStatusValues() []APIDocumentStatus {
+	return []APIDocumentStatus{
+		APIDocumentStatusPublished,
+		APIDocumentStatusUnpublished,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIDocumentStatus) IsExact() bool {
 	if e != nil {

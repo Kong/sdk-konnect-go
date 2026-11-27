@@ -19,6 +19,13 @@ const (
 func (e InvalidParameterChoiceItemRule) ToPointer() *InvalidParameterChoiceItemRule {
 	return &e
 }
+
+// InvalidParameterChoiceItemRuleValues returns every known InvalidParameterChoiceItemRule value in schema order.
+func InvalidParameterChoiceItemRuleValues() []InvalidParameterChoiceItemRule {
+	return []InvalidParameterChoiceItemRule{
+		InvalidParameterChoiceItemRuleEnum,
+	}
+}
 func (e *InvalidParameterChoiceItemRule) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

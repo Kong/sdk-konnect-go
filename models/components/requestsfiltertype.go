@@ -15,6 +15,14 @@ func (e RequestsFilterType) ToPointer() *RequestsFilterType {
 	return &e
 }
 
+// RequestsFilterTypeValues returns every known RequestsFilterType value in schema order.
+func RequestsFilterTypeValues() []RequestsFilterType {
+	return []RequestsFilterType{
+		RequestsFilterTypeIn,
+		RequestsFilterTypeNotIn,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *RequestsFilterType) IsExact() bool {
 	if e != nil {

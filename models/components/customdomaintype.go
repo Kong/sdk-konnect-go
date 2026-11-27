@@ -20,6 +20,14 @@ func (e CustomDomainType) ToPointer() *CustomDomainType {
 	return &e
 }
 
+// CustomDomainTypeValues returns every known CustomDomainType value in schema order.
+func CustomDomainTypeValues() []CustomDomainType {
+	return []CustomDomainType{
+		CustomDomainTypeAPI,
+		CustomDomainTypeAi,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CustomDomainType) IsExact() bool {
 	if e != nil {

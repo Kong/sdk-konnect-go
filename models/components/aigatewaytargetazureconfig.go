@@ -22,6 +22,14 @@ func (e FoundryPathPrefix) ToPointer() *FoundryPathPrefix {
 	return &e
 }
 
+// FoundryPathPrefixValues returns every known FoundryPathPrefix value in schema order.
+func FoundryPathPrefixValues() []FoundryPathPrefix {
+	return []FoundryPathPrefix{
+		FoundryPathPrefixRootOpenaiV1,
+		FoundryPathPrefixRootAnthropicV1,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *FoundryPathPrefix) IsExact() bool {
 	if e != nil {

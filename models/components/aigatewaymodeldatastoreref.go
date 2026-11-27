@@ -20,6 +20,13 @@ const (
 func (e Purpose) ToPointer() *Purpose {
 	return &e
 }
+
+// PurposeValues returns every known Purpose value in schema order.
+func PurposeValues() []Purpose {
+	return []Purpose{
+		PurposeSemanticBalancer,
+	}
+}
 func (e *Purpose) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

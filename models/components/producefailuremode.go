@@ -24,6 +24,15 @@ func (e ProduceFailureMode) ToPointer() *ProduceFailureMode {
 	return &e
 }
 
+// ProduceFailureModeValues returns every known ProduceFailureMode value in schema order.
+func ProduceFailureModeValues() []ProduceFailureMode {
+	return []ProduceFailureMode{
+		ProduceFailureModeReject,
+		ProduceFailureModePassthrough,
+		ProduceFailureModeMark,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ProduceFailureMode) IsExact() bool {
 	if e != nil {

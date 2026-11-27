@@ -19,6 +19,14 @@ func (e Min) ToPointer() *Min {
 	return &e
 }
 
+// MinValues returns every known Min value in schema order.
+func MinValues() []Min {
+	return []Min{
+		MinTlSv12,
+		MinTlSv13,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Min) IsExact() bool {
 	if e != nil {
@@ -40,6 +48,14 @@ const (
 
 func (e Max) ToPointer() *Max {
 	return &e
+}
+
+// MaxValues returns every known Max value in schema order.
+func MaxValues() []Max {
+	return []Max{
+		MaxTlSv12,
+		MaxTlSv13,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

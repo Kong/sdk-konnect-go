@@ -21,6 +21,16 @@ func (e WindowSize) ToPointer() *WindowSize {
 	return &e
 }
 
+// WindowSizeValues returns every known WindowSize value in schema order.
+func WindowSizeValues() []WindowSize {
+	return []WindowSize{
+		WindowSizeOne,
+		WindowSizeSixty,
+		WindowSizeThreeThousandSixHundred,
+		WindowSizeEightySixThousandFourHundred,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *WindowSize) IsExact() bool {
 	if e != nil {

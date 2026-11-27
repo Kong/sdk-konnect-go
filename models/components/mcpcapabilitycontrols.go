@@ -19,6 +19,13 @@ const (
 func (e MCPCapabilityControlsType) ToPointer() *MCPCapabilityControlsType {
 	return &e
 }
+
+// MCPCapabilityControlsTypeValues returns every known MCPCapabilityControlsType value in schema order.
+func MCPCapabilityControlsTypeValues() []MCPCapabilityControlsType {
+	return []MCPCapabilityControlsType{
+		MCPCapabilityControlsTypeMcpServer,
+	}
+}
 func (e *MCPCapabilityControlsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

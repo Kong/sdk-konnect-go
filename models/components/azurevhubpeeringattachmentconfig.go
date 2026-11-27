@@ -18,6 +18,13 @@ const (
 func (e AzureVirtualHubPeeringAttachmentType) ToPointer() *AzureVirtualHubPeeringAttachmentType {
 	return &e
 }
+
+// AzureVirtualHubPeeringAttachmentTypeValues returns every known AzureVirtualHubPeeringAttachmentType value in schema order.
+func AzureVirtualHubPeeringAttachmentTypeValues() []AzureVirtualHubPeeringAttachmentType {
+	return []AzureVirtualHubPeeringAttachmentType{
+		AzureVirtualHubPeeringAttachmentTypeAzureVhubPeeringAttachment,
+	}
+}
 func (e *AzureVirtualHubPeeringAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -51,6 +51,15 @@ func (e APIPackageOperationResponseSchemaDuration) ToPointer() *APIPackageOperat
 	return &e
 }
 
+// APIPackageOperationResponseSchemaDurationValues returns every known APIPackageOperationResponseSchemaDuration value in schema order.
+func APIPackageOperationResponseSchemaDurationValues() []APIPackageOperationResponseSchemaDuration {
+	return []APIPackageOperationResponseSchemaDuration{
+		APIPackageOperationResponseSchemaDurationSeconds,
+		APIPackageOperationResponseSchemaDurationMinutes,
+		APIPackageOperationResponseSchemaDurationHours,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APIPackageOperationResponseSchemaDuration) IsExact() bool {
 	if e != nil {

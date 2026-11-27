@@ -15,6 +15,14 @@ func (e CustomFormType) ToPointer() *CustomFormType {
 	return &e
 }
 
+// CustomFormTypeValues returns every known CustomFormType value in schema order.
+func CustomFormTypeValues() []CustomFormType {
+	return []CustomFormType{
+		CustomFormTypeDeveloperRegistration,
+		CustomFormTypeAPIRegistration,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CustomFormType) IsExact() bool {
 	if e != nil {

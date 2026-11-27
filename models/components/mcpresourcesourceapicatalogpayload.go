@@ -18,6 +18,13 @@ const (
 func (e MCPResourceSourceAPICatalogPayloadType) ToPointer() *MCPResourceSourceAPICatalogPayloadType {
 	return &e
 }
+
+// MCPResourceSourceAPICatalogPayloadTypeValues returns every known MCPResourceSourceAPICatalogPayloadType value in schema order.
+func MCPResourceSourceAPICatalogPayloadTypeValues() []MCPResourceSourceAPICatalogPayloadType {
+	return []MCPResourceSourceAPICatalogPayloadType{
+		MCPResourceSourceAPICatalogPayloadTypeAPICatalog,
+	}
+}
 func (e *MCPResourceSourceAPICatalogPayloadType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

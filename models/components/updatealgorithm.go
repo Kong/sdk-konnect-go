@@ -19,6 +19,18 @@ func (e UpdateAlgorithm) ToPointer() *UpdateAlgorithm {
 	return &e
 }
 
+// UpdateAlgorithmValues returns every known UpdateAlgorithm value in schema order.
+func UpdateAlgorithmValues() []UpdateAlgorithm {
+	return []UpdateAlgorithm{
+		UpdateAlgorithmRs256,
+		UpdateAlgorithmRs384,
+		UpdateAlgorithmRs512,
+		UpdateAlgorithmPs256,
+		UpdateAlgorithmPs384,
+		UpdateAlgorithmPs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateAlgorithm) IsExact() bool {
 	if e != nil {

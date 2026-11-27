@@ -19,6 +19,13 @@ const (
 func (e UpdatePriceVolumeType) ToPointer() *UpdatePriceVolumeType {
 	return &e
 }
+
+// UpdatePriceVolumeTypeValues returns every known UpdatePriceVolumeType value in schema order.
+func UpdatePriceVolumeTypeValues() []UpdatePriceVolumeType {
+	return []UpdatePriceVolumeType{
+		UpdatePriceVolumeTypeVolume,
+	}
+}
 func (e *UpdatePriceVolumeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -17,6 +17,13 @@ const (
 func (e BooleanSelectorOperator) ToPointer() *BooleanSelectorOperator {
 	return &e
 }
+
+// BooleanSelectorOperatorValues returns every known BooleanSelectorOperator value in schema order.
+func BooleanSelectorOperatorValues() []BooleanSelectorOperator {
+	return []BooleanSelectorOperator{
+		BooleanSelectorOperatorEq,
+	}
+}
 func (e *BooleanSelectorOperator) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

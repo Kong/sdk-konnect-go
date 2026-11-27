@@ -18,6 +18,13 @@ const (
 func (e AzureVNETPeeringAttachmentType) ToPointer() *AzureVNETPeeringAttachmentType {
 	return &e
 }
+
+// AzureVNETPeeringAttachmentTypeValues returns every known AzureVNETPeeringAttachmentType value in schema order.
+func AzureVNETPeeringAttachmentTypeValues() []AzureVNETPeeringAttachmentType {
+	return []AzureVNETPeeringAttachmentType{
+		AzureVNETPeeringAttachmentTypeAzureVnetPeeringAttachment,
+	}
+}
 func (e *AzureVNETPeeringAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

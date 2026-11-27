@@ -19,6 +19,14 @@ func (e CreatePlanRequestSettlementMode) ToPointer() *CreatePlanRequestSettlemen
 	return &e
 }
 
+// CreatePlanRequestSettlementModeValues returns every known CreatePlanRequestSettlementMode value in schema order.
+func CreatePlanRequestSettlementModeValues() []CreatePlanRequestSettlementMode {
+	return []CreatePlanRequestSettlementMode{
+		CreatePlanRequestSettlementModeCreditThenInvoice,
+		CreatePlanRequestSettlementModeCreditOnly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreatePlanRequestSettlementMode) IsExact() bool {
 	if e != nil {

@@ -20,6 +20,19 @@ func (e EntityRegion) ToPointer() *EntityRegion {
 	return &e
 }
 
+// EntityRegionValues returns every known EntityRegion value in schema order.
+func EntityRegionValues() []EntityRegion {
+	return []EntityRegion{
+		EntityRegionUs,
+		EntityRegionEu,
+		EntityRegionAu,
+		EntityRegionMe,
+		EntityRegionIn,
+		EntityRegionSg,
+		EntityRegionWildcard,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EntityRegion) IsExact() bool {
 	if e != nil {

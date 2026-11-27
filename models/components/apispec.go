@@ -16,6 +16,15 @@ func (e APISpecAPISpecType) ToPointer() *APISpecAPISpecType {
 	return &e
 }
 
+// APISpecAPISpecTypeValues returns every known APISpecAPISpecType value in schema order.
+func APISpecAPISpecTypeValues() []APISpecAPISpecType {
+	return []APISpecAPISpecType{
+		APISpecAPISpecTypeOas2,
+		APISpecAPISpecTypeOas3,
+		APISpecAPISpecTypeAsyncapi,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *APISpecAPISpecType) IsExact() bool {
 	if e != nil {

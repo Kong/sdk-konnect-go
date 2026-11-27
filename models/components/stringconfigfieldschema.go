@@ -19,6 +19,13 @@ const (
 func (e StringConfigFieldSchemaType) ToPointer() *StringConfigFieldSchemaType {
 	return &e
 }
+
+// StringConfigFieldSchemaTypeValues returns every known StringConfigFieldSchemaType value in schema order.
+func StringConfigFieldSchemaTypeValues() []StringConfigFieldSchemaType {
+	return []StringConfigFieldSchemaType{
+		StringConfigFieldSchemaTypeString,
+	}
+}
 func (e *StringConfigFieldSchemaType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

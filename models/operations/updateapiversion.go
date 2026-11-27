@@ -24,6 +24,14 @@ const (
 func (e UpdateAPIVersionQueryParamForce) ToPointer() *UpdateAPIVersionQueryParamForce {
 	return &e
 }
+
+// UpdateAPIVersionQueryParamForceValues returns every known UpdateAPIVersionQueryParamForce value in schema order.
+func UpdateAPIVersionQueryParamForceValues() []UpdateAPIVersionQueryParamForce {
+	return []UpdateAPIVersionQueryParamForce{
+		UpdateAPIVersionQueryParamForceTrue,
+		UpdateAPIVersionQueryParamForceFalse,
+	}
+}
 func (e *UpdateAPIVersionQueryParamForce) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

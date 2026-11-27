@@ -19,6 +19,14 @@ func (e DefaultAPIVisibility) ToPointer() *DefaultAPIVisibility {
 	return &e
 }
 
+// DefaultAPIVisibilityValues returns every known DefaultAPIVisibility value in schema order.
+func DefaultAPIVisibilityValues() []DefaultAPIVisibility {
+	return []DefaultAPIVisibility{
+		DefaultAPIVisibilityPublic,
+		DefaultAPIVisibilityPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DefaultAPIVisibility) IsExact() bool {
 	if e != nil {
@@ -40,6 +48,14 @@ const (
 
 func (e DefaultPageVisibility) ToPointer() *DefaultPageVisibility {
 	return &e
+}
+
+// DefaultPageVisibilityValues returns every known DefaultPageVisibility value in schema order.
+func DefaultPageVisibilityValues() []DefaultPageVisibility {
+	return []DefaultPageVisibility{
+		DefaultPageVisibilityPublic,
+		DefaultPageVisibilityPrivate,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

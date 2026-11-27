@@ -67,6 +67,67 @@ func (e AllFilterItemsField) ToPointer() *AllFilterItemsField {
 	return &e
 }
 
+// AllFilterItemsFieldValues returns every known AllFilterItemsField value in schema order.
+func AllFilterItemsFieldValues() []AllFilterItemsField {
+	return []AllFilterItemsField{
+		AllFilterItemsFieldA2aContextID,
+		AllFilterItemsFieldA2aError,
+		AllFilterItemsFieldA2aMethod,
+		AllFilterItemsFieldA2aTaskID,
+		AllFilterItemsFieldAiGateway,
+		AllFilterItemsFieldAiGatewayAgent,
+		AllFilterItemsFieldAiGatewayConsumer,
+		AllFilterItemsFieldAiGatewayConsumerGroup,
+		AllFilterItemsFieldAiGatewayDataPlaneNode,
+		AllFilterItemsFieldAiGatewayMcpServer,
+		AllFilterItemsFieldAiGatewayModel,
+		AllFilterItemsFieldAiPlugin,
+		AllFilterItemsFieldAiProvider,
+		AllFilterItemsFieldAiRequestModel,
+		AllFilterItemsFieldAiResponseModel,
+		AllFilterItemsFieldAPI,
+		AllFilterItemsFieldAPIPackage,
+		AllFilterItemsFieldAPIProduct,
+		AllFilterItemsFieldAPIProductVersion,
+		AllFilterItemsFieldApplication,
+		AllFilterItemsFieldCacheStatus,
+		AllFilterItemsFieldConsumer,
+		AllFilterItemsFieldConsumerGroup,
+		AllFilterItemsFieldControlPlane,
+		AllFilterItemsFieldControlPlaneGroup,
+		AllFilterItemsFieldCountryCode,
+		AllFilterItemsFieldDataPlaneGroup,
+		AllFilterItemsFieldDataPlaneNode,
+		AllFilterItemsFieldDataPlaneNodeVersion,
+		AllFilterItemsFieldEnv,
+		AllFilterItemsFieldGatewayService,
+		AllFilterItemsFieldHostname,
+		AllFilterItemsFieldLlmCacheStatus,
+		AllFilterItemsFieldLlmEmbeddingsModel,
+		AllFilterItemsFieldLlmEmbeddingsProvider,
+		AllFilterItemsFieldManagedCache,
+		AllFilterItemsFieldMcpError,
+		AllFilterItemsFieldMcpMethod,
+		AllFilterItemsFieldMcpSessionID,
+		AllFilterItemsFieldMcpToolName,
+		AllFilterItemsFieldNetwork,
+		AllFilterItemsFieldOidcCredential,
+		AllFilterItemsFieldPortal,
+		AllFilterItemsFieldPrincipal,
+		AllFilterItemsFieldProvider,
+		AllFilterItemsFieldProviderRegion,
+		AllFilterItemsFieldRealm,
+		AllFilterItemsFieldRegion,
+		AllFilterItemsFieldResponseSource,
+		AllFilterItemsFieldRoute,
+		AllFilterItemsFieldStatusCode,
+		AllFilterItemsFieldStatusCodeGrouped,
+		AllFilterItemsFieldTeam,
+		AllFilterItemsFieldUpstreamStatusCode,
+		AllFilterItemsFieldUpstreamStatusCodeGrouped,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AllFilterItemsField) IsExact() bool {
 	if e != nil {
@@ -89,6 +150,16 @@ const (
 
 func (e AllFilterItemsOperator) ToPointer() *AllFilterItemsOperator {
 	return &e
+}
+
+// AllFilterItemsOperatorValues returns every known AllFilterItemsOperator value in schema order.
+func AllFilterItemsOperatorValues() []AllFilterItemsOperator {
+	return []AllFilterItemsOperator{
+		AllFilterItemsOperatorIn,
+		AllFilterItemsOperatorNotIn,
+		AllFilterItemsOperatorEmpty,
+		AllFilterItemsOperatorNotEmpty,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

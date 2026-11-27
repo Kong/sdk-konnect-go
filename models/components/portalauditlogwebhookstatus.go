@@ -21,6 +21,14 @@ func (e WebhookStatus) ToPointer() *WebhookStatus {
 	return &e
 }
 
+// WebhookStatusValues returns every known WebhookStatus value in schema order.
+func WebhookStatusValues() []WebhookStatus {
+	return []WebhookStatus{
+		WebhookStatusActive,
+		WebhookStatusInactive,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *WebhookStatus) IsExact() bool {
 	if e != nil {

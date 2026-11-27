@@ -20,6 +20,15 @@ func (e AICostObservedSubjectType) ToPointer() *AICostObservedSubjectType {
 	return &e
 }
 
+// AICostObservedSubjectTypeValues returns every known AICostObservedSubjectType value in schema order.
+func AICostObservedSubjectTypeValues() []AICostObservedSubjectType {
+	return []AICostObservedSubjectType{
+		AICostObservedSubjectTypePrincipal,
+		AICostObservedSubjectTypeConsumer,
+		AICostObservedSubjectTypeOidc,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostObservedSubjectType) IsExact() bool {
 	if e != nil {

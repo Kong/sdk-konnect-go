@@ -42,6 +42,38 @@ func (e LLMFiltersField) ToPointer() *LLMFiltersField {
 	return &e
 }
 
+// LLMFiltersFieldValues returns every known LLMFiltersField value in schema order.
+func LLMFiltersFieldValues() []LLMFiltersField {
+	return []LLMFiltersField{
+		LLMFiltersFieldAiGateway,
+		LLMFiltersFieldAiGatewayAgent,
+		LLMFiltersFieldAiGatewayConsumer,
+		LLMFiltersFieldAiGatewayConsumerGroup,
+		LLMFiltersFieldAiGatewayDataPlaneNode,
+		LLMFiltersFieldAiGatewayMcpServer,
+		LLMFiltersFieldAiGatewayModel,
+		LLMFiltersFieldAiPlugin,
+		LLMFiltersFieldAiProvider,
+		LLMFiltersFieldAiRequestModel,
+		LLMFiltersFieldAiResponseModel,
+		LLMFiltersFieldApplication,
+		LLMFiltersFieldCacheStatus,
+		LLMFiltersFieldConsumer,
+		LLMFiltersFieldControlPlane,
+		LLMFiltersFieldControlPlaneGroup,
+		LLMFiltersFieldGatewayService,
+		LLMFiltersFieldLlmCacheStatus,
+		LLMFiltersFieldLlmEmbeddingsModel,
+		LLMFiltersFieldLlmEmbeddingsProvider,
+		LLMFiltersFieldOidcCredential,
+		LLMFiltersFieldPrincipal,
+		LLMFiltersFieldRealm,
+		LLMFiltersFieldRoute,
+		LLMFiltersFieldStatusCode,
+		LLMFiltersFieldStatusCodeGrouped,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *LLMFiltersField) IsExact() bool {
 	if e != nil {
@@ -64,6 +96,16 @@ const (
 
 func (e LLMFiltersOperator) ToPointer() *LLMFiltersOperator {
 	return &e
+}
+
+// LLMFiltersOperatorValues returns every known LLMFiltersOperator value in schema order.
+func LLMFiltersOperatorValues() []LLMFiltersOperator {
+	return []LLMFiltersOperator{
+		LLMFiltersOperatorIn,
+		LLMFiltersOperatorNotIn,
+		LLMFiltersOperatorEmpty,
+		LLMFiltersOperatorNotEmpty,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

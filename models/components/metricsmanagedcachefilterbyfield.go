@@ -20,6 +20,13 @@ const (
 func (e MetricsManagedCacheFilterByField2Field) ToPointer() *MetricsManagedCacheFilterByField2Field {
 	return &e
 }
+
+// MetricsManagedCacheFilterByField2FieldValues returns every known MetricsManagedCacheFilterByField2Field value in schema order.
+func MetricsManagedCacheFilterByField2FieldValues() []MetricsManagedCacheFilterByField2Field {
+	return []MetricsManagedCacheFilterByField2Field{
+		MetricsManagedCacheFilterByField2FieldManagedCache,
+	}
+}
 func (e *MetricsManagedCacheFilterByField2Field) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -75,6 +82,13 @@ const (
 
 func (e MetricsManagedCacheFilterByFieldField) ToPointer() *MetricsManagedCacheFilterByFieldField {
 	return &e
+}
+
+// MetricsManagedCacheFilterByFieldFieldValues returns every known MetricsManagedCacheFilterByFieldField value in schema order.
+func MetricsManagedCacheFilterByFieldFieldValues() []MetricsManagedCacheFilterByFieldField {
+	return []MetricsManagedCacheFilterByFieldField{
+		MetricsManagedCacheFilterByFieldFieldManagedCache,
+	}
 }
 func (e *MetricsManagedCacheFilterByFieldField) UnmarshalJSON(data []byte) error {
 	var v string

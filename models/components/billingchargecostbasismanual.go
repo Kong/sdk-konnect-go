@@ -19,6 +19,13 @@ const (
 func (e BillingChargeCostBasisManualType) ToPointer() *BillingChargeCostBasisManualType {
 	return &e
 }
+
+// BillingChargeCostBasisManualTypeValues returns every known BillingChargeCostBasisManualType value in schema order.
+func BillingChargeCostBasisManualTypeValues() []BillingChargeCostBasisManualType {
+	return []BillingChargeCostBasisManualType{
+		BillingChargeCostBasisManualTypeManual,
+	}
+}
 func (e *BillingChargeCostBasisManualType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

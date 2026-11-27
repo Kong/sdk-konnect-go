@@ -15,6 +15,14 @@ func (e IdentityProviderType) ToPointer() *IdentityProviderType {
 	return &e
 }
 
+// IdentityProviderTypeValues returns every known IdentityProviderType value in schema order.
+func IdentityProviderTypeValues() []IdentityProviderType {
+	return []IdentityProviderType{
+		IdentityProviderTypeOidc,
+		IdentityProviderTypeSaml,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *IdentityProviderType) IsExact() bool {
 	if e != nil {

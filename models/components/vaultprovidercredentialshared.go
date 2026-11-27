@@ -20,6 +20,14 @@ func (e VaultProviderCredentialSharedStatus) ToPointer() *VaultProviderCredentia
 	return &e
 }
 
+// VaultProviderCredentialSharedStatusValues returns every known VaultProviderCredentialSharedStatus value in schema order.
+func VaultProviderCredentialSharedStatusValues() []VaultProviderCredentialSharedStatus {
+	return []VaultProviderCredentialSharedStatus{
+		VaultProviderCredentialSharedStatusPending,
+		VaultProviderCredentialSharedStatusActive,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VaultProviderCredentialSharedStatus) IsExact() bool {
 	if e != nil {

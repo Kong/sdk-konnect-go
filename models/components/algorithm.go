@@ -19,6 +19,18 @@ func (e Algorithm) ToPointer() *Algorithm {
 	return &e
 }
 
+// AlgorithmValues returns every known Algorithm value in schema order.
+func AlgorithmValues() []Algorithm {
+	return []Algorithm{
+		AlgorithmRs256,
+		AlgorithmRs384,
+		AlgorithmRs512,
+		AlgorithmPs256,
+		AlgorithmPs384,
+		AlgorithmPs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Algorithm) IsExact() bool {
 	if e != nil {

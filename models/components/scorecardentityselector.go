@@ -19,6 +19,13 @@ const (
 func (e HasResourcesSelectorServiceSelectorSelector) ToPointer() *HasResourcesSelectorServiceSelectorSelector {
 	return &e
 }
+
+// HasResourcesSelectorServiceSelectorSelectorValues returns every known HasResourcesSelectorServiceSelectorSelector value in schema order.
+func HasResourcesSelectorServiceSelectorSelectorValues() []HasResourcesSelectorServiceSelectorSelector {
+	return []HasResourcesSelectorServiceSelectorSelector{
+		HasResourcesSelectorServiceSelectorSelectorResourceCount,
+	}
+}
 func (e *HasResourcesSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -122,6 +129,13 @@ const (
 func (e HasApisSelectorServiceSelectorSelector) ToPointer() *HasApisSelectorServiceSelectorSelector {
 	return &e
 }
+
+// HasApisSelectorServiceSelectorSelectorValues returns every known HasApisSelectorServiceSelectorSelector value in schema order.
+func HasApisSelectorServiceSelectorSelectorValues() []HasApisSelectorServiceSelectorSelector {
+	return []HasApisSelectorServiceSelectorSelector{
+		HasApisSelectorServiceSelectorSelectorAPICount,
+	}
+}
 func (e *HasApisSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -176,6 +190,13 @@ const (
 func (e HasDocsSelectorServiceSelectorSelector) ToPointer() *HasDocsSelectorServiceSelectorSelector {
 	return &e
 }
+
+// HasDocsSelectorServiceSelectorSelectorValues returns every known HasDocsSelectorServiceSelectorSelector value in schema order.
+func HasDocsSelectorServiceSelectorSelectorValues() []HasDocsSelectorServiceSelectorSelector {
+	return []HasDocsSelectorServiceSelectorSelector{
+		HasDocsSelectorServiceSelectorSelectorHasDocs,
+	}
+}
 func (e *HasDocsSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -227,6 +248,13 @@ const (
 
 func (e HasLabelKeySelectorServiceSelectorSelector) ToPointer() *HasLabelKeySelectorServiceSelectorSelector {
 	return &e
+}
+
+// HasLabelKeySelectorServiceSelectorSelectorValues returns every known HasLabelKeySelectorServiceSelectorSelector value in schema order.
+func HasLabelKeySelectorServiceSelectorSelectorValues() []HasLabelKeySelectorServiceSelectorSelector {
+	return []HasLabelKeySelectorServiceSelectorSelector{
+		HasLabelKeySelectorServiceSelectorSelectorHasLabelKey,
+	}
 }
 func (e *HasLabelKeySelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
@@ -303,6 +331,13 @@ const (
 
 func (e ByLabelSelectorServiceSelectorSelector) ToPointer() *ByLabelSelectorServiceSelectorSelector {
 	return &e
+}
+
+// ByLabelSelectorServiceSelectorSelectorValues returns every known ByLabelSelectorServiceSelectorSelector value in schema order.
+func ByLabelSelectorServiceSelectorSelectorValues() []ByLabelSelectorServiceSelectorSelector {
+	return []ByLabelSelectorServiceSelectorSelector{
+		ByLabelSelectorServiceSelectorSelectorLabel,
+	}
 }
 func (e *ByLabelSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
@@ -396,6 +431,13 @@ const (
 func (e ByCustomFieldSelectorServiceSelectorSelector) ToPointer() *ByCustomFieldSelectorServiceSelectorSelector {
 	return &e
 }
+
+// ByCustomFieldSelectorServiceSelectorSelectorValues returns every known ByCustomFieldSelectorServiceSelectorSelector value in schema order.
+func ByCustomFieldSelectorServiceSelectorSelectorValues() []ByCustomFieldSelectorServiceSelectorSelector {
+	return []ByCustomFieldSelectorServiceSelectorSelector{
+		ByCustomFieldSelectorServiceSelectorSelectorCustomField,
+	}
+}
 func (e *ByCustomFieldSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -420,6 +462,14 @@ const (
 
 func (e Subfield) ToPointer() *Subfield {
 	return &e
+}
+
+// SubfieldValues returns every known Subfield value in schema order.
+func SubfieldValues() []Subfield {
+	return []Subfield{
+		SubfieldName,
+		SubfieldLink,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -752,6 +802,13 @@ const (
 func (e ByDisplayNameSelectorServiceSelectorSelector) ToPointer() *ByDisplayNameSelectorServiceSelectorSelector {
 	return &e
 }
+
+// ByDisplayNameSelectorServiceSelectorSelectorValues returns every known ByDisplayNameSelectorServiceSelectorSelector value in schema order.
+func ByDisplayNameSelectorServiceSelectorSelectorValues() []ByDisplayNameSelectorServiceSelectorSelector {
+	return []ByDisplayNameSelectorServiceSelectorSelector{
+		ByDisplayNameSelectorServiceSelectorSelectorDisplayName,
+	}
+}
 func (e *ByDisplayNameSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -806,6 +863,13 @@ const (
 func (e ByNameSelectorServiceSelectorSelector) ToPointer() *ByNameSelectorServiceSelectorSelector {
 	return &e
 }
+
+// ByNameSelectorServiceSelectorSelectorValues returns every known ByNameSelectorServiceSelectorSelector value in schema order.
+func ByNameSelectorServiceSelectorSelectorValues() []ByNameSelectorServiceSelectorSelector {
+	return []ByNameSelectorServiceSelectorSelector{
+		ByNameSelectorServiceSelectorSelectorName,
+	}
+}
 func (e *ByNameSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -859,6 +923,13 @@ const (
 
 func (e ServiceSelectorSelector) ToPointer() *ServiceSelectorSelector {
 	return &e
+}
+
+// ServiceSelectorSelectorValues returns every known ServiceSelectorSelector value in schema order.
+func ServiceSelectorSelectorValues() []ServiceSelectorSelector {
+	return []ServiceSelectorSelector{
+		ServiceSelectorSelectorIds,
+	}
 }
 func (e *ServiceSelectorSelector) UnmarshalJSON(data []byte) error {
 	var v string
@@ -935,6 +1006,13 @@ const (
 
 func (e Selector) ToPointer() *Selector {
 	return &e
+}
+
+// SelectorValues returns every known Selector value in schema order.
+func SelectorValues() []Selector {
+	return []Selector{
+		SelectorAll,
+	}
 }
 func (e *Selector) UnmarshalJSON(data []byte) error {
 	var v string

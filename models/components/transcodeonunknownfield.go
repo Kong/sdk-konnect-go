@@ -19,6 +19,14 @@ func (e TranscodeOnUnknownField) ToPointer() *TranscodeOnUnknownField {
 	return &e
 }
 
+// TranscodeOnUnknownFieldValues returns every known TranscodeOnUnknownField value in schema order.
+func TranscodeOnUnknownFieldValues() []TranscodeOnUnknownField {
+	return []TranscodeOnUnknownField{
+		TranscodeOnUnknownFieldFail,
+		TranscodeOnUnknownFieldDrop,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TranscodeOnUnknownField) IsExact() bool {
 	if e != nil {

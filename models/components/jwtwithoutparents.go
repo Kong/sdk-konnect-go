@@ -39,6 +39,35 @@ func (e JWTWithoutParentsAlgorithm) ToPointer() *JWTWithoutParentsAlgorithm {
 	return &e
 }
 
+// JWTWithoutParentsAlgorithmValues returns every known JWTWithoutParentsAlgorithm value in schema order.
+func JWTWithoutParentsAlgorithmValues() []JWTWithoutParentsAlgorithm {
+	return []JWTWithoutParentsAlgorithm{
+		JWTWithoutParentsAlgorithmEs256,
+		JWTWithoutParentsAlgorithmEs256K,
+		JWTWithoutParentsAlgorithmEs384,
+		JWTWithoutParentsAlgorithmEs512,
+		JWTWithoutParentsAlgorithmEsb256,
+		JWTWithoutParentsAlgorithmEsb320,
+		JWTWithoutParentsAlgorithmEsb384,
+		JWTWithoutParentsAlgorithmEsb512,
+		JWTWithoutParentsAlgorithmEsp256,
+		JWTWithoutParentsAlgorithmEsp384,
+		JWTWithoutParentsAlgorithmEsp512,
+		JWTWithoutParentsAlgorithmEd25519,
+		JWTWithoutParentsAlgorithmEd448,
+		JWTWithoutParentsAlgorithmEdDsa,
+		JWTWithoutParentsAlgorithmHs256,
+		JWTWithoutParentsAlgorithmHs384,
+		JWTWithoutParentsAlgorithmHs512,
+		JWTWithoutParentsAlgorithmPs256,
+		JWTWithoutParentsAlgorithmPs384,
+		JWTWithoutParentsAlgorithmPs512,
+		JWTWithoutParentsAlgorithmRs256,
+		JWTWithoutParentsAlgorithmRs384,
+		JWTWithoutParentsAlgorithmRs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *JWTWithoutParentsAlgorithm) IsExact() bool {
 	if e != nil {

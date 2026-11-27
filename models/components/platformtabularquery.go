@@ -18,6 +18,13 @@ const (
 func (e PlatformTabularQueryDatasource) ToPointer() *PlatformTabularQueryDatasource {
 	return &e
 }
+
+// PlatformTabularQueryDatasourceValues returns every known PlatformTabularQueryDatasource value in schema order.
+func PlatformTabularQueryDatasourceValues() []PlatformTabularQueryDatasource {
+	return []PlatformTabularQueryDatasource{
+		PlatformTabularQueryDatasourcePlatformUsage,
+	}
+}
 func (e *PlatformTabularQueryDatasource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

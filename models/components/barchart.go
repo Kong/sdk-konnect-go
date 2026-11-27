@@ -18,6 +18,14 @@ func (e BarChartType) ToPointer() *BarChartType {
 	return &e
 }
 
+// BarChartTypeValues returns every known BarChartType value in schema order.
+func BarChartTypeValues() []BarChartType {
+	return []BarChartType{
+		BarChartTypeHorizontalBar,
+		BarChartTypeVerticalBar,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BarChartType) IsExact() bool {
 	if e != nil {

@@ -18,6 +18,13 @@ const (
 func (e TableChartType) ToPointer() *TableChartType {
 	return &e
 }
+
+// TableChartTypeValues returns every known TableChartType value in schema order.
+func TableChartTypeValues() []TableChartType {
+	return []TableChartType{
+		TableChartTypeTable,
+	}
+}
 func (e *TableChartType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

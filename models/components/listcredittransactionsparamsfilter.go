@@ -17,6 +17,16 @@ func (e ListCreditTransactionsParamsFilterType) ToPointer() *ListCreditTransacti
 	return &e
 }
 
+// ListCreditTransactionsParamsFilterTypeValues returns every known ListCreditTransactionsParamsFilterType value in schema order.
+func ListCreditTransactionsParamsFilterTypeValues() []ListCreditTransactionsParamsFilterType {
+	return []ListCreditTransactionsParamsFilterType{
+		ListCreditTransactionsParamsFilterTypeFunded,
+		ListCreditTransactionsParamsFilterTypeConsumed,
+		ListCreditTransactionsParamsFilterTypeExpired,
+		ListCreditTransactionsParamsFilterTypeVoided,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ListCreditTransactionsParamsFilterType) IsExact() bool {
 	if e != nil {

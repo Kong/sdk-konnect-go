@@ -19,6 +19,14 @@ func (e Mediation) ToPointer() *Mediation {
 	return &e
 }
 
+// MediationValues returns every known Mediation value in schema order.
+func MediationValues() []Mediation {
+	return []Mediation{
+		MediationPassthrough,
+		MediationTerminate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Mediation) IsExact() bool {
 	if e != nil {

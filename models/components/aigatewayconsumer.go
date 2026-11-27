@@ -20,6 +20,14 @@ func (e AIGatewayConsumerType) ToPointer() *AIGatewayConsumerType {
 	return &e
 }
 
+// AIGatewayConsumerTypeValues returns every known AIGatewayConsumerType value in schema order.
+func AIGatewayConsumerTypeValues() []AIGatewayConsumerType {
+	return []AIGatewayConsumerType{
+		AIGatewayConsumerTypeAPIKey,
+		AIGatewayConsumerTypeOauth,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayConsumerType) IsExact() bool {
 	if e != nil {

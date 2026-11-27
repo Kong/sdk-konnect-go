@@ -19,6 +19,13 @@ const (
 func (e ConflictErrorStatus) ToPointer() *ConflictErrorStatus {
 	return &e
 }
+
+// ConflictErrorStatusValues returns every known ConflictErrorStatus value in schema order.
+func ConflictErrorStatusValues() []ConflictErrorStatus {
+	return []ConflictErrorStatus{
+		ConflictErrorStatusFourHundredAndNine,
+	}
+}
 func (e *ConflictErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -360,6 +360,13 @@ const (
 func (e AzureKeyVaultAIGatewayVaultType) ToPointer() *AzureKeyVaultAIGatewayVaultType {
 	return &e
 }
+
+// AzureKeyVaultAIGatewayVaultTypeValues returns every known AzureKeyVaultAIGatewayVaultType value in schema order.
+func AzureKeyVaultAIGatewayVaultTypeValues() []AzureKeyVaultAIGatewayVaultType {
+	return []AzureKeyVaultAIGatewayVaultType{
+		AzureKeyVaultAIGatewayVaultTypeSecrets,
+	}
+}
 func (e *AzureKeyVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

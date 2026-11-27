@@ -18,6 +18,13 @@ const (
 func (e GoogleTagManagerIntegrationType) ToPointer() *GoogleTagManagerIntegrationType {
 	return &e
 }
+
+// GoogleTagManagerIntegrationTypeValues returns every known GoogleTagManagerIntegrationType value in schema order.
+func GoogleTagManagerIntegrationTypeValues() []GoogleTagManagerIntegrationType {
+	return []GoogleTagManagerIntegrationType{
+		GoogleTagManagerIntegrationTypeTracking,
+	}
+}
 func (e *GoogleTagManagerIntegrationType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

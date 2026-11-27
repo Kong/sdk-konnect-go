@@ -18,6 +18,13 @@ const (
 func (e CustomFormSubmitFieldName) ToPointer() *CustomFormSubmitFieldName {
 	return &e
 }
+
+// CustomFormSubmitFieldNameValues returns every known CustomFormSubmitFieldName value in schema order.
+func CustomFormSubmitFieldNameValues() []CustomFormSubmitFieldName {
+	return []CustomFormSubmitFieldName{
+		CustomFormSubmitFieldNameSubmit,
+	}
+}
 func (e *CustomFormSubmitFieldName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

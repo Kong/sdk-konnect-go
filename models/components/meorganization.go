@@ -22,6 +22,16 @@ func (e MeOrganizationState) ToPointer() *MeOrganizationState {
 	return &e
 }
 
+// MeOrganizationStateValues returns every known MeOrganizationState value in schema order.
+func MeOrganizationStateValues() []MeOrganizationState {
+	return []MeOrganizationState{
+		MeOrganizationStateActive,
+		MeOrganizationStateInactive,
+		MeOrganizationStateDeleting,
+		MeOrganizationStateDeleted,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MeOrganizationState) IsExact() bool {
 	if e != nil {

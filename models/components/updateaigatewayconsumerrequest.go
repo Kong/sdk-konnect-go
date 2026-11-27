@@ -15,6 +15,14 @@ func (e UpdateAIGatewayConsumerRequestType) ToPointer() *UpdateAIGatewayConsumer
 	return &e
 }
 
+// UpdateAIGatewayConsumerRequestTypeValues returns every known UpdateAIGatewayConsumerRequestType value in schema order.
+func UpdateAIGatewayConsumerRequestTypeValues() []UpdateAIGatewayConsumerRequestType {
+	return []UpdateAIGatewayConsumerRequestType{
+		UpdateAIGatewayConsumerRequestTypeAPIKey,
+		UpdateAIGatewayConsumerRequestTypeOauth,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateAIGatewayConsumerRequestType) IsExact() bool {
 	if e != nil {

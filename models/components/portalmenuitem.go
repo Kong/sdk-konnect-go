@@ -15,6 +15,14 @@ func (e PortalMenuItemVisibility) ToPointer() *PortalMenuItemVisibility {
 	return &e
 }
 
+// PortalMenuItemVisibilityValues returns every known PortalMenuItemVisibility value in schema order.
+func PortalMenuItemVisibilityValues() []PortalMenuItemVisibility {
+	return []PortalMenuItemVisibility{
+		PortalMenuItemVisibilityPublic,
+		PortalMenuItemVisibilityPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PortalMenuItemVisibility) IsExact() bool {
 	if e != nil {

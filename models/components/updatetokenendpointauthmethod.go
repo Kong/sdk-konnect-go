@@ -16,6 +16,15 @@ func (e UpdateTokenEndpointAuthMethod) ToPointer() *UpdateTokenEndpointAuthMetho
 	return &e
 }
 
+// UpdateTokenEndpointAuthMethodValues returns every known UpdateTokenEndpointAuthMethod value in schema order.
+func UpdateTokenEndpointAuthMethodValues() []UpdateTokenEndpointAuthMethod {
+	return []UpdateTokenEndpointAuthMethod{
+		UpdateTokenEndpointAuthMethodPrivateKeyJwt,
+		UpdateTokenEndpointAuthMethodClientSecretPost,
+		UpdateTokenEndpointAuthMethodNone,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateTokenEndpointAuthMethod) IsExact() bool {
 	if e != nil {

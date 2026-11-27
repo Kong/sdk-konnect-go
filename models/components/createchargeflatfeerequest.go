@@ -21,6 +21,13 @@ const (
 func (e CreateChargeFlatFeeRequestType) ToPointer() *CreateChargeFlatFeeRequestType {
 	return &e
 }
+
+// CreateChargeFlatFeeRequestTypeValues returns every known CreateChargeFlatFeeRequestType value in schema order.
+func CreateChargeFlatFeeRequestTypeValues() []CreateChargeFlatFeeRequestType {
+	return []CreateChargeFlatFeeRequestType{
+		CreateChargeFlatFeeRequestTypeFlatFee,
+	}
+}
 func (e *CreateChargeFlatFeeRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -207,6 +214,14 @@ func (e CreateChargeFlatFeeRequestSettlementMode) ToPointer() *CreateChargeFlatF
 	return &e
 }
 
+// CreateChargeFlatFeeRequestSettlementModeValues returns every known CreateChargeFlatFeeRequestSettlementMode value in schema order.
+func CreateChargeFlatFeeRequestSettlementModeValues() []CreateChargeFlatFeeRequestSettlementMode {
+	return []CreateChargeFlatFeeRequestSettlementMode{
+		CreateChargeFlatFeeRequestSettlementModeCreditThenInvoice,
+		CreateChargeFlatFeeRequestSettlementModeCreditOnly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateChargeFlatFeeRequestSettlementMode) IsExact() bool {
 	if e != nil {
@@ -231,6 +246,14 @@ const (
 
 func (e CreateChargeFlatFeeRequestTaxBehavior) ToPointer() *CreateChargeFlatFeeRequestTaxBehavior {
 	return &e
+}
+
+// CreateChargeFlatFeeRequestTaxBehaviorValues returns every known CreateChargeFlatFeeRequestTaxBehavior value in schema order.
+func CreateChargeFlatFeeRequestTaxBehaviorValues() []CreateChargeFlatFeeRequestTaxBehavior {
+	return []CreateChargeFlatFeeRequestTaxBehavior{
+		CreateChargeFlatFeeRequestTaxBehaviorInclusive,
+		CreateChargeFlatFeeRequestTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -409,6 +432,14 @@ func (e CreateChargeFlatFeeRequestPaymentTerm) ToPointer() *CreateChargeFlatFeeR
 	return &e
 }
 
+// CreateChargeFlatFeeRequestPaymentTermValues returns every known CreateChargeFlatFeeRequestPaymentTerm value in schema order.
+func CreateChargeFlatFeeRequestPaymentTermValues() []CreateChargeFlatFeeRequestPaymentTerm {
+	return []CreateChargeFlatFeeRequestPaymentTerm{
+		CreateChargeFlatFeeRequestPaymentTermInAdvance,
+		CreateChargeFlatFeeRequestPaymentTermInArrears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateChargeFlatFeeRequestPaymentTerm) IsExact() bool {
 	if e != nil {
@@ -454,6 +485,14 @@ const (
 
 func (e CreateChargeFlatFeeRequestProrationMode) ToPointer() *CreateChargeFlatFeeRequestProrationMode {
 	return &e
+}
+
+// CreateChargeFlatFeeRequestProrationModeValues returns every known CreateChargeFlatFeeRequestProrationMode value in schema order.
+func CreateChargeFlatFeeRequestProrationModeValues() []CreateChargeFlatFeeRequestProrationMode {
+	return []CreateChargeFlatFeeRequestProrationMode{
+		CreateChargeFlatFeeRequestProrationModeNoProration,
+		CreateChargeFlatFeeRequestProrationModeProratePrices,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

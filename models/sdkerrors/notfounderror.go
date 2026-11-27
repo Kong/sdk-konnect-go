@@ -19,6 +19,13 @@ const (
 func (e NotFoundErrorStatus) ToPointer() *NotFoundErrorStatus {
 	return &e
 }
+
+// NotFoundErrorStatusValues returns every known NotFoundErrorStatus value in schema order.
+func NotFoundErrorStatusValues() []NotFoundErrorStatus {
+	return []NotFoundErrorStatus{
+		NotFoundErrorStatusFourHundredAndFour,
+	}
+}
 func (e *NotFoundErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

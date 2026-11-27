@@ -19,6 +19,14 @@ func (e FetchKongIdentityPrincipalFailureMode) ToPointer() *FetchKongIdentityPri
 	return &e
 }
 
+// FetchKongIdentityPrincipalFailureModeValues returns every known FetchKongIdentityPrincipalFailureMode value in schema order.
+func FetchKongIdentityPrincipalFailureModeValues() []FetchKongIdentityPrincipalFailureMode {
+	return []FetchKongIdentityPrincipalFailureMode{
+		FetchKongIdentityPrincipalFailureModeError,
+		FetchKongIdentityPrincipalFailureModeIgnore,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *FetchKongIdentityPrincipalFailureMode) IsExact() bool {
 	if e != nil {

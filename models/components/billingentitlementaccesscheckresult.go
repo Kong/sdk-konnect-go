@@ -19,6 +19,15 @@ func (e BillingEntitlementAccessCheckResultType) ToPointer() *BillingEntitlement
 	return &e
 }
 
+// BillingEntitlementAccessCheckResultTypeValues returns every known BillingEntitlementAccessCheckResultType value in schema order.
+func BillingEntitlementAccessCheckResultTypeValues() []BillingEntitlementAccessCheckResultType {
+	return []BillingEntitlementAccessCheckResultType{
+		BillingEntitlementAccessCheckResultTypeMetered,
+		BillingEntitlementAccessCheckResultTypeStatic,
+		BillingEntitlementAccessCheckResultTypeBoolean,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingEntitlementAccessCheckResultType) IsExact() bool {
 	if e != nil {

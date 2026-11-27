@@ -25,6 +25,19 @@ func (e Integrations) ToPointer() *Integrations {
 	return &e
 }
 
+// IntegrationsValues returns every known Integrations value in schema order.
+func IntegrationsValues() []Integrations {
+	return []Integrations{
+		IntegrationsClaudeCode,
+		IntegrationsCodex,
+		IntegrationsOpencode,
+		IntegrationsCopilot,
+		IntegrationsHelicone,
+		IntegrationsPortkey,
+		IntegrationsCloudflareAiGateway,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Integrations) IsExact() bool {
 	if e != nil {

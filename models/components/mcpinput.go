@@ -21,6 +21,16 @@ func (e MCPInputFormat) ToPointer() *MCPInputFormat {
 	return &e
 }
 
+// MCPInputFormatValues returns every known MCPInputFormat value in schema order.
+func MCPInputFormatValues() []MCPInputFormat {
+	return []MCPInputFormat{
+		MCPInputFormatString,
+		MCPInputFormatNumber,
+		MCPInputFormatBoolean,
+		MCPInputFormatFilepath,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPInputFormat) IsExact() bool {
 	if e != nil {

@@ -19,6 +19,13 @@ const (
 func (e BillingCurrencyFiatType) ToPointer() *BillingCurrencyFiatType {
 	return &e
 }
+
+// BillingCurrencyFiatTypeValues returns every known BillingCurrencyFiatType value in schema order.
+func BillingCurrencyFiatTypeValues() []BillingCurrencyFiatType {
+	return []BillingCurrencyFiatType{
+		BillingCurrencyFiatTypeFiat,
+	}
+}
 func (e *BillingCurrencyFiatType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
