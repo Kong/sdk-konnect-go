@@ -3,4 +3,4 @@ controller-tools: "0.23.0"
 # renovate: datasource=github-releases depName=vektra/mockery
 mockery: "3.9.1"
 # renovate: datasource=github-releases depName=vburenin/ifacemaker
-ifacemaker: "1.4.0"
+ifacemaker: "1.5.0"
