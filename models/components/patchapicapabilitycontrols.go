@@ -19,6 +19,13 @@ const (
 func (e PatchAPICapabilityControlsType) ToPointer() *PatchAPICapabilityControlsType {
 	return &e
 }
+
+// PatchAPICapabilityControlsTypeValues returns every known PatchAPICapabilityControlsType value in schema order.
+func PatchAPICapabilityControlsTypeValues() []PatchAPICapabilityControlsType {
+	return []PatchAPICapabilityControlsType{
+		PatchAPICapabilityControlsTypeAPI,
+	}
+}
 func (e *PatchAPICapabilityControlsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -18,6 +18,13 @@ const (
 func (e ManagedCacheUsageQueryDatasource) ToPointer() *ManagedCacheUsageQueryDatasource {
 	return &e
 }
+
+// ManagedCacheUsageQueryDatasourceValues returns every known ManagedCacheUsageQueryDatasource value in schema order.
+func ManagedCacheUsageQueryDatasourceValues() []ManagedCacheUsageQueryDatasource {
+	return []ManagedCacheUsageQueryDatasource{
+		ManagedCacheUsageQueryDatasourceManagedCacheUsage,
+	}
+}
 func (e *ManagedCacheUsageQueryDatasource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -46,6 +53,19 @@ const (
 
 func (e ManagedCacheUsageQueryDimensions) ToPointer() *ManagedCacheUsageQueryDimensions {
 	return &e
+}
+
+// ManagedCacheUsageQueryDimensionsValues returns every known ManagedCacheUsageQueryDimensions value in schema order.
+func ManagedCacheUsageQueryDimensionsValues() []ManagedCacheUsageQueryDimensions {
+	return []ManagedCacheUsageQueryDimensions{
+		ManagedCacheUsageQueryDimensionsControlPlane,
+		ManagedCacheUsageQueryDimensionsDataPlaneGroup,
+		ManagedCacheUsageQueryDimensionsManagedCache,
+		ManagedCacheUsageQueryDimensionsNetwork,
+		ManagedCacheUsageQueryDimensionsProvider,
+		ManagedCacheUsageQueryDimensionsProviderRegion,
+		ManagedCacheUsageQueryDimensionsTime,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

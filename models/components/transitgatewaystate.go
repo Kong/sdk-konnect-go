@@ -29,6 +29,20 @@ func (e TransitGatewayState) ToPointer() *TransitGatewayState {
 	return &e
 }
 
+// TransitGatewayStateValues returns every known TransitGatewayState value in schema order.
+func TransitGatewayStateValues() []TransitGatewayState {
+	return []TransitGatewayState{
+		TransitGatewayStateCreated,
+		TransitGatewayStateInitializing,
+		TransitGatewayStatePendingAcceptance,
+		TransitGatewayStatePendingUserAction,
+		TransitGatewayStateReady,
+		TransitGatewayStateTerminating,
+		TransitGatewayStateTerminated,
+		TransitGatewayStateError,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TransitGatewayState) IsExact() bool {
 	if e != nil {

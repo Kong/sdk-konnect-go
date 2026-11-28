@@ -18,6 +18,13 @@ const (
 func (e AgenticQueryDatasource) ToPointer() *AgenticQueryDatasource {
 	return &e
 }
+
+// AgenticQueryDatasourceValues returns every known AgenticQueryDatasource value in schema order.
+func AgenticQueryDatasourceValues() []AgenticQueryDatasource {
+	return []AgenticQueryDatasource{
+		AgenticQueryDatasourceAgenticUsage,
+	}
+}
 func (e *AgenticQueryDatasource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -78,6 +85,51 @@ const (
 
 func (e AgenticQueryDimensions) ToPointer() *AgenticQueryDimensions {
 	return &e
+}
+
+// AgenticQueryDimensionsValues returns every known AgenticQueryDimensions value in schema order.
+func AgenticQueryDimensionsValues() []AgenticQueryDimensions {
+	return []AgenticQueryDimensions{
+		AgenticQueryDimensionsA2aContextID,
+		AgenticQueryDimensionsA2aError,
+		AgenticQueryDimensionsA2aMethod,
+		AgenticQueryDimensionsA2aTaskID,
+		AgenticQueryDimensionsAiGateway,
+		AgenticQueryDimensionsAiGatewayAgent,
+		AgenticQueryDimensionsAiGatewayConsumer,
+		AgenticQueryDimensionsAiGatewayConsumerGroup,
+		AgenticQueryDimensionsAiGatewayDataPlaneNode,
+		AgenticQueryDimensionsAiGatewayMcpServer,
+		AgenticQueryDimensionsAPI,
+		AgenticQueryDimensionsAPIPackage,
+		AgenticQueryDimensionsAPIProduct,
+		AgenticQueryDimensionsAPIProductVersion,
+		AgenticQueryDimensionsApplication,
+		AgenticQueryDimensionsCacheStatus,
+		AgenticQueryDimensionsConsumer,
+		AgenticQueryDimensionsConsumerGroup,
+		AgenticQueryDimensionsControlPlane,
+		AgenticQueryDimensionsControlPlaneGroup,
+		AgenticQueryDimensionsCountryCode,
+		AgenticQueryDimensionsDataPlaneNode,
+		AgenticQueryDimensionsDataPlaneNodeVersion,
+		AgenticQueryDimensionsGatewayService,
+		AgenticQueryDimensionsMcpError,
+		AgenticQueryDimensionsMcpMethod,
+		AgenticQueryDimensionsMcpSessionID,
+		AgenticQueryDimensionsMcpToolName,
+		AgenticQueryDimensionsOidcCredential,
+		AgenticQueryDimensionsPortal,
+		AgenticQueryDimensionsPrincipal,
+		AgenticQueryDimensionsRealm,
+		AgenticQueryDimensionsResponseSource,
+		AgenticQueryDimensionsRoute,
+		AgenticQueryDimensionsStatusCode,
+		AgenticQueryDimensionsStatusCodeGrouped,
+		AgenticQueryDimensionsTime,
+		AgenticQueryDimensionsUpstreamStatusCode,
+		AgenticQueryDimensionsUpstreamStatusCodeGrouped,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

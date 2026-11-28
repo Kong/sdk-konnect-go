@@ -7,72 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelBalancerSemanticConfigFailoverCriteria - **`http_400` requires a minimum runtime version of `2.3`**.
-//
-// **`http_401` requires a minimum runtime version of `2.3`**.
-//
-// **`http_402` requires a minimum runtime version of `2.3`**.
-//
-// **`http_405` requires a minimum runtime version of `2.3`**.
-//
-// **`http_408` requires a minimum runtime version of `2.3`**.
-//
-// **`http_409` requires a minimum runtime version of `2.3`**.
-//
-// **`http_413` requires a minimum runtime version of `2.3`**.
-//
-// **`http_415` requires a minimum runtime version of `2.3`**.
-//
-// **`http_422` requires a minimum runtime version of `2.3`**.
-//
-// **`http_522` requires a minimum runtime version of `2.3`**.
-//
-// **`http_529` requires a minimum runtime version of `2.3`**.
-//
-// **`http_5xx` requires a minimum runtime version of `2.3`**.
-type AIGatewayModelBalancerSemanticConfigFailoverCriteria string
-
-const (
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaError         AIGatewayModelBalancerSemanticConfigFailoverCriteria = "error"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp400       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_400"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp401       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_401"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp402       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_402"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp403       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_403"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp404       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_404"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp405       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_405"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp408       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_408"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp409       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_409"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp413       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_413"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp415       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_415"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp422       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_422"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp429       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_429"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp500       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_500"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp502       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_502"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp503       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_503"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp504       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_504"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp522       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_522"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp529       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_529"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaHttp5xx       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "http_5xx"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaInvalidHeader AIGatewayModelBalancerSemanticConfigFailoverCriteria = "invalid_header"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaNonIdempotent AIGatewayModelBalancerSemanticConfigFailoverCriteria = "non_idempotent"
-	AIGatewayModelBalancerSemanticConfigFailoverCriteriaTimeout       AIGatewayModelBalancerSemanticConfigFailoverCriteria = "timeout"
-)
-
-func (e AIGatewayModelBalancerSemanticConfigFailoverCriteria) ToPointer() *AIGatewayModelBalancerSemanticConfigFailoverCriteria {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AIGatewayModelBalancerSemanticConfigFailoverCriteria) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "error", "http_400", "http_401", "http_402", "http_403", "http_404", "http_405", "http_408", "http_409", "http_413", "http_415", "http_422", "http_429", "http_500", "http_502", "http_503", "http_504", "http_522", "http_529", "http_5xx", "invalid_header", "non_idempotent", "timeout":
-			return true
-		}
-	}
-	return false
-}
-
 // Embeddings model configuration for this model.
 type Embeddings struct {
 	// When enabled, request-level auth parameters (such as API keys or bearer tokens) will override the static values defined for the provider.
@@ -158,7 +92,7 @@ type AIGatewayModelBalancerSemanticConfigOutput struct {
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
 	FailTimeout *int64 `default:"10000" json:"fail_timeout"`
 	// Specifies in which cases an upstream response should be failover to the next target. Each option in the array is equivalent to the function of https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream
-	FailoverCriteria []AIGatewayModelBalancerSemanticConfigFailoverCriteria `json:"failover_criteria,omitempty"`
+	FailoverCriteria []AIGatewayFailoverCriteria `json:"failover_criteria,omitempty"`
 	// Number of unsuccessful attempts to communicate with a target that should occur in the duration defined by `fail_timeout` before the target is considered unavailable. The zero value disables the circuit breaker. What is considered an unsuccessful attempt is defined by `failover_criteria`. Note the cases of `error`, `timeout` and `invalid_header` are always considered unsuccessful attempts, while the cases of `http_403` and `http_404` are never considered unsuccessful attempts.
 	MaxFails    *int64 `default:"0" json:"max_fails"`
 	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
@@ -200,7 +134,7 @@ func (a *AIGatewayModelBalancerSemanticConfigOutput) GetFailTimeout() *int64 {
 	return a.FailTimeout
 }
 
-func (a *AIGatewayModelBalancerSemanticConfigOutput) GetFailoverCriteria() []AIGatewayModelBalancerSemanticConfigFailoverCriteria {
+func (a *AIGatewayModelBalancerSemanticConfigOutput) GetFailoverCriteria() []AIGatewayFailoverCriteria {
 	if a == nil {
 		return nil
 	}
@@ -273,7 +207,7 @@ type AIGatewayModelBalancerSemanticConfig struct {
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
 	FailTimeout *int64 `default:"10000" json:"fail_timeout"`
 	// Specifies in which cases an upstream response should be failover to the next target. Each option in the array is equivalent to the function of https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream
-	FailoverCriteria []AIGatewayModelBalancerSemanticConfigFailoverCriteria `json:"failover_criteria,omitempty"`
+	FailoverCriteria []AIGatewayFailoverCriteria `json:"failover_criteria,omitempty"`
 	// Number of unsuccessful attempts to communicate with a target that should occur in the duration defined by `fail_timeout` before the target is considered unavailable. The zero value disables the circuit breaker. What is considered an unsuccessful attempt is defined by `failover_criteria`. Note the cases of `error`, `timeout` and `invalid_header` are always considered unsuccessful attempts, while the cases of `http_403` and `http_404` are never considered unsuccessful attempts.
 	MaxFails    *int64 `default:"0" json:"max_fails"`
 	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
@@ -315,7 +249,7 @@ func (a *AIGatewayModelBalancerSemanticConfig) GetFailTimeout() *int64 {
 	return a.FailTimeout
 }
 
-func (a *AIGatewayModelBalancerSemanticConfig) GetFailoverCriteria() []AIGatewayModelBalancerSemanticConfigFailoverCriteria {
+func (a *AIGatewayModelBalancerSemanticConfig) GetFailoverCriteria() []AIGatewayFailoverCriteria {
 	if a == nil {
 		return nil
 	}

@@ -14,6 +14,14 @@ func (e StringSelectorOperator) ToPointer() *StringSelectorOperator {
 	return &e
 }
 
+// StringSelectorOperatorValues returns every known StringSelectorOperator value in schema order.
+func StringSelectorOperatorValues() []StringSelectorOperator {
+	return []StringSelectorOperator{
+		StringSelectorOperatorEq,
+		StringSelectorOperatorContains,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *StringSelectorOperator) IsExact() bool {
 	if e != nil {

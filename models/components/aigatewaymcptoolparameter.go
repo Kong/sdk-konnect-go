@@ -21,6 +21,16 @@ func (e In) ToPointer() *In {
 	return &e
 }
 
+// InValues returns every known In value in schema order.
+func InValues() []In {
+	return []In{
+		InQuery,
+		InPath,
+		InHeader,
+		InBody,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *In) IsExact() bool {
 	if e != nil {

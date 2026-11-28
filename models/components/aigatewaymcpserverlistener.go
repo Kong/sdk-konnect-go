@@ -51,6 +51,16 @@ func (e AIGatewayMCPServerListenerAllowedVersions) ToPointer() *AIGatewayMCPServ
 	return &e
 }
 
+// AIGatewayMCPServerListenerAllowedVersionsValues returns every known AIGatewayMCPServerListenerAllowedVersions value in schema order.
+func AIGatewayMCPServerListenerAllowedVersionsValues() []AIGatewayMCPServerListenerAllowedVersions {
+	return []AIGatewayMCPServerListenerAllowedVersions{
+		AIGatewayMCPServerListenerAllowedVersionsTwoThousandAndTwentySixMinus07Minus28,
+		AIGatewayMCPServerListenerAllowedVersionsTwoThousandAndTwentyFiveMinus11Minus25,
+		AIGatewayMCPServerListenerAllowedVersionsTwoThousandAndTwentyFiveMinus06Minus18,
+		AIGatewayMCPServerListenerAllowedVersionsTwoThousandAndTwentyFiveMinus03Minus26,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayMCPServerListenerAllowedVersions) IsExact() bool {
 	if e != nil {

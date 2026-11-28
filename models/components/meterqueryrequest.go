@@ -23,6 +23,16 @@ func (e MeterQueryRequestGranularity) ToPointer() *MeterQueryRequestGranularity 
 	return &e
 }
 
+// MeterQueryRequestGranularityValues returns every known MeterQueryRequestGranularity value in schema order.
+func MeterQueryRequestGranularityValues() []MeterQueryRequestGranularity {
+	return []MeterQueryRequestGranularity{
+		MeterQueryRequestGranularityPt1M,
+		MeterQueryRequestGranularityPt1H,
+		MeterQueryRequestGranularityP1D,
+		MeterQueryRequestGranularityP1M,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MeterQueryRequestGranularity) IsExact() bool {
 	if e != nil {

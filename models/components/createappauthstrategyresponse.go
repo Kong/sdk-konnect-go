@@ -20,6 +20,13 @@ const (
 func (e AppAuthStrategyOpenIDConnectResponseStrategyType) ToPointer() *AppAuthStrategyOpenIDConnectResponseStrategyType {
 	return &e
 }
+
+// AppAuthStrategyOpenIDConnectResponseStrategyTypeValues returns every known AppAuthStrategyOpenIDConnectResponseStrategyType value in schema order.
+func AppAuthStrategyOpenIDConnectResponseStrategyTypeValues() []AppAuthStrategyOpenIDConnectResponseStrategyType {
+	return []AppAuthStrategyOpenIDConnectResponseStrategyType{
+		AppAuthStrategyOpenIDConnectResponseStrategyTypeOpenidConnect,
+	}
+}
 func (e *AppAuthStrategyOpenIDConnectResponseStrategyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -76,6 +83,18 @@ const (
 
 func (e AppAuthStrategyOpenIDConnectResponseProviderType) ToPointer() *AppAuthStrategyOpenIDConnectResponseProviderType {
 	return &e
+}
+
+// AppAuthStrategyOpenIDConnectResponseProviderTypeValues returns every known AppAuthStrategyOpenIDConnectResponseProviderType value in schema order.
+func AppAuthStrategyOpenIDConnectResponseProviderTypeValues() []AppAuthStrategyOpenIDConnectResponseProviderType {
+	return []AppAuthStrategyOpenIDConnectResponseProviderType{
+		AppAuthStrategyOpenIDConnectResponseProviderTypeAuth0,
+		AppAuthStrategyOpenIDConnectResponseProviderTypeAzureAd,
+		AppAuthStrategyOpenIDConnectResponseProviderTypeCurity,
+		AppAuthStrategyOpenIDConnectResponseProviderTypeOkta,
+		AppAuthStrategyOpenIDConnectResponseProviderTypeHTTP,
+		AppAuthStrategyOpenIDConnectResponseProviderTypeKongIdentity,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -279,6 +298,13 @@ const (
 func (e AppAuthStrategyKeyAuthResponseStrategyType) ToPointer() *AppAuthStrategyKeyAuthResponseStrategyType {
 	return &e
 }
+
+// AppAuthStrategyKeyAuthResponseStrategyTypeValues returns every known AppAuthStrategyKeyAuthResponseStrategyType value in schema order.
+func AppAuthStrategyKeyAuthResponseStrategyTypeValues() []AppAuthStrategyKeyAuthResponseStrategyType {
+	return []AppAuthStrategyKeyAuthResponseStrategyType{
+		AppAuthStrategyKeyAuthResponseStrategyTypeKeyAuth,
+	}
+}
 func (e *AppAuthStrategyKeyAuthResponseStrategyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -334,6 +360,18 @@ const (
 
 func (e ProviderType) ToPointer() *ProviderType {
 	return &e
+}
+
+// ProviderTypeValues returns every known ProviderType value in schema order.
+func ProviderTypeValues() []ProviderType {
+	return []ProviderType{
+		ProviderTypeAuth0,
+		ProviderTypeAzureAd,
+		ProviderTypeCurity,
+		ProviderTypeOkta,
+		ProviderTypeHTTP,
+		ProviderTypeKongIdentity,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

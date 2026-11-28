@@ -15,6 +15,14 @@ func (e EntityType) ToPointer() *EntityType {
 	return &e
 }
 
+// EntityTypeValues returns every known EntityType value in schema order.
+func EntityTypeValues() []EntityType {
+	return []EntityType{
+		EntityTypeAPI,
+		EntityTypeAPIPackage,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EntityType) IsExact() bool {
 	if e != nil {

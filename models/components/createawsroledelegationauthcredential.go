@@ -18,6 +18,13 @@ const (
 func (e CreateAWSRoleDelegationAuthCredentialType) ToPointer() *CreateAWSRoleDelegationAuthCredentialType {
 	return &e
 }
+
+// CreateAWSRoleDelegationAuthCredentialTypeValues returns every known CreateAWSRoleDelegationAuthCredentialType value in schema order.
+func CreateAWSRoleDelegationAuthCredentialTypeValues() []CreateAWSRoleDelegationAuthCredentialType {
+	return []CreateAWSRoleDelegationAuthCredentialType{
+		CreateAWSRoleDelegationAuthCredentialTypeAwsRoleDelegation,
+	}
+}
 func (e *CreateAWSRoleDelegationAuthCredentialType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

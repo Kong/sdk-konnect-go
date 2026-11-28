@@ -16,6 +16,15 @@ func (e Duration) ToPointer() *Duration {
 	return &e
 }
 
+// DurationValues returns every known Duration value in schema order.
+func DurationValues() []Duration {
+	return []Duration{
+		DurationSeconds,
+		DurationMinutes,
+		DurationHours,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Duration) IsExact() bool {
 	if e != nil {

@@ -22,6 +22,13 @@ const (
 func (e BillingAppStripeCreateCheckoutSessionResultMode) ToPointer() *BillingAppStripeCreateCheckoutSessionResultMode {
 	return &e
 }
+
+// BillingAppStripeCreateCheckoutSessionResultModeValues returns every known BillingAppStripeCreateCheckoutSessionResultMode value in schema order.
+func BillingAppStripeCreateCheckoutSessionResultModeValues() []BillingAppStripeCreateCheckoutSessionResultMode {
+	return []BillingAppStripeCreateCheckoutSessionResultMode{
+		BillingAppStripeCreateCheckoutSessionResultModeSetup,
+	}
+}
 func (e *BillingAppStripeCreateCheckoutSessionResultMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

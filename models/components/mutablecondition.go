@@ -23,6 +23,13 @@ const (
 func (e MutableCondition) ToPointer() *MutableCondition {
 	return &e
 }
+
+// MutableConditionValues returns every known MutableCondition value in schema order.
+func MutableConditionValues() []MutableCondition {
+	return []MutableCondition{
+		MutableConditionUnauthorized,
+	}
+}
 func (e *MutableCondition) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

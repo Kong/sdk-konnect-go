@@ -18,6 +18,13 @@ const (
 func (e ChoroplethMapChartType) ToPointer() *ChoroplethMapChartType {
 	return &e
 }
+
+// ChoroplethMapChartTypeValues returns every known ChoroplethMapChartType value in schema order.
+func ChoroplethMapChartTypeValues() []ChoroplethMapChartType {
+	return []ChoroplethMapChartType{
+		ChoroplethMapChartTypeChoroplethMap,
+	}
+}
 func (e *ChoroplethMapChartType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

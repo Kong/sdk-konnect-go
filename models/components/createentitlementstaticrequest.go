@@ -20,6 +20,13 @@ const (
 func (e CreateEntitlementStaticRequestType) ToPointer() *CreateEntitlementStaticRequestType {
 	return &e
 }
+
+// CreateEntitlementStaticRequestTypeValues returns every known CreateEntitlementStaticRequestType value in schema order.
+func CreateEntitlementStaticRequestTypeValues() []CreateEntitlementStaticRequestType {
+	return []CreateEntitlementStaticRequestType{
+		CreateEntitlementStaticRequestTypeStatic,
+	}
+}
 func (e *CreateEntitlementStaticRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

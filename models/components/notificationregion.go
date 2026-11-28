@@ -19,6 +19,18 @@ func (e NotificationRegion) ToPointer() *NotificationRegion {
 	return &e
 }
 
+// NotificationRegionValues returns every known NotificationRegion value in schema order.
+func NotificationRegionValues() []NotificationRegion {
+	return []NotificationRegion{
+		NotificationRegionUs,
+		NotificationRegionEu,
+		NotificationRegionAu,
+		NotificationRegionMe,
+		NotificationRegionIn,
+		NotificationRegionWildcard,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NotificationRegion) IsExact() bool {
 	if e != nil {

@@ -29,6 +29,14 @@ func (e EndpointType) ToPointer() *EndpointType {
 	return &e
 }
 
+// EndpointTypeValues returns every known EndpointType value in schema order.
+func EndpointTypeValues() []EndpointType {
+	return []EndpointType{
+		EndpointTypeRuntime,
+		EndpointTypeMantle,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EndpointType) IsExact() bool {
 	if e != nil {

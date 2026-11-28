@@ -18,6 +18,14 @@ func (e EventGatewayRequestRuleAction) ToPointer() *EventGatewayRequestRuleActio
 	return &e
 }
 
+// EventGatewayRequestRuleActionValues returns every known EventGatewayRequestRuleAction value in schema order.
+func EventGatewayRequestRuleActionValues() []EventGatewayRequestRuleAction {
+	return []EventGatewayRequestRuleAction{
+		EventGatewayRequestRuleActionReject,
+		EventGatewayRequestRuleActionPassthrough,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EventGatewayRequestRuleAction) IsExact() bool {
 	if e != nil {

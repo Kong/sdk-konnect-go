@@ -23,6 +23,16 @@ func (e MCPPositionalArgument2Format) ToPointer() *MCPPositionalArgument2Format 
 	return &e
 }
 
+// MCPPositionalArgument2FormatValues returns every known MCPPositionalArgument2Format value in schema order.
+func MCPPositionalArgument2FormatValues() []MCPPositionalArgument2Format {
+	return []MCPPositionalArgument2Format{
+		MCPPositionalArgument2FormatString,
+		MCPPositionalArgument2FormatNumber,
+		MCPPositionalArgument2FormatBoolean,
+		MCPPositionalArgument2FormatFilepath,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPPositionalArgument2Format) IsExact() bool {
 	if e != nil {
@@ -167,6 +177,16 @@ const (
 
 func (e MCPPositionalArgumentFormat) ToPointer() *MCPPositionalArgumentFormat {
 	return &e
+}
+
+// MCPPositionalArgumentFormatValues returns every known MCPPositionalArgumentFormat value in schema order.
+func MCPPositionalArgumentFormatValues() []MCPPositionalArgumentFormat {
+	return []MCPPositionalArgumentFormat{
+		MCPPositionalArgumentFormatString,
+		MCPPositionalArgumentFormatNumber,
+		MCPPositionalArgumentFormatBoolean,
+		MCPPositionalArgumentFormatFilepath,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

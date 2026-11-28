@@ -9,7 +9,7 @@ import (
 )
 
 type ListDestinationSubscriptionsRequest struct {
-	// ID of the http destination, a UUID v7.
+	// ID of the destination, a UUID v7.
 	DestinationID string `pathParam:"style=simple,explode=false,name=destinationId"`
 	// Request the next page of data, starting with the item before this parameter.
 	PageBefore *string `queryParam:"style=form,explode=true,name=page[before]"`

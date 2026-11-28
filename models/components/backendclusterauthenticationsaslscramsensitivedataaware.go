@@ -19,6 +19,14 @@ func (e BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm) ToPoin
 	return &e
 }
 
+// BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithmValues returns every known BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm value in schema order.
+func BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithmValues() []BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm {
+	return []BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm{
+		BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithmSha256,
+		BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithmSha512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm) IsExact() bool {
 	if e != nil {

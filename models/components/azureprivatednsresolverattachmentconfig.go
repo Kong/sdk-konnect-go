@@ -18,6 +18,13 @@ const (
 func (e AzurePrivateDNSResolverType) ToPointer() *AzurePrivateDNSResolverType {
 	return &e
 }
+
+// AzurePrivateDNSResolverTypeValues returns every known AzurePrivateDNSResolverType value in schema order.
+func AzurePrivateDNSResolverTypeValues() []AzurePrivateDNSResolverType {
+	return []AzurePrivateDNSResolverType{
+		AzurePrivateDNSResolverTypeAzureOutboundResolver,
+	}
+}
 func (e *AzurePrivateDNSResolverType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

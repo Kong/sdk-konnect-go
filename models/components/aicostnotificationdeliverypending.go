@@ -20,6 +20,13 @@ const (
 func (e Status) ToPointer() *Status {
 	return &e
 }
+
+// StatusValues returns every known Status value in schema order.
+func StatusValues() []Status {
+	return []Status{
+		StatusPending,
+	}
+}
 func (e *Status) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

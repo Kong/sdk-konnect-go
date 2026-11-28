@@ -85,6 +85,13 @@ const (
 func (e ProxyScheme) ToPointer() *ProxyScheme {
 	return &e
 }
+
+// ProxySchemeValues returns every known ProxyScheme value in schema order.
+func ProxySchemeValues() []ProxyScheme {
+	return []ProxyScheme{
+		ProxySchemeHTTP,
+	}
+}
 func (e *ProxyScheme) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

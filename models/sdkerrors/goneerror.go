@@ -19,6 +19,13 @@ const (
 func (e GoneErrorStatus) ToPointer() *GoneErrorStatus {
 	return &e
 }
+
+// GoneErrorStatusValues returns every known GoneErrorStatus value in schema order.
+func GoneErrorStatusValues() []GoneErrorStatus {
+	return []GoneErrorStatus{
+		GoneErrorStatusFourHundredAndTen,
+	}
+}
 func (e *GoneErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

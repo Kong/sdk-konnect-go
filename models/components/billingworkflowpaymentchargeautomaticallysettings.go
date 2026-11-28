@@ -19,6 +19,13 @@ const (
 func (e CollectionMethod) ToPointer() *CollectionMethod {
 	return &e
 }
+
+// CollectionMethodValues returns every known CollectionMethod value in schema order.
+func CollectionMethodValues() []CollectionMethod {
+	return []CollectionMethod{
+		CollectionMethodChargeAutomatically,
+	}
+}
 func (e *CollectionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

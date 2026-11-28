@@ -27,6 +27,16 @@ func (e ConsumeFailureMode) ToPointer() *ConsumeFailureMode {
 	return &e
 }
 
+// ConsumeFailureModeValues returns every known ConsumeFailureMode value in schema order.
+func ConsumeFailureModeValues() []ConsumeFailureMode {
+	return []ConsumeFailureMode{
+		ConsumeFailureModeError,
+		ConsumeFailureModeSkip,
+		ConsumeFailureModePassthrough,
+		ConsumeFailureModeMark,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ConsumeFailureMode) IsExact() bool {
 	if e != nil {

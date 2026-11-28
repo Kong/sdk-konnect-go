@@ -15,6 +15,14 @@ func (e DestinationSigningAlgo) ToPointer() *DestinationSigningAlgo {
 	return &e
 }
 
+// DestinationSigningAlgoValues returns every known DestinationSigningAlgo value in schema order.
+func DestinationSigningAlgoValues() []DestinationSigningAlgo {
+	return []DestinationSigningAlgo{
+		DestinationSigningAlgoHmacSha256,
+		DestinationSigningAlgoEd25519,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DestinationSigningAlgo) IsExact() bool {
 	if e != nil {

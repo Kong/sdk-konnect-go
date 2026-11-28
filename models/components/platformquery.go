@@ -18,6 +18,13 @@ const (
 func (e PlatformQueryDatasource) ToPointer() *PlatformQueryDatasource {
 	return &e
 }
+
+// PlatformQueryDatasourceValues returns every known PlatformQueryDatasource value in schema order.
+func PlatformQueryDatasourceValues() []PlatformQueryDatasource {
+	return []PlatformQueryDatasource{
+		PlatformQueryDatasourcePlatformUsage,
+	}
+}
 func (e *PlatformQueryDatasource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -53,6 +60,26 @@ const (
 
 func (e PlatformQueryDimensions) ToPointer() *PlatformQueryDimensions {
 	return &e
+}
+
+// PlatformQueryDimensionsValues returns every known PlatformQueryDimensions value in schema order.
+func PlatformQueryDimensionsValues() []PlatformQueryDimensions {
+	return []PlatformQueryDimensions{
+		PlatformQueryDimensionsTime,
+		PlatformQueryDimensionsControlPlane,
+		PlatformQueryDimensionsGatewayService,
+		PlatformQueryDimensionsRealm,
+		PlatformQueryDimensionsRoute,
+		PlatformQueryDimensionsConsumer,
+		PlatformQueryDimensionsPlugin,
+		PlatformQueryDimensionsPluginName,
+		PlatformQueryDimensionsPluginScope,
+		PlatformQueryDimensionsDataPlaneNodeVersion,
+		PlatformQueryDimensionsEnv,
+		PlatformQueryDimensionsTeam,
+		PlatformQueryDimensionsRegion,
+		PlatformQueryDimensionsHostname,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

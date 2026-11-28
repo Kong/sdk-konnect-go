@@ -21,6 +21,16 @@ func (e PartialRedisCeAuthProvider) ToPointer() *PartialRedisCeAuthProvider {
 	return &e
 }
 
+// PartialRedisCeAuthProviderValues returns every known PartialRedisCeAuthProvider value in schema order.
+func PartialRedisCeAuthProviderValues() []PartialRedisCeAuthProvider {
+	return []PartialRedisCeAuthProvider{
+		PartialRedisCeAuthProviderAws,
+		PartialRedisCeAuthProviderAzure,
+		PartialRedisCeAuthProviderGcp,
+		PartialRedisCeAuthProviderOauth,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialRedisCeAuthProvider) IsExact() bool {
 	if e != nil {
@@ -43,6 +53,15 @@ const (
 
 func (e AuthMethod) ToPointer() *AuthMethod {
 	return &e
+}
+
+// AuthMethodValues returns every known AuthMethod value in schema order.
+func AuthMethodValues() []AuthMethod {
+	return []AuthMethod{
+		AuthMethodClientSecretBasic,
+		AuthMethodClientSecretJwt,
+		AuthMethodClientSecretPost,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -68,6 +87,14 @@ func (e ClientSecretJwtAlg) ToPointer() *ClientSecretJwtAlg {
 	return &e
 }
 
+// ClientSecretJwtAlgValues returns every known ClientSecretJwtAlg value in schema order.
+func ClientSecretJwtAlgValues() []ClientSecretJwtAlg {
+	return []ClientSecretJwtAlg{
+		ClientSecretJwtAlgHs256,
+		ClientSecretJwtAlgHs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ClientSecretJwtAlg) IsExact() bool {
 	if e != nil {
@@ -89,6 +116,14 @@ const (
 
 func (e PartialRedisCeGrantType) ToPointer() *PartialRedisCeGrantType {
 	return &e
+}
+
+// PartialRedisCeGrantTypeValues returns every known PartialRedisCeGrantType value in schema order.
+func PartialRedisCeGrantTypeValues() []PartialRedisCeGrantType {
+	return []PartialRedisCeGrantType{
+		PartialRedisCeGrantTypeClientCredentials,
+		PartialRedisCeGrantTypePassword,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

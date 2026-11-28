@@ -18,6 +18,14 @@ func (e TimeseriesChartType) ToPointer() *TimeseriesChartType {
 	return &e
 }
 
+// TimeseriesChartTypeValues returns every known TimeseriesChartType value in schema order.
+func TimeseriesChartTypeValues() []TimeseriesChartType {
+	return []TimeseriesChartType{
+		TimeseriesChartTypeTimeseriesLine,
+		TimeseriesChartTypeTimeseriesBar,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TimeseriesChartType) IsExact() bool {
 	if e != nil {

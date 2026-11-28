@@ -19,6 +19,13 @@ const (
 func (e Source) ToPointer() *Source {
 	return &e
 }
+
+// SourceValues returns every known Source value in schema order.
+func SourceValues() []Source {
+	return []Source{
+		SourceAwsIam,
+	}
+}
 func (e *Source) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

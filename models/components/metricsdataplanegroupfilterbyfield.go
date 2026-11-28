@@ -20,6 +20,13 @@ const (
 func (e MetricsDataPlaneGroupFilterByField2Field) ToPointer() *MetricsDataPlaneGroupFilterByField2Field {
 	return &e
 }
+
+// MetricsDataPlaneGroupFilterByField2FieldValues returns every known MetricsDataPlaneGroupFilterByField2Field value in schema order.
+func MetricsDataPlaneGroupFilterByField2FieldValues() []MetricsDataPlaneGroupFilterByField2Field {
+	return []MetricsDataPlaneGroupFilterByField2Field{
+		MetricsDataPlaneGroupFilterByField2FieldDataPlaneGroup,
+	}
+}
 func (e *MetricsDataPlaneGroupFilterByField2Field) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -75,6 +82,13 @@ const (
 
 func (e MetricsDataPlaneGroupFilterByFieldField) ToPointer() *MetricsDataPlaneGroupFilterByFieldField {
 	return &e
+}
+
+// MetricsDataPlaneGroupFilterByFieldFieldValues returns every known MetricsDataPlaneGroupFilterByFieldField value in schema order.
+func MetricsDataPlaneGroupFilterByFieldFieldValues() []MetricsDataPlaneGroupFilterByFieldField {
+	return []MetricsDataPlaneGroupFilterByFieldField{
+		MetricsDataPlaneGroupFilterByFieldFieldDataPlaneGroup,
+	}
 }
 func (e *MetricsDataPlaneGroupFilterByFieldField) UnmarshalJSON(data []byte) error {
 	var v string

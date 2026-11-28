@@ -16,6 +16,15 @@ func (e Op) ToPointer() *Op {
 	return &e
 }
 
+// OpValues returns every known Op value in schema order.
+func OpValues() []Op {
+	return []Op{
+		OpAdd,
+		OpRemove,
+		OpReplace,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Op) IsExact() bool {
 	if e != nil {

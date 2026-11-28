@@ -22,6 +22,21 @@ func (e Method) ToPointer() *Method {
 	return &e
 }
 
+// MethodValues returns every known Method value in schema order.
+func MethodValues() []Method {
+	return []Method{
+		MethodGet,
+		MethodPost,
+		MethodPut,
+		MethodDelete,
+		MethodPatch,
+		MethodOptions,
+		MethodHead,
+		MethodConnect,
+		MethodTrace,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Method) IsExact() bool {
 	if e != nil {

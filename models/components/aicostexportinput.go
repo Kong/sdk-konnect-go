@@ -4,7 +4,6 @@
 package components
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -21,6 +20,14 @@ const (
 
 func (e AICostExportInput2Format) ToPointer() *AICostExportInput2Format {
 	return &e
+}
+
+// AICostExportInput2FormatValues returns every known AICostExportInput2Format value in schema order.
+func AICostExportInput2FormatValues() []AICostExportInput2Format {
+	return []AICostExportInput2Format{
+		AICostExportInput2FormatParquet,
+		AICostExportInput2FormatCsv,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -49,6 +56,15 @@ func (e AICostExportInput2Compression) ToPointer() *AICostExportInput2Compressio
 	return &e
 }
 
+// AICostExportInput2CompressionValues returns every known AICostExportInput2Compression value in schema order.
+func AICostExportInput2CompressionValues() []AICostExportInput2Compression {
+	return []AICostExportInput2Compression{
+		AICostExportInput2CompressionNone,
+		AICostExportInput2CompressionGzip,
+		AICostExportInput2CompressionZstd,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportInput2Compression) IsExact() bool {
 	if e != nil {
@@ -72,6 +88,14 @@ func (e AICostExportInput2Dataset) ToPointer() *AICostExportInput2Dataset {
 	return &e
 }
 
+// AICostExportInput2DatasetValues returns every known AICostExportInput2Dataset value in schema order.
+func AICostExportInput2DatasetValues() []AICostExportInput2Dataset {
+	return []AICostExportInput2Dataset{
+		AICostExportInput2DatasetUsageEvents,
+		AICostExportInput2DatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportInput2Dataset) IsExact() bool {
 	if e != nil {
@@ -90,23 +114,30 @@ type AICostExportInput2SchemaVersion int64
 
 const (
 	AICostExportInput2SchemaVersionOne AICostExportInput2SchemaVersion = 1
+	AICostExportInput2SchemaVersionTwo AICostExportInput2SchemaVersion = 2
 )
 
 func (e AICostExportInput2SchemaVersion) ToPointer() *AICostExportInput2SchemaVersion {
 	return &e
 }
-func (e *AICostExportInput2SchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// AICostExportInput2SchemaVersionValues returns every known AICostExportInput2SchemaVersion value in schema order.
+func AICostExportInput2SchemaVersionValues() []AICostExportInput2SchemaVersion {
+	return []AICostExportInput2SchemaVersion{
+		AICostExportInput2SchemaVersionOne,
+		AICostExportInput2SchemaVersionTwo,
 	}
-	switch v {
-	case 1:
-		*e = AICostExportInput2SchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AICostExportInput2SchemaVersion: %v", v)
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportInput2SchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
+	return false
 }
 
 type AICostExportInput2 struct {
@@ -142,7 +173,7 @@ type AICostExportInput2 struct {
 	//
 	// An IANA time zone name as the time zone database spells it, such as `Europe/Budapest`. Offsets such as `+02:00` aren't accepted. Defaults to `UTC`.
 	TimeZone *string `default:"UTC" json:"time_zone"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`
@@ -245,6 +276,14 @@ func (e AICostExportInputFormat) ToPointer() *AICostExportInputFormat {
 	return &e
 }
 
+// AICostExportInputFormatValues returns every known AICostExportInputFormat value in schema order.
+func AICostExportInputFormatValues() []AICostExportInputFormat {
+	return []AICostExportInputFormat{
+		AICostExportInputFormatParquet,
+		AICostExportInputFormatCsv,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportInputFormat) IsExact() bool {
 	if e != nil {
@@ -271,6 +310,15 @@ func (e AICostExportInputCompression) ToPointer() *AICostExportInputCompression 
 	return &e
 }
 
+// AICostExportInputCompressionValues returns every known AICostExportInputCompression value in schema order.
+func AICostExportInputCompressionValues() []AICostExportInputCompression {
+	return []AICostExportInputCompression{
+		AICostExportInputCompressionNone,
+		AICostExportInputCompressionGzip,
+		AICostExportInputCompressionZstd,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportInputCompression) IsExact() bool {
 	if e != nil {
@@ -294,6 +342,14 @@ func (e AICostExportInputDataset) ToPointer() *AICostExportInputDataset {
 	return &e
 }
 
+// AICostExportInputDatasetValues returns every known AICostExportInputDataset value in schema order.
+func AICostExportInputDatasetValues() []AICostExportInputDataset {
+	return []AICostExportInputDataset{
+		AICostExportInputDatasetUsageEvents,
+		AICostExportInputDatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportInputDataset) IsExact() bool {
 	if e != nil {
@@ -312,23 +368,30 @@ type AICostExportInputSchemaVersion int64
 
 const (
 	AICostExportInputSchemaVersionOne AICostExportInputSchemaVersion = 1
+	AICostExportInputSchemaVersionTwo AICostExportInputSchemaVersion = 2
 )
 
 func (e AICostExportInputSchemaVersion) ToPointer() *AICostExportInputSchemaVersion {
 	return &e
 }
-func (e *AICostExportInputSchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// AICostExportInputSchemaVersionValues returns every known AICostExportInputSchemaVersion value in schema order.
+func AICostExportInputSchemaVersionValues() []AICostExportInputSchemaVersion {
+	return []AICostExportInputSchemaVersion{
+		AICostExportInputSchemaVersionOne,
+		AICostExportInputSchemaVersionTwo,
 	}
-	switch v {
-	case 1:
-		*e = AICostExportInputSchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AICostExportInputSchemaVersion: %v", v)
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportInputSchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
+	return false
 }
 
 type AICostExportInput1 struct {
@@ -364,7 +427,7 @@ type AICostExportInput1 struct {
 	//
 	// An IANA time zone name as the time zone database spells it, such as `Europe/Budapest`. Offsets such as `+02:00` aren't accepted. Defaults to `UTC`.
 	TimeZone *string `default:"UTC" json:"time_zone"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`

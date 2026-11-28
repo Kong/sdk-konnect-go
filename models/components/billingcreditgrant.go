@@ -23,6 +23,15 @@ func (e BillingCreditGrantCreditFundingMethod) ToPointer() *BillingCreditGrantCr
 	return &e
 }
 
+// BillingCreditGrantCreditFundingMethodValues returns every known BillingCreditGrantCreditFundingMethod value in schema order.
+func BillingCreditGrantCreditFundingMethodValues() []BillingCreditGrantCreditFundingMethod {
+	return []BillingCreditGrantCreditFundingMethod{
+		BillingCreditGrantCreditFundingMethodNone,
+		BillingCreditGrantCreditFundingMethodInvoice,
+		BillingCreditGrantCreditFundingMethodExternal,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingCreditGrantCreditFundingMethod) IsExact() bool {
 	if e != nil {
@@ -112,6 +121,13 @@ const (
 func (e BillingCreditGrantCreditAvailabilityPolicy) ToPointer() *BillingCreditGrantCreditAvailabilityPolicy {
 	return &e
 }
+
+// BillingCreditGrantCreditAvailabilityPolicyValues returns every known BillingCreditGrantCreditAvailabilityPolicy value in schema order.
+func BillingCreditGrantCreditAvailabilityPolicyValues() []BillingCreditGrantCreditAvailabilityPolicy {
+	return []BillingCreditGrantCreditAvailabilityPolicy{
+		BillingCreditGrantCreditAvailabilityPolicyOnCreation,
+	}
+}
 func (e *BillingCreditGrantCreditAvailabilityPolicy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -137,6 +153,15 @@ const (
 
 func (e BillingCreditGrantCreditPurchasePaymentSettlementStatus) ToPointer() *BillingCreditGrantCreditPurchasePaymentSettlementStatus {
 	return &e
+}
+
+// BillingCreditGrantCreditPurchasePaymentSettlementStatusValues returns every known BillingCreditGrantCreditPurchasePaymentSettlementStatus value in schema order.
+func BillingCreditGrantCreditPurchasePaymentSettlementStatusValues() []BillingCreditGrantCreditPurchasePaymentSettlementStatus {
+	return []BillingCreditGrantCreditPurchasePaymentSettlementStatus{
+		BillingCreditGrantCreditPurchasePaymentSettlementStatusPending,
+		BillingCreditGrantCreditPurchasePaymentSettlementStatusAuthorized,
+		BillingCreditGrantCreditPurchasePaymentSettlementStatusSettled,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -253,6 +278,14 @@ func (e BillingCreditGrantTaxBehavior) ToPointer() *BillingCreditGrantTaxBehavio
 	return &e
 }
 
+// BillingCreditGrantTaxBehaviorValues returns every known BillingCreditGrantTaxBehavior value in schema order.
+func BillingCreditGrantTaxBehaviorValues() []BillingCreditGrantTaxBehavior {
+	return []BillingCreditGrantTaxBehavior{
+		BillingCreditGrantTaxBehaviorInclusive,
+		BillingCreditGrantTaxBehaviorExclusive,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingCreditGrantTaxBehavior) IsExact() bool {
 	if e != nil {
@@ -356,6 +389,16 @@ const (
 
 func (e CreditGrantLifecycleStatus) ToPointer() *CreditGrantLifecycleStatus {
 	return &e
+}
+
+// CreditGrantLifecycleStatusValues returns every known CreditGrantLifecycleStatus value in schema order.
+func CreditGrantLifecycleStatusValues() []CreditGrantLifecycleStatus {
+	return []CreditGrantLifecycleStatus{
+		CreditGrantLifecycleStatusPending,
+		CreditGrantLifecycleStatusActive,
+		CreditGrantLifecycleStatusExpired,
+		CreditGrantLifecycleStatusVoided,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -19,6 +19,14 @@ func (e PartialModelParamLocation) ToPointer() *PartialModelParamLocation {
 	return &e
 }
 
+// PartialModelParamLocationValues returns every known PartialModelParamLocation value in schema order.
+func PartialModelParamLocationValues() []PartialModelParamLocation {
+	return []PartialModelParamLocation{
+		PartialModelParamLocationBody,
+		PartialModelParamLocationQuery,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialModelParamLocation) IsExact() bool {
 	if e != nil {
@@ -360,6 +368,17 @@ func (e PartialModelEmbeddingInputType) ToPointer() *PartialModelEmbeddingInputT
 	return &e
 }
 
+// PartialModelEmbeddingInputTypeValues returns every known PartialModelEmbeddingInputType value in schema order.
+func PartialModelEmbeddingInputTypeValues() []PartialModelEmbeddingInputType {
+	return []PartialModelEmbeddingInputType{
+		PartialModelEmbeddingInputTypeClassification,
+		PartialModelEmbeddingInputTypeClustering,
+		PartialModelEmbeddingInputTypeImage,
+		PartialModelEmbeddingInputTypeSearchDocument,
+		PartialModelEmbeddingInputTypeSearchQuery,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialModelEmbeddingInputType) IsExact() bool {
 	if e != nil {
@@ -584,6 +603,15 @@ func (e Llama2Format) ToPointer() *Llama2Format {
 	return &e
 }
 
+// Llama2FormatValues returns every known Llama2Format value in schema order.
+func Llama2FormatValues() []Llama2Format {
+	return []Llama2Format{
+		Llama2FormatOllama,
+		Llama2FormatOpenai,
+		Llama2FormatRaw,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Llama2Format) IsExact() bool {
 	if e != nil {
@@ -605,6 +633,14 @@ const (
 
 func (e MistralFormat) ToPointer() *MistralFormat {
 	return &e
+}
+
+// MistralFormatValues returns every known MistralFormat value in schema order.
+func MistralFormatValues() []MistralFormat {
+	return []MistralFormat{
+		MistralFormatOllama,
+		MistralFormatOpenai,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -918,6 +954,28 @@ func (e PartialModelProvider) ToPointer() *PartialModelProvider {
 	return &e
 }
 
+// PartialModelProviderValues returns every known PartialModelProvider value in schema order.
+func PartialModelProviderValues() []PartialModelProvider {
+	return []PartialModelProvider{
+		PartialModelProviderAnthropic,
+		PartialModelProviderAzure,
+		PartialModelProviderBedrock,
+		PartialModelProviderCerebras,
+		PartialModelProviderCohere,
+		PartialModelProviderDashscope,
+		PartialModelProviderDatabricks,
+		PartialModelProviderDeepseek,
+		PartialModelProviderGemini,
+		PartialModelProviderHuggingface,
+		PartialModelProviderLlama2,
+		PartialModelProviderMistral,
+		PartialModelProviderOllama,
+		PartialModelProviderOpenai,
+		PartialModelProviderVllm,
+		PartialModelProviderXai,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialModelProvider) IsExact() bool {
 	if e != nil {
@@ -1002,6 +1060,27 @@ const (
 
 func (e RouteType) ToPointer() *RouteType {
 	return &e
+}
+
+// RouteTypeValues returns every known RouteType value in schema order.
+func RouteTypeValues() []RouteType {
+	return []RouteType{
+		RouteTypeAudioV1AudioSpeech,
+		RouteTypeAudioV1AudioTranscriptions,
+		RouteTypeAudioV1AudioTranslations,
+		RouteTypeImageV1ImagesEdits,
+		RouteTypeImageV1ImagesGenerations,
+		RouteTypeLlmV1Assistants,
+		RouteTypeLlmV1Batches,
+		RouteTypeLlmV1Chat,
+		RouteTypeLlmV1Completions,
+		RouteTypeLlmV1Embeddings,
+		RouteTypeLlmV1Files,
+		RouteTypeLlmV1Responses,
+		RouteTypePreserve,
+		RouteTypeRealtimeV1Realtime,
+		RouteTypeVideoV1VideosGenerations,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

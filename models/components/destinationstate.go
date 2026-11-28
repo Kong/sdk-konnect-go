@@ -17,6 +17,16 @@ func (e DestinationState) ToPointer() *DestinationState {
 	return &e
 }
 
+// DestinationStateValues returns every known DestinationState value in schema order.
+func DestinationStateValues() []DestinationState {
+	return []DestinationState{
+		DestinationStatePendingVerification,
+		DestinationStateEnabled,
+		DestinationStateDisabled,
+		DestinationStateDisabledSystem,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DestinationState) IsExact() bool {
 	if e != nil {

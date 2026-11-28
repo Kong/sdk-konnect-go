@@ -19,6 +19,14 @@ func (e HashiCorpVaultAwsEc2ConfigKv) ToPointer() *HashiCorpVaultAwsEc2ConfigKv 
 	return &e
 }
 
+// HashiCorpVaultAwsEc2ConfigKvValues returns every known HashiCorpVaultAwsEc2ConfigKv value in schema order.
+func HashiCorpVaultAwsEc2ConfigKvValues() []HashiCorpVaultAwsEc2ConfigKv {
+	return []HashiCorpVaultAwsEc2ConfigKv{
+		HashiCorpVaultAwsEc2ConfigKvV1,
+		HashiCorpVaultAwsEc2ConfigKvV2,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *HashiCorpVaultAwsEc2ConfigKv) IsExact() bool {
 	if e != nil {
@@ -40,6 +48,14 @@ const (
 
 func (e HashiCorpVaultAwsEc2ConfigProtocol) ToPointer() *HashiCorpVaultAwsEc2ConfigProtocol {
 	return &e
+}
+
+// HashiCorpVaultAwsEc2ConfigProtocolValues returns every known HashiCorpVaultAwsEc2ConfigProtocol value in schema order.
+func HashiCorpVaultAwsEc2ConfigProtocolValues() []HashiCorpVaultAwsEc2ConfigProtocol {
+	return []HashiCorpVaultAwsEc2ConfigProtocol{
+		HashiCorpVaultAwsEc2ConfigProtocolHTTP,
+		HashiCorpVaultAwsEc2ConfigProtocolHTTPS,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

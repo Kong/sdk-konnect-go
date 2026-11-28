@@ -18,6 +18,13 @@ const (
 func (e AWSPrivateDNSResolverType) ToPointer() *AWSPrivateDNSResolverType {
 	return &e
 }
+
+// AWSPrivateDNSResolverTypeValues returns every known AWSPrivateDNSResolverType value in schema order.
+func AWSPrivateDNSResolverTypeValues() []AWSPrivateDNSResolverType {
+	return []AWSPrivateDNSResolverType{
+		AWSPrivateDNSResolverTypeAwsOutboundResolver,
+	}
+}
 func (e *AWSPrivateDNSResolverType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

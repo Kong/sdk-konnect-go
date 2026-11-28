@@ -44,6 +44,40 @@ func (e Field) ToPointer() *Field {
 	return &e
 }
 
+// FieldValues returns every known Field value in schema order.
+func FieldValues() []Field {
+	return []Field{
+		FieldAiGateway,
+		FieldAiGatewayConsumer,
+		FieldAiGatewayConsumerGroup,
+		FieldAiGatewayDataPlaneNode,
+		FieldAPI,
+		FieldAPIPackage,
+		FieldAPIProduct,
+		FieldAPIProductVersion,
+		FieldApplication,
+		FieldCacheStatus,
+		FieldConsumer,
+		FieldConsumerGroup,
+		FieldControlPlane,
+		FieldControlPlaneGroup,
+		FieldCountryCode,
+		FieldDataPlaneNode,
+		FieldDataPlaneNodeVersion,
+		FieldGatewayService,
+		FieldOidcCredential,
+		FieldPortal,
+		FieldPrincipal,
+		FieldRealm,
+		FieldResponseSource,
+		FieldRoute,
+		FieldStatusCode,
+		FieldStatusCodeGrouped,
+		FieldUpstreamStatusCode,
+		FieldUpstreamStatusCodeGrouped,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Field) IsExact() bool {
 	if e != nil {
@@ -66,6 +100,16 @@ const (
 
 func (e Operator) ToPointer() *Operator {
 	return &e
+}
+
+// OperatorValues returns every known Operator value in schema order.
+func OperatorValues() []Operator {
+	return []Operator{
+		OperatorIn,
+		OperatorNotIn,
+		OperatorEmpty,
+		OperatorNotEmpty,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -15,6 +15,14 @@ func (e ApplicationOwnerType) ToPointer() *ApplicationOwnerType {
 	return &e
 }
 
+// ApplicationOwnerTypeValues returns every known ApplicationOwnerType value in schema order.
+func ApplicationOwnerTypeValues() []ApplicationOwnerType {
+	return []ApplicationOwnerType{
+		ApplicationOwnerTypeDeveloper,
+		ApplicationOwnerTypeTeam,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ApplicationOwnerType) IsExact() bool {
 	if e != nil {

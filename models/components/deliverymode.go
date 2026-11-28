@@ -15,6 +15,14 @@ func (e DeliveryMode) ToPointer() *DeliveryMode {
 	return &e
 }
 
+// DeliveryModeValues returns every known DeliveryMode value in schema order.
+func DeliveryModeValues() []DeliveryMode {
+	return []DeliveryMode{
+		DeliveryModeLive,
+		DeliveryModeTest,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DeliveryMode) IsExact() bool {
 	if e != nil {

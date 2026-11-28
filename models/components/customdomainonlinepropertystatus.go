@@ -15,6 +15,14 @@ func (e CustomDomainOnlinePropertyStatus) ToPointer() *CustomDomainOnlinePropert
 	return &e
 }
 
+// CustomDomainOnlinePropertyStatusValues returns every known CustomDomainOnlinePropertyStatus value in schema order.
+func CustomDomainOnlinePropertyStatusValues() []CustomDomainOnlinePropertyStatus {
+	return []CustomDomainOnlinePropertyStatus{
+		CustomDomainOnlinePropertyStatusVerified,
+		CustomDomainOnlinePropertyStatusUnverified,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CustomDomainOnlinePropertyStatus) IsExact() bool {
 	if e != nil {

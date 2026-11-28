@@ -19,6 +19,18 @@ func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneReq
 	return &e
 }
 
+// CreateControlPlaneRequestClusterTypeValues returns every known CreateControlPlaneRequestClusterType value in schema order.
+func CreateControlPlaneRequestClusterTypeValues() []CreateControlPlaneRequestClusterType {
+	return []CreateControlPlaneRequestClusterType{
+		CreateControlPlaneRequestClusterTypeClusterTypeControlPlane,
+		CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController,
+		CreateControlPlaneRequestClusterTypeClusterTypeControlPlaneGroup,
+		CreateControlPlaneRequestClusterTypeClusterTypeServerless,
+		CreateControlPlaneRequestClusterTypeClusterTypeKafkaNativeEventProxy,
+		CreateControlPlaneRequestClusterTypeClusterTypeServerlessV1,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateControlPlaneRequestClusterType) IsExact() bool {
 	if e != nil {
@@ -40,6 +52,14 @@ const (
 
 func (e AuthType) ToPointer() *AuthType {
 	return &e
+}
+
+// AuthTypeValues returns every known AuthType value in schema order.
+func AuthTypeValues() []AuthType {
+	return []AuthType{
+		AuthTypePinnedClientCerts,
+		AuthTypePkiClientCerts,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

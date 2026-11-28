@@ -17,6 +17,16 @@ func (e DeliveryStatus) ToPointer() *DeliveryStatus {
 	return &e
 }
 
+// DeliveryStatusValues returns every known DeliveryStatus value in schema order.
+func DeliveryStatusValues() []DeliveryStatus {
+	return []DeliveryStatus{
+		DeliveryStatusScheduled,
+		DeliveryStatusSucceeded,
+		DeliveryStatusFailed,
+		DeliveryStatusExpired,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DeliveryStatus) IsExact() bool {
 	if e != nil {

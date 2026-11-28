@@ -30,6 +30,21 @@ func (e AIGatewayModelFormatType) ToPointer() *AIGatewayModelFormatType {
 	return &e
 }
 
+// AIGatewayModelFormatTypeValues returns every known AIGatewayModelFormatType value in schema order.
+func AIGatewayModelFormatTypeValues() []AIGatewayModelFormatType {
+	return []AIGatewayModelFormatType{
+		AIGatewayModelFormatTypeWildcard,
+		AIGatewayModelFormatTypeAnthropic,
+		AIGatewayModelFormatTypeBedrock,
+		AIGatewayModelFormatTypeCohere,
+		AIGatewayModelFormatTypeGemini,
+		AIGatewayModelFormatTypeHuggingface,
+		AIGatewayModelFormatTypeOpenai,
+		AIGatewayModelFormatTypePassthrough,
+		AIGatewayModelFormatTypeTypesafe,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayModelFormatType) IsExact() bool {
 	if e != nil {

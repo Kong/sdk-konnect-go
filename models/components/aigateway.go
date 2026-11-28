@@ -21,6 +21,15 @@ func (e DeploymentType) ToPointer() *DeploymentType {
 	return &e
 }
 
+// DeploymentTypeValues returns every known DeploymentType value in schema order.
+func DeploymentTypeValues() []DeploymentType {
+	return []DeploymentType{
+		DeploymentTypeHybrid,
+		DeploymentTypeManaged,
+		DeploymentTypeServerless,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DeploymentType) IsExact() bool {
 	if e != nil {
@@ -83,12 +92,16 @@ type AIGateway struct {
 	//
 	// Data planes older than this version still connect for topology visibility.
 	//
+	// Can only be set when deployment_type is `hybrid`. For `managed` and `serverless` deployments, Konnect manages this value and it is read-only.
+	//
 	// When not specified, the latest generally available runtime version is used.
 	//
 	// When runtime_auto_upgrade is enabled (the default), this value is raised automatically to track the minimum runtime version reported across connected data planes, so any value set here may be superseded as the fleet upgrades.
 	//
 	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
 	// Whether the control plane should automatically raise min_runtime_version to match the DP fleet's minimum runtime version (the lowest AI Gateway runtime version reported across all connected data planes) as that value increases.
+	//
+	// Can only be set when deployment_type is `hybrid`. For `managed` and `serverless` deployments, Konnect manages runtime upgrades and this value is read-only.
 	RuntimeAutoUpgrade *bool `default:"true" json:"runtime_auto_upgrade"`
 	// How this AI Gateway's control plane is deployed.
 	DeploymentType *DeploymentType `default:"hybrid" json:"deployment_type"`

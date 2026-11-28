@@ -18,6 +18,14 @@ func (e AIGatewayAuthStrategyKeyAuthScope) ToPointer() *AIGatewayAuthStrategyKey
 	return &e
 }
 
+// AIGatewayAuthStrategyKeyAuthScopeValues returns every known AIGatewayAuthStrategyKeyAuthScope value in schema order.
+func AIGatewayAuthStrategyKeyAuthScopeValues() []AIGatewayAuthStrategyKeyAuthScope {
+	return []AIGatewayAuthStrategyKeyAuthScope{
+		AIGatewayAuthStrategyKeyAuthScopeCp,
+		AIGatewayAuthStrategyKeyAuthScopeRealm,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayAuthStrategyKeyAuthScope) IsExact() bool {
 	if e != nil {
@@ -224,10 +232,9 @@ type AIGatewayAuthStrategyKeyAuth struct {
 	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
-	// are written to, and the encryption keys that seal them. Required when `token_vault` is set
-	// (on an auth strategy, when its credential manager is enabled), and the referenced Datastore
-	// must have type `token-vault`. Only one Datastore can be referenced.
+	// The Datastores this auth strategy references. At most one datastore of each supported type
+	// can be specified (`token-vault` or `redis-ee`). A `token-vault` Datastore holds the credential
+	// storage and is required when `token_vault` is set.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
 	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`

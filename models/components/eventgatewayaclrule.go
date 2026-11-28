@@ -23,6 +23,16 @@ func (e ResourceType) ToPointer() *ResourceType {
 	return &e
 }
 
+// ResourceTypeValues returns every known ResourceType value in schema order.
+func ResourceTypeValues() []ResourceType {
+	return []ResourceType{
+		ResourceTypeTopic,
+		ResourceTypeGroup,
+		ResourceTypeTransactionalID,
+		ResourceTypeCluster,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ResourceType) IsExact() bool {
 	if e != nil {
@@ -44,6 +54,14 @@ const (
 
 func (e Action) ToPointer() *Action {
 	return &e
+}
+
+// ActionValues returns every known Action value in schema order.
+func ActionValues() []Action {
+	return []Action{
+		ActionAllow,
+		ActionDeny,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

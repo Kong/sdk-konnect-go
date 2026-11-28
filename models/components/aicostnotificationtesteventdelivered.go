@@ -20,6 +20,13 @@ const (
 func (e AICostNotificationTestEventDeliveredKind) ToPointer() *AICostNotificationTestEventDeliveredKind {
 	return &e
 }
+
+// AICostNotificationTestEventDeliveredKindValues returns every known AICostNotificationTestEventDeliveredKind value in schema order.
+func AICostNotificationTestEventDeliveredKindValues() []AICostNotificationTestEventDeliveredKind {
+	return []AICostNotificationTestEventDeliveredKind{
+		AICostNotificationTestEventDeliveredKindTest,
+	}
+}
 func (e *AICostNotificationTestEventDeliveredKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -43,6 +50,13 @@ const (
 
 func (e AICostNotificationTestEventDeliveredStatus) ToPointer() *AICostNotificationTestEventDeliveredStatus {
 	return &e
+}
+
+// AICostNotificationTestEventDeliveredStatusValues returns every known AICostNotificationTestEventDeliveredStatus value in schema order.
+func AICostNotificationTestEventDeliveredStatusValues() []AICostNotificationTestEventDeliveredStatus {
+	return []AICostNotificationTestEventDeliveredStatus{
+		AICostNotificationTestEventDeliveredStatusDelivered,
+	}
 }
 func (e *AICostNotificationTestEventDeliveredStatus) UnmarshalJSON(data []byte) error {
 	var v string

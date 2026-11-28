@@ -20,6 +20,13 @@ const (
 func (e BadRequestErrorStatus) ToPointer() *BadRequestErrorStatus {
 	return &e
 }
+
+// BadRequestErrorStatusValues returns every known BadRequestErrorStatus value in schema order.
+func BadRequestErrorStatusValues() []BadRequestErrorStatus {
+	return []BadRequestErrorStatus{
+		BadRequestErrorStatusFourHundred,
+	}
+}
 func (e *BadRequestErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

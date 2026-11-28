@@ -19,6 +19,14 @@ func (e PartialVectordbDistanceMetric) ToPointer() *PartialVectordbDistanceMetri
 	return &e
 }
 
+// PartialVectordbDistanceMetricValues returns every known PartialVectordbDistanceMetric value in schema order.
+func PartialVectordbDistanceMetricValues() []PartialVectordbDistanceMetric {
+	return []PartialVectordbDistanceMetric{
+		PartialVectordbDistanceMetricCosine,
+		PartialVectordbDistanceMetricEuclidean,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialVectordbDistanceMetric) IsExact() bool {
 	if e != nil {
@@ -41,6 +49,15 @@ const (
 
 func (e SslVersion) ToPointer() *SslVersion {
 	return &e
+}
+
+// SslVersionValues returns every known SslVersion value in schema order.
+func SslVersionValues() []SslVersion {
+	return []SslVersion{
+		SslVersionAny,
+		SslVersionTlsv12,
+		SslVersionTlsv13,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -190,6 +207,16 @@ func (e PartialVectordbAuthProvider) ToPointer() *PartialVectordbAuthProvider {
 	return &e
 }
 
+// PartialVectordbAuthProviderValues returns every known PartialVectordbAuthProvider value in schema order.
+func PartialVectordbAuthProviderValues() []PartialVectordbAuthProvider {
+	return []PartialVectordbAuthProvider{
+		PartialVectordbAuthProviderAws,
+		PartialVectordbAuthProviderAzure,
+		PartialVectordbAuthProviderGcp,
+		PartialVectordbAuthProviderOauth,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialVectordbAuthProvider) IsExact() bool {
 	if e != nil {
@@ -212,6 +239,15 @@ const (
 
 func (e PartialVectordbAuthMethod) ToPointer() *PartialVectordbAuthMethod {
 	return &e
+}
+
+// PartialVectordbAuthMethodValues returns every known PartialVectordbAuthMethod value in schema order.
+func PartialVectordbAuthMethodValues() []PartialVectordbAuthMethod {
+	return []PartialVectordbAuthMethod{
+		PartialVectordbAuthMethodClientSecretBasic,
+		PartialVectordbAuthMethodClientSecretJwt,
+		PartialVectordbAuthMethodClientSecretPost,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -237,6 +273,14 @@ func (e PartialVectordbClientSecretJwtAlg) ToPointer() *PartialVectordbClientSec
 	return &e
 }
 
+// PartialVectordbClientSecretJwtAlgValues returns every known PartialVectordbClientSecretJwtAlg value in schema order.
+func PartialVectordbClientSecretJwtAlgValues() []PartialVectordbClientSecretJwtAlg {
+	return []PartialVectordbClientSecretJwtAlg{
+		PartialVectordbClientSecretJwtAlgHs256,
+		PartialVectordbClientSecretJwtAlgHs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialVectordbClientSecretJwtAlg) IsExact() bool {
 	if e != nil {
@@ -258,6 +302,14 @@ const (
 
 func (e PartialVectordbGrantType) ToPointer() *PartialVectordbGrantType {
 	return &e
+}
+
+// PartialVectordbGrantTypeValues returns every known PartialVectordbGrantType value in schema order.
+func PartialVectordbGrantTypeValues() []PartialVectordbGrantType {
+	return []PartialVectordbGrantType{
+		PartialVectordbGrantTypeClientCredentials,
+		PartialVectordbGrantTypePassword,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -630,6 +682,15 @@ func (e PartialVectordbSentinelRole) ToPointer() *PartialVectordbSentinelRole {
 	return &e
 }
 
+// PartialVectordbSentinelRoleValues returns every known PartialVectordbSentinelRole value in schema order.
+func PartialVectordbSentinelRoleValues() []PartialVectordbSentinelRole {
+	return []PartialVectordbSentinelRole{
+		PartialVectordbSentinelRoleAny,
+		PartialVectordbSentinelRoleMaster,
+		PartialVectordbSentinelRoleSlave,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialVectordbSentinelRole) IsExact() bool {
 	if e != nil {
@@ -863,6 +924,14 @@ const (
 
 func (e PartialVectordbStrategy) ToPointer() *PartialVectordbStrategy {
 	return &e
+}
+
+// PartialVectordbStrategyValues returns every known PartialVectordbStrategy value in schema order.
+func PartialVectordbStrategyValues() []PartialVectordbStrategy {
+	return []PartialVectordbStrategy{
+		PartialVectordbStrategyPgvector,
+		PartialVectordbStrategyRedis,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

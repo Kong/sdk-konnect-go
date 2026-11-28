@@ -371,6 +371,13 @@ const (
 func (e UpdateInvoiceStandardRequestType) ToPointer() *UpdateInvoiceStandardRequestType {
 	return &e
 }
+
+// UpdateInvoiceStandardRequestTypeValues returns every known UpdateInvoiceStandardRequestType value in schema order.
+func UpdateInvoiceStandardRequestTypeValues() []UpdateInvoiceStandardRequestType {
+	return []UpdateInvoiceStandardRequestType{
+		UpdateInvoiceStandardRequestTypeStandard,
+	}
+}
 func (e *UpdateInvoiceStandardRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

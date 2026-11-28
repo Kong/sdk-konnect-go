@@ -18,6 +18,13 @@ const (
 func (e AWSPrivateHostedZoneType) ToPointer() *AWSPrivateHostedZoneType {
 	return &e
 }
+
+// AWSPrivateHostedZoneTypeValues returns every known AWSPrivateHostedZoneType value in schema order.
+func AWSPrivateHostedZoneTypeValues() []AWSPrivateHostedZoneType {
+	return []AWSPrivateHostedZoneType{
+		AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+	}
+}
 func (e *AWSPrivateHostedZoneType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

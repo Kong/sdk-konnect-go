@@ -29,6 +29,24 @@ func (e AIGatewayModelModelCapabilities) ToPointer() *AIGatewayModelModelCapabil
 	return &e
 }
 
+// AIGatewayModelModelCapabilitiesValues returns every known AIGatewayModelModelCapabilities value in schema order.
+func AIGatewayModelModelCapabilitiesValues() []AIGatewayModelModelCapabilities {
+	return []AIGatewayModelModelCapabilities{
+		AIGatewayModelModelCapabilitiesWildcard,
+		AIGatewayModelModelCapabilitiesGenerate,
+		AIGatewayModelModelCapabilitiesAgentic,
+		AIGatewayModelModelCapabilitiesRealtime,
+		AIGatewayModelModelCapabilitiesEmbeddings,
+		AIGatewayModelModelCapabilitiesImage,
+		AIGatewayModelModelCapabilitiesAudioSpeech,
+		AIGatewayModelModelCapabilitiesAudioTranscription,
+		AIGatewayModelModelCapabilitiesAudioTranslation,
+		AIGatewayModelModelCapabilitiesVideo,
+		AIGatewayModelModelCapabilitiesRerank,
+		AIGatewayModelModelCapabilitiesDecisions,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayModelModelCapabilities) IsExact() bool {
 	if e != nil {

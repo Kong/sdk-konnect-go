@@ -15,6 +15,14 @@ func (e NetworkCreateState) ToPointer() *NetworkCreateState {
 	return &e
 }
 
+// NetworkCreateStateValues returns every known NetworkCreateState value in schema order.
+func NetworkCreateStateValues() []NetworkCreateState {
+	return []NetworkCreateState{
+		NetworkCreateStateInitializing,
+		NetworkCreateStateOffline,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NetworkCreateState) IsExact() bool {
 	if e != nil {

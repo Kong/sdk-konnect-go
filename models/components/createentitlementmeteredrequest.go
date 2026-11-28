@@ -21,6 +21,13 @@ const (
 func (e CreateEntitlementMeteredRequestType) ToPointer() *CreateEntitlementMeteredRequestType {
 	return &e
 }
+
+// CreateEntitlementMeteredRequestTypeValues returns every known CreateEntitlementMeteredRequestType value in schema order.
+func CreateEntitlementMeteredRequestTypeValues() []CreateEntitlementMeteredRequestType {
+	return []CreateEntitlementMeteredRequestType{
+		CreateEntitlementMeteredRequestTypeMetered,
+	}
+}
 func (e *CreateEntitlementMeteredRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

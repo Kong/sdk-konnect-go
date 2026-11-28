@@ -44,6 +44,14 @@ func (e AIGatewayModelProviderConfigAuthBasicLocation) ToPointer() *AIGatewayMod
 	return &e
 }
 
+// AIGatewayModelProviderConfigAuthBasicLocationValues returns every known AIGatewayModelProviderConfigAuthBasicLocation value in schema order.
+func AIGatewayModelProviderConfigAuthBasicLocationValues() []AIGatewayModelProviderConfigAuthBasicLocation {
+	return []AIGatewayModelProviderConfigAuthBasicLocation{
+		AIGatewayModelProviderConfigAuthBasicLocationBody,
+		AIGatewayModelProviderConfigAuthBasicLocationQuery,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayModelProviderConfigAuthBasicLocation) IsExact() bool {
 	if e != nil {

@@ -18,6 +18,13 @@ const (
 func (e AddOnConfigKind) ToPointer() *AddOnConfigKind {
 	return &e
 }
+
+// AddOnConfigKindValues returns every known AddOnConfigKind value in schema order.
+func AddOnConfigKindValues() []AddOnConfigKind {
+	return []AddOnConfigKind{
+		AddOnConfigKindManagedCacheV0,
+	}
+}
 func (e *AddOnConfigKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -144,6 +144,14 @@ func (e BillingInvoiceDetailedLineCategory) ToPointer() *BillingInvoiceDetailedL
 	return &e
 }
 
+// BillingInvoiceDetailedLineCategoryValues returns every known BillingInvoiceDetailedLineCategory value in schema order.
+func BillingInvoiceDetailedLineCategoryValues() []BillingInvoiceDetailedLineCategory {
+	return []BillingInvoiceDetailedLineCategory{
+		BillingInvoiceDetailedLineCategoryRegular,
+		BillingInvoiceDetailedLineCategoryCommitment,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingInvoiceDetailedLineCategory) IsExact() bool {
 	if e != nil {

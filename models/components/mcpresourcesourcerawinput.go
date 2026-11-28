@@ -20,6 +20,15 @@ func (e MCPResourceSourceRawInputType) ToPointer() *MCPResourceSourceRawInputTyp
 	return &e
 }
 
+// MCPResourceSourceRawInputTypeValues returns every known MCPResourceSourceRawInputType value in schema order.
+func MCPResourceSourceRawInputTypeValues() []MCPResourceSourceRawInputType {
+	return []MCPResourceSourceRawInputType{
+		MCPResourceSourceRawInputTypeAPICatalog,
+		MCPResourceSourceRawInputTypeRaw,
+		MCPResourceSourceRawInputTypeRemoteMcpServer,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPResourceSourceRawInputType) IsExact() bool {
 	if e != nil {

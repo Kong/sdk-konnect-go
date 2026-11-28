@@ -93,6 +93,15 @@ func (e SentinelRole) ToPointer() *SentinelRole {
 	return &e
 }
 
+// SentinelRoleValues returns every known SentinelRole value in schema order.
+func SentinelRoleValues() []SentinelRole {
+	return []SentinelRole{
+		SentinelRoleMaster,
+		SentinelRoleSlave,
+		SentinelRoleAny,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SentinelRole) IsExact() bool {
 	if e != nil {

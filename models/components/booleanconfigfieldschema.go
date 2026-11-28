@@ -19,6 +19,13 @@ const (
 func (e BooleanConfigFieldSchemaType) ToPointer() *BooleanConfigFieldSchemaType {
 	return &e
 }
+
+// BooleanConfigFieldSchemaTypeValues returns every known BooleanConfigFieldSchemaType value in schema order.
+func BooleanConfigFieldSchemaTypeValues() []BooleanConfigFieldSchemaType {
+	return []BooleanConfigFieldSchemaType{
+		BooleanConfigFieldSchemaTypeBoolean,
+	}
+}
 func (e *BooleanConfigFieldSchemaType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

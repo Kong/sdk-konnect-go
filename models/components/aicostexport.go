@@ -22,6 +22,14 @@ func (e AICostExport2Format) ToPointer() *AICostExport2Format {
 	return &e
 }
 
+// AICostExport2FormatValues returns every known AICostExport2Format value in schema order.
+func AICostExport2FormatValues() []AICostExport2Format {
+	return []AICostExport2Format{
+		AICostExport2FormatParquet,
+		AICostExport2FormatCsv,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExport2Format) IsExact() bool {
 	if e != nil {
@@ -44,6 +52,15 @@ const (
 
 func (e AICostExport2Compression) ToPointer() *AICostExport2Compression {
 	return &e
+}
+
+// AICostExport2CompressionValues returns every known AICostExport2Compression value in schema order.
+func AICostExport2CompressionValues() []AICostExport2Compression {
+	return []AICostExport2Compression{
+		AICostExport2CompressionNone,
+		AICostExport2CompressionGzip,
+		AICostExport2CompressionZstd,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -69,11 +86,50 @@ func (e AICostExport2Dataset) ToPointer() *AICostExport2Dataset {
 	return &e
 }
 
+// AICostExport2DatasetValues returns every known AICostExport2Dataset value in schema order.
+func AICostExport2DatasetValues() []AICostExport2Dataset {
+	return []AICostExport2Dataset{
+		AICostExport2DatasetUsageEvents,
+		AICostExport2DatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExport2Dataset) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "usage_events", "focus":
+			return true
+		}
+	}
+	return false
+}
+
+// AICostExport2SchemaVersion - The schema version of the data files within the dataset, which fixes their columns and values.
+type AICostExport2SchemaVersion int64
+
+const (
+	AICostExport2SchemaVersionOne AICostExport2SchemaVersion = 1
+	AICostExport2SchemaVersionTwo AICostExport2SchemaVersion = 2
+)
+
+func (e AICostExport2SchemaVersion) ToPointer() *AICostExport2SchemaVersion {
+	return &e
+}
+
+// AICostExport2SchemaVersionValues returns every known AICostExport2SchemaVersion value in schema order.
+func AICostExport2SchemaVersionValues() []AICostExport2SchemaVersion {
+	return []AICostExport2SchemaVersion{
+		AICostExport2SchemaVersionOne,
+		AICostExport2SchemaVersionTwo,
+	}
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExport2SchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
 			return true
 		}
 	}
@@ -122,6 +178,17 @@ const (
 
 func (e AICostExport2Status) ToPointer() *AICostExport2Status {
 	return &e
+}
+
+// AICostExport2StatusValues returns every known AICostExport2Status value in schema order.
+func AICostExport2StatusValues() []AICostExport2Status {
+	return []AICostExport2Status{
+		AICostExport2StatusPending,
+		AICostExport2StatusRunning,
+		AICostExport2StatusSucceeded,
+		AICostExport2StatusFailed,
+		AICostExport2StatusExpired,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -197,7 +264,7 @@ type AICostExport2 struct {
 	// The data the export holds.
 	Dataset AICostExport2Dataset `json:"dataset"`
 	// The schema version of the data files within the dataset, which fixes their columns and values.
-	SchemaVersion AICostExportSchemaVersion `json:"schema_version"`
+	SchemaVersion AICostExport2SchemaVersion `json:"schema_version"`
 	// The FOCUS options of the export, with defaults applied.
 	//
 	// `null` unless `dataset` is `focus`.
@@ -289,9 +356,9 @@ func (a *AICostExport2) GetDataset() AICostExport2Dataset {
 	return a.Dataset
 }
 
-func (a *AICostExport2) GetSchemaVersion() AICostExportSchemaVersion {
+func (a *AICostExport2) GetSchemaVersion() AICostExport2SchemaVersion {
 	if a == nil {
-		return AICostExportSchemaVersion(0)
+		return AICostExport2SchemaVersion(0)
 	}
 	return a.SchemaVersion
 }
@@ -430,6 +497,14 @@ func (e AICostExportFormat) ToPointer() *AICostExportFormat {
 	return &e
 }
 
+// AICostExportFormatValues returns every known AICostExportFormat value in schema order.
+func AICostExportFormatValues() []AICostExportFormat {
+	return []AICostExportFormat{
+		AICostExportFormatParquet,
+		AICostExportFormatCsv,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportFormat) IsExact() bool {
 	if e != nil {
@@ -452,6 +527,15 @@ const (
 
 func (e AICostExportCompression) ToPointer() *AICostExportCompression {
 	return &e
+}
+
+// AICostExportCompressionValues returns every known AICostExportCompression value in schema order.
+func AICostExportCompressionValues() []AICostExportCompression {
+	return []AICostExportCompression{
+		AICostExportCompressionNone,
+		AICostExportCompressionGzip,
+		AICostExportCompressionZstd,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -477,11 +561,50 @@ func (e AICostExportDataset) ToPointer() *AICostExportDataset {
 	return &e
 }
 
+// AICostExportDatasetValues returns every known AICostExportDataset value in schema order.
+func AICostExportDatasetValues() []AICostExportDataset {
+	return []AICostExportDataset{
+		AICostExportDatasetUsageEvents,
+		AICostExportDatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportDataset) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "usage_events", "focus":
+			return true
+		}
+	}
+	return false
+}
+
+// AICostExportSchemaVersion - The schema version of the data files within the dataset, which fixes their columns and values.
+type AICostExportSchemaVersion int64
+
+const (
+	AICostExportSchemaVersionOne AICostExportSchemaVersion = 1
+	AICostExportSchemaVersionTwo AICostExportSchemaVersion = 2
+)
+
+func (e AICostExportSchemaVersion) ToPointer() *AICostExportSchemaVersion {
+	return &e
+}
+
+// AICostExportSchemaVersionValues returns every known AICostExportSchemaVersion value in schema order.
+func AICostExportSchemaVersionValues() []AICostExportSchemaVersion {
+	return []AICostExportSchemaVersion{
+		AICostExportSchemaVersionOne,
+		AICostExportSchemaVersionTwo,
+	}
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportSchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
 			return true
 		}
 	}
@@ -527,6 +650,17 @@ const (
 
 func (e AICostExportStatus) ToPointer() *AICostExportStatus {
 	return &e
+}
+
+// AICostExportStatusValues returns every known AICostExportStatus value in schema order.
+func AICostExportStatusValues() []AICostExportStatus {
+	return []AICostExportStatus{
+		AICostExportStatusPending,
+		AICostExportStatusRunning,
+		AICostExportStatusSucceeded,
+		AICostExportStatusFailed,
+		AICostExportStatusExpired,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

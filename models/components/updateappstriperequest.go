@@ -19,6 +19,13 @@ const (
 func (e UpdateAppStripeRequestType) ToPointer() *UpdateAppStripeRequestType {
 	return &e
 }
+
+// UpdateAppStripeRequestTypeValues returns every known UpdateAppStripeRequestType value in schema order.
+func UpdateAppStripeRequestTypeValues() []UpdateAppStripeRequestType {
+	return []UpdateAppStripeRequestType{
+		UpdateAppStripeRequestTypeStripe,
+	}
+}
 func (e *UpdateAppStripeRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

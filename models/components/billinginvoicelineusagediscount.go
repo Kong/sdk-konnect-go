@@ -20,6 +20,15 @@ func (e BillingInvoiceLineUsageDiscountReason) ToPointer() *BillingInvoiceLineUs
 	return &e
 }
 
+// BillingInvoiceLineUsageDiscountReasonValues returns every known BillingInvoiceLineUsageDiscountReason value in schema order.
+func BillingInvoiceLineUsageDiscountReasonValues() []BillingInvoiceLineUsageDiscountReason {
+	return []BillingInvoiceLineUsageDiscountReason{
+		BillingInvoiceLineUsageDiscountReasonMaximumSpend,
+		BillingInvoiceLineUsageDiscountReasonRatecardPercentage,
+		BillingInvoiceLineUsageDiscountReasonRatecardUsage,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingInvoiceLineUsageDiscountReason) IsExact() bool {
 	if e != nil {

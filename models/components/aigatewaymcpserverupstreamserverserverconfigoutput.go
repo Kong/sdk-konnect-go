@@ -45,6 +45,14 @@ func (e AIGatewayMCPServerUpstreamServerServerConfigStrategy) ToPointer() *AIGat
 	return &e
 }
 
+// AIGatewayMCPServerUpstreamServerServerConfigStrategyValues returns every known AIGatewayMCPServerUpstreamServerServerConfigStrategy value in schema order.
+func AIGatewayMCPServerUpstreamServerServerConfigStrategyValues() []AIGatewayMCPServerUpstreamServerServerConfigStrategy {
+	return []AIGatewayMCPServerUpstreamServerServerConfigStrategy{
+		AIGatewayMCPServerUpstreamServerServerConfigStrategyClient,
+		AIGatewayMCPServerUpstreamServerServerConfigStrategyRedis,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayMCPServerUpstreamServerServerConfigStrategy) IsExact() bool {
 	if e != nil {
@@ -133,6 +141,16 @@ const (
 
 func (e UpstreamProtocolVersion) ToPointer() *UpstreamProtocolVersion {
 	return &e
+}
+
+// UpstreamProtocolVersionValues returns every known UpstreamProtocolVersion value in schema order.
+func UpstreamProtocolVersionValues() []UpstreamProtocolVersion {
+	return []UpstreamProtocolVersion{
+		UpstreamProtocolVersionTwoThousandAndTwentySixMinus07Minus28,
+		UpstreamProtocolVersionTwoThousandAndTwentyFiveMinus11Minus25,
+		UpstreamProtocolVersionTwoThousandAndTwentyFiveMinus06Minus18,
+		UpstreamProtocolVersionTwoThousandAndTwentyFiveMinus03Minus26,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

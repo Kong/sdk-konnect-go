@@ -167,6 +167,13 @@ const (
 func (e BillingWorkflowCollectionAlignmentAnchoredAlignmentType) ToPointer() *BillingWorkflowCollectionAlignmentAnchoredAlignmentType {
 	return &e
 }
+
+// BillingWorkflowCollectionAlignmentAnchoredAlignmentTypeValues returns every known BillingWorkflowCollectionAlignmentAnchoredAlignmentType value in schema order.
+func BillingWorkflowCollectionAlignmentAnchoredAlignmentTypeValues() []BillingWorkflowCollectionAlignmentAnchoredAlignmentType {
+	return []BillingWorkflowCollectionAlignmentAnchoredAlignmentType{
+		BillingWorkflowCollectionAlignmentAnchoredAlignmentTypeAnchored,
+	}
+}
 func (e *BillingWorkflowCollectionAlignmentAnchoredAlignmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -257,6 +264,13 @@ const (
 
 func (e AlignmentType) ToPointer() *AlignmentType {
 	return &e
+}
+
+// AlignmentTypeValues returns every known AlignmentType value in schema order.
+func AlignmentTypeValues() []AlignmentType {
+	return []AlignmentType{
+		AlignmentTypeSubscription,
+	}
 }
 func (e *AlignmentType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -453,6 +467,14 @@ func (e SubscriptionEndProrationMode) ToPointer() *SubscriptionEndProrationMode 
 	return &e
 }
 
+// SubscriptionEndProrationModeValues returns every known SubscriptionEndProrationMode value in schema order.
+func SubscriptionEndProrationModeValues() []SubscriptionEndProrationMode {
+	return []SubscriptionEndProrationMode{
+		SubscriptionEndProrationModeBillFullPeriod,
+		SubscriptionEndProrationModeBillActualPeriod,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SubscriptionEndProrationMode) IsExact() bool {
 	if e != nil {
@@ -621,6 +643,14 @@ const (
 
 func (e BillingProfileTaxBehavior) ToPointer() *BillingProfileTaxBehavior {
 	return &e
+}
+
+// BillingProfileTaxBehaviorValues returns every known BillingProfileTaxBehavior value in schema order.
+func BillingProfileTaxBehaviorValues() []BillingProfileTaxBehavior {
+	return []BillingProfileTaxBehavior{
+		BillingProfileTaxBehaviorInclusive,
+		BillingProfileTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

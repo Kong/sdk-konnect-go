@@ -23,6 +23,17 @@ func (e ConfigurationDataPlaneGroupState) ToPointer() *ConfigurationDataPlaneGro
 	return &e
 }
 
+// ConfigurationDataPlaneGroupStateValues returns every known ConfigurationDataPlaneGroupState value in schema order.
+func ConfigurationDataPlaneGroupStateValues() []ConfigurationDataPlaneGroupState {
+	return []ConfigurationDataPlaneGroupState{
+		ConfigurationDataPlaneGroupStateCreated,
+		ConfigurationDataPlaneGroupStateInitializing,
+		ConfigurationDataPlaneGroupStateReady,
+		ConfigurationDataPlaneGroupStateTerminating,
+		ConfigurationDataPlaneGroupStateTerminated,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ConfigurationDataPlaneGroupState) IsExact() bool {
 	if e != nil {

@@ -4,7 +4,6 @@
 package components
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -20,6 +19,14 @@ const (
 
 func (e AICostExportScheduleInput2Format) ToPointer() *AICostExportScheduleInput2Format {
 	return &e
+}
+
+// AICostExportScheduleInput2FormatValues returns every known AICostExportScheduleInput2Format value in schema order.
+func AICostExportScheduleInput2FormatValues() []AICostExportScheduleInput2Format {
+	return []AICostExportScheduleInput2Format{
+		AICostExportScheduleInput2FormatParquet,
+		AICostExportScheduleInput2FormatCsv,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -48,6 +55,15 @@ func (e AICostExportScheduleInput2Compression) ToPointer() *AICostExportSchedule
 	return &e
 }
 
+// AICostExportScheduleInput2CompressionValues returns every known AICostExportScheduleInput2Compression value in schema order.
+func AICostExportScheduleInput2CompressionValues() []AICostExportScheduleInput2Compression {
+	return []AICostExportScheduleInput2Compression{
+		AICostExportScheduleInput2CompressionNone,
+		AICostExportScheduleInput2CompressionGzip,
+		AICostExportScheduleInput2CompressionZstd,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInput2Compression) IsExact() bool {
 	if e != nil {
@@ -72,6 +88,15 @@ const (
 
 func (e AICostExportScheduleInput2Cadence) ToPointer() *AICostExportScheduleInput2Cadence {
 	return &e
+}
+
+// AICostExportScheduleInput2CadenceValues returns every known AICostExportScheduleInput2Cadence value in schema order.
+func AICostExportScheduleInput2CadenceValues() []AICostExportScheduleInput2Cadence {
+	return []AICostExportScheduleInput2Cadence{
+		AICostExportScheduleInput2CadenceDaily,
+		AICostExportScheduleInput2CadenceWeekly,
+		AICostExportScheduleInput2CadenceMonthly,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -99,6 +124,14 @@ func (e AICostExportScheduleInput2Status) ToPointer() *AICostExportScheduleInput
 	return &e
 }
 
+// AICostExportScheduleInput2StatusValues returns every known AICostExportScheduleInput2Status value in schema order.
+func AICostExportScheduleInput2StatusValues() []AICostExportScheduleInput2Status {
+	return []AICostExportScheduleInput2Status{
+		AICostExportScheduleInput2StatusActive,
+		AICostExportScheduleInput2StatusPaused,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInput2Status) IsExact() bool {
 	if e != nil {
@@ -122,6 +155,14 @@ func (e AICostExportScheduleInput2Dataset) ToPointer() *AICostExportScheduleInpu
 	return &e
 }
 
+// AICostExportScheduleInput2DatasetValues returns every known AICostExportScheduleInput2Dataset value in schema order.
+func AICostExportScheduleInput2DatasetValues() []AICostExportScheduleInput2Dataset {
+	return []AICostExportScheduleInput2Dataset{
+		AICostExportScheduleInput2DatasetUsageEvents,
+		AICostExportScheduleInput2DatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInput2Dataset) IsExact() bool {
 	if e != nil {
@@ -133,30 +174,37 @@ func (e *AICostExportScheduleInput2Dataset) IsExact() bool {
 	return false
 }
 
-// AICostExportScheduleInputSchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
+// AICostExportScheduleInput2SchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 //
 // Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-type AICostExportScheduleInputSchemaVersion int64
+type AICostExportScheduleInput2SchemaVersion int64
 
 const (
-	AICostExportScheduleInputSchemaVersionOne AICostExportScheduleInputSchemaVersion = 1
+	AICostExportScheduleInput2SchemaVersionOne AICostExportScheduleInput2SchemaVersion = 1
+	AICostExportScheduleInput2SchemaVersionTwo AICostExportScheduleInput2SchemaVersion = 2
 )
 
-func (e AICostExportScheduleInputSchemaVersion) ToPointer() *AICostExportScheduleInputSchemaVersion {
+func (e AICostExportScheduleInput2SchemaVersion) ToPointer() *AICostExportScheduleInput2SchemaVersion {
 	return &e
 }
-func (e *AICostExportScheduleInputSchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// AICostExportScheduleInput2SchemaVersionValues returns every known AICostExportScheduleInput2SchemaVersion value in schema order.
+func AICostExportScheduleInput2SchemaVersionValues() []AICostExportScheduleInput2SchemaVersion {
+	return []AICostExportScheduleInput2SchemaVersion{
+		AICostExportScheduleInput2SchemaVersionOne,
+		AICostExportScheduleInput2SchemaVersionTwo,
 	}
-	switch v {
-	case 1:
-		*e = AICostExportScheduleInputSchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AICostExportScheduleInputSchemaVersion: %v", v)
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportScheduleInput2SchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
+	return false
 }
 
 type AICostExportScheduleInput2 struct {
@@ -187,12 +235,12 @@ type AICostExportScheduleInput2 struct {
 	// The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 	//
 	// Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-	SchemaVersion *AICostExportScheduleInputSchemaVersion `default:"1" json:"schema_version"`
+	SchemaVersion *AICostExportScheduleInput2SchemaVersion `default:"1" json:"schema_version"`
 	// The FOCUS options of each export.
 	//
 	// Required when `dataset` is `focus`, and isn't accepted for any other dataset.
 	Focus *AICostFocusOptionsInput `json:"focus,omitempty"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`
@@ -261,7 +309,7 @@ func (a *AICostExportScheduleInput2) GetDataset() AICostExportScheduleInput2Data
 	return a.Dataset
 }
 
-func (a *AICostExportScheduleInput2) GetSchemaVersion() *AICostExportScheduleInputSchemaVersion {
+func (a *AICostExportScheduleInput2) GetSchemaVersion() *AICostExportScheduleInput2SchemaVersion {
 	if a == nil {
 		return nil
 	}
@@ -311,6 +359,14 @@ func (e AICostExportScheduleInputFormat) ToPointer() *AICostExportScheduleInputF
 	return &e
 }
 
+// AICostExportScheduleInputFormatValues returns every known AICostExportScheduleInputFormat value in schema order.
+func AICostExportScheduleInputFormatValues() []AICostExportScheduleInputFormat {
+	return []AICostExportScheduleInputFormat{
+		AICostExportScheduleInputFormatParquet,
+		AICostExportScheduleInputFormatCsv,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInputFormat) IsExact() bool {
 	if e != nil {
@@ -335,6 +391,15 @@ const (
 
 func (e AICostExportScheduleInputCompression) ToPointer() *AICostExportScheduleInputCompression {
 	return &e
+}
+
+// AICostExportScheduleInputCompressionValues returns every known AICostExportScheduleInputCompression value in schema order.
+func AICostExportScheduleInputCompressionValues() []AICostExportScheduleInputCompression {
+	return []AICostExportScheduleInputCompression{
+		AICostExportScheduleInputCompressionNone,
+		AICostExportScheduleInputCompressionGzip,
+		AICostExportScheduleInputCompressionZstd,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -363,6 +428,15 @@ func (e AICostExportScheduleInputCadence) ToPointer() *AICostExportScheduleInput
 	return &e
 }
 
+// AICostExportScheduleInputCadenceValues returns every known AICostExportScheduleInputCadence value in schema order.
+func AICostExportScheduleInputCadenceValues() []AICostExportScheduleInputCadence {
+	return []AICostExportScheduleInputCadence{
+		AICostExportScheduleInputCadenceDaily,
+		AICostExportScheduleInputCadenceWeekly,
+		AICostExportScheduleInputCadenceMonthly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInputCadence) IsExact() bool {
 	if e != nil {
@@ -388,6 +462,14 @@ func (e AICostExportScheduleInputStatus) ToPointer() *AICostExportScheduleInputS
 	return &e
 }
 
+// AICostExportScheduleInputStatusValues returns every known AICostExportScheduleInputStatus value in schema order.
+func AICostExportScheduleInputStatusValues() []AICostExportScheduleInputStatus {
+	return []AICostExportScheduleInputStatus{
+		AICostExportScheduleInputStatusActive,
+		AICostExportScheduleInputStatusPaused,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInputStatus) IsExact() bool {
 	if e != nil {
@@ -411,6 +493,14 @@ func (e AICostExportScheduleInputDataset) ToPointer() *AICostExportScheduleInput
 	return &e
 }
 
+// AICostExportScheduleInputDatasetValues returns every known AICostExportScheduleInputDataset value in schema order.
+func AICostExportScheduleInputDatasetValues() []AICostExportScheduleInputDataset {
+	return []AICostExportScheduleInputDataset{
+		AICostExportScheduleInputDatasetUsageEvents,
+		AICostExportScheduleInputDatasetFocus,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostExportScheduleInputDataset) IsExact() bool {
 	if e != nil {
@@ -422,30 +512,37 @@ func (e *AICostExportScheduleInputDataset) IsExact() bool {
 	return false
 }
 
-// SchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
+// AICostExportScheduleInputSchemaVersion - The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 //
 // Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-type SchemaVersion int64
+type AICostExportScheduleInputSchemaVersion int64
 
 const (
-	SchemaVersionOne SchemaVersion = 1
+	AICostExportScheduleInputSchemaVersionOne AICostExportScheduleInputSchemaVersion = 1
+	AICostExportScheduleInputSchemaVersionTwo AICostExportScheduleInputSchemaVersion = 2
 )
 
-func (e SchemaVersion) ToPointer() *SchemaVersion {
+func (e AICostExportScheduleInputSchemaVersion) ToPointer() *AICostExportScheduleInputSchemaVersion {
 	return &e
 }
-func (e *SchemaVersion) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// AICostExportScheduleInputSchemaVersionValues returns every known AICostExportScheduleInputSchemaVersion value in schema order.
+func AICostExportScheduleInputSchemaVersionValues() []AICostExportScheduleInputSchemaVersion {
+	return []AICostExportScheduleInputSchemaVersion{
+		AICostExportScheduleInputSchemaVersionOne,
+		AICostExportScheduleInputSchemaVersionTwo,
 	}
-	switch v {
-	case 1:
-		*e = SchemaVersion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SchemaVersion: %v", v)
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AICostExportScheduleInputSchemaVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 1, 2:
+			return true
+		}
 	}
+	return false
 }
 
 type AICostExportScheduleInput1 struct {
@@ -476,12 +573,12 @@ type AICostExportScheduleInput1 struct {
 	// The schema version of each export's data files within the dataset, which fixes their columns and values. Each export that the schedule creates copies it, so a newer schema version doesn't change the schedule's exports.
 	//
 	// Defaults to `1`, also once newer schema versions exist, so a replacement that omits `schema_version` sets `1`.
-	SchemaVersion *SchemaVersion `default:"1" json:"schema_version"`
+	SchemaVersion *AICostExportScheduleInputSchemaVersion `default:"1" json:"schema_version"`
 	// The FOCUS options of each export.
 	//
 	// Required when `dataset` is `focus`, and isn't accepted for any other dataset.
 	Focus *AICostFocusOptionsInput `json:"focus,omitempty"`
-	// Filters that select the events to export, with the same fields, operators, and shape as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
+	// Filters that select the events to export, with the same fields, operators, shape, and nesting limit as the `filters` of `POST /v1/ai-cost-management/events/query`. Every filter must match.
 	//
 	// Defaults to `{}`.
 	Filters any               `json:"filters,omitempty"`
@@ -550,7 +647,7 @@ func (a *AICostExportScheduleInput1) GetDataset() AICostExportScheduleInputDatas
 	return a.Dataset
 }
 
-func (a *AICostExportScheduleInput1) GetSchemaVersion() *SchemaVersion {
+func (a *AICostExportScheduleInput1) GetSchemaVersion() *AICostExportScheduleInputSchemaVersion {
 	if a == nil {
 		return nil
 	}

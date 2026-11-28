@@ -14,6 +14,14 @@ func (e AiModelVersionSpecWriteSource) ToPointer() *AiModelVersionSpecWriteSourc
 	return &e
 }
 
+// AiModelVersionSpecWriteSourceValues returns every known AiModelVersionSpecWriteSource value in schema order.
+func AiModelVersionSpecWriteSourceValues() []AiModelVersionSpecWriteSource {
+	return []AiModelVersionSpecWriteSource{
+		AiModelVersionSpecWriteSourceAiGateway,
+		AiModelVersionSpecWriteSourceProvider,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AiModelVersionSpecWriteSource) IsExact() bool {
 	if e != nil {

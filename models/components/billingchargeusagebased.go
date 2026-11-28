@@ -21,6 +21,13 @@ const (
 func (e BillingChargeUsageBasedType) ToPointer() *BillingChargeUsageBasedType {
 	return &e
 }
+
+// BillingChargeUsageBasedTypeValues returns every known BillingChargeUsageBasedType value in schema order.
+func BillingChargeUsageBasedTypeValues() []BillingChargeUsageBasedType {
+	return []BillingChargeUsageBasedType{
+		BillingChargeUsageBasedTypeUsageBased,
+	}
+}
 func (e *BillingChargeUsageBasedType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -382,6 +389,14 @@ func (e BillingChargeUsageBasedLifecycleController) ToPointer() *BillingChargeUs
 	return &e
 }
 
+// BillingChargeUsageBasedLifecycleControllerValues returns every known BillingChargeUsageBasedLifecycleController value in schema order.
+func BillingChargeUsageBasedLifecycleControllerValues() []BillingChargeUsageBasedLifecycleController {
+	return []BillingChargeUsageBasedLifecycleController{
+		BillingChargeUsageBasedLifecycleControllerSystem,
+		BillingChargeUsageBasedLifecycleControllerManual,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingChargeUsageBasedLifecycleController) IsExact() bool {
 	if e != nil {
@@ -552,6 +567,14 @@ func (e SubscriptionCostBasisMode) ToPointer() *SubscriptionCostBasisMode {
 	return &e
 }
 
+// SubscriptionCostBasisModeValues returns every known SubscriptionCostBasisMode value in schema order.
+func SubscriptionCostBasisModeValues() []SubscriptionCostBasisMode {
+	return []SubscriptionCostBasisMode{
+		SubscriptionCostBasisModeDynamic,
+		SubscriptionCostBasisModePinned,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *SubscriptionCostBasisMode) IsExact() bool {
 	if e != nil {
@@ -573,6 +596,14 @@ const (
 
 func (e BillingSubscriptionSubscriptionMode) ToPointer() *BillingSubscriptionSubscriptionMode {
 	return &e
+}
+
+// BillingSubscriptionSubscriptionModeValues returns every known BillingSubscriptionSubscriptionMode value in schema order.
+func BillingSubscriptionSubscriptionModeValues() []BillingSubscriptionSubscriptionMode {
+	return []BillingSubscriptionSubscriptionMode{
+		BillingSubscriptionSubscriptionModeNoProration,
+		BillingSubscriptionSubscriptionModeProratePrices,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -633,6 +664,16 @@ func (e BillingSubscriptionSubscriptionStatus) ToPointer() *BillingSubscriptionS
 	return &e
 }
 
+// BillingSubscriptionSubscriptionStatusValues returns every known BillingSubscriptionSubscriptionStatus value in schema order.
+func BillingSubscriptionSubscriptionStatusValues() []BillingSubscriptionSubscriptionStatus {
+	return []BillingSubscriptionSubscriptionStatus{
+		BillingSubscriptionSubscriptionStatusActive,
+		BillingSubscriptionSubscriptionStatusInactive,
+		BillingSubscriptionSubscriptionStatusCanceled,
+		BillingSubscriptionSubscriptionStatusScheduled,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionSubscriptionStatus) IsExact() bool {
 	if e != nil {
@@ -660,6 +701,14 @@ const (
 
 func (e BillingSubscriptionSubscriptionSettlementMode) ToPointer() *BillingSubscriptionSubscriptionSettlementMode {
 	return &e
+}
+
+// BillingSubscriptionSubscriptionSettlementModeValues returns every known BillingSubscriptionSubscriptionSettlementMode value in schema order.
+func BillingSubscriptionSubscriptionSettlementModeValues() []BillingSubscriptionSubscriptionSettlementMode {
+	return []BillingSubscriptionSubscriptionSettlementMode{
+		BillingSubscriptionSubscriptionSettlementModeCreditThenInvoice,
+		BillingSubscriptionSubscriptionSettlementModeCreditOnly,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -1093,6 +1142,16 @@ func (e BillingChargeUsageBasedStatus) ToPointer() *BillingChargeUsageBasedStatu
 	return &e
 }
 
+// BillingChargeUsageBasedStatusValues returns every known BillingChargeUsageBasedStatus value in schema order.
+func BillingChargeUsageBasedStatusValues() []BillingChargeUsageBasedStatus {
+	return []BillingChargeUsageBasedStatus{
+		BillingChargeUsageBasedStatusCreated,
+		BillingChargeUsageBasedStatusActive,
+		BillingChargeUsageBasedStatusFinal,
+		BillingChargeUsageBasedStatusDeleted,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingChargeUsageBasedStatus) IsExact() bool {
 	if e != nil {
@@ -1227,6 +1286,14 @@ func (e BillingChargeUsageBasedSettlementMode) ToPointer() *BillingChargeUsageBa
 	return &e
 }
 
+// BillingChargeUsageBasedSettlementModeValues returns every known BillingChargeUsageBasedSettlementMode value in schema order.
+func BillingChargeUsageBasedSettlementModeValues() []BillingChargeUsageBasedSettlementMode {
+	return []BillingChargeUsageBasedSettlementMode{
+		BillingChargeUsageBasedSettlementModeCreditThenInvoice,
+		BillingChargeUsageBasedSettlementModeCreditOnly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingChargeUsageBasedSettlementMode) IsExact() bool {
 	if e != nil {
@@ -1251,6 +1318,14 @@ const (
 
 func (e BillingChargeUsageBasedTaxBehavior) ToPointer() *BillingChargeUsageBasedTaxBehavior {
 	return &e
+}
+
+// BillingChargeUsageBasedTaxBehaviorValues returns every known BillingChargeUsageBasedTaxBehavior value in schema order.
+func BillingChargeUsageBasedTaxBehaviorValues() []BillingChargeUsageBasedTaxBehavior {
+	return []BillingChargeUsageBasedTaxBehavior{
+		BillingChargeUsageBasedTaxBehaviorInclusive,
+		BillingChargeUsageBasedTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -2190,6 +2265,14 @@ func (e BillingChargeUsageBasedConversionOperation) ToPointer() *BillingChargeUs
 	return &e
 }
 
+// BillingChargeUsageBasedConversionOperationValues returns every known BillingChargeUsageBasedConversionOperation value in schema order.
+func BillingChargeUsageBasedConversionOperationValues() []BillingChargeUsageBasedConversionOperation {
+	return []BillingChargeUsageBasedConversionOperation{
+		BillingChargeUsageBasedConversionOperationDivide,
+		BillingChargeUsageBasedConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingChargeUsageBasedConversionOperation) IsExact() bool {
 	if e != nil {
@@ -2216,6 +2299,16 @@ const (
 
 func (e BillingChargeUsageBasedRoundingMode) ToPointer() *BillingChargeUsageBasedRoundingMode {
 	return &e
+}
+
+// BillingChargeUsageBasedRoundingModeValues returns every known BillingChargeUsageBasedRoundingMode value in schema order.
+func BillingChargeUsageBasedRoundingModeValues() []BillingChargeUsageBasedRoundingMode {
+	return []BillingChargeUsageBasedRoundingMode{
+		BillingChargeUsageBasedRoundingModeCeiling,
+		BillingChargeUsageBasedRoundingModeFloor,
+		BillingChargeUsageBasedRoundingModeHalfUp,
+		BillingChargeUsageBasedRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -2624,6 +2717,14 @@ func (e BillingChargeUsageBasedSystemIntentConversionOperation) ToPointer() *Bil
 	return &e
 }
 
+// BillingChargeUsageBasedSystemIntentConversionOperationValues returns every known BillingChargeUsageBasedSystemIntentConversionOperation value in schema order.
+func BillingChargeUsageBasedSystemIntentConversionOperationValues() []BillingChargeUsageBasedSystemIntentConversionOperation {
+	return []BillingChargeUsageBasedSystemIntentConversionOperation{
+		BillingChargeUsageBasedSystemIntentConversionOperationDivide,
+		BillingChargeUsageBasedSystemIntentConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingChargeUsageBasedSystemIntentConversionOperation) IsExact() bool {
 	if e != nil {
@@ -2650,6 +2751,16 @@ const (
 
 func (e BillingChargeUsageBasedSystemIntentRoundingMode) ToPointer() *BillingChargeUsageBasedSystemIntentRoundingMode {
 	return &e
+}
+
+// BillingChargeUsageBasedSystemIntentRoundingModeValues returns every known BillingChargeUsageBasedSystemIntentRoundingMode value in schema order.
+func BillingChargeUsageBasedSystemIntentRoundingModeValues() []BillingChargeUsageBasedSystemIntentRoundingMode {
+	return []BillingChargeUsageBasedSystemIntentRoundingMode{
+		BillingChargeUsageBasedSystemIntentRoundingModeCeiling,
+		BillingChargeUsageBasedSystemIntentRoundingModeFloor,
+		BillingChargeUsageBasedSystemIntentRoundingModeHalfUp,
+		BillingChargeUsageBasedSystemIntentRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -12,6 +12,9 @@ import (
 )
 
 value := components.AICostExportInput2SchemaVersionOne
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.AICostExportInput2SchemaVersion(999)
 ```
 
 
@@ -20,3 +23,4 @@ value := components.AICostExportInput2SchemaVersionOne
 | Name                                 | Value                                |
 | ------------------------------------ | ------------------------------------ |
 | `AICostExportInput2SchemaVersionOne` | 1                                    |
+| `AICostExportInput2SchemaVersionTwo` | 2                                    |

@@ -45,6 +45,45 @@ func (e AgenticMetrics) ToPointer() *AgenticMetrics {
 	return &e
 }
 
+// AgenticMetricsValues returns every known AgenticMetrics value in schema order.
+func AgenticMetricsValues() []AgenticMetrics {
+	return []AgenticMetrics{
+		AgenticMetricsA2aLatencyAverage,
+		AgenticMetricsA2aResponseSizeSum,
+		AgenticMetricsCacheHitRate,
+		AgenticMetricsErrorRate,
+		AgenticMetricsKongInternalLatencyAverage,
+		AgenticMetricsKongInternalLatencyP50,
+		AgenticMetricsKongInternalLatencyP95,
+		AgenticMetricsKongInternalLatencyP99,
+		AgenticMetricsKongLatencyAverage,
+		AgenticMetricsKongLatencyP50,
+		AgenticMetricsKongLatencyP95,
+		AgenticMetricsKongLatencyP99,
+		AgenticMetricsMcpResponseSizeSum,
+		AgenticMetricsRequestCount,
+		AgenticMetricsRequestPerMinute,
+		AgenticMetricsRequestSizeAverage,
+		AgenticMetricsRequestSizeP50,
+		AgenticMetricsRequestSizeP95,
+		AgenticMetricsRequestSizeP99,
+		AgenticMetricsRequestSizeSum,
+		AgenticMetricsResponseLatencyAverage,
+		AgenticMetricsResponseLatencyP50,
+		AgenticMetricsResponseLatencyP95,
+		AgenticMetricsResponseLatencyP99,
+		AgenticMetricsResponseSizeAverage,
+		AgenticMetricsResponseSizeP50,
+		AgenticMetricsResponseSizeP95,
+		AgenticMetricsResponseSizeP99,
+		AgenticMetricsResponseSizeSum,
+		AgenticMetricsUpstreamLatencyAverage,
+		AgenticMetricsUpstreamLatencyP50,
+		AgenticMetricsUpstreamLatencyP95,
+		AgenticMetricsUpstreamLatencyP99,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AgenticMetrics) IsExact() bool {
 	if e != nil {

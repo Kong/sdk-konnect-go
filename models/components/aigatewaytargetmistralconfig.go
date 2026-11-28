@@ -19,6 +19,14 @@ func (e AIGatewayTargetMistralConfigFormat) ToPointer() *AIGatewayTargetMistralC
 	return &e
 }
 
+// AIGatewayTargetMistralConfigFormatValues returns every known AIGatewayTargetMistralConfigFormat value in schema order.
+func AIGatewayTargetMistralConfigFormatValues() []AIGatewayTargetMistralConfigFormat {
+	return []AIGatewayTargetMistralConfigFormat{
+		AIGatewayTargetMistralConfigFormatOllama,
+		AIGatewayTargetMistralConfigFormatOpenai,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayTargetMistralConfigFormat) IsExact() bool {
 	if e != nil {

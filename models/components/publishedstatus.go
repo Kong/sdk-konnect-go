@@ -15,6 +15,14 @@ func (e PublishedStatus) ToPointer() *PublishedStatus {
 	return &e
 }
 
+// PublishedStatusValues returns every known PublishedStatus value in schema order.
+func PublishedStatusValues() []PublishedStatus {
+	return []PublishedStatus{
+		PublishedStatusPublished,
+		PublishedStatusUnpublished,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PublishedStatus) IsExact() bool {
 	if e != nil {

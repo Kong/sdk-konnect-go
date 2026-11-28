@@ -19,6 +19,13 @@ const (
 func (e EnumConfigFieldSchemaType) ToPointer() *EnumConfigFieldSchemaType {
 	return &e
 }
+
+// EnumConfigFieldSchemaTypeValues returns every known EnumConfigFieldSchemaType value in schema order.
+func EnumConfigFieldSchemaTypeValues() []EnumConfigFieldSchemaType {
+	return []EnumConfigFieldSchemaType{
+		EnumConfigFieldSchemaTypeEnum,
+	}
+}
 func (e *EnumConfigFieldSchemaType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

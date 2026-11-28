@@ -19,6 +19,15 @@ func (e ResponseStreaming) ToPointer() *ResponseStreaming {
 	return &e
 }
 
+// ResponseStreamingValues returns every known ResponseStreaming value in schema order.
+func ResponseStreamingValues() []ResponseStreaming {
+	return []ResponseStreaming{
+		ResponseStreamingAllow,
+		ResponseStreamingAlways,
+		ResponseStreamingDeny,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ResponseStreaming) IsExact() bool {
 	if e != nil {
@@ -37,8 +46,13 @@ type AIGatewayModelAPIConfigOutput struct {
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayLoggingConfig `json:"logging,omitempty"`
 	ResponseStreaming *ResponseStreaming      `default:"allow" json:"response_streaming"`
-	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	// The maximum size, in bytes, of a request body that the gateway reads and sends to the model.
+	// A request with a larger body fails. Set to 0 for no limit.
+	// If you do not set a value, the gateway uses the request size limit that the model's providers publish,
+	// with defaults to 8 MB.
+	// If the targets use more than one provider, the gateway uses the highest of these limits.
+	//
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfigOutput `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
@@ -154,8 +168,13 @@ type AIGatewayModelAPIConfig struct {
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayLoggingConfig `json:"logging,omitempty"`
 	ResponseStreaming *ResponseStreaming      `default:"allow" json:"response_streaming"`
-	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	// The maximum size, in bytes, of a request body that the gateway reads and sends to the model.
+	// A request with a larger body fails. Set to 0 for no limit.
+	// If you do not set a value, the gateway uses the request size limit that the model's providers publish,
+	// with defaults to 8 MB.
+	// If the targets use more than one provider, the gateway uses the highest of these limits.
+	//
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfig `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.

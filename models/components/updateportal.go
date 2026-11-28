@@ -19,6 +19,14 @@ func (e UpdatePortalDefaultAPIVisibility) ToPointer() *UpdatePortalDefaultAPIVis
 	return &e
 }
 
+// UpdatePortalDefaultAPIVisibilityValues returns every known UpdatePortalDefaultAPIVisibility value in schema order.
+func UpdatePortalDefaultAPIVisibilityValues() []UpdatePortalDefaultAPIVisibility {
+	return []UpdatePortalDefaultAPIVisibility{
+		UpdatePortalDefaultAPIVisibilityPublic,
+		UpdatePortalDefaultAPIVisibilityPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdatePortalDefaultAPIVisibility) IsExact() bool {
 	if e != nil {
@@ -40,6 +48,14 @@ const (
 
 func (e UpdatePortalDefaultPageVisibility) ToPointer() *UpdatePortalDefaultPageVisibility {
 	return &e
+}
+
+// UpdatePortalDefaultPageVisibilityValues returns every known UpdatePortalDefaultPageVisibility value in schema order.
+func UpdatePortalDefaultPageVisibilityValues() []UpdatePortalDefaultPageVisibility {
+	return []UpdatePortalDefaultPageVisibility{
+		UpdatePortalDefaultPageVisibilityPublic,
+		UpdatePortalDefaultPageVisibilityPrivate,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

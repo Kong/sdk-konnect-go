@@ -18,7 +18,7 @@ import (
 	"net/url"
 )
 
-// OrgConfigurations - Operations related to org scoped notifications and their org subscriptions. The http channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when http destinations are enabled.
+// OrgConfigurations - Operations related to org scoped notifications and their org subscriptions. The webhook channel of an org scoped notification is set up for the whole organization, and no user can switch it on or off. Only an org admin can use these operations. The routes exist only when webhook destinations are enabled.
 type OrgConfigurations struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration

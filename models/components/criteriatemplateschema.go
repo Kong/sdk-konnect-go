@@ -19,6 +19,13 @@ const (
 func (e CriteriaTemplateSchema3Type) ToPointer() *CriteriaTemplateSchema3Type {
 	return &e
 }
+
+// CriteriaTemplateSchema3TypeValues returns every known CriteriaTemplateSchema3Type value in schema order.
+func CriteriaTemplateSchema3TypeValues() []CriteriaTemplateSchema3Type {
+	return []CriteriaTemplateSchema3Type{
+		CriteriaTemplateSchema3TypeJSONSchema,
+	}
+}
 func (e *CriteriaTemplateSchema3Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -74,6 +81,13 @@ const (
 func (e CriteriaTemplateSchemaType) ToPointer() *CriteriaTemplateSchemaType {
 	return &e
 }
+
+// CriteriaTemplateSchemaTypeValues returns every known CriteriaTemplateSchemaType value in schema order.
+func CriteriaTemplateSchemaTypeValues() []CriteriaTemplateSchemaType {
+	return []CriteriaTemplateSchemaType{
+		CriteriaTemplateSchemaTypeSimple,
+	}
+}
 func (e *CriteriaTemplateSchemaType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -98,6 +112,15 @@ const (
 
 func (e CriteriaTemplateSchemaDefinition) ToPointer() *CriteriaTemplateSchemaDefinition {
 	return &e
+}
+
+// CriteriaTemplateSchemaDefinitionValues returns every known CriteriaTemplateSchemaDefinition value in schema order.
+func CriteriaTemplateSchemaDefinitionValues() []CriteriaTemplateSchemaDefinition {
+	return []CriteriaTemplateSchemaDefinition{
+		CriteriaTemplateSchemaDefinitionString,
+		CriteriaTemplateSchemaDefinitionNumber,
+		CriteriaTemplateSchemaDefinitionBoolean,
+	}
 }
 func (e *CriteriaTemplateSchemaDefinition) UnmarshalJSON(data []byte) error {
 	var v string

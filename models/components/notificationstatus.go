@@ -16,6 +16,15 @@ func (e NotificationStatus) ToPointer() *NotificationStatus {
 	return &e
 }
 
+// NotificationStatusValues returns every known NotificationStatus value in schema order.
+func NotificationStatusValues() []NotificationStatus {
+	return []NotificationStatus{
+		NotificationStatusRead,
+		NotificationStatusUnread,
+		NotificationStatusArchived,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NotificationStatus) IsExact() bool {
 	if e != nil {

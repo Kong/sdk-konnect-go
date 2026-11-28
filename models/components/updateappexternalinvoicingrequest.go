@@ -19,6 +19,13 @@ const (
 func (e UpdateAppExternalInvoicingRequestType) ToPointer() *UpdateAppExternalInvoicingRequestType {
 	return &e
 }
+
+// UpdateAppExternalInvoicingRequestTypeValues returns every known UpdateAppExternalInvoicingRequestType value in schema order.
+func UpdateAppExternalInvoicingRequestTypeValues() []UpdateAppExternalInvoicingRequestType {
+	return []UpdateAppExternalInvoicingRequestType{
+		UpdateAppExternalInvoicingRequestTypeExternalInvoicing,
+	}
+}
 func (e *UpdateAppExternalInvoicingRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

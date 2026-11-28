@@ -23,6 +23,13 @@ const (
 func (e CreditGrantVoidPaymentAdjustment) ToPointer() *CreditGrantVoidPaymentAdjustment {
 	return &e
 }
+
+// CreditGrantVoidPaymentAdjustmentValues returns every known CreditGrantVoidPaymentAdjustment value in schema order.
+func CreditGrantVoidPaymentAdjustmentValues() []CreditGrantVoidPaymentAdjustment {
+	return []CreditGrantVoidPaymentAdjustment{
+		CreditGrantVoidPaymentAdjustmentNone,
+	}
+}
 func (e *CreditGrantVoidPaymentAdjustment) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

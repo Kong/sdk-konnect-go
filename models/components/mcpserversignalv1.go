@@ -18,6 +18,13 @@ const (
 func (e MCPServerSignalV1Type) ToPointer() *MCPServerSignalV1Type {
 	return &e
 }
+
+// MCPServerSignalV1TypeValues returns every known MCPServerSignalV1Type value in schema order.
+func MCPServerSignalV1TypeValues() []MCPServerSignalV1Type {
+	return []MCPServerSignalV1Type{
+		MCPServerSignalV1TypeMcp,
+	}
+}
 func (e *MCPServerSignalV1Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

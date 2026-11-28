@@ -17,6 +17,13 @@ const (
 func (e SimpleSchemaType) ToPointer() *SimpleSchemaType {
 	return &e
 }
+
+// SimpleSchemaTypeValues returns every known SimpleSchemaType value in schema order.
+func SimpleSchemaTypeValues() []SimpleSchemaType {
+	return []SimpleSchemaType{
+		SimpleSchemaTypeSimple,
+	}
+}
 func (e *SimpleSchemaType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -41,6 +48,15 @@ const (
 
 func (e Definition) ToPointer() *Definition {
 	return &e
+}
+
+// DefinitionValues returns every known Definition value in schema order.
+func DefinitionValues() []Definition {
+	return []Definition{
+		DefinitionString,
+		DefinitionNumber,
+		DefinitionBoolean,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

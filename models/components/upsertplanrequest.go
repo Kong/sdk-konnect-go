@@ -20,6 +20,14 @@ func (e UpsertPlanRequestSettlementMode) ToPointer() *UpsertPlanRequestSettlemen
 	return &e
 }
 
+// UpsertPlanRequestSettlementModeValues returns every known UpsertPlanRequestSettlementMode value in schema order.
+func UpsertPlanRequestSettlementModeValues() []UpsertPlanRequestSettlementMode {
+	return []UpsertPlanRequestSettlementMode{
+		UpsertPlanRequestSettlementModeCreditThenInvoice,
+		UpsertPlanRequestSettlementModeCreditOnly,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpsertPlanRequestSettlementMode) IsExact() bool {
 	if e != nil {

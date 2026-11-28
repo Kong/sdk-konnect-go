@@ -18,6 +18,13 @@ const (
 func (e MCPResourceSourceRawType) ToPointer() *MCPResourceSourceRawType {
 	return &e
 }
+
+// MCPResourceSourceRawTypeValues returns every known MCPResourceSourceRawType value in schema order.
+func MCPResourceSourceRawTypeValues() []MCPResourceSourceRawType {
+	return []MCPResourceSourceRawType{
+		MCPResourceSourceRawTypeRaw,
+	}
+}
 func (e *MCPResourceSourceRawType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

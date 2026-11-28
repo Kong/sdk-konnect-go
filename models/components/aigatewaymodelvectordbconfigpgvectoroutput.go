@@ -19,6 +19,14 @@ func (e DistanceMetric) ToPointer() *DistanceMetric {
 	return &e
 }
 
+// DistanceMetricValues returns every known DistanceMetric value in schema order.
+func DistanceMetricValues() []DistanceMetric {
+	return []DistanceMetric{
+		DistanceMetricCosine,
+		DistanceMetricEuclidean,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DistanceMetric) IsExact() bool {
 	if e != nil {
@@ -41,6 +49,15 @@ const (
 
 func (e AIGatewayModelVectorDBConfigPgVectorVersion) ToPointer() *AIGatewayModelVectorDBConfigPgVectorVersion {
 	return &e
+}
+
+// AIGatewayModelVectorDBConfigPgVectorVersionValues returns every known AIGatewayModelVectorDBConfigPgVectorVersion value in schema order.
+func AIGatewayModelVectorDBConfigPgVectorVersionValues() []AIGatewayModelVectorDBConfigPgVectorVersion {
+	return []AIGatewayModelVectorDBConfigPgVectorVersion{
+		AIGatewayModelVectorDBConfigPgVectorVersionAny,
+		AIGatewayModelVectorDBConfigPgVectorVersionTlsv12,
+		AIGatewayModelVectorDBConfigPgVectorVersionTlsv13,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

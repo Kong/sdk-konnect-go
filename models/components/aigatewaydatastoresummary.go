@@ -21,6 +21,16 @@ func (e AIGatewayDatastoreSummaryType) ToPointer() *AIGatewayDatastoreSummaryTyp
 	return &e
 }
 
+// AIGatewayDatastoreSummaryTypeValues returns every known AIGatewayDatastoreSummaryType value in schema order.
+func AIGatewayDatastoreSummaryTypeValues() []AIGatewayDatastoreSummaryType {
+	return []AIGatewayDatastoreSummaryType{
+		AIGatewayDatastoreSummaryTypeRedisCe,
+		AIGatewayDatastoreSummaryTypeRedisEe,
+		AIGatewayDatastoreSummaryTypeVectordb,
+		AIGatewayDatastoreSummaryTypeTokenVault,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AIGatewayDatastoreSummaryType) IsExact() bool {
 	if e != nil {

@@ -19,6 +19,13 @@ const (
 func (e InternalErrorStatus) ToPointer() *InternalErrorStatus {
 	return &e
 }
+
+// InternalErrorStatusValues returns every known InternalErrorStatus value in schema order.
+func InternalErrorStatusValues() []InternalErrorStatus {
+	return []InternalErrorStatus{
+		InternalErrorStatusFiveHundred,
+	}
+}
 func (e *InternalErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

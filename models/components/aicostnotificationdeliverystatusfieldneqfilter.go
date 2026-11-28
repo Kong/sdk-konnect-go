@@ -20,6 +20,15 @@ func (e AICostNotificationDeliveryStatusFieldNEQFilterNEQ) ToPointer() *AICostNo
 	return &e
 }
 
+// AICostNotificationDeliveryStatusFieldNEQFilterNEQValues returns every known AICostNotificationDeliveryStatusFieldNEQFilterNEQ value in schema order.
+func AICostNotificationDeliveryStatusFieldNEQFilterNEQValues() []AICostNotificationDeliveryStatusFieldNEQFilterNEQ {
+	return []AICostNotificationDeliveryStatusFieldNEQFilterNEQ{
+		AICostNotificationDeliveryStatusFieldNEQFilterNEQPending,
+		AICostNotificationDeliveryStatusFieldNEQFilterNEQDelivered,
+		AICostNotificationDeliveryStatusFieldNEQFilterNEQFailed,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostNotificationDeliveryStatusFieldNEQFilterNEQ) IsExact() bool {
 	if e != nil {

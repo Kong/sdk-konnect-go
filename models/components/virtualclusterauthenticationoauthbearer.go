@@ -27,6 +27,15 @@ func (e VirtualClusterAuthenticationOauthBearerMediation) ToPointer() *VirtualCl
 	return &e
 }
 
+// VirtualClusterAuthenticationOauthBearerMediationValues returns every known VirtualClusterAuthenticationOauthBearerMediation value in schema order.
+func VirtualClusterAuthenticationOauthBearerMediationValues() []VirtualClusterAuthenticationOauthBearerMediation {
+	return []VirtualClusterAuthenticationOauthBearerMediation{
+		VirtualClusterAuthenticationOauthBearerMediationPassthrough,
+		VirtualClusterAuthenticationOauthBearerMediationValidateForward,
+		VirtualClusterAuthenticationOauthBearerMediationTerminate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VirtualClusterAuthenticationOauthBearerMediation) IsExact() bool {
 	if e != nil {

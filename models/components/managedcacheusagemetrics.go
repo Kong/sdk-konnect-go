@@ -16,6 +16,16 @@ func (e ManagedCacheUsageMetrics) ToPointer() *ManagedCacheUsageMetrics {
 	return &e
 }
 
+// ManagedCacheUsageMetricsValues returns every known ManagedCacheUsageMetrics value in schema order.
+func ManagedCacheUsageMetricsValues() []ManagedCacheUsageMetrics {
+	return []ManagedCacheUsageMetrics{
+		ManagedCacheUsageMetricsCacheEvictionRate,
+		ManagedCacheUsageMetricsCacheExpirationRate,
+		ManagedCacheUsageMetricsCacheItemsAverage,
+		ManagedCacheUsageMetricsCacheMemoryUtilizationMax,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ManagedCacheUsageMetrics) IsExact() bool {
 	if e != nil {

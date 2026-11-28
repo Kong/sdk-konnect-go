@@ -18,6 +18,14 @@ func (e ForwardToClusterBySNIConfigType) ToPointer() *ForwardToClusterBySNIConfi
 	return &e
 }
 
+// ForwardToClusterBySNIConfigTypeValues returns every known ForwardToClusterBySNIConfigType value in schema order.
+func ForwardToClusterBySNIConfigTypeValues() []ForwardToClusterBySNIConfigType {
+	return []ForwardToClusterBySNIConfigType{
+		ForwardToClusterBySNIConfigTypePerClusterSuffix,
+		ForwardToClusterBySNIConfigTypeSharedSuffix,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ForwardToClusterBySNIConfigType) IsExact() bool {
 	if e != nil {

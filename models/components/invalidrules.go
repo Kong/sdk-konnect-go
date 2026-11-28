@@ -37,6 +37,36 @@ func (e InvalidRules) ToPointer() *InvalidRules {
 	return &e
 }
 
+// InvalidRulesValues returns every known InvalidRules value in schema order.
+func InvalidRulesValues() []InvalidRules {
+	return []InvalidRules{
+		InvalidRulesRequired,
+		InvalidRulesUnique,
+		InvalidRulesIsArray,
+		InvalidRulesIsBase64,
+		InvalidRulesIsBoolean,
+		InvalidRulesIsDateTime,
+		InvalidRulesIsInteger,
+		InvalidRulesIsNull,
+		InvalidRulesIsNumber,
+		InvalidRulesIsObject,
+		InvalidRulesIsString,
+		InvalidRulesIsUUID,
+		InvalidRulesIsFqdn,
+		InvalidRulesIsArn,
+		InvalidRulesUnknownProperty,
+		InvalidRulesMissingReference,
+		InvalidRulesIsLabel,
+		InvalidRulesKeyInvalid,
+		InvalidRulesMatchesRegex,
+		InvalidRulesInvalid,
+		InvalidRulesIsSupportedNetworkAvailabilityZoneList,
+		InvalidRulesIsSupportedNetworkCidrBlock,
+		InvalidRulesIsSupportedProviderRegion,
+		InvalidRulesType,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *InvalidRules) IsExact() bool {
 	if e != nil {

@@ -18,6 +18,13 @@ const (
 func (e ServerlessV1ProviderName) ToPointer() *ServerlessV1ProviderName {
 	return &e
 }
+
+// ServerlessV1ProviderNameValues returns every known ServerlessV1ProviderName value in schema order.
+func ServerlessV1ProviderNameValues() []ServerlessV1ProviderName {
+	return []ServerlessV1ProviderName{
+		ServerlessV1ProviderNameAws,
+	}
+}
 func (e *ServerlessV1ProviderName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

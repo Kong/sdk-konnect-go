@@ -15,6 +15,14 @@ func (e UpdateControlPlaneRequestAuthType) ToPointer() *UpdateControlPlaneReques
 	return &e
 }
 
+// UpdateControlPlaneRequestAuthTypeValues returns every known UpdateControlPlaneRequestAuthType value in schema order.
+func UpdateControlPlaneRequestAuthTypeValues() []UpdateControlPlaneRequestAuthType {
+	return []UpdateControlPlaneRequestAuthType{
+		UpdateControlPlaneRequestAuthTypePinnedClientCerts,
+		UpdateControlPlaneRequestAuthTypePkiClientCerts,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateControlPlaneRequestAuthType) IsExact() bool {
 	if e != nil {

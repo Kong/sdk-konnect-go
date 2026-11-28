@@ -15,6 +15,14 @@ func (e Visibility) ToPointer() *Visibility {
 	return &e
 }
 
+// VisibilityValues returns every known Visibility value in schema order.
+func VisibilityValues() []Visibility {
+	return []Visibility{
+		VisibilityPublic,
+		VisibilityPrivate,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Visibility) IsExact() bool {
 	if e != nil {

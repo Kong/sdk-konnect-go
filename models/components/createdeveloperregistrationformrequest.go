@@ -9,29 +9,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type CreateDeveloperRegistrationFormRequestType string
-
-const (
-	CreateDeveloperRegistrationFormRequestTypeDeveloperRegistration CreateDeveloperRegistrationFormRequestType = "developer_registration"
-)
-
-func (e CreateDeveloperRegistrationFormRequestType) ToPointer() *CreateDeveloperRegistrationFormRequestType {
-	return &e
-}
-func (e *CreateDeveloperRegistrationFormRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "developer_registration":
-		*e = CreateDeveloperRegistrationFormRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeveloperRegistrationFormRequestType: %v", v)
-	}
-}
-
 // CreateDeveloperRegistrationFormRequestName - The form's name. Only `developer-registration` is accepted at this time
 type CreateDeveloperRegistrationFormRequestName string
 
@@ -41,6 +18,13 @@ const (
 
 func (e CreateDeveloperRegistrationFormRequestName) ToPointer() *CreateDeveloperRegistrationFormRequestName {
 	return &e
+}
+
+// CreateDeveloperRegistrationFormRequestNameValues returns every known CreateDeveloperRegistrationFormRequestName value in schema order.
+func CreateDeveloperRegistrationFormRequestNameValues() []CreateDeveloperRegistrationFormRequestName {
+	return []CreateDeveloperRegistrationFormRequestName{
+		CreateDeveloperRegistrationFormRequestNameDeveloperRegistration,
+	}
 }
 func (e *CreateDeveloperRegistrationFormRequestName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -67,6 +51,14 @@ func (e CreateDeveloperRegistrationFormRequestStatus) ToPointer() *CreateDevelop
 	return &e
 }
 
+// CreateDeveloperRegistrationFormRequestStatusValues returns every known CreateDeveloperRegistrationFormRequestStatus value in schema order.
+func CreateDeveloperRegistrationFormRequestStatusValues() []CreateDeveloperRegistrationFormRequestStatus {
+	return []CreateDeveloperRegistrationFormRequestStatus{
+		CreateDeveloperRegistrationFormRequestStatusPublished,
+		CreateDeveloperRegistrationFormRequestStatusUnpublished,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateDeveloperRegistrationFormRequestStatus) IsExact() bool {
 	if e != nil {
@@ -79,7 +71,8 @@ func (e *CreateDeveloperRegistrationFormRequestStatus) IsExact() bool {
 }
 
 type CreateDeveloperRegistrationFormRequest struct {
-	Type CreateDeveloperRegistrationFormRequestType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"developer_registration" json:"type"`
 	// The form's name. Only `developer-registration` is accepted at this time
 	//
 	Name   *CreateDeveloperRegistrationFormRequestName   `json:"name,omitempty"`
@@ -100,11 +93,8 @@ func (c *CreateDeveloperRegistrationFormRequest) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (c *CreateDeveloperRegistrationFormRequest) GetType() CreateDeveloperRegistrationFormRequestType {
-	if c == nil {
-		return CreateDeveloperRegistrationFormRequestType("")
-	}
-	return c.Type
+func (c *CreateDeveloperRegistrationFormRequest) GetType() string {
+	return "developer_registration"
 }
 
 func (c *CreateDeveloperRegistrationFormRequest) GetName() *CreateDeveloperRegistrationFormRequestName {

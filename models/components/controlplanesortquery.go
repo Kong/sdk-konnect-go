@@ -15,6 +15,15 @@ func (e ControlPlaneSortQuery) ToPointer() *ControlPlaneSortQuery {
 	return &e
 }
 
+// ControlPlaneSortQueryValues returns every known ControlPlaneSortQuery value in schema order.
+func ControlPlaneSortQueryValues() []ControlPlaneSortQuery {
+	return []ControlPlaneSortQuery{
+		ControlPlaneSortQueryCreatedAt,
+		ControlPlaneSortQueryCreatedAtAsc,
+		ControlPlaneSortQueryCreatedAtDesc,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ControlPlaneSortQuery) IsExact() bool {
 	if e != nil {

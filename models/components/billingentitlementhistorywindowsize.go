@@ -16,6 +16,14 @@ func (e BillingEntitlementHistoryWindowSize) ToPointer() *BillingEntitlementHist
 	return &e
 }
 
+// BillingEntitlementHistoryWindowSizeValues returns every known BillingEntitlementHistoryWindowSize value in schema order.
+func BillingEntitlementHistoryWindowSizeValues() []BillingEntitlementHistoryWindowSize {
+	return []BillingEntitlementHistoryWindowSize{
+		BillingEntitlementHistoryWindowSizePt1H,
+		BillingEntitlementHistoryWindowSizeP1D,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingEntitlementHistoryWindowSize) IsExact() bool {
 	if e != nil {

@@ -20,6 +20,13 @@ const (
 func (e InvalidParameterMinimumTimeRule) ToPointer() *InvalidParameterMinimumTimeRule {
 	return &e
 }
+
+// InvalidParameterMinimumTimeRuleValues returns every known InvalidParameterMinimumTimeRule value in schema order.
+func InvalidParameterMinimumTimeRuleValues() []InvalidParameterMinimumTimeRule {
+	return []InvalidParameterMinimumTimeRule{
+		InvalidParameterMinimumTimeRuleMinTime,
+	}
+}
 func (e *InvalidParameterMinimumTimeRule) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

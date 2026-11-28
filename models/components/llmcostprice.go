@@ -113,6 +113,14 @@ func (e LLMCostPriceSource) ToPointer() *LLMCostPriceSource {
 	return &e
 }
 
+// LLMCostPriceSourceValues returns every known LLMCostPriceSource value in schema order.
+func LLMCostPriceSourceValues() []LLMCostPriceSource {
+	return []LLMCostPriceSource{
+		LLMCostPriceSourceManual,
+		LLMCostPriceSourceSystem,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *LLMCostPriceSource) IsExact() bool {
 	if e != nil {

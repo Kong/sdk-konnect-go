@@ -15,6 +15,15 @@ func (e NumberSelectorOperator) ToPointer() *NumberSelectorOperator {
 	return &e
 }
 
+// NumberSelectorOperatorValues returns every known NumberSelectorOperator value in schema order.
+func NumberSelectorOperatorValues() []NumberSelectorOperator {
+	return []NumberSelectorOperator{
+		NumberSelectorOperatorEq,
+		NumberSelectorOperatorLt,
+		NumberSelectorOperatorGt,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *NumberSelectorOperator) IsExact() bool {
 	if e != nil {

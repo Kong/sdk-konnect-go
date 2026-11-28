@@ -19,6 +19,14 @@ func (e VirtualClusterAuthenticationSaslScramAlgorithm) ToPointer() *VirtualClus
 	return &e
 }
 
+// VirtualClusterAuthenticationSaslScramAlgorithmValues returns every known VirtualClusterAuthenticationSaslScramAlgorithm value in schema order.
+func VirtualClusterAuthenticationSaslScramAlgorithmValues() []VirtualClusterAuthenticationSaslScramAlgorithm {
+	return []VirtualClusterAuthenticationSaslScramAlgorithm{
+		VirtualClusterAuthenticationSaslScramAlgorithmSha256,
+		VirtualClusterAuthenticationSaslScramAlgorithmSha512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *VirtualClusterAuthenticationSaslScramAlgorithm) IsExact() bool {
 	if e != nil {

@@ -19,6 +19,13 @@ const (
 func (e APICapabilityControlsType) ToPointer() *APICapabilityControlsType {
 	return &e
 }
+
+// APICapabilityControlsTypeValues returns every known APICapabilityControlsType value in schema order.
+func APICapabilityControlsTypeValues() []APICapabilityControlsType {
+	return []APICapabilityControlsType{
+		APICapabilityControlsTypeAPI,
+	}
+}
 func (e *APICapabilityControlsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

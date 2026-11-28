@@ -19,6 +19,13 @@ const (
 func (e RawSkillSourceType) ToPointer() *RawSkillSourceType {
 	return &e
 }
+
+// RawSkillSourceTypeValues returns every known RawSkillSourceType value in schema order.
+func RawSkillSourceTypeValues() []RawSkillSourceType {
+	return []RawSkillSourceType{
+		RawSkillSourceTypeRaw,
+	}
+}
 func (e *RawSkillSourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

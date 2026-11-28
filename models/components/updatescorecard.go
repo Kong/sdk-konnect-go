@@ -94,6 +94,16 @@ func (e UpdateScorecardScorecardTemplate) ToPointer() *UpdateScorecardScorecardT
 	return &e
 }
 
+// UpdateScorecardScorecardTemplateValues returns every known UpdateScorecardScorecardTemplate value in schema order.
+func UpdateScorecardScorecardTemplateValues() []UpdateScorecardScorecardTemplate {
+	return []UpdateScorecardScorecardTemplate{
+		UpdateScorecardScorecardTemplateKongBestPractices,
+		UpdateScorecardScorecardTemplateServiceDocumentation,
+		UpdateScorecardScorecardTemplateServiceMaturity,
+		UpdateScorecardScorecardTemplateSecurityAndCompliance,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpdateScorecardScorecardTemplate) IsExact() bool {
 	if e != nil {

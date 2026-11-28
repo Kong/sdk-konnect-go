@@ -20,6 +20,15 @@ func (e Eq) ToPointer() *Eq {
 	return &e
 }
 
+// EqValues returns every known Eq value in schema order.
+func EqValues() []Eq {
+	return []Eq{
+		EqPrincipal,
+		EqConsumer,
+		EqOidc,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Eq) IsExact() bool {
 	if e != nil {

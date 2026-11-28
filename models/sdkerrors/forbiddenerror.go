@@ -19,6 +19,13 @@ const (
 func (e ForbiddenErrorStatus) ToPointer() *ForbiddenErrorStatus {
 	return &e
 }
+
+// ForbiddenErrorStatusValues returns every known ForbiddenErrorStatus value in schema order.
+func ForbiddenErrorStatusValues() []ForbiddenErrorStatus {
+	return []ForbiddenErrorStatus{
+		ForbiddenErrorStatusFourHundredAndThree,
+	}
+}
 func (e *ForbiddenErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

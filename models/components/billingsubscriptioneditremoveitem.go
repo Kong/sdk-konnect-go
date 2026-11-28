@@ -19,6 +19,13 @@ const (
 func (e BillingSubscriptionEditRemoveItemType) ToPointer() *BillingSubscriptionEditRemoveItemType {
 	return &e
 }
+
+// BillingSubscriptionEditRemoveItemTypeValues returns every known BillingSubscriptionEditRemoveItemType value in schema order.
+func BillingSubscriptionEditRemoveItemTypeValues() []BillingSubscriptionEditRemoveItemType {
+	return []BillingSubscriptionEditRemoveItemType{
+		BillingSubscriptionEditRemoveItemTypeRemoveItem,
+	}
+}
 func (e *BillingSubscriptionEditRemoveItemType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -53,6 +53,14 @@ func (e BillingSubscriptionCostBasisMode) ToPointer() *BillingSubscriptionCostBa
 	return &e
 }
 
+// BillingSubscriptionCostBasisModeValues returns every known BillingSubscriptionCostBasisMode value in schema order.
+func BillingSubscriptionCostBasisModeValues() []BillingSubscriptionCostBasisMode {
+	return []BillingSubscriptionCostBasisMode{
+		BillingSubscriptionCostBasisModeDynamic,
+		BillingSubscriptionCostBasisModePinned,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionCostBasisMode) IsExact() bool {
 	if e != nil {
@@ -74,6 +82,14 @@ const (
 
 func (e BillingSubscriptionMode) ToPointer() *BillingSubscriptionMode {
 	return &e
+}
+
+// BillingSubscriptionModeValues returns every known BillingSubscriptionMode value in schema order.
+func BillingSubscriptionModeValues() []BillingSubscriptionMode {
+	return []BillingSubscriptionMode{
+		BillingSubscriptionModeNoProration,
+		BillingSubscriptionModeProratePrices,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -123,6 +139,16 @@ func (e BillingSubscriptionStatus) ToPointer() *BillingSubscriptionStatus {
 	return &e
 }
 
+// BillingSubscriptionStatusValues returns every known BillingSubscriptionStatus value in schema order.
+func BillingSubscriptionStatusValues() []BillingSubscriptionStatus {
+	return []BillingSubscriptionStatus{
+		BillingSubscriptionStatusActive,
+		BillingSubscriptionStatusInactive,
+		BillingSubscriptionStatusCanceled,
+		BillingSubscriptionStatusScheduled,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionStatus) IsExact() bool {
 	if e != nil {
@@ -150,6 +176,14 @@ const (
 
 func (e BillingSubscriptionSettlementMode) ToPointer() *BillingSubscriptionSettlementMode {
 	return &e
+}
+
+// BillingSubscriptionSettlementModeValues returns every known BillingSubscriptionSettlementMode value in schema order.
+func BillingSubscriptionSettlementModeValues() []BillingSubscriptionSettlementMode {
+	return []BillingSubscriptionSettlementMode{
+		BillingSubscriptionSettlementModeCreditThenInvoice,
+		BillingSubscriptionSettlementModeCreditOnly,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

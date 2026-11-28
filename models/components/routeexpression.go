@@ -22,6 +22,17 @@ func (e RouteExpressionHTTPSRedirectStatusCode) ToPointer() *RouteExpressionHTTP
 	return &e
 }
 
+// RouteExpressionHTTPSRedirectStatusCodeValues returns every known RouteExpressionHTTPSRedirectStatusCode value in schema order.
+func RouteExpressionHTTPSRedirectStatusCodeValues() []RouteExpressionHTTPSRedirectStatusCode {
+	return []RouteExpressionHTTPSRedirectStatusCode{
+		RouteExpressionHTTPSRedirectStatusCodeThreeHundredAndOne,
+		RouteExpressionHTTPSRedirectStatusCodeThreeHundredAndTwo,
+		RouteExpressionHTTPSRedirectStatusCodeThreeHundredAndSeven,
+		RouteExpressionHTTPSRedirectStatusCodeThreeHundredAndEight,
+		RouteExpressionHTTPSRedirectStatusCodeFourHundredAndTwentySix,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *RouteExpressionHTTPSRedirectStatusCode) IsExact() bool {
 	if e != nil {
@@ -43,6 +54,14 @@ const (
 
 func (e RouteExpressionPathHandling) ToPointer() *RouteExpressionPathHandling {
 	return &e
+}
+
+// RouteExpressionPathHandlingValues returns every known RouteExpressionPathHandling value in schema order.
+func RouteExpressionPathHandlingValues() []RouteExpressionPathHandling {
+	return []RouteExpressionPathHandling{
+		RouteExpressionPathHandlingV0,
+		RouteExpressionPathHandlingV1,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -74,6 +93,22 @@ const (
 
 func (e RouteExpressionProtocols) ToPointer() *RouteExpressionProtocols {
 	return &e
+}
+
+// RouteExpressionProtocolsValues returns every known RouteExpressionProtocols value in schema order.
+func RouteExpressionProtocolsValues() []RouteExpressionProtocols {
+	return []RouteExpressionProtocols{
+		RouteExpressionProtocolsGrpc,
+		RouteExpressionProtocolsGrpcs,
+		RouteExpressionProtocolsHTTP,
+		RouteExpressionProtocolsHTTPS,
+		RouteExpressionProtocolsTCP,
+		RouteExpressionProtocolsTLS,
+		RouteExpressionProtocolsTLSPassthrough,
+		RouteExpressionProtocolsUDP,
+		RouteExpressionProtocolsWs,
+		RouteExpressionProtocolsWss,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

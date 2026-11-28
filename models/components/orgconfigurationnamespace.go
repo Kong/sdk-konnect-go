@@ -21,6 +21,20 @@ func (e OrgConfigurationNamespace) ToPointer() *OrgConfigurationNamespace {
 	return &e
 }
 
+// OrgConfigurationNamespaceValues returns every known OrgConfigurationNamespace value in schema order.
+func OrgConfigurationNamespaceValues() []OrgConfigurationNamespace {
+	return []OrgConfigurationNamespace{
+		OrgConfigurationNamespacePlanAndUsage,
+		OrgConfigurationNamespaceOrganization,
+		OrgConfigurationNamespaceDevPortal,
+		OrgConfigurationNamespaceCloudGateways,
+		OrgConfigurationNamespaceRegionalEventNamespace,
+		OrgConfigurationNamespaceGatewayManager,
+		OrgConfigurationNamespaceAdvancedAnalytics,
+		OrgConfigurationNamespaceAiManagement,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *OrgConfigurationNamespace) IsExact() bool {
 	if e != nil {

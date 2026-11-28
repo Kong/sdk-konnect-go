@@ -25,6 +25,19 @@ func (e Aggregation) ToPointer() *Aggregation {
 	return &e
 }
 
+// AggregationValues returns every known Aggregation value in schema order.
+func AggregationValues() []Aggregation {
+	return []Aggregation{
+		AggregationSum,
+		AggregationCount,
+		AggregationUniqueCount,
+		AggregationAvg,
+		AggregationMin,
+		AggregationMax,
+		AggregationLatest,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Aggregation) IsExact() bool {
 	if e != nil {

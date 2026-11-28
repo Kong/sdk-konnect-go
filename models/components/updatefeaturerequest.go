@@ -20,6 +20,13 @@ const (
 func (e BillingFeatureLLMUnitCostUnitCostType) ToPointer() *BillingFeatureLLMUnitCostUnitCostType {
 	return &e
 }
+
+// BillingFeatureLLMUnitCostUnitCostTypeValues returns every known BillingFeatureLLMUnitCostUnitCostType value in schema order.
+func BillingFeatureLLMUnitCostUnitCostTypeValues() []BillingFeatureLLMUnitCostUnitCostType {
+	return []BillingFeatureLLMUnitCostUnitCostType{
+		BillingFeatureLLMUnitCostUnitCostTypeLlm,
+	}
+}
 func (e *BillingFeatureLLMUnitCostUnitCostType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -51,6 +58,19 @@ const (
 
 func (e UnitCostTokenType) ToPointer() *UnitCostTokenType {
 	return &e
+}
+
+// UnitCostTokenTypeValues returns every known UnitCostTokenType value in schema order.
+func UnitCostTokenTypeValues() []UnitCostTokenType {
+	return []UnitCostTokenType{
+		UnitCostTokenTypeInput,
+		UnitCostTokenTypeOutput,
+		UnitCostTokenTypeCacheRead,
+		UnitCostTokenTypeCacheWrite,
+		UnitCostTokenTypeReasoning,
+		UnitCostTokenTypeRequest,
+		UnitCostTokenTypeResponse,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -160,6 +180,13 @@ const (
 
 func (e UnitCostType) ToPointer() *UnitCostType {
 	return &e
+}
+
+// UnitCostTypeValues returns every known UnitCostType value in schema order.
+func UnitCostTypeValues() []UnitCostType {
+	return []UnitCostType{
+		UnitCostTypeManual,
+	}
 }
 func (e *UnitCostType) UnmarshalJSON(data []byte) error {
 	var v string

@@ -9,7 +9,7 @@ import (
 )
 
 type ResendDestinationDeliveryRequest struct {
-	// ID of the http destination, a UUID v7.
+	// ID of the destination, a UUID v7.
 	DestinationID string `pathParam:"style=simple,explode=false,name=destinationId"`
 	// ID of the delivery, a UUID v7.
 	DeliveryID string `pathParam:"style=simple,explode=false,name=deliveryId"`

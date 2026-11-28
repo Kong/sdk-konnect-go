@@ -16,6 +16,15 @@ func (e InstanceTypeName) ToPointer() *InstanceTypeName {
 	return &e
 }
 
+// InstanceTypeNameValues returns every known InstanceTypeName value in schema order.
+func InstanceTypeNameValues() []InstanceTypeName {
+	return []InstanceTypeName{
+		InstanceTypeNameSmall,
+		InstanceTypeNameMedium,
+		InstanceTypeNameLarge,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *InstanceTypeName) IsExact() bool {
 	if e != nil {

@@ -20,6 +20,13 @@ const (
 func (e BillingAppSandboxType) ToPointer() *BillingAppSandboxType {
 	return &e
 }
+
+// BillingAppSandboxTypeValues returns every known BillingAppSandboxType value in schema order.
+func BillingAppSandboxTypeValues() []BillingAppSandboxType {
+	return []BillingAppSandboxType{
+		BillingAppSandboxTypeSandbox,
+	}
+}
 func (e *BillingAppSandboxType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -45,6 +52,15 @@ const (
 
 func (e BillingAppSandboxDefinitionType) ToPointer() *BillingAppSandboxDefinitionType {
 	return &e
+}
+
+// BillingAppSandboxDefinitionTypeValues returns every known BillingAppSandboxDefinitionType value in schema order.
+func BillingAppSandboxDefinitionTypeValues() []BillingAppSandboxDefinitionType {
+	return []BillingAppSandboxDefinitionType{
+		BillingAppSandboxDefinitionTypeSandbox,
+		BillingAppSandboxDefinitionTypeStripe,
+		BillingAppSandboxDefinitionTypeExternalInvoicing,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -128,6 +144,14 @@ const (
 
 func (e BillingAppSandboxStatus) ToPointer() *BillingAppSandboxStatus {
 	return &e
+}
+
+// BillingAppSandboxStatusValues returns every known BillingAppSandboxStatus value in schema order.
+func BillingAppSandboxStatusValues() []BillingAppSandboxStatus {
+	return []BillingAppSandboxStatus{
+		BillingAppSandboxStatusReady,
+		BillingAppSandboxStatusUnauthorized,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

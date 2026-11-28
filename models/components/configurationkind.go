@@ -19,6 +19,14 @@ func (e ConfigurationKind) ToPointer() *ConfigurationKind {
 	return &e
 }
 
+// ConfigurationKindValues returns every known ConfigurationKind value in schema order.
+func ConfigurationKindValues() []ConfigurationKind {
+	return []ConfigurationKind{
+		ConfigurationKindDedicatedV0,
+		ConfigurationKindServerlessV1,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ConfigurationKind) IsExact() bool {
 	if e != nil {

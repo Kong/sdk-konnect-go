@@ -18,6 +18,14 @@ func (e ProduceKeyValidationAction) ToPointer() *ProduceKeyValidationAction {
 	return &e
 }
 
+// ProduceKeyValidationActionValues returns every known ProduceKeyValidationAction value in schema order.
+func ProduceKeyValidationActionValues() []ProduceKeyValidationAction {
+	return []ProduceKeyValidationAction{
+		ProduceKeyValidationActionReject,
+		ProduceKeyValidationActionMark,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ProduceKeyValidationAction) IsExact() bool {
 	if e != nil {

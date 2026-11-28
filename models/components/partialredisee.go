@@ -23,6 +23,16 @@ func (e PartialRedisEeAuthProvider) ToPointer() *PartialRedisEeAuthProvider {
 	return &e
 }
 
+// PartialRedisEeAuthProviderValues returns every known PartialRedisEeAuthProvider value in schema order.
+func PartialRedisEeAuthProviderValues() []PartialRedisEeAuthProvider {
+	return []PartialRedisEeAuthProvider{
+		PartialRedisEeAuthProviderAws,
+		PartialRedisEeAuthProviderAzure,
+		PartialRedisEeAuthProviderGcp,
+		PartialRedisEeAuthProviderOauth,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialRedisEeAuthProvider) IsExact() bool {
 	if e != nil {
@@ -45,6 +55,15 @@ const (
 
 func (e PartialRedisEeAuthMethod) ToPointer() *PartialRedisEeAuthMethod {
 	return &e
+}
+
+// PartialRedisEeAuthMethodValues returns every known PartialRedisEeAuthMethod value in schema order.
+func PartialRedisEeAuthMethodValues() []PartialRedisEeAuthMethod {
+	return []PartialRedisEeAuthMethod{
+		PartialRedisEeAuthMethodClientSecretBasic,
+		PartialRedisEeAuthMethodClientSecretJwt,
+		PartialRedisEeAuthMethodClientSecretPost,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -70,6 +89,14 @@ func (e PartialRedisEeClientSecretJwtAlg) ToPointer() *PartialRedisEeClientSecre
 	return &e
 }
 
+// PartialRedisEeClientSecretJwtAlgValues returns every known PartialRedisEeClientSecretJwtAlg value in schema order.
+func PartialRedisEeClientSecretJwtAlgValues() []PartialRedisEeClientSecretJwtAlg {
+	return []PartialRedisEeClientSecretJwtAlg{
+		PartialRedisEeClientSecretJwtAlgHs256,
+		PartialRedisEeClientSecretJwtAlgHs512,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PartialRedisEeClientSecretJwtAlg) IsExact() bool {
 	if e != nil {
@@ -91,6 +118,14 @@ const (
 
 func (e PartialRedisEeGrantType) ToPointer() *PartialRedisEeGrantType {
 	return &e
+}
+
+// PartialRedisEeGrantTypeValues returns every known PartialRedisEeGrantType value in schema order.
+func PartialRedisEeGrantTypeValues() []PartialRedisEeGrantType {
+	return []PartialRedisEeGrantType{
+		PartialRedisEeGrantTypeClientCredentials,
+		PartialRedisEeGrantTypePassword,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -532,6 +567,15 @@ const (
 
 func (e PartialRedisEeSentinelRole) ToPointer() *PartialRedisEeSentinelRole {
 	return &e
+}
+
+// PartialRedisEeSentinelRoleValues returns every known PartialRedisEeSentinelRole value in schema order.
+func PartialRedisEeSentinelRoleValues() []PartialRedisEeSentinelRole {
+	return []PartialRedisEeSentinelRole{
+		PartialRedisEeSentinelRoleAny,
+		PartialRedisEeSentinelRoleMaster,
+		PartialRedisEeSentinelRoleSlave,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

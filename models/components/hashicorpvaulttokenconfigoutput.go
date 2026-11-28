@@ -19,6 +19,14 @@ func (e Kv) ToPointer() *Kv {
 	return &e
 }
 
+// KvValues returns every known Kv value in schema order.
+func KvValues() []Kv {
+	return []Kv{
+		KvV1,
+		KvV2,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Kv) IsExact() bool {
 	if e != nil {
@@ -40,6 +48,14 @@ const (
 
 func (e Protocol) ToPointer() *Protocol {
 	return &e
+}
+
+// ProtocolValues returns every known Protocol value in schema order.
+func ProtocolValues() []Protocol {
+	return []Protocol{
+		ProtocolHTTP,
+		ProtocolHTTPS,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

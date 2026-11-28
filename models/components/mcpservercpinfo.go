@@ -20,6 +20,14 @@ func (e MCPServerCPInfoMode) ToPointer() *MCPServerCPInfoMode {
 	return &e
 }
 
+// MCPServerCPInfoModeValues returns every known MCPServerCPInfoMode value in schema order.
+func MCPServerCPInfoModeValues() []MCPServerCPInfoMode {
+	return []MCPServerCPInfoMode{
+		MCPServerCPInfoModeBasic,
+		MCPServerCPInfoModeAdvanced,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MCPServerCPInfoMode) IsExact() bool {
 	if e != nil {

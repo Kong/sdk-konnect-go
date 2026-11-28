@@ -23,6 +23,18 @@ func (e PortalAuditLogReplayJobStatus) ToPointer() *PortalAuditLogReplayJobStatu
 	return &e
 }
 
+// PortalAuditLogReplayJobStatusValues returns every known PortalAuditLogReplayJobStatus value in schema order.
+func PortalAuditLogReplayJobStatusValues() []PortalAuditLogReplayJobStatus {
+	return []PortalAuditLogReplayJobStatus{
+		PortalAuditLogReplayJobStatusUnconfigured,
+		PortalAuditLogReplayJobStatusAccepted,
+		PortalAuditLogReplayJobStatusPending,
+		PortalAuditLogReplayJobStatusRunning,
+		PortalAuditLogReplayJobStatusCompleted,
+		PortalAuditLogReplayJobStatusFailed,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PortalAuditLogReplayJobStatus) IsExact() bool {
 	if e != nil {

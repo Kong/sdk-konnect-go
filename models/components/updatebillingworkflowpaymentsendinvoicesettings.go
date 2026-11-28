@@ -19,6 +19,13 @@ const (
 func (e UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethod) ToPointer() *UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethod {
 	return &e
 }
+
+// UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethodValues returns every known UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethod value in schema order.
+func UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethodValues() []UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethod {
+	return []UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethod{
+		UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethodSendInvoice,
+	}
+}
 func (e *UpdateBillingWorkflowPaymentSendInvoiceSettingsCollectionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -18,6 +18,13 @@ const (
 func (e AIGatewayAzureEmbeddingsModelConfigType) ToPointer() *AIGatewayAzureEmbeddingsModelConfigType {
 	return &e
 }
+
+// AIGatewayAzureEmbeddingsModelConfigTypeValues returns every known AIGatewayAzureEmbeddingsModelConfigType value in schema order.
+func AIGatewayAzureEmbeddingsModelConfigTypeValues() []AIGatewayAzureEmbeddingsModelConfigType {
+	return []AIGatewayAzureEmbeddingsModelConfigType{
+		AIGatewayAzureEmbeddingsModelConfigTypeAzure,
+	}
+}
 func (e *AIGatewayAzureEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

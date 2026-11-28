@@ -21,6 +21,16 @@ func (e Capabilities) ToPointer() *Capabilities {
 	return &e
 }
 
+// CapabilitiesValues returns every known Capabilities value in schema order.
+func CapabilitiesValues() []Capabilities {
+	return []Capabilities{
+		CapabilitiesWildcard,
+		CapabilitiesBatches,
+		CapabilitiesFiles,
+		CapabilitiesSkills,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Capabilities) IsExact() bool {
 	if e != nil {

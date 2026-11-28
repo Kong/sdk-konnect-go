@@ -14,6 +14,14 @@ func (e MeshControlPlaneFeatureType) ToPointer() *MeshControlPlaneFeatureType {
 	return &e
 }
 
+// MeshControlPlaneFeatureTypeValues returns every known MeshControlPlaneFeatureType value in schema order.
+func MeshControlPlaneFeatureTypeValues() []MeshControlPlaneFeatureType {
+	return []MeshControlPlaneFeatureType{
+		MeshControlPlaneFeatureTypeMeshCreation,
+		MeshControlPlaneFeatureTypeHostnameGeneratorCreation,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *MeshControlPlaneFeatureType) IsExact() bool {
 	if e != nil {

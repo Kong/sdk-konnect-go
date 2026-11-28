@@ -85,7 +85,7 @@ func (w *Window) GetAnchoredAt() string {
 	return w.AnchoredAt
 }
 
-// Posture - How the budget responds when spend reaches its limit.
+// Posture - What the budget does when spend reaches its limit.
 type Posture string
 
 const (
@@ -95,6 +95,14 @@ const (
 
 func (e Posture) ToPointer() *Posture {
 	return &e
+}
+
+// PostureValues returns every known Posture value in schema order.
+func PostureValues() []Posture {
+	return []Posture{
+		PostureAdvisory,
+		PostureEnforce,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -137,7 +145,7 @@ type AICostLimitBudget struct {
 	Limit AICostMoney `json:"limit"`
 	// The budget window: the period the limit applies to, such as a calendar month. When one window ends, the next starts.
 	Window Window `json:"window"`
-	// How the budget responds when spend reaches its limit.
+	// What the budget does when spend reaches its limit.
 	Posture Posture `json:"posture"`
 	// Always `null`, because only an exemption has `validity`.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling

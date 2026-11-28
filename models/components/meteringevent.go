@@ -21,6 +21,13 @@ const (
 func (e MeteringEventDatacontenttype) ToPointer() *MeteringEventDatacontenttype {
 	return &e
 }
+
+// MeteringEventDatacontenttypeValues returns every known MeteringEventDatacontenttype value in schema order.
+func MeteringEventDatacontenttypeValues() []MeteringEventDatacontenttype {
+	return []MeteringEventDatacontenttype{
+		MeteringEventDatacontenttypeApplicationJSON,
+	}
+}
 func (e *MeteringEventDatacontenttype) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

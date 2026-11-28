@@ -23,6 +23,16 @@ func (e CatalogServiceScorecardScorecardTemplate) ToPointer() *CatalogServiceSco
 	return &e
 }
 
+// CatalogServiceScorecardScorecardTemplateValues returns every known CatalogServiceScorecardScorecardTemplate value in schema order.
+func CatalogServiceScorecardScorecardTemplateValues() []CatalogServiceScorecardScorecardTemplate {
+	return []CatalogServiceScorecardScorecardTemplate{
+		CatalogServiceScorecardScorecardTemplateKongBestPractices,
+		CatalogServiceScorecardScorecardTemplateServiceDocumentation,
+		CatalogServiceScorecardScorecardTemplateServiceMaturity,
+		CatalogServiceScorecardScorecardTemplateSecurityAndCompliance,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CatalogServiceScorecardScorecardTemplate) IsExact() bool {
 	if e != nil {

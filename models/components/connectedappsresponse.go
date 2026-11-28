@@ -20,6 +20,14 @@ func (e Domain) ToPointer() *Domain {
 	return &e
 }
 
+// DomainValues returns every known Domain value in schema order.
+func DomainValues() []Domain {
+	return []Domain{
+		DomainKonnect,
+		DomainPortal,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Domain) IsExact() bool {
 	if e != nil {

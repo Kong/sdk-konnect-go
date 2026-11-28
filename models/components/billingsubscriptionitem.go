@@ -221,6 +221,14 @@ func (e BillingSubscriptionItemConversionOperation) ToPointer() *BillingSubscrip
 	return &e
 }
 
+// BillingSubscriptionItemConversionOperationValues returns every known BillingSubscriptionItemConversionOperation value in schema order.
+func BillingSubscriptionItemConversionOperationValues() []BillingSubscriptionItemConversionOperation {
+	return []BillingSubscriptionItemConversionOperation{
+		BillingSubscriptionItemConversionOperationDivide,
+		BillingSubscriptionItemConversionOperationMultiply,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionItemConversionOperation) IsExact() bool {
 	if e != nil {
@@ -247,6 +255,16 @@ const (
 
 func (e BillingSubscriptionItemRoundingMode) ToPointer() *BillingSubscriptionItemRoundingMode {
 	return &e
+}
+
+// BillingSubscriptionItemRoundingModeValues returns every known BillingSubscriptionItemRoundingMode value in schema order.
+func BillingSubscriptionItemRoundingModeValues() []BillingSubscriptionItemRoundingMode {
+	return []BillingSubscriptionItemRoundingMode{
+		BillingSubscriptionItemRoundingModeCeiling,
+		BillingSubscriptionItemRoundingModeFloor,
+		BillingSubscriptionItemRoundingModeHalfUp,
+		BillingSubscriptionItemRoundingModeNone,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
@@ -354,6 +372,14 @@ func (e BillingSubscriptionItemPaymentTerm) ToPointer() *BillingSubscriptionItem
 	return &e
 }
 
+// BillingSubscriptionItemPaymentTermValues returns every known BillingSubscriptionItemPaymentTerm value in schema order.
+func BillingSubscriptionItemPaymentTermValues() []BillingSubscriptionItemPaymentTerm {
+	return []BillingSubscriptionItemPaymentTerm{
+		BillingSubscriptionItemPaymentTermInAdvance,
+		BillingSubscriptionItemPaymentTermInArrears,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *BillingSubscriptionItemPaymentTerm) IsExact() bool {
 	if e != nil {
@@ -449,6 +475,14 @@ const (
 
 func (e BillingSubscriptionItemTaxBehavior) ToPointer() *BillingSubscriptionItemTaxBehavior {
 	return &e
+}
+
+// BillingSubscriptionItemTaxBehaviorValues returns every known BillingSubscriptionItemTaxBehavior value in schema order.
+func BillingSubscriptionItemTaxBehaviorValues() []BillingSubscriptionItemTaxBehavior {
+	return []BillingSubscriptionItemTaxBehavior{
+		BillingSubscriptionItemTaxBehaviorInclusive,
+		BillingSubscriptionItemTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

@@ -18,6 +18,13 @@ const (
 func (e SingleValueChartType) ToPointer() *SingleValueChartType {
 	return &e
 }
+
+// SingleValueChartTypeValues returns every known SingleValueChartType value in schema order.
+func SingleValueChartTypeValues() []SingleValueChartType {
+	return []SingleValueChartType{
+		SingleValueChartTypeSingleValue,
+	}
+}
 func (e *SingleValueChartType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

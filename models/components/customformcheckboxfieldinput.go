@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type CustomFormCheckboxFieldInputType string
-
-const (
-	CustomFormCheckboxFieldInputTypeCheckbox CustomFormCheckboxFieldInputType = "checkbox"
-)
-
-func (e CustomFormCheckboxFieldInputType) ToPointer() *CustomFormCheckboxFieldInputType {
-	return &e
-}
-func (e *CustomFormCheckboxFieldInputType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "checkbox":
-		*e = CustomFormCheckboxFieldInputType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormCheckboxFieldInputType: %v", v)
-	}
-}
 
 // CustomFormCheckboxFieldInput - A single checkbox.
 type CustomFormCheckboxFieldInput struct {
@@ -39,9 +14,10 @@ type CustomFormCheckboxFieldInput struct {
 	//
 	// Used to match up stored responses across edits.
 	//
-	Name  *string                          `json:"name,omitempty"`
-	Type  CustomFormCheckboxFieldInputType `json:"type"`
-	Label string                           `json:"label"`
+	Name *string `json:"name,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"checkbox" json:"type"`
+	Label string `json:"label"`
 	// Supports Markdown formatting — useful for linking to terms and conditions.
 	Description *string `json:"description,omitempty"`
 	Required    *bool   `json:"required,omitempty"`
@@ -65,11 +41,8 @@ func (c *CustomFormCheckboxFieldInput) GetName() *string {
 	return c.Name
 }
 
-func (c *CustomFormCheckboxFieldInput) GetType() CustomFormCheckboxFieldInputType {
-	if c == nil {
-		return CustomFormCheckboxFieldInputType("")
-	}
-	return c.Type
+func (c *CustomFormCheckboxFieldInput) GetType() string {
+	return "checkbox"
 }
 
 func (c *CustomFormCheckboxFieldInput) GetLabel() string {

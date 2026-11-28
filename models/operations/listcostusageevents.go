@@ -16,7 +16,7 @@ type ListCostUsageEventsRequest struct {
 	Filter map[string]components.AICostMapKeyFieldFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 	// The order of the results, as a comma-separated list of fields in priority order. Each field can be followed by a space and `asc` or `desc`, and sorts in ascending order without one. The service breaks ties so that the order is unique.
 	//
-	// Sortable fields: `source`, `subject_type`, `subject`, `subject_id`, `request_mode`, `time`, `reported_cost`, `provider`, `model`, `model_id`, `region`, `client`, `service_id`, `route_id`, `consumer_id`, `application_id`. Defaults to `time desc`.
+	// Sortable fields: `source`, `subject_type`, `subject`, `subject_id`, `request_mode`, `time`, `reported_cost`, `provider`, `model`, `model_id`, `region`, `client`, `cost_center`, `service_id`, `route_id`, `consumer_id`, `application_id`. Defaults to `time desc`.
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 	// The number of results on each page.
 	//

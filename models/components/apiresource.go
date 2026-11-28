@@ -20,6 +20,13 @@ const (
 func (e APIResourceType) ToPointer() *APIResourceType {
 	return &e
 }
+
+// APIResourceTypeValues returns every known APIResourceType value in schema order.
+func APIResourceTypeValues() []APIResourceType {
+	return []APIResourceType{
+		APIResourceTypeAPI,
+	}
+}
 func (e *APIResourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

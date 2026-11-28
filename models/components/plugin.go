@@ -121,6 +121,22 @@ func (e Protocols) ToPointer() *Protocols {
 	return &e
 }
 
+// ProtocolsValues returns every known Protocols value in schema order.
+func ProtocolsValues() []Protocols {
+	return []Protocols{
+		ProtocolsGrpc,
+		ProtocolsGrpcs,
+		ProtocolsHTTP,
+		ProtocolsHTTPS,
+		ProtocolsTCP,
+		ProtocolsTLS,
+		ProtocolsTLSPassthrough,
+		ProtocolsUDP,
+		ProtocolsWs,
+		ProtocolsWss,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Protocols) IsExact() bool {
 	if e != nil {

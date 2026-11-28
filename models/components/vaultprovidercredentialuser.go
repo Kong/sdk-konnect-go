@@ -52,6 +52,13 @@ const (
 func (e VaultProviderCredentialUserStatus) ToPointer() *VaultProviderCredentialUserStatus {
 	return &e
 }
+
+// VaultProviderCredentialUserStatusValues returns every known VaultProviderCredentialUserStatus value in schema order.
+func VaultProviderCredentialUserStatusValues() []VaultProviderCredentialUserStatus {
+	return []VaultProviderCredentialUserStatus{
+		VaultProviderCredentialUserStatusActive,
+	}
+}
 func (e *VaultProviderCredentialUserStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -15,6 +15,14 @@ func (e UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple) ToPoi
 	return &e
 }
 
+// UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleValues returns every known UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple value in schema order.
+func UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleValues() []UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple {
+	return []UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple{
+		UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleSingle,
+		UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleMultiple,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple) IsExact() bool {
 	if e != nil {

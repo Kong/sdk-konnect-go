@@ -19,6 +19,15 @@ func (e AddOnState) ToPointer() *AddOnState {
 	return &e
 }
 
+// AddOnStateValues returns every known AddOnState value in schema order.
+func AddOnStateValues() []AddOnState {
+	return []AddOnState{
+		AddOnStateInitializing,
+		AddOnStateReady,
+		AddOnStateTerminating,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AddOnState) IsExact() bool {
 	if e != nil {

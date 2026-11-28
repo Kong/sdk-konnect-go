@@ -13,6 +13,7 @@ package components
 // - `model`: the model that the provider reports as served.
 // - `provider`: the provider that served the invocation.
 // - `request_mode`: how the invocation was served: `stream`, `oneshot`, or `realtime`.
+// - `cost_center`: the person's Kong Identity cost center at the time of the request, as the gateway reported it. It isn't the ledger of a funded budget. Usage has at most one, so `neq` and `nin` match only usage with a cost center, and the budgets that `each` derives from it don't overlap.
 //
 // A scope can also use `tags.<key>` for the value of one tag.
 type AICostBudgetScopeField string
@@ -26,17 +27,33 @@ const (
 	AICostBudgetScopeFieldModel       AICostBudgetScopeField = "model"
 	AICostBudgetScopeFieldProvider    AICostBudgetScopeField = "provider"
 	AICostBudgetScopeFieldRequestMode AICostBudgetScopeField = "request_mode"
+	AICostBudgetScopeFieldCostCenter  AICostBudgetScopeField = "cost_center"
 )
 
 func (e AICostBudgetScopeField) ToPointer() *AICostBudgetScopeField {
 	return &e
 }
 
+// AICostBudgetScopeFieldValues returns every known AICostBudgetScopeField value in schema order.
+func AICostBudgetScopeFieldValues() []AICostBudgetScopeField {
+	return []AICostBudgetScopeField{
+		AICostBudgetScopeFieldSubjectType,
+		AICostBudgetScopeFieldSubject,
+		AICostBudgetScopeFieldSubjectID,
+		AICostBudgetScopeFieldGroup,
+		AICostBudgetScopeFieldTeam,
+		AICostBudgetScopeFieldModel,
+		AICostBudgetScopeFieldProvider,
+		AICostBudgetScopeFieldRequestMode,
+		AICostBudgetScopeFieldCostCenter,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AICostBudgetScopeField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "subject_type", "subject", "subject_id", "group", "team", "model", "provider", "request_mode":
+		case "subject_type", "subject", "subject_id", "group", "team", "model", "provider", "request_mode", "cost_center":
 			return true
 		}
 	}

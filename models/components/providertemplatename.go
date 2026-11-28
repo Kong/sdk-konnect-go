@@ -21,6 +21,20 @@ func (e ProviderTemplateName) ToPointer() *ProviderTemplateName {
 	return &e
 }
 
+// ProviderTemplateNameValues returns every known ProviderTemplateName value in schema order.
+func ProviderTemplateNameValues() []ProviderTemplateName {
+	return []ProviderTemplateName{
+		ProviderTemplateNameGithub,
+		ProviderTemplateNameSlack,
+		ProviderTemplateNameStaticSecret,
+		ProviderTemplateNameGoogle,
+		ProviderTemplateNameAtlassianRovo,
+		ProviderTemplateNameDatadog,
+		ProviderTemplateNameCustomOauth,
+		ProviderTemplateNameMiro,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ProviderTemplateName) IsExact() bool {
 	if e != nil {

@@ -25,6 +25,16 @@ func (e ManagedCacheAddOnDataPlaneGroupState) ToPointer() *ManagedCacheAddOnData
 	return &e
 }
 
+// ManagedCacheAddOnDataPlaneGroupStateValues returns every known ManagedCacheAddOnDataPlaneGroupState value in schema order.
+func ManagedCacheAddOnDataPlaneGroupStateValues() []ManagedCacheAddOnDataPlaneGroupState {
+	return []ManagedCacheAddOnDataPlaneGroupState{
+		ManagedCacheAddOnDataPlaneGroupStateInitializing,
+		ManagedCacheAddOnDataPlaneGroupStateReady,
+		ManagedCacheAddOnDataPlaneGroupStateError,
+		ManagedCacheAddOnDataPlaneGroupStateTerminating,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *ManagedCacheAddOnDataPlaneGroupState) IsExact() bool {
 	if e != nil {

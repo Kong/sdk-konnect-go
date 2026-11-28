@@ -18,6 +18,14 @@ func (e TLSVersions) ToPointer() *TLSVersions {
 	return &e
 }
 
+// TLSVersionsValues returns every known TLSVersions value in schema order.
+func TLSVersionsValues() []TLSVersions {
+	return []TLSVersions{
+		TLSVersionsTls12,
+		TLSVersionsTls13,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *TLSVersions) IsExact() bool {
 	if e != nil {

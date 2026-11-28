@@ -17,6 +17,16 @@ func (e DeveloperStatus) ToPointer() *DeveloperStatus {
 	return &e
 }
 
+// DeveloperStatusValues returns every known DeveloperStatus value in schema order.
+func DeveloperStatusValues() []DeveloperStatus {
+	return []DeveloperStatus{
+		DeveloperStatusApproved,
+		DeveloperStatusPending,
+		DeveloperStatusRevoked,
+		DeveloperStatusRejected,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *DeveloperStatus) IsExact() bool {
 	if e != nil {

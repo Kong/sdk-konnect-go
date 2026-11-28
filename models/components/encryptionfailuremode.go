@@ -17,6 +17,14 @@ func (e EncryptionFailureMode) ToPointer() *EncryptionFailureMode {
 	return &e
 }
 
+// EncryptionFailureModeValues returns every known EncryptionFailureMode value in schema order.
+func EncryptionFailureModeValues() []EncryptionFailureMode {
+	return []EncryptionFailureMode{
+		EncryptionFailureModeError,
+		EncryptionFailureModePassthrough,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *EncryptionFailureMode) IsExact() bool {
 	if e != nil {

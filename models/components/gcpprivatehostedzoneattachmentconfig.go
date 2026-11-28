@@ -18,6 +18,13 @@ const (
 func (e GCPPrivateHostedZoneType) ToPointer() *GCPPrivateHostedZoneType {
 	return &e
 }
+
+// GCPPrivateHostedZoneTypeValues returns every known GCPPrivateHostedZoneType value in schema order.
+func GCPPrivateHostedZoneTypeValues() []GCPPrivateHostedZoneType {
+	return []GCPPrivateHostedZoneType{
+		GCPPrivateHostedZoneTypeGcpPrivateHostedZoneAttachment,
+	}
+}
 func (e *GCPPrivateHostedZoneType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -158,6 +158,13 @@ const (
 func (e BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType) ToPointer() *BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType {
 	return &e
 }
+
+// BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestTypeValues returns every known BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType value in schema order.
+func BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestTypeValues() []BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType {
+	return []BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType{
+		BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestTypeAnchored,
+	}
+}
 func (e *BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -248,6 +255,13 @@ const (
 
 func (e BillingWorkflowCollectionAlignmentSubscriptionAlignmentType) ToPointer() *BillingWorkflowCollectionAlignmentSubscriptionAlignmentType {
 	return &e
+}
+
+// BillingWorkflowCollectionAlignmentSubscriptionAlignmentTypeValues returns every known BillingWorkflowCollectionAlignmentSubscriptionAlignmentType value in schema order.
+func BillingWorkflowCollectionAlignmentSubscriptionAlignmentTypeValues() []BillingWorkflowCollectionAlignmentSubscriptionAlignmentType {
+	return []BillingWorkflowCollectionAlignmentSubscriptionAlignmentType{
+		BillingWorkflowCollectionAlignmentSubscriptionAlignmentTypeSubscription,
+	}
 }
 func (e *BillingWorkflowCollectionAlignmentSubscriptionAlignmentType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -444,6 +458,14 @@ func (e CreateBillingProfileRequestSubscriptionEndProrationMode) ToPointer() *Cr
 	return &e
 }
 
+// CreateBillingProfileRequestSubscriptionEndProrationModeValues returns every known CreateBillingProfileRequestSubscriptionEndProrationMode value in schema order.
+func CreateBillingProfileRequestSubscriptionEndProrationModeValues() []CreateBillingProfileRequestSubscriptionEndProrationMode {
+	return []CreateBillingProfileRequestSubscriptionEndProrationMode{
+		CreateBillingProfileRequestSubscriptionEndProrationModeBillFullPeriod,
+		CreateBillingProfileRequestSubscriptionEndProrationModeBillActualPeriod,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *CreateBillingProfileRequestSubscriptionEndProrationMode) IsExact() bool {
 	if e != nil {
@@ -612,6 +634,14 @@ const (
 
 func (e CreateBillingProfileRequestTaxBehavior) ToPointer() *CreateBillingProfileRequestTaxBehavior {
 	return &e
+}
+
+// CreateBillingProfileRequestTaxBehaviorValues returns every known CreateBillingProfileRequestTaxBehavior value in schema order.
+func CreateBillingProfileRequestTaxBehaviorValues() []CreateBillingProfileRequestTaxBehavior {
+	return []CreateBillingProfileRequestTaxBehavior{
+		CreateBillingProfileRequestTaxBehaviorInclusive,
+		CreateBillingProfileRequestTaxBehaviorExclusive,
+	}
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.

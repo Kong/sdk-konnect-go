@@ -24,6 +24,19 @@ func (e AssignedRoleEntityRegion) ToPointer() *AssignedRoleEntityRegion {
 	return &e
 }
 
+// AssignedRoleEntityRegionValues returns every known AssignedRoleEntityRegion value in schema order.
+func AssignedRoleEntityRegionValues() []AssignedRoleEntityRegion {
+	return []AssignedRoleEntityRegion{
+		AssignedRoleEntityRegionUs,
+		AssignedRoleEntityRegionEu,
+		AssignedRoleEntityRegionAu,
+		AssignedRoleEntityRegionMe,
+		AssignedRoleEntityRegionIn,
+		AssignedRoleEntityRegionSg,
+		AssignedRoleEntityRegionWildcard,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *AssignedRoleEntityRegion) IsExact() bool {
 	if e != nil {

@@ -22,6 +22,13 @@ const (
 func (e BillingCurrencyExpand) ToPointer() *BillingCurrencyExpand {
 	return &e
 }
+
+// BillingCurrencyExpandValues returns every known BillingCurrencyExpand value in schema order.
+func BillingCurrencyExpandValues() []BillingCurrencyExpand {
+	return []BillingCurrencyExpand{
+		BillingCurrencyExpandCostBasis,
+	}
+}
 func (e *BillingCurrencyExpand) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

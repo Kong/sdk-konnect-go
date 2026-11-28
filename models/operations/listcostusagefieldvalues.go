@@ -14,7 +14,7 @@ import (
 // - `subject`: subject references, such as `principal/{uuid}` or `oidc/{sub}`.
 // - `tags`: the tag keys, or with `key`, the values of that tag.
 // - `groups`, `teams`, `consumer_group_ids`: the individual group references, team references, or consumer group IDs from the events' lists.
-// - `source`, `provider`, `model`, `model_id`, `region`, `client`, `service_id`, `route_id`, `consumer_id`, `application_id`: the field's values.
+// - `source`, `provider`, `model`, `model_id`, `region`, `client`, `cost_center`, `service_id`, `route_id`, `consumer_id`, `application_id`: the field's values.
 type Field string
 
 const (
@@ -26,6 +26,7 @@ const (
 	FieldModelID          Field = "model_id"
 	FieldRegion           Field = "region"
 	FieldClient           Field = "client"
+	FieldCostCenter       Field = "cost_center"
 	FieldGroups           Field = "groups"
 	FieldTeams            Field = "teams"
 	FieldServiceID        Field = "service_id"
@@ -39,11 +40,33 @@ func (e Field) ToPointer() *Field {
 	return &e
 }
 
+// FieldValues returns every known Field value in schema order.
+func FieldValues() []Field {
+	return []Field{
+		FieldSubject,
+		FieldTags,
+		FieldSource,
+		FieldProvider,
+		FieldModel,
+		FieldModelID,
+		FieldRegion,
+		FieldClient,
+		FieldCostCenter,
+		FieldGroups,
+		FieldTeams,
+		FieldServiceID,
+		FieldRouteID,
+		FieldConsumerID,
+		FieldApplicationID,
+		FieldConsumerGroupIds,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *Field) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "subject", "tags", "source", "provider", "model", "model_id", "region", "client", "groups", "teams", "service_id", "route_id", "consumer_id", "application_id", "consumer_group_ids":
+		case "subject", "tags", "source", "provider", "model", "model_id", "region", "client", "cost_center", "groups", "teams", "service_id", "route_id", "consumer_id", "application_id", "consumer_group_ids":
 			return true
 		}
 	}
@@ -76,7 +99,7 @@ type ListCostUsageFieldValuesRequest struct {
 	// - `subject`: subject references, such as `principal/{uuid}` or `oidc/{sub}`.
 	// - `tags`: the tag keys, or with `key`, the values of that tag.
 	// - `groups`, `teams`, `consumer_group_ids`: the individual group references, team references, or consumer group IDs from the events' lists.
-	// - `source`, `provider`, `model`, `model_id`, `region`, `client`, `service_id`, `route_id`, `consumer_id`, `application_id`: the field's values.
+	// - `source`, `provider`, `model`, `model_id`, `region`, `client`, `cost_center`, `service_id`, `route_id`, `consumer_id`, `application_id`: the field's values.
 	Field Field `queryParam:"style=form,explode=true,name=field"`
 	// The tag key whose values to list. Without `key`, `field=tags` lists the tag keys. An unknown key returns an empty page.
 	//

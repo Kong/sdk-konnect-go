@@ -19,6 +19,13 @@ const (
 func (e AIGatewayConsumerCredentialWithKeyType) ToPointer() *AIGatewayConsumerCredentialWithKeyType {
 	return &e
 }
+
+// AIGatewayConsumerCredentialWithKeyTypeValues returns every known AIGatewayConsumerCredentialWithKeyType value in schema order.
+func AIGatewayConsumerCredentialWithKeyTypeValues() []AIGatewayConsumerCredentialWithKeyType {
+	return []AIGatewayConsumerCredentialWithKeyType{
+		AIGatewayConsumerCredentialWithKeyTypeAPIKey,
+	}
+}
 func (e *AIGatewayConsumerCredentialWithKeyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -27,6 +27,15 @@ func (e PublicationListItemTryItUIAudience) ToPointer() *PublicationListItemTryI
 	return &e
 }
 
+// PublicationListItemTryItUIAudienceValues returns every known PublicationListItemTryItUIAudience value in schema order.
+func PublicationListItemTryItUIAudienceValues() []PublicationListItemTryItUIAudience {
+	return []PublicationListItemTryItUIAudience{
+		PublicationListItemTryItUIAudienceAll,
+		PublicationListItemTryItUIAudienceAuthenticated,
+		PublicationListItemTryItUIAudienceRegistered,
+	}
+}
+
 // IsExact returns true if the value matches a known enum value, false otherwise.
 func (e *PublicationListItemTryItUIAudience) IsExact() bool {
 	if e != nil {
